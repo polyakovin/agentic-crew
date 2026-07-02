@@ -1,0 +1,31 @@
+name: software-development-crew
+version: 0.1.0
+description: General software-development crew inspired by software-company multi-agent patterns.
+protocol: ../protocol/interaction-protocol.md
+roles:
+  - id: orchestrator
+    path: ../roles/orchestrator.md
+    required: true
+  - id: product-manager
+    path: ../roles/product-manager.md
+    required: false
+  - id: system-architect
+    path: ../roles/system-architect.md
+    required: false
+  - id: implementation-engineer
+    path: ../roles/implementation-engineer.md
+    required: false
+  - id: qa-reviewer
+    path: ../roles/qa-reviewer.md
+    required: false
+  - id: protocol-steward
+    path: ../roles/protocol-steward.md
+    required: false
+routing:
+  requirements: product-manager
+  architecture: system-architect
+  implementation: implementation-engineer
+  review: qa-reviewer
+  role-authoring: protocol-steward
+  conflict-resolution: orchestrator
+

@@ -1,0 +1,40 @@
+name: playdate-game-crew
+version: 0.1.0
+description: Playdate-focused game-development crew with SDK/platform specialist.
+protocol: ../protocol/interaction-protocol.md
+extends: software-development-crew
+roles:
+  - id: orchestrator
+    path: ../roles/orchestrator.md
+    required: true
+  - id: product-manager
+    path: ../roles/product-manager.md
+    required: false
+  - id: system-architect
+    path: ../roles/system-architect.md
+    required: false
+  - id: implementation-engineer
+    path: ../roles/implementation-engineer.md
+    required: false
+  - id: qa-reviewer
+    path: ../roles/qa-reviewer.md
+    required: false
+  - id: playdate-platform-sdk
+    path: ../roles/playdate-platform-sdk.md
+    required: false
+  - id: protocol-steward
+    path: ../roles/protocol-steward.md
+    required: false
+routing:
+  playdate-sdk-api: playdate-platform-sdk
+  crank-buttons-accelerometer: playdate-platform-sdk
+  datastore-save: playdate-platform-sdk
+  simulator-device-difference: playdate-platform-sdk
+  graphics-draw-mode: playdate-platform-sdk
+  performance: playdate-platform-sdk
+  requirements: product-manager
+  architecture: system-architect
+  implementation: implementation-engineer
+  review: qa-reviewer
+  conflict-resolution: orchestrator
+
