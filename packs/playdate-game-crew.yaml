@@ -1,5 +1,5 @@
 name: playdate-game-crew
-version: 0.1.0
+version: 0.2.0
 description: Playdate-focused game-development crew with SDK/platform specialist.
 protocol: ../protocol/interaction-protocol.md
 extends: software-development-crew

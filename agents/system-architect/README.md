@@ -6,6 +6,10 @@ as a specialist A2A agent.
 - `role.md`: architecture instructions.
 - `agent-card.json`: A2A discovery card.
 - `harness.yaml`: local wiring, accepted payloads, emitted payloads, and gates.
+- `operations.md`: source map, workflow, tool policy, rubric, eval seeds, and
+  release notes.
+- `run-record.template.json`: design decision and contract-review record
+  template.
 
 Keep the harness focused on touched contracts, manifests, component boundaries,
 data flow, migration, rollback, and verification strategy.

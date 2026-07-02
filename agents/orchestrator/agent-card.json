@@ -12,11 +12,17 @@
     "organization": "polyakovin",
     "url": "https://github.com/polyakovin/agentic-crew"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/orchestrator/role.md",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.2.0",
+    "harnessStatus": "draft-ready",
+    "operations": "agents/orchestrator/operations.md",
+    "runRecordTemplate": "agents/orchestrator/run-record.template.json"
   },
   "defaultInputModes": ["text/plain", "application/json"],
   "defaultOutputModes": ["text/plain", "application/json"],

@@ -1,0 +1,75 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "playdate-platform-sdk",
+  "agentVersion": "0.3.0",
+  "promptVersion": "0.3.0",
+  "harnessVersion": "0.3.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "artifactHashes": {},
+  "analysisRecord": {
+    "frame": "",
+    "surface": "",
+    "evidenceMap": [],
+    "options": [],
+    "verification": [],
+    "selfReview": ""
+  },
+  "claims": [
+    {
+      "claimId": "",
+      "claimText": "",
+      "claimType": "sdkApi|hardware|projectSupport|buildResult|simulatorResult|performance|sourceInterpretation",
+      "truthStatus": "unconfirmed",
+      "confidence": "low",
+      "evidenceRefs": [],
+      "sourceCount": 0,
+      "independentSourceCount": 0,
+      "isUserOnly": false,
+      "hasCircularSources": false,
+      "conflicts": [],
+      "reproducibleCheck": {
+        "exists": false,
+        "method": "",
+        "result": ""
+      },
+      "verificationLimits": []
+    }
+  ],
+  "truthStatusSummary": {
+    "confirmed": 0,
+    "unconfirmed": 0,
+    "refuted": 0,
+    "conflict": 0,
+    "notApplicable": 0
+  },
+  "truthGateResult": "notApplicable",
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "dataFlowSummary": {
+    "inputClasses": ["internal"],
+    "outputClasses": ["internal"],
+    "externalEgress": false,
+    "redactionsApplied": [],
+    "retentionPolicy": "repo-local"
+  },
+  "sourceIntegrityChecks": [],
+  "evidenceReportRef": "",
+  "decisionLogRef": "",
+  "missingToolsRef": "",
+  "systemImprovementCandidates": [],
+  "reviewer": "",
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

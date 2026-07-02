@@ -23,10 +23,17 @@ Read these before creating or changing a role:
 
 - Every specialist must live in its own `agents/<id>/` folder.
 - Every specialist folder must include `README.md`, `role.md`,
-  `agent-card.json`, and `harness.yaml`.
+  `agent-card.json`, `harness.yaml`, operational docs, and
+  `run-record.template.json`.
 - `harness.yaml` must name the A2A profile, payload schema, role card, Agent
-  Card, accepted payloads, emitted payloads, context policy, quality gates, and
-  handoff behavior.
+  Card, accepted payloads, emitted payloads, context policy, quality gates,
+  operational references, run-record template, and handoff behavior.
+- Standard specialists may use one `operations.md` file containing source map,
+  workflow, tool policy, rubric, eval seeds, release notes, and health notes.
+- High-risk specialists should split operations into files such as
+  `entrypoint.md`, `source-map.md`, `workflow.md`, `tool-policy.md`,
+  `rubric.md`, `eval-plan.md`, `release-rollback.md`, and
+  `health-snapshot.md`.
 - Packs should reference harness folders through an `agents:` list, not separate
   loose role/card lists.
 
@@ -67,6 +74,7 @@ Read these before creating or changing a role:
 - Is `What To Read` small enough for the role?
 - Does each exported role have A2A AgentSkill metadata?
 - Does each specialist have a complete `agents/<id>/` harness folder?
+- Does the harness include operational docs and a run-record template?
 - Does the role have evidence-based quality gates?
 - Does the role know when to block?
 - Can the orchestrator route work using the pack's routing table?

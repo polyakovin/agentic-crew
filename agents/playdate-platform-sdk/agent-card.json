@@ -12,11 +12,22 @@
     "organization": "polyakovin",
     "url": "https://github.com/polyakovin/agentic-crew"
   },
-  "version": "0.1.0",
+  "version": "0.3.0",
   "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/playdate-platform-sdk/role.md",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.3.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/playdate-platform-sdk/entrypoint.md",
+    "sourceMap": "agents/playdate-platform-sdk/source-map.md",
+    "workflow": "agents/playdate-platform-sdk/workflow.md",
+    "toolPolicy": "agents/playdate-platform-sdk/tool-policy.md",
+    "rubric": "agents/playdate-platform-sdk/rubric.md",
+    "evalPlan": "agents/playdate-platform-sdk/eval-plan.md",
+    "runRecordTemplate": "agents/playdate-platform-sdk/run-record.template.json"
   },
   "defaultInputModes": ["text/plain", "application/json"],
   "defaultOutputModes": ["text/plain", "application/json"],

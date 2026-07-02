@@ -1,0 +1,17 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "qa-reviewer",
+  "riskTier": "R2",
+  "a2aContextId": "",
+  "inputRefs": [],
+  "payloadsReceived": [],
+  "payloadsEmitted": [],
+  "expectedBehavior": [],
+  "findings": [],
+  "testGaps": [],
+  "commandsRun": [],
+  "commandsBlocked": [],
+  "residualRisk": [],
+  "decision": "needsReview"
+}

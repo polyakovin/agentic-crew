@@ -31,6 +31,8 @@ agents/
     role.md
     agent-card.json
     harness.yaml
+    operations.md
+    run-record.template.json
   product-manager/
     ...
   system-architect/
@@ -42,7 +44,18 @@ agents/
   protocol-steward/
     ...
   playdate-platform-sdk/
-    ...
+    entrypoint.md
+    role.md
+    agent-card.json
+    harness.yaml
+    source-map.md
+    workflow.md
+    tool-policy.md
+    rubric.md
+    eval-plan.md
+    run-record.template.json
+    release-rollback.md
+    health-snapshot.md
 packs/
   software-development-crew.yaml
   playdate-game-crew.yaml
@@ -61,9 +74,12 @@ examples/
 3. Narrow each copied agent's `What To Read` and `harness.yaml` context policy
    to project-local sources.
 4. Deploy or adapt each agent's `agent-card.json` for the runtime endpoint.
-5. Require every specialist to exchange Agentic Crew payloads using
+5. Keep `operations.md` or split operational docs in sync with the project:
+   source hierarchy, workflow, tool policy, rubric, evals, run records, and
+   release/rollback.
+6. Require every specialist to exchange Agentic Crew payloads using
    `protocol/interaction-protocol.md`.
-6. Keep the orchestrator on the strongest model available when tradeoffs,
+7. Keep the orchestrator on the strongest model available when tradeoffs,
    conflict resolution, risk calls, or final acceptance matter.
 
 The A2A protocol is the wire-level contract: Agent Cards advertise specialists,
@@ -80,3 +96,5 @@ the project-specific payload shapes such as `taskBrief`, `specialistReport`,
 - Do not let agent instructions override project source of truth.
 - If a role cannot cite evidence, it should report uncertainty or block.
 - Use automation and tests as gates; use agents for judgment and investigation.
+- High-risk specialists should have split operational docs, not only a compact
+  `operations.md`.

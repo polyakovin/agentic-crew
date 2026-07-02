@@ -1,0 +1,18 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "implementation-engineer",
+  "riskTier": "R3",
+  "a2aContextId": "",
+  "inputRefs": [],
+  "payloadsReceived": [],
+  "payloadsEmitted": [],
+  "filesTouched": [],
+  "testsAddedOrUpdated": [],
+  "commandsRun": [],
+  "commandsBlocked": [],
+  "verificationSummary": "",
+  "residualRisk": [],
+  "handoff": {},
+  "decision": "needsReview"
+}

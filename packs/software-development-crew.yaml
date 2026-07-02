@@ -1,5 +1,5 @@
 name: software-development-crew
-version: 0.1.0
+version: 0.2.0
 description: General software-development crew inspired by software-company multi-agent patterns.
 protocol: ../protocol/interaction-protocol.md
 agents:

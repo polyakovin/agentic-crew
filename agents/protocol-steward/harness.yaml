@@ -1,14 +1,23 @@
 id: protocol-steward
 kind: a2a-specialist-harness
-version: 0.1.0
+version: 0.2.0
 protocol: ../../protocol/interaction-protocol.md
 payload_schema: ../../protocol/message-schema.json
 role_card: ./role.md
 agent_card: ./agent-card.json
+operations: ./operations.md
+run_record_template: ./run-record.template.json
 runtime:
   transport: A2A JSON-RPC
   endpoint_placeholder: https://example.invalid/a2a/protocol-steward
   model_policy: protocol-and-structure-review
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
 activation:
   accepts_payloads:
     - taskBrief
@@ -24,8 +33,13 @@ context:
     - ../../protocol/interaction-protocol.md
     - ../../protocol/message-schema.json
     - ./role.md
+    - ./operations.md
   task_scoped_reading: true
   what_to_read_policy: affected-agent-folders-packs-and-protocol-files
+operational_gates:
+  - validate JSON and YAML for affected harness files
+  - check pack paths point to agent folders and harness files
+  - require versioning note for protocol or payload changes
 quality_gates:
   - agent folders contain role agent-card and harness files
   - AgentSkill scope is narrow

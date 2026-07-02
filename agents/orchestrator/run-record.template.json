@@ -1,0 +1,19 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "orchestrator",
+  "riskTier": "R2",
+  "a2aContextId": "",
+  "inputRefs": [],
+  "payloadsReceived": [],
+  "payloadsEmitted": [],
+  "specialistsSelected": [],
+  "specialistsRejected": [],
+  "evidence": [],
+  "conflicts": [],
+  "decisions": [],
+  "handoff": {},
+  "verification": [],
+  "residualRisk": [],
+  "decision": "needsReview"
+}

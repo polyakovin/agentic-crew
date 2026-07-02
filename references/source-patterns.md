@@ -18,7 +18,9 @@ Adapted here as:
 - `protocol/interaction-protocol.md`;
 - `protocol/message-schema.json` for Agentic Crew data payloads carried inside
   A2A parts or artifacts;
-- `agents/*/agent-card.json` templates for exported specialists.
+- `agents/*/agent-card.json` templates for exported specialists;
+- `agents/*/harness.yaml`, operational docs, and run-record templates for the
+  local harness layer around A2A.
 
 ## OpenAI Plugins / Skills
 
@@ -32,6 +34,22 @@ Adapted here as:
 
 - `.agents/skills/agentic-crew-author/SKILL.md`;
 - agent harness folders that can become Codex skills or custom subagents.
+
+## Locksmith Hermes Harness
+
+Pattern used:
+
+- a canonical entrypoint;
+- Agent Card plus source map, workflow, tool policy, rubric, eval plan,
+  run-record template, release/rollback, and health snapshot;
+- draft status until pilot run records, eval evidence, and independent review
+  exist.
+
+Adapted here as:
+
+- `agents/playdate-platform-sdk/` as the full split-harness example;
+- `operations.md` plus `run-record.template.json` for lower-risk general
+  specialists.
 
 ## MetaGPT
 

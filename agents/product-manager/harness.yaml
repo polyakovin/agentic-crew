@@ -1,14 +1,17 @@
 id: product-manager
 kind: a2a-specialist-harness
-version: 0.1.0
+version: 0.2.0
 protocol: ../../protocol/interaction-protocol.md
 payload_schema: ../../protocol/message-schema.json
 role_card: ./role.md
 agent_card: ./agent-card.json
+operations: ./operations.md
+run_record_template: ./run-record.template.json
 runtime:
   transport: A2A JSON-RPC
   endpoint_placeholder: https://example.invalid/a2a/product-manager
   model_policy: product-reasoning-with-good-instruction-following
+  status: draft-ready
 activation:
   accepts_payloads:
     - taskBrief
@@ -19,8 +22,13 @@ context:
   always_read:
     - ../../protocol/interaction-protocol.md
     - ./role.md
+    - ./operations.md
   task_scoped_reading: true
   what_to_read_policy: product-specs-and-user-facing-docs-only
+operational_gates:
+  - acceptance criteria must be testable
+  - non-goals must be explicit
+  - technical assumptions must be labeled
 quality_gates:
   - acceptance criteria are testable
   - scope and non-goals are explicit

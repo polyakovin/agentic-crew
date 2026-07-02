@@ -1,0 +1,17 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "protocol-steward",
+  "riskTier": "R2",
+  "a2aContextId": "",
+  "inputRefs": [],
+  "payloadsReceived": [],
+  "payloadsEmitted": [],
+  "agentsChecked": [],
+  "packsChecked": [],
+  "schemaChecks": [],
+  "findings": [],
+  "versioningImpact": "",
+  "releaseBlockers": [],
+  "decision": "needsReview"
+}

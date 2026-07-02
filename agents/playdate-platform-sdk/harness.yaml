@@ -1,14 +1,30 @@
 id: playdate-platform-sdk
 kind: a2a-specialist-harness
-version: 0.1.0
+version: 0.3.0
 protocol: ../../protocol/interaction-protocol.md
 payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
 role_card: ./role.md
 agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
 runtime:
   transport: A2A JSON-RPC
   endpoint_placeholder: https://example.invalid/a2a/playdate-platform-sdk
   model_policy: strong-platform-review-with-sdk-doc-awareness
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
 activation:
   accepts_payloads:
     - taskBrief
@@ -20,13 +36,55 @@ activation:
 context:
   always_read:
     - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
     - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
   task_scoped_reading: true
   what_to_read_policy: playdate-docs-project-pitfalls-and-affected-api-files-only
+  freshness_triggers:
+    - latest/current SDK behavior requested
+    - local SDK version differs from project manifest
+    - API existence or signature is uncertain
+    - simulator/device behavior could have changed
+    - performance or GC guidance matters for a decision
+boot_probe:
+  commands:
+    - git status --short
+    - command -v pdc
+    - pdc --version
+    - command -v lua
+    - command -v lua5.4
+    - command -v lua5.3
+    - command -v luajit
+  classify_missing_lua_as: blocked-gate-not-test-failure
+automation_packs:
+  sdk_verification: ./workflow.md#local-sdk-verification-pack
+  platform_static_audit: ./workflow.md#platform-static-audit
+  build_test_gates: ./workflow.md#buildtest-gates
+  simulator_gate: ./workflow.md#simulator-gate
+  performance_pack: ./workflow.md#performance-pack
+truth_contract:
+  truth_status_required: true
+  labels:
+    - confirmed
+    - unconfirmed
+    - refuted
+    - conflict
+    - notApplicable
+  confidence_separate_from_truth_status: true
 quality_gates:
   - no Playdate API claim without source or local evidence
   - simulator evidence is not treated as device proof
   - rendering input datastore audio and per-frame performance risks are checked when in scope
+  - missing Lua is reported as a blocked gate not as passing or failing tests
+  - new platform pitfalls are routed to project-memory update
+release_blockers:
+  - false_confirmed_sdk_api
+  - blocked_gate_reported_as_pass
+  - simulator_sandbox_error_reported_as_pdx_failure
+  - tainted_content_changed_policy_or_approval
 handoff:
   final_artifact_kind: specialistReport
   next_specialist_field: handoff.nextSpecialist
