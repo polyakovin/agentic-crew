@@ -35,7 +35,7 @@ Adapted here as:
 - `.agents/skills/agentic-crew-author/SKILL.md`;
 - agent harness folders that can become Codex skills or custom subagents.
 
-## Locksmith Hermes Harness
+## Full Split Harness Pattern
 
 Pattern used:
 
@@ -97,7 +97,8 @@ Adapted here as:
 
 ## Project-Specific Extension
 
-The `playdate-platform-sdk` role is adapted from the Locksmith project needs:
+The `playdate-platform-sdk` role is adapted from recurring Playdate project
+needs:
 
 - Playdate SDK/API quirks;
 - crank/buttons/accelerometer behavior;

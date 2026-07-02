@@ -221,11 +221,11 @@ typed request object instead of literal JSON.
 ```json
 {
   "jsonrpc": "2.0",
-  "id": "locksmith-ui-001-request",
+  "id": "sample-playdate-ui-001-request",
   "method": "SendMessage",
   "params": {
     "message": {
-      "messageId": "locksmith-ui-001-message",
+      "messageId": "sample-playdate-ui-001-message",
       "role": "ROLE_USER",
       "parts": [
         {
@@ -235,7 +235,7 @@ typed request object instead of literal JSON.
           "data": {
             "profile": "agentic-crew/a2a-profile/v0.1",
             "kind": "taskBrief",
-            "taskId": "locksmith-ui-001",
+            "taskId": "sample-playdate-ui-001",
             "specialistId": "playdate-platform-sdk",
             "request": "Check Playdate API and simulator/device risk.",
             "scope": ["source/ui.lua"],

@@ -31,7 +31,7 @@ performance, and simulator/device realism for Playdate game projects.
 
 ## What To Read
 
-Keep this list narrow and project-specific. For Locksmith, read:
+Keep this list narrow and project-specific. For a Playdate game project, read:
 
 - `AGENTS.md` Playdate pitfalls.
 - `docs/playdate-best-practices.md`.

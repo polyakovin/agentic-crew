@@ -10,7 +10,7 @@ This repository is a harness library, not an agent runtime. It provides:
   Cards, and local wiring;
 - reusable software-development specialist harnesses inspired by public
   multi-agent software-company patterns;
-- a Playdate Platform / SDK Specialist role adapted from the Locksmith project;
+- a Playdate Platform / SDK Specialist role for Playdate game projects;
 - a Codex skill that helps author new specialist harnesses using the same
   protocol.
 

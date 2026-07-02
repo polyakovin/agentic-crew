@@ -7,9 +7,9 @@ literal JSON.
 ```json
 {
   "taskId": "a2a-task-server-generated-id",
-  "contextId": "locksmith-ui-review-context",
+  "contextId": "sample-playdate-ui-review-context",
   "artifact": {
-    "artifactId": "locksmith-ui-001-handoff",
+    "artifactId": "sample-playdate-ui-001-handoff",
     "name": "Playdate platform handoff",
     "description": "Routing packet from Playdate SDK review to pixel UI review.",
     "parts": [
@@ -17,7 +17,7 @@ literal JSON.
         "data": {
           "profile": "agentic-crew/a2a-profile/v0.1",
           "kind": "handoffPacket",
-          "taskId": "locksmith-ui-001",
+          "taskId": "sample-playdate-ui-001",
           "specialistId": "playdate-platform-sdk",
           "status": "needsReview",
           "currentState": "Rendering code touches drawTextAligned after setColor in a Playdate UI path.",
