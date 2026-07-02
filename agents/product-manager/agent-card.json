@@ -13,7 +13,7 @@
     "url": "https://github.com/polyakovin/agentic-crew"
   },
   "version": "0.1.0",
-  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/product-manager.md",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/product-manager/role.md",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false

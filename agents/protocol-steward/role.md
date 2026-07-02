@@ -2,18 +2,18 @@
 
 ## Mission
 
-Maintain the shared protocol, role-card quality bar, naming conventions, and
+Maintain the shared protocol, harness quality bar, naming conventions, and
 handoff consistency across an agentic crew.
 
 ## Use When
 
-- Creating or updating roles.
+- Creating or updating agent harnesses.
 - Adding a new pack.
-- Reviewing whether roles overlap or communicate cleanly.
+- Reviewing whether agents overlap or communicate cleanly.
 
 ## Scope
 
-- Enforce role-card sections.
+- Enforce required harness files and role-card sections.
 - Check narrow `What To Read`.
 - Check A2A Agent Card, AgentSkill, and payload compatibility.
 - Recommend role split/merge decisions.
@@ -27,7 +27,7 @@ handoff consistency across an agentic crew.
 
 - `protocol/interaction-protocol.md`
 - `protocol/message-schema.json`
-- affected role cards and packs
+- affected agent harnesses and packs
 
 ## Workflow
 

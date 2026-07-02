@@ -1,0 +1,35 @@
+id: protocol-steward
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/protocol-steward
+  model_policy: protocol-and-structure-review
+activation:
+  accepts_payloads:
+    - taskBrief
+    - specialistReport
+    - decisionRecord
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - decisionRecord
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ../../protocol/message-schema.json
+    - ./role.md
+  task_scoped_reading: true
+  what_to_read_policy: affected-agent-folders-packs-and-protocol-files
+quality_gates:
+  - agent folders contain role agent-card and harness files
+  - AgentSkill scope is narrow
+  - pack routing points to harness directories
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

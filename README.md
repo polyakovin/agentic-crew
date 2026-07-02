@@ -1,18 +1,20 @@
 # Agentic Crew
 
-Reusable specialist-agent role cards, A2A Agent Card templates, and a shared
-Agent2Agent profile for project-specific agent teams.
+Reusable specialist-agent harness folders and a shared Agent2Agent profile for
+project-specific agent teams.
 
-This repository is a role library, not an agent runtime. It provides:
+This repository is a harness library, not an agent runtime. It provides:
 
 - an Agentic Crew profile for the A2A protocol;
-- A2A Agent Card templates for exported specialists;
-- reusable software-development specialist roles inspired by public multi-agent
-  software-company patterns;
+- copyable `agents/<id>/` harness folders with role instructions, A2A Agent
+  Cards, and local wiring;
+- reusable software-development specialist harnesses inspired by public
+  multi-agent software-company patterns;
 - a Playdate Platform / SDK Specialist role adapted from the Locksmith project;
-- a Codex skill that helps author new role cards using the same protocol.
+- a Codex skill that helps author new specialist harnesses using the same
+  protocol.
 
-No third-party prompts or source code are copied verbatim. The roles are
+No third-party prompts or source code are copied verbatim. The harnesses are
 project-neutral templates designed to be adapted to a repository's own specs,
 history, risks, tools, and verification gates.
 
@@ -22,22 +24,25 @@ history, risks, tools, and verification gates.
 protocol/
   interaction-protocol.md
   message-schema.json
-agent-cards/
-  implementation-engineer.json
-  orchestrator.json
-  playdate-platform-sdk.json
-  product-manager.json
-  protocol-steward.json
-  qa-reviewer.json
-  system-architect.json
-roles/
-  orchestrator.md
-  product-manager.md
-  system-architect.md
-  implementation-engineer.md
-  qa-reviewer.md
-  protocol-steward.md
-  playdate-platform-sdk.md
+agents/
+  README.md
+  orchestrator/
+    README.md
+    role.md
+    agent-card.json
+    harness.yaml
+  product-manager/
+    ...
+  system-architect/
+    ...
+  implementation-engineer/
+    ...
+  qa-reviewer/
+    ...
+  protocol-steward/
+    ...
+  playdate-platform-sdk/
+    ...
 packs/
   software-development-crew.yaml
   playdate-game-crew.yaml
@@ -52,10 +57,10 @@ examples/
 ## How To Use
 
 1. Pick a pack from `packs/`.
-2. Copy only the roles needed for the project.
-3. Narrow each role's `What To Read` to project-local sources.
-4. Expose each runtime specialist with an A2A Agent Card or generate one from
-   `agent-cards/`.
+2. Copy only the `agents/<id>/` harness folders needed for the project.
+3. Narrow each copied agent's `What To Read` and `harness.yaml` context policy
+   to project-local sources.
+4. Deploy or adapt each agent's `agent-card.json` for the runtime endpoint.
 5. Require every specialist to exchange Agentic Crew payloads using
    `protocol/interaction-protocol.md`.
 6. Keep the orchestrator on the strongest model available when tradeoffs,
@@ -70,8 +75,8 @@ the project-specific payload shapes such as `taskBrief`, `specialistReport`,
 ## Design Rules
 
 - Prefer narrow roles over a large generic "senior engineer" prompt.
-- Treat skills and role cards like dependencies: review provenance and keep
-  them versioned.
-- Do not let role cards override project source of truth.
+- Treat skills and harness folders like dependencies: review provenance and
+  keep them versioned.
+- Do not let agent instructions override project source of truth.
 - If a role cannot cite evidence, it should report uncertainty or block.
 - Use automation and tests as gates; use agents for judgment and investigation.

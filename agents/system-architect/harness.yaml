@@ -1,0 +1,31 @@
+id: system-architect
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/system-architect
+  model_policy: strong-reasoning-for-boundaries-and-tradeoffs
+activation:
+  accepts_payloads:
+    - taskBrief
+  emits_payloads:
+    - specialistReport
+    - decisionRecord
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./role.md
+  task_scoped_reading: true
+  what_to_read_policy: architecture-docs-manifests-and-touched-contracts
+quality_gates:
+  - changed boundaries have an owner
+  - design recommendation names rollback and verification
+  - shared-state or schema risk is explicitly called out
+handoff:
+  final_artifact_kind: decisionRecord
+  next_specialist_field: handoff.nextSpecialist

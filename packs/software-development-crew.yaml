@@ -2,37 +2,30 @@ name: software-development-crew
 version: 0.1.0
 description: General software-development crew inspired by software-company multi-agent patterns.
 protocol: ../protocol/interaction-protocol.md
-agent_cards:
+agents:
   - id: orchestrator
-    path: ../agent-cards/orchestrator.json
-  - id: product-manager
-    path: ../agent-cards/product-manager.json
-  - id: system-architect
-    path: ../agent-cards/system-architect.json
-  - id: implementation-engineer
-    path: ../agent-cards/implementation-engineer.json
-  - id: qa-reviewer
-    path: ../agent-cards/qa-reviewer.json
-  - id: protocol-steward
-    path: ../agent-cards/protocol-steward.json
-roles:
-  - id: orchestrator
-    path: ../roles/orchestrator.md
+    path: ../agents/orchestrator
+    harness: ../agents/orchestrator/harness.yaml
     required: true
   - id: product-manager
-    path: ../roles/product-manager.md
+    path: ../agents/product-manager
+    harness: ../agents/product-manager/harness.yaml
     required: false
   - id: system-architect
-    path: ../roles/system-architect.md
+    path: ../agents/system-architect
+    harness: ../agents/system-architect/harness.yaml
     required: false
   - id: implementation-engineer
-    path: ../roles/implementation-engineer.md
+    path: ../agents/implementation-engineer
+    harness: ../agents/implementation-engineer/harness.yaml
     required: false
   - id: qa-reviewer
-    path: ../roles/qa-reviewer.md
+    path: ../agents/qa-reviewer
+    harness: ../agents/qa-reviewer/harness.yaml
     required: false
   - id: protocol-steward
-    path: ../roles/protocol-steward.md
+    path: ../agents/protocol-steward
+    harness: ../agents/protocol-steward/harness.yaml
     required: false
 routing:
   requirements: product-manager

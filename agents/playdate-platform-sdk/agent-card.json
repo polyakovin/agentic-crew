@@ -13,7 +13,7 @@
     "url": "https://github.com/polyakovin/agentic-crew"
   },
   "version": "0.1.0",
-  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/playdate-platform-sdk.md",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/playdate-platform-sdk/role.md",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false

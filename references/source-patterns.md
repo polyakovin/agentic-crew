@@ -18,7 +18,7 @@ Adapted here as:
 - `protocol/interaction-protocol.md`;
 - `protocol/message-schema.json` for Agentic Crew data payloads carried inside
   A2A parts or artifacts;
-- `agent-cards/*.json` templates for exported specialists.
+- `agents/*/agent-card.json` templates for exported specialists.
 
 ## OpenAI Plugins / Skills
 
@@ -31,7 +31,7 @@ Pattern used:
 Adapted here as:
 
 - `.agents/skills/agentic-crew-author/SKILL.md`;
-- role cards that can become Codex skills or custom subagents.
+- agent harness folders that can become Codex skills or custom subagents.
 
 ## MetaGPT
 

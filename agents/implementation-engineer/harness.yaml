@@ -1,0 +1,32 @@
+id: implementation-engineer
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/implementation-engineer
+  model_policy: implementation-capable-with-tool-use
+activation:
+  accepts_payloads:
+    - taskBrief
+    - decisionRecord
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./role.md
+  task_scoped_reading: true
+  what_to_read_policy: accepted-brief-design-and-touched-source-tests
+quality_gates:
+  - edits stay within accepted scope
+  - verification commands and outcomes are reported
+  - unrelated user changes are not reverted
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

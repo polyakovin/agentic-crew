@@ -31,7 +31,7 @@ conflicts, and decide when work is ready.
 
 - `protocol/interaction-protocol.md`
 - current project instructions, specs, and task plan
-- relevant specialist role cards only
+- relevant specialist harnesses only
 
 ## Workflow
 

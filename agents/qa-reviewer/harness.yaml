@@ -1,0 +1,33 @@
+id: qa-reviewer
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/qa-reviewer
+  model_policy: careful-review-with-low-false-positive-bias
+activation:
+  accepts_payloads:
+    - taskBrief
+    - specialistReport
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./role.md
+  task_scoped_reading: true
+  what_to_read_policy: diff-acceptance-criteria-relevant-tests-known-pitfalls
+quality_gates:
+  - findings include severity location impact recommendation and confidence
+  - no speculative defect is reported without evidence
+  - no-finding reports name residual risk and test gaps
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

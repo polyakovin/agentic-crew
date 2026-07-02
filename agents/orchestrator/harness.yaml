@@ -1,0 +1,35 @@
+id: orchestrator
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/orchestrator
+  model_policy: strongest-available-for-risk-and-conflict
+activation:
+  accepts_payloads:
+    - taskBrief
+    - specialistReport
+    - reviewFinding
+    - decisionRecord
+    - handoffPacket
+  emits_payloads:
+    - taskBrief
+    - decisionRecord
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./role.md
+  task_scoped_reading: true
+  what_to_read_policy: smallest-specialist-relevant-set
+quality_gates:
+  - every accepted specialist claim has evidence
+  - every handoff names the next owner
+  - every conflict has a decisionRecord or blocker
+handoff:
+  final_artifact_kind: handoffPacket
+  next_specialist_field: handoff.nextSpecialist

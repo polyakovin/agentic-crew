@@ -1,6 +1,6 @@
 {
   "name": "Protocol Steward Specialist",
-  "description": "Maintains the shared A2A profile, role-card quality bar, naming conventions, and handoff consistency across an agentic crew.",
+  "description": "Maintains the shared A2A profile, harness quality bar, naming conventions, and handoff consistency across an agentic crew.",
   "supportedInterfaces": [
     {
       "url": "https://example.invalid/a2a/protocol-steward",
@@ -13,7 +13,7 @@
     "url": "https://github.com/polyakovin/agentic-crew"
   },
   "version": "0.1.0",
-  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/protocol-steward.md",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/protocol-steward/role.md",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false
@@ -24,10 +24,10 @@
     {
       "id": "a2a-profile-and-role-review",
       "name": "A2A Profile and Role Review",
-      "description": "Checks role-card boundaries, narrow What To Read lists, Agent Card coverage, AgentSkill compatibility, and Agentic Crew payload conformance.",
+      "description": "Checks harness completeness, role-card boundaries, narrow What To Read lists, Agent Card coverage, AgentSkill compatibility, and Agentic Crew payload conformance.",
       "tags": ["a2a", "protocol", "role-authoring", "agent-card"],
       "examples": [
-        "Review whether a new specialist overlaps existing roles.",
+        "Review whether a new specialist overlaps existing agents.",
         "Check that a crew pack has complete A2A Agent Cards."
       ],
       "inputModes": ["text/plain", "application/json"],
