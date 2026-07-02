@@ -52,5 +52,5 @@ and pass the project's verification gates.
 
 ## Handoff Contract
 
-Return a `specialist_report` with files touched and verification outcome.
-
+Return an A2A `specialistReport` payload or artifact with files touched,
+verification evidence, and residual risk.

@@ -51,5 +51,5 @@ accepted.
 
 ## Handoff Contract
 
-Use `review_finding` entries inside a `specialist_report`.
-
+Use `reviewFinding` entries inside an A2A `specialistReport` payload or
+artifact.

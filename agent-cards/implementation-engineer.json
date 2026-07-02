@@ -1,0 +1,37 @@
+{
+  "name": "Implementation Engineer Specialist",
+  "description": "Makes narrowly scoped code or configuration changes that satisfy accepted specs and pass project verification gates.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/implementation-engineer",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/implementation-engineer.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "scoped-code-change",
+      "name": "Scoped Code Change",
+      "description": "Implements accepted task briefs with contained edits, focused tests, verification evidence, changed file summaries, and residual risk reporting.",
+      "tags": ["implementation", "tests", "verification", "code-change"],
+      "examples": [
+        "Implement a small accepted feature with tests.",
+        "Fix a bug after architect and QA handoff."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

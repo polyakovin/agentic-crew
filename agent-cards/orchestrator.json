@@ -1,0 +1,37 @@
+{
+  "name": "Agentic Crew Orchestrator",
+  "description": "Coordinates specialist agents, preserves project source of truth, resolves conflicts, and decides when work is ready.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/orchestrator",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/orchestrator.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "crew-routing-and-resolution",
+      "name": "Crew Routing and Conflict Resolution",
+      "description": "Breaks work into narrow specialist tasks, issues Agentic Crew taskBrief payloads, collects specialistReport artifacts, resolves conflicts, and records decisionRecord or handoffPacket outputs.",
+      "tags": ["orchestration", "routing", "conflict-resolution", "handoff"],
+      "examples": [
+        "Route a Playdate rendering bug to the smallest useful specialist set.",
+        "Resolve conflicting findings from an architect and QA reviewer."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

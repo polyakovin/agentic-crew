@@ -3,6 +3,23 @@
 This repository adapts public multi-agent patterns without copying third-party
 prompts or implementation code.
 
+## A2A
+
+Pattern used:
+
+- Agent Cards for discovering agent identity, capabilities, interfaces, and
+  skills;
+- A2A tasks, messages, parts, and artifacts as the cross-agent contract;
+- JSON-RPC `SendMessage`/`SendStreamingMessage` and task lifecycle methods as
+  the runtime interaction model.
+
+Adapted here as:
+
+- `protocol/interaction-protocol.md`;
+- `protocol/message-schema.json` for Agentic Crew data payloads carried inside
+  A2A parts or artifacts;
+- `agent-cards/*.json` templates for exported specialists.
+
 ## OpenAI Plugins / Skills
 
 Pattern used:
@@ -43,7 +60,8 @@ Pattern used:
 Adapted here as:
 
 - `qa-reviewer`;
-- explicit `task_brief`, `specialist_report`, and `handoff_packet` messages.
+- explicit `taskBrief`, `specialistReport`, and `handoffPacket` payloads inside
+  A2A messages or artifacts.
 
 ## CrewAI
 
@@ -68,4 +86,3 @@ The `playdate-platform-sdk` role is adapted from the Locksmith project needs:
 - graphics draw modes and 1-bit constraints;
 - datastore and simulator/device differences;
 - performance limits for a small handheld platform.
-

@@ -51,5 +51,5 @@ scope boundaries, and success metrics.
 
 ## Handoff Contract
 
-Return a `specialist_report` with acceptance criteria and risks.
-
+Return an A2A `specialistReport` payload or artifact with acceptance criteria,
+risks, and open questions.

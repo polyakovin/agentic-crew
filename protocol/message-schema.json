@@ -1,31 +1,57 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/polyakovin/agentic-crew/protocol/message-schema.json",
-  "title": "Agentic Crew Message",
+  "title": "Agentic Crew A2A Payload",
+  "description": "Schema for Agentic Crew JSON data payloads carried inside A2A Message parts, TaskStatus messages, or Artifact parts. It is not a replacement for the A2A protocol schema.",
   "type": "object",
-  "required": ["message_type", "task_id", "specialist", "status"],
+  "required": ["profile", "kind", "taskId", "specialistId"],
   "properties": {
-    "message_type": {
+    "profile": {
+      "type": "string",
+      "const": "agentic-crew/a2a-profile/v0.1"
+    },
+    "kind": {
       "type": "string",
       "enum": [
-        "task_brief",
-        "specialist_report",
-        "review_finding",
-        "decision_record",
-        "handoff_packet"
+        "taskBrief",
+        "specialistReport",
+        "reviewFinding",
+        "decisionRecord",
+        "handoffPacket"
       ]
     },
-    "task_id": {
+    "taskId": {
       "type": "string",
       "minLength": 1
     },
-    "specialist": {
+    "specialistId": {
       "type": "string",
       "minLength": 1
     },
     "status": {
       "type": "string",
-      "enum": ["complete", "blocked", "needs-review", "out-of-scope"]
+      "enum": ["working", "complete", "blocked", "needsReview", "outOfScope"]
+    },
+    "request": {
+      "type": "string"
+    },
+    "scope": {
+      "$ref": "#/$defs/stringList"
+    },
+    "nonGoals": {
+      "$ref": "#/$defs/stringList"
+    },
+    "whatToRead": {
+      "$ref": "#/$defs/stringList"
+    },
+    "expectedOutput": {
+      "type": "string"
+    },
+    "constraints": {
+      "$ref": "#/$defs/stringList"
+    },
+    "verificationBudget": {
+      "$ref": "#/$defs/stringList"
     },
     "summary": {
       "type": "string"
@@ -33,50 +59,233 @@
     "evidence": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": ["kind", "ref"],
-        "properties": {
-          "kind": {
-            "type": "string"
-          },
-          "ref": {
-            "type": "string"
-          },
-          "note": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
+        "$ref": "#/$defs/evidence"
       }
     },
     "findings": {
       "type": "array",
       "items": {
-        "type": "object"
+        "anyOf": [
+          {
+            "$ref": "#/$defs/reviewFinding"
+          },
+          {
+            "type": "object"
+          }
+        ]
       }
     },
     "recommendations": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "$ref": "#/$defs/stringList"
     },
     "risks": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "$ref": "#/$defs/stringList"
     },
     "blockers": {
+      "$ref": "#/$defs/stringList"
+    },
+    "handoff": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/handoffPacket"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low", "note"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "impact": {
+      "type": "string"
+    },
+    "recommendation": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "decision": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "optionsConsidered": {
+      "$ref": "#/$defs/stringList"
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "rollback": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "currentState": {
+      "type": "string"
+    },
+    "filesTouched": {
+      "$ref": "#/$defs/stringList"
+    },
+    "openQuestions": {
+      "$ref": "#/$defs/stringList"
+    },
+    "nextSpecialist": {
+      "type": "string"
+    },
+    "recommendedNextSteps": {
+      "$ref": "#/$defs/stringList"
+    },
+    "verificationNeeded": {
+      "$ref": "#/$defs/stringList"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "stringList": {
       "type": "array",
       "items": {
         "type": "string"
       }
     },
-    "handoff": {
-      "type": "object"
+    "evidence": {
+      "type": "object",
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "reviewFinding": {
+      "type": "object",
+      "required": [
+        "profile",
+        "kind",
+        "taskId",
+        "specialistId",
+        "severity",
+        "title",
+        "location",
+        "evidence",
+        "impact",
+        "recommendation",
+        "confidence"
+      ],
+      "properties": {
+        "profile": {
+          "type": "string",
+          "const": "agentic-crew/a2a-profile/v0.1"
+        },
+        "kind": {
+          "type": "string",
+          "const": "reviewFinding"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "specialistId": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["critical", "high", "medium", "low", "note"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "impact": {
+          "type": "string"
+        },
+        "recommendation": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "handoffPacket": {
+      "type": "object",
+      "required": [
+        "profile",
+        "kind",
+        "taskId",
+        "specialistId",
+        "currentState",
+        "filesTouched",
+        "openQuestions",
+        "nextSpecialist",
+        "recommendedNextSteps",
+        "verificationNeeded"
+      ],
+      "properties": {
+        "profile": {
+          "type": "string",
+          "const": "agentic-crew/a2a-profile/v0.1"
+        },
+        "kind": {
+          "type": "string",
+          "const": "handoffPacket"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "specialistId": {
+          "type": "string"
+        },
+        "currentState": {
+          "type": "string"
+        },
+        "filesTouched": {
+          "$ref": "#/$defs/stringList"
+        },
+        "openQuestions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "nextSpecialist": {
+          "type": "string"
+        },
+        "recommendedNextSteps": {
+          "$ref": "#/$defs/stringList"
+        },
+        "verificationNeeded": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true
 }
-

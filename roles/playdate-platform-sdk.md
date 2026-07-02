@@ -83,6 +83,6 @@ platform audit.
 
 ## Handoff Contract
 
-Return a `specialist_report` using `protocol/interaction-protocol.md`.
-If another specialist must act next, include `handoff.next_specialist`.
-
+Return an A2A `specialistReport` payload or artifact using
+`protocol/interaction-protocol.md`.
+If another specialist must act next, include `handoff.nextSpecialist`.

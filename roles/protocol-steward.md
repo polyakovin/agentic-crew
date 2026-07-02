@@ -15,7 +15,7 @@ handoff consistency across an agentic crew.
 
 - Enforce role-card sections.
 - Check narrow `What To Read`.
-- Check protocol message compatibility.
+- Check A2A Agent Card, AgentSkill, and payload compatibility.
 - Recommend role split/merge decisions.
 
 ## Non-goals
@@ -34,7 +34,7 @@ handoff consistency across an agentic crew.
 1. Review role mission and trigger.
 2. Check scope/non-goal boundaries.
 3. Check `What To Read` size and specificity.
-4. Check message protocol compatibility.
+4. Check A2A profile compatibility.
 5. Report changes needed.
 
 ## Minimum Deliverable
@@ -51,5 +51,4 @@ handoff consistency across an agentic crew.
 
 ## Handoff Contract
 
-Return a `specialist_report` with protocol findings.
-
+Return an A2A `specialistReport` payload or artifact with protocol findings.

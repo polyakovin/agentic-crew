@@ -52,5 +52,5 @@ maintainability.
 
 ## Handoff Contract
 
-Return a `decision_record` when a design tradeoff is resolved.
-
+Return an A2A `decisionRecord` payload or artifact when a design tradeoff is
+resolved.

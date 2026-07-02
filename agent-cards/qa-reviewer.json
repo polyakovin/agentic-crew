@@ -1,0 +1,37 @@
+{
+  "name": "QA Reviewer Specialist",
+  "description": "Finds correctness, regression, usability, and test-coverage issues before work is accepted.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/qa-reviewer",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/qa-reviewer.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "evidence-based-review",
+      "name": "Evidence-Based Review",
+      "description": "Reviews diffs, features, release candidates, or risky changes against acceptance criteria, reporting prioritized findings with evidence and test gaps.",
+      "tags": ["qa", "review", "regression", "test-coverage"],
+      "examples": [
+        "Review a diff for regressions and missing tests.",
+        "Run a focused release-risk pass after implementation."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

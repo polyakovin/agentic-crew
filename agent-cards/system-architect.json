@@ -1,0 +1,37 @@
+{
+  "name": "System Architect Specialist",
+  "description": "Protects system structure, module boundaries, contracts, data flow, and long-term maintainability.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/system-architect",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/system-architect.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "architecture-contract-review",
+      "name": "Architecture Contract Review",
+      "description": "Maps affected components, validates contracts and ownership boundaries, recommends the smallest viable design, and defines verification gates.",
+      "tags": ["architecture", "contracts", "data-flow", "maintainability"],
+      "examples": [
+        "Review a schema or API change before implementation.",
+        "Choose a design for a shared module boundary without widening scope."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

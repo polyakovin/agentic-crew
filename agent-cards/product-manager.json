@@ -1,0 +1,37 @@
+{
+  "name": "Product Manager Specialist",
+  "description": "Translates user intent into product requirements, acceptance criteria, scope boundaries, and success metrics.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/product-manager",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/product-manager.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "requirements-and-acceptance-criteria",
+      "name": "Requirements and Acceptance Criteria",
+      "description": "Turns fuzzy user-facing requests into scoped requirements, non-goals, acceptance criteria, open questions, and release risks.",
+      "tags": ["requirements", "scope", "acceptance-criteria", "product"],
+      "examples": [
+        "Clarify the user-facing behavior for a new feature before implementation.",
+        "Define acceptance criteria for a risky UI workflow change."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

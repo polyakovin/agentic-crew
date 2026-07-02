@@ -1,0 +1,37 @@
+{
+  "name": "Playdate Platform / SDK Specialist",
+  "description": "Protects Playdate-specific correctness, SDK compatibility, simulator/device realism, input assumptions, datastore behavior, rendering constraints, audio usage, and performance risk.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/playdate-platform-sdk",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/roles/playdate-platform-sdk.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "playdate-sdk-api-review",
+      "name": "Playdate SDK/API Review",
+      "description": "Reviews Playdate Lua API use, crank/buttons/accelerometer assumptions, datastore compatibility, simulator/device differences, 1-bit graphics constraints, and per-frame performance risks.",
+      "tags": ["playdate", "sdk", "lua", "simulator", "performance"],
+      "examples": [
+        "Check whether this UI change risks a Playdate draw mode bug.",
+        "Review datastore and simulator/device assumptions in a save-system change."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

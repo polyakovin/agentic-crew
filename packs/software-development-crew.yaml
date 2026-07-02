@@ -2,6 +2,19 @@ name: software-development-crew
 version: 0.1.0
 description: General software-development crew inspired by software-company multi-agent patterns.
 protocol: ../protocol/interaction-protocol.md
+agent_cards:
+  - id: orchestrator
+    path: ../agent-cards/orchestrator.json
+  - id: product-manager
+    path: ../agent-cards/product-manager.json
+  - id: system-architect
+    path: ../agent-cards/system-architect.json
+  - id: implementation-engineer
+    path: ../agent-cards/implementation-engineer.json
+  - id: qa-reviewer
+    path: ../agent-cards/qa-reviewer.json
+  - id: protocol-steward
+    path: ../agent-cards/protocol-steward.json
 roles:
   - id: orchestrator
     path: ../roles/orchestrator.md
@@ -28,4 +41,3 @@ routing:
   review: qa-reviewer
   role-authoring: protocol-steward
   conflict-resolution: orchestrator
-

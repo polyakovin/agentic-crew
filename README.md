@@ -1,11 +1,12 @@
 # Agentic Crew
 
-Reusable specialist-agent role cards and a shared interaction protocol for
-project-specific agent teams.
+Reusable specialist-agent role cards, A2A Agent Card templates, and a shared
+Agent2Agent profile for project-specific agent teams.
 
 This repository is a role library, not an agent runtime. It provides:
 
-- a common communication protocol for specialist agents;
+- an Agentic Crew profile for the A2A protocol;
+- A2A Agent Card templates for exported specialists;
 - reusable software-development specialist roles inspired by public multi-agent
   software-company patterns;
 - a Playdate Platform / SDK Specialist role adapted from the Locksmith project;
@@ -21,6 +22,14 @@ history, risks, tools, and verification gates.
 protocol/
   interaction-protocol.md
   message-schema.json
+agent-cards/
+  implementation-engineer.json
+  orchestrator.json
+  playdate-platform-sdk.json
+  product-manager.json
+  protocol-steward.json
+  qa-reviewer.json
+  system-architect.json
 roles/
   orchestrator.md
   product-manager.md
@@ -45,9 +54,18 @@ examples/
 1. Pick a pack from `packs/`.
 2. Copy only the roles needed for the project.
 3. Narrow each role's `What To Read` to project-local sources.
-4. Require every specialist to report using `protocol/interaction-protocol.md`.
-5. Keep the orchestrator on the strongest model available when tradeoffs,
+4. Expose each runtime specialist with an A2A Agent Card or generate one from
+   `agent-cards/`.
+5. Require every specialist to exchange Agentic Crew payloads using
+   `protocol/interaction-protocol.md`.
+6. Keep the orchestrator on the strongest model available when tradeoffs,
    conflict resolution, risk calls, or final acceptance matter.
+
+The A2A protocol is the wire-level contract: Agent Cards advertise specialists,
+`SendMessage` starts or continues work, `Task`/`Message` carry state, and
+`Part`/`Artifact` objects carry text or structured JSON. Agentic Crew adds only
+the project-specific payload shapes such as `taskBrief`, `specialistReport`,
+`reviewFinding`, `decisionRecord`, and `handoffPacket`.
 
 ## Design Rules
 

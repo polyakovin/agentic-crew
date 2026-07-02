@@ -3,6 +3,21 @@ version: 0.1.0
 description: Playdate-focused game-development crew with SDK/platform specialist.
 protocol: ../protocol/interaction-protocol.md
 extends: software-development-crew
+agent_cards:
+  - id: orchestrator
+    path: ../agent-cards/orchestrator.json
+  - id: product-manager
+    path: ../agent-cards/product-manager.json
+  - id: system-architect
+    path: ../agent-cards/system-architect.json
+  - id: implementation-engineer
+    path: ../agent-cards/implementation-engineer.json
+  - id: qa-reviewer
+    path: ../agent-cards/qa-reviewer.json
+  - id: playdate-platform-sdk
+    path: ../agent-cards/playdate-platform-sdk.json
+  - id: protocol-steward
+    path: ../agent-cards/protocol-steward.json
 roles:
   - id: orchestrator
     path: ../roles/orchestrator.md
@@ -37,4 +52,3 @@ routing:
   implementation: implementation-engineer
   review: qa-reviewer
   conflict-resolution: orchestrator
-

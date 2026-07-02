@@ -35,12 +35,13 @@ conflicts, and decide when work is ready.
 
 ## Workflow
 
-1. Restate the task as a `task_brief`.
+1. Restate the task as an A2A `taskBrief` data payload.
 2. Pick the smallest set of specialists.
 3. Give each specialist a narrow `What To Read`.
-4. Collect `specialist_report` outputs.
+4. Send work with A2A `SendMessage` and collect `specialistReport` artifacts
+   or status messages.
 5. Resolve conflicts with explicit evidence.
-6. Produce a `decision_record` or implementation-ready handoff.
+6. Produce a `decisionRecord` or implementation-ready `handoffPacket`.
 
 ## Minimum Deliverable
 
@@ -56,5 +57,5 @@ conflicts, and decide when work is ready.
 
 ## Handoff Contract
 
-Use `handoff_packet` from the protocol.
-
+Use the Agentic Crew A2A profile in `protocol/interaction-protocol.md`. Final
+handoffs should be A2A artifacts containing a `handoffPacket` payload.
