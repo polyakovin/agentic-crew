@@ -2,6 +2,8 @@ name: software-development-crew
 version: 0.2.0
 description: General software-development crew inspired by software-company multi-agent patterns.
 protocol: ../protocol/interaction-protocol.md
+entrypoint: orchestrator
+routing_policy: orchestrator-first
 agents:
   - id: orchestrator
     path: ../agents/orchestrator
@@ -15,6 +17,10 @@ agents:
     path: ../agents/system-architect
     harness: ../agents/system-architect/harness.yaml
     required: false
+  - id: spec-contract-guardian
+    path: ../agents/spec-contract-guardian
+    harness: ../agents/spec-contract-guardian/harness.yaml
+    required: false
   - id: implementation-engineer
     path: ../agents/implementation-engineer
     harness: ../agents/implementation-engineer/harness.yaml
@@ -27,10 +33,24 @@ agents:
     path: ../agents/protocol-steward
     harness: ../agents/protocol-steward/harness.yaml
     required: false
+  - id: agent-architect-crew-builder
+    path: ../agents/agent-architect-crew-builder
+    harness: ../agents/agent-architect-crew-builder/harness.yaml
+    required: false
 routing:
   requirements: product-manager
   architecture: system-architect
+  spec-drift: spec-contract-guardian
+  contract-audit: spec-contract-guardian
+  manifest-code-drift: spec-contract-guardian
+  api-contracts: spec-contract-guardian
+  pure-logic-boundaries: spec-contract-guardian
   implementation: implementation-engineer
   review: qa-reviewer
   role-authoring: protocol-steward
+  agent-authoring: agent-architect-crew-builder
+  harness-creation: agent-architect-crew-builder
+  specialist-packaging: agent-architect-crew-builder
+  codex-wrapper: agent-architect-crew-builder
+  hermes-package: agent-architect-crew-builder
   conflict-resolution: orchestrator

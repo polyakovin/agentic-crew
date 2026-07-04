@@ -1,0 +1,29 @@
+id: spec-contract-guardian
+name: Spec / Contract Guardian
+version: 0.1.0
+status: draft-ready
+description: Reviews manifests, component specs, API contracts, SDD spec-first compliance, and pure logic/view/data boundaries for evidence-backed drift.
+entrypoint: ./instructions.md
+source_harness: ../../../agents/spec-contract-guardian
+agent_card: ../../../agents/spec-contract-guardian/agent-card.json
+run_record_template: ../../../agents/spec-contract-guardian/run-record.template.json
+skills:
+  - ../../skills/spec-contract-guardian.md
+inputs:
+  - text/plain
+  - application/json
+outputs:
+  - text/plain
+  - application/json
+quality_gates:
+  - source of truth identified before confirming drift
+  - spec-first evidence checked when target project requires SDD
+  - drift findings cite source-of-truth and implementation evidence
+  - pure-boundary findings cite concrete dependency or side-effect evidence
+  - missing coverage is separated from confirmed defects
+  - non-contract work is routed to the owning specialist
+forbidden_actions:
+  - modify product code unless explicitly assigned
+  - invent requirements absent from specs, manifest, decision records, or task brief
+  - treat missing specs as confirmed code defects
+  - replace QA Reviewer, System Architect, or Implementation Engineer ownership

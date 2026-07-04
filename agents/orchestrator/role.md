@@ -7,6 +7,9 @@ conflicts, and decide when work is ready.
 
 ## Use When
 
+- Any user request targets this repository. The Orchestrator is the front door
+  for intake and routing, even when it later decides no additional specialist is
+  needed.
 - A task spans multiple domains.
 - A specialist handoff is needed.
 - Findings conflict.
@@ -35,13 +38,17 @@ conflicts, and decide when work is ready.
 
 ## Workflow
 
-1. Restate the task as an A2A `taskBrief` data payload.
-2. Pick the smallest set of specialists.
-3. Give each specialist a narrow `What To Read`.
-4. Send work with A2A `SendMessage` and collect `specialistReport` artifacts
+1. Perform Orchestrator intake for the user request.
+2. Restate the task as an A2A `taskBrief` data payload when routing or evidence
+   tracking is needed.
+3. Pick the smallest set of specialists, or record why no additional specialist
+   is needed.
+4. Give each specialist a narrow `What To Read`.
+5. Send work with A2A `SendMessage` and collect `specialistReport` artifacts
    or status messages.
-5. Resolve conflicts with explicit evidence.
-6. Produce a `decisionRecord` or implementation-ready `handoffPacket`.
+6. Resolve conflicts with explicit evidence.
+7. Produce a `decisionRecord`, implementation-ready `handoffPacket`, or final
+   local routing summary.
 
 ## Minimum Deliverable
 
@@ -51,6 +58,7 @@ conflicts, and decide when work is ready.
 
 ## Quality Gates
 
+- Every request has an Orchestrator routing decision.
 - Every accepted claim has evidence.
 - Every handoff names the next owner.
 - Every conflict has a decision or a blocker.

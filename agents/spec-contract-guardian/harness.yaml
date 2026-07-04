@@ -1,0 +1,52 @@
+id: spec-contract-guardian
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+role_card: ./role.md
+agent_card: ./agent-card.json
+operations: ./operations.md
+run_record_template: ./run-record.template.json
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/spec-contract-guardian
+  model_policy: careful-contract-review-with-structured-source-comparison
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: false
+    R2: true
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - specialistReport
+    - decisionRecord
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./role.md
+    - ./operations.md
+  task_scoped_reading: true
+  what_to_read_policy: manifest-component-specs-test-scenarios-api-contracts-touched-code-and-boundary-tests
+operational_gates:
+  - locate docs/manifest.json or the project-designated source of truth before confirming drift
+  - include component specs and test-scenario docs when the target project uses SDD
+  - block behavior API UX or rule code changes that lack a matching source-of-truth update
+  - every drift finding cites both source-of-truth evidence and implementation evidence
+  - pure-logic view-only and data-only boundary findings cite dependency import side-effect lifecycle rendering persistence or adapter evidence
+  - API contract findings compare provider and consumer surfaces when both exist
+  - non-contract findings are routed to the owning specialist instead of broadening scope
+quality_gates:
+  - confirmed drift is separated from missing coverage and residual risk
+  - no product requirement is inferred without manifest spec decision-record or task-brief support
+  - handoff names the next specialist for architecture implementation QA or protocol issues
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

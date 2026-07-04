@@ -1,0 +1,66 @@
+{
+  "name": "Spec / Contract Guardian Specialist",
+  "description": "Checks for evidence-backed drift between project specs, docs/manifest.json, test scenarios, API contracts, pure-logic/view/data boundaries, and implementation code.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/spec-contract-guardian",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/spec-contract-guardian/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "operations": "agents/spec-contract-guardian/operations.md",
+    "runRecordTemplate": "agents/spec-contract-guardian/run-record.template.json"
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "spec-contract-drift-review",
+      "name": "Spec and Contract Drift Review",
+      "description": "Compares manifests, component specs, test scenarios, API contracts, pure-logic/view/data boundaries, and code to find evidence-backed drift and block code-only SDD changes.",
+      "tags": [
+        "specs",
+        "manifest",
+        "test-scenarios",
+        "contracts",
+        "api",
+        "pure-logic",
+        "data-boundaries",
+        "drift"
+      ],
+      "examples": [
+        "Compare docs/manifest.json and component specs to the implemented modules and exported APIs.",
+        "Check whether a pure-logic module now depends on runtime, storage, network, or UI code.",
+        "Block a behavior or UX code change when docs/test-scenarios.md or the component spec was not updated.",
+        "Review route handlers, generated types, and API docs for contract drift."
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
+    }
+  ]
+}

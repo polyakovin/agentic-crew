@@ -1,0 +1,63 @@
+{
+  "name": "Agent Architect / Crew Builder",
+  "description": "Designs, creates, reviews, and packages specialist agents across Agentic Crew/A2A, Codex, and Hermes surfaces while preventing duplicate roles, skipped harness capabilities, and incomplete packages.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/agent-architect-crew-builder",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/agent-architect-crew-builder/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/agent-architect-crew-builder/entrypoint.md",
+    "sourceMap": "agents/agent-architect-crew-builder/source-map.md",
+    "workflow": "agents/agent-architect-crew-builder/workflow.md",
+    "toolPolicy": "agents/agent-architect-crew-builder/tool-policy.md",
+    "rubric": "agents/agent-architect-crew-builder/rubric.md",
+    "evalPlan": "agents/agent-architect-crew-builder/eval-plan.md",
+    "runRecordTemplate": "agents/agent-architect-crew-builder/run-record.template.json",
+    "codexSkill": ".agents/skills/agent-architect-crew-builder/SKILL.md",
+    "hermesSkill": ".hermes/skills/agent-architect-crew-builder.md",
+    "hermesPackage": ".hermes/agents/agent-architect-crew-builder"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "agent-harness-creation",
+      "name": "Agent Harness Creation",
+      "description": "Creates complete specialist harnesses with role cards, Agent Cards, runtime wrappers, routing, ai-db capability inventory, evals, run records, and release gates from an approved target-project demand plan.",
+      "tags": ["agent-authoring", "harness", "a2a", "routing", "evals"],
+      "examples": [
+        "Create the next specialist from this project's agent demand plan.",
+        "Review whether this proposed agent duplicates an existing specialist."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "codex-hermes-packaging",
+      "name": "Codex and Hermes Packaging",
+      "description": "Builds or reviews Codex skill/custom-agent wrappers and Hermes-style packages for a specialist without changing target application code.",
+      "tags": ["codex", "hermes", "wrappers", "package-validation"],
+      "examples": [
+        "Add Hermes packaging for this Agentic Crew specialist.",
+        "Create Codex and Hermes wrappers for the new QA specialist."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

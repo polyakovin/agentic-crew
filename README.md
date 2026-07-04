@@ -18,6 +18,13 @@ No third-party prompts or source code are copied verbatim. The harnesses are
 project-neutral templates designed to be adapted to a repository's own specs,
 history, risks, tools, and verification gates.
 
+## Project Operating Rule
+
+All work in this repository is orchestrator-first. Every user request should
+begin with the Orchestrator rules in `AGENTS.md` and
+`agents/orchestrator/role.md`, then route to the smallest useful specialist set
+or explicitly state that no specialist handoff is needed.
+
 ## Layout
 
 ```text
@@ -61,6 +68,8 @@ packs/
   playdate-game-crew.yaml
 references/
   source-patterns.md
+plans/
+  agent-harness-creation-plan.md
 .agents/skills/
   agentic-crew-author/SKILL.md
 examples/
@@ -81,6 +90,9 @@ examples/
    `protocol/interaction-protocol.md`.
 7. Keep the orchestrator on the strongest model available when tradeoffs,
    conflict resolution, risk calls, or final acceptance matter.
+
+For creating new agents from a target project's demand list, use
+`plans/agent-harness-creation-plan.md`.
 
 The A2A protocol is the wire-level contract: Agent Cards advertise specialists,
 `SendMessage` starts or continues work, `Task`/`Message` carry state, and

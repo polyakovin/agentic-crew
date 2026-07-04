@@ -1,0 +1,278 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "agent-architect-crew-builder",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "",
+    "demandPlanRefs": [],
+    "approvedRoleRefs": [],
+    "crewRepoPath": "",
+    "forbiddenLocalSurfaces": []
+  },
+  "requestedAgent": {
+    "id": "",
+    "name": "",
+    "runtimeSurfaces": [],
+    "creationScope": "agentic-crew|target-project|hybrid|undecided",
+    "scopeRationale": "",
+    "creationDecision": "create|update|reject|block",
+    "promotionStatus": "draft"
+  },
+  "reuseAnalysis": {
+    "candidatesChecked": [],
+    "selectedBaseHarness": "",
+    "decision": "reuse|wrap|adapt|new|reject|block",
+    "rationale": ""
+  },
+  "capabilityInventory": [
+    {
+      "category": "rulesSystemPrompt",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "agentsProjectRules",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "roleCardAgentCard",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "skills",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "commands",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "toolsFunctionCallingMcp",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "filesystemWorkspace",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "memoryTiers",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "contextPackingRetrieval",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "subagentsOrchestration",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "routingHandoffSharedState",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "hooks",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "sandboxTrustBoundary",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "permissionsApprovalsDryRunRetryRollback",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "securitySecretsRedactionLeastPrivilege",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "observabilityAudit",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "evalsReplayAdversarial",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "modelPolicyRouting",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "runtimeLimitsBudgetsConcurrency",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "deploymentTopology",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "incidentResponseKillSwitch",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "externalIntegrationsApiBrowserCodeFileTools",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    },
+    {
+      "category": "humanHandoffEscalation",
+      "decision": "use|defer|reject",
+      "reason": "",
+      "artifact": "",
+      "riskIfOmitted": "",
+      "owner": ""
+    }
+  ],
+  "duplicateReview": {
+    "existingAgentsChecked": [],
+    "closestOverlap": "",
+    "overlapFields": [],
+    "decision": ""
+  },
+  "filesChanged": [],
+  "ownershipExtraction": {
+    "movedArtifacts": [],
+    "intentionallySharedArtifacts": [],
+    "targetSourceOfTruthArtifacts": [],
+    "deletedAfterMove": [],
+    "approvals": [],
+    "provenanceNotes": []
+  },
+  "routingChanges": [],
+  "wrapperSurfaces": {
+    "a2a": false,
+    "codex": false,
+    "hermes": false
+  },
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "toml": [],
+    "markdownWhitespace": "",
+    "pathChecks": [],
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

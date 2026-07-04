@@ -31,16 +31,19 @@ activation:
     - handoffPacket
 context:
   always_read:
+    - ../../AGENTS.md
     - ../../protocol/interaction-protocol.md
     - ./role.md
     - ./operations.md
   task_scoped_reading: true
   what_to_read_policy: smallest-specialist-relevant-set
 operational_gates:
+  - every repository request starts with Orchestrator intake
   - validate selected pack before routing
   - issue narrow taskBrief payloads
   - preserve conflicting evidence before decision
 quality_gates:
+  - every repository request has an Orchestrator routing decision
   - every accepted specialist claim has evidence
   - every handoff names the next owner
   - every conflict has a decisionRecord or blocker

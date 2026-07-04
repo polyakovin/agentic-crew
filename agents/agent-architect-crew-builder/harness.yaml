@@ -1,0 +1,96 @@
+id: agent-architect-crew-builder
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+codex_wrapper: ../../.agents/skills/agent-architect-crew-builder/SKILL.md
+hermes_skill: ../../.hermes/skills/agent-architect-crew-builder.md
+hermes_package: ../../.hermes/agents/agent-architect-crew-builder
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/agent-architect-crew-builder
+  model_policy: strongest-available-for-role-boundaries-and-release-gates
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: false
+    R2: true
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - decisionRecord
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - decisionRecord
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ../../plans/agent-harness-creation-plan.md
+    - ../../.agents/skills/agentic-crew-author/SKILL.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: target-demand-plan-existing-agent-folders-selected-pack-and-required-runtime-wrapper-patterns
+  freshness_triggers:
+    - target project changed its agent demand plan
+    - requested runtime includes Hermes or Codex wrapper changes
+    - pack routing or protocol shape changed
+    - validation failure or production incident becomes a new eval seed
+boot_probe:
+  commands:
+    - git status --short
+    - find agents -maxdepth 2 -name agent-card.json -o -name harness.yaml
+    - find .agents .hermes -maxdepth 4 -type f
+automation_packs:
+  scope_decision: ./workflow.md#creation-scope-decision
+  duplicate_role_review: ./workflow.md#duplicate-role-and-harness-reuse-review
+  harness_reuse_review: ./workflow.md#duplicate-role-and-harness-reuse-review
+  capability_inventory: ./workflow.md#harness-capability-inventory
+  package_completeness: ./workflow.md#package-completeness-check
+  wrapper_alignment: ./workflow.md#wrapper-alignment-check
+  validation: ./workflow.md#validation-pack
+  commit_push: ./workflow.md#commit-and-push-gate
+quality_gates:
+  - no new specialist without approved target demand or recorded decision
+  - creation scope is recorded before writing files
+  - compatible existing harness is reused adapted or wrapped before creating a new package
+  - every harness capability category is marked use defer or reject with rationale
+  - no duplicate role with same trigger input and output
+  - every required runtime surface exists and references the same agent id
+  - Agent Card JSON harness YAML and Hermes manifest YAML parse
+  - pack routing points to existing harness paths
+  - scoped changes are committed and pushed or a commit/push blocker is recorded
+  - target-project status is updated only after validation succeeds
+release_blockers:
+  - missing_creation_scope_decision
+  - reusable_harness_ignored_without_rationale
+  - missing_capability_inventory_decision
+  - duplicate_role_unresolved
+  - missing_required_runtime_wrapper
+  - hermes_required_but_missing_or_invalid
+  - invalid_agent_card_or_harness_yaml
+  - pack_route_points_to_missing_path
+  - commit_push_missing_or_unrecorded
+  - target_project_private_snapshot_leaked
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

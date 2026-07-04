@@ -24,6 +24,38 @@ The output is agent infrastructure:
 The output is not product/game/application code unless the user explicitly asks
 for an example target project fixture.
 
+## Invocation Semantics
+
+This `SKILL.md` is an authoring workflow, not a live specialist process. Reading
+or following this file counts as using the `agentic-crew-author` skill; it does
+not count as spawning or consulting a separate agent.
+
+When the user explicitly asks to "use an agent", "run an agent", "delegate to an
+agent", "spawn a subagent", "воспользуйся агентом", "запусти агента", or similar:
+
+- First determine whether the requested name is a callable runtime agent, a
+  Codex skill, an Agentic Crew harness folder, or only a role/package template.
+- If a callable subagent or multi-agent runtime is available, discover it before
+  doing the main work. In Codex contexts, use `tool_search` for multi-agent
+  tools and prefer the runtime's spawn/delegate tool, such as
+  `multi_agent_v1.spawn_agent`, when the user has explicitly authorized
+  delegation.
+- Pass the relevant skill path, harness path, role card, or task brief to the
+  spawned agent when the runtime supports structured inputs.
+- Report the spawned agent id/name and its result or status in the final answer.
+- If no callable runtime agent is available, say so before doing the work and
+  state the fallback explicitly: for example, "I can apply the
+  `agentic-crew-author` skill locally, but I cannot spawn it as a subagent in
+  this environment."
+- Do not describe reading a skill file, copying a harness, or following a role
+  card as "using a subagent" unless a separate runtime agent was actually
+  spawned or messaged.
+
+If the user asks to create or change agent infrastructure and also asks for a
+separate agent to participate, both requirements matter: use this skill for the
+authoring rules, and use a callable subagent/runtime for the delegated portion
+when available.
+
 ## Required Sources
 
 Read these before creating or changing an agent:
@@ -39,6 +71,8 @@ Read these before creating or changing an agent:
 
 For every request, determine:
 
+- requested invocation mode: local skill use, live subagent delegation, A2A
+  runtime specialist, Codex custom subagent, harness authoring only, or hybrid;
 - target runtime: Agentic Crew/A2A, Codex skill, Codex custom subagent, Hermes,
   project-local wrapper, or hybrid;
 - whether this is a new agent, a port of an existing agent, a project import, or
@@ -58,6 +92,9 @@ Default assumptions:
   over a compact single-file role.
 - Keep new packages `draft`/`draft-ready`, not `production`, until pilot records,
   eval evidence, and independent review exist.
+- Never let ambiguous wording hide the execution mode. If the user asked for an
+  agent but only a skill or harness is available, name that distinction before
+  proceeding.
 
 ## Harness Selection
 
@@ -132,23 +169,30 @@ a tiny draft.
 
 ## Creation Workflow
 
-1. Identify target runtime and harness type.
-2. Read closest existing harnesses and protocol docs.
-3. Draft the role boundary: mission, use when, scope, non-goals, blockers,
+1. Resolve invocation semantics: local skill, live subagent, A2A specialist
+   package, or hybrid. If live delegation was requested, use the available
+   runtime tool or disclose that only local skill/harness use is possible.
+2. Identify target runtime and harness type.
+3. Read closest existing harnesses and protocol docs.
+4. Draft the role boundary: mission, use when, scope, non-goals, blockers,
    quality gates, handoff contract.
-4. Create the required harness files for that runtime.
-5. Add Agent Card skills and `harness.yaml` accepted/emitted payloads.
-6. Add or update pack/routing entries when the agent should be discoverable by a
+5. Create the required harness files for that runtime.
+6. Add Agent Card skills and `harness.yaml` accepted/emitted payloads.
+7. Add or update pack/routing entries when the agent should be discoverable by a
    crew.
-7. Add run-record template, rubric, eval seed, and release/rollback notes when
+8. Add run-record template, rubric, eval seed, and release/rollback notes when
    risk or persistence requires it.
-8. Validate machine-readable files: JSON, YAML/TOML when applicable.
-9. Check trailing whitespace and links/paths.
-10. Report created paths, validation, unresolved gaps, and promotion status.
+9. Validate machine-readable files: JSON, YAML/TOML when applicable.
+10. Check trailing whitespace and links/paths.
+11. Report created paths, validation, unresolved gaps, promotion status, and
+    whether the work used a local skill, spawned agent, or runtime fallback.
 
 ## Review Checklist
 
 - Does the request need a full harness rather than a short instruction file?
+- Did the response distinguish skill use from live subagent/runtime use?
+- If the user explicitly asked to use an agent, was a callable agent spawned or
+  was the lack of a runtime disclosed before fallback work?
 - Is the target runtime explicit or reasonably inferred?
 - Does each role prevent a real failure mode?
 - Is there overlap with another role?
@@ -168,6 +212,9 @@ a tiny draft.
 When reviewing an existing agent, lead with defects:
 
 - missing required harness files;
+- claimed agent/subagent use when only a skill or role file was read;
+- user asked for live delegation but no runtime attempt or fallback disclosure
+  occurred;
 - unclear target runtime;
 - role too broad or overlapping;
 - untestable quality gates;
