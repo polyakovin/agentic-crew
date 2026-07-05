@@ -1,0 +1,166 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "toolchain-build-sandbox-gatekeeper",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "Locksmith",
+    "projectPath": "/root/locksmith",
+    "specRefs": [],
+    "codeRefs": []
+  },
+  "diagnosticRequest": {
+    "requestType": "fullCycle|luaMissingFallback|pdcDiagnostic|githookHealth|pushBlocker|healthSnapshot",
+    "specificGates": [],
+    "includeFallbackEvidence": false
+  },
+  "environmentPreflight": {
+    "makeDoctorRan": false,
+    "makeDoctorOutput": "",
+    "dirtyWorktree": {
+      "detected": false,
+      "files": []
+    }
+  },
+  "gateClassification": [
+    {
+      "gate": "make test-all",
+      "outcome": "passed|failed|blocked|skipped",
+      "exitCode": -1,
+      "outputTail": "",
+      "classificationRationale": ""
+    },
+    {
+      "gate": "make lint",
+      "outcome": "passed|failed|blocked|skipped",
+      "exitCode": -1,
+      "outputTail": "",
+      "classificationRationale": ""
+    },
+    {
+      "gate": "make build",
+      "outcome": "passed|failed|blocked|skipped",
+      "exitCode": -1,
+      "outputTail": "",
+      "classificationRationale": ""
+    },
+    {
+      "gate": "make check",
+      "outcome": "passed|failed|blocked|skipped",
+      "exitCode": -1,
+      "outputTail": "",
+      "classificationRationale": ""
+    },
+    {
+      "gate": "headless-test",
+      "outcome": "passed|failed|blocked|skipped",
+      "exitCode": -1,
+      "outputTail": "",
+      "classificationRationale": ""
+    }
+  ],
+  "toolchainStatus": {
+    "lua": {
+      "available": false,
+      "path": "",
+      "version": "",
+      "resolutionMethod": "env|resolve-lua.sh|notFound"
+    },
+    "pdc": {
+      "available": false,
+      "path": "",
+      "sdkDir": "",
+      "sdkDirExists": false
+    },
+    "simulator": {
+      "available": false,
+      "xvfbAvailable": false,
+      "headlessTestRunnable": false
+    },
+    "jq": {
+      "available": false
+    },
+    "git": {
+      "available": false,
+      "hooksPath": "",
+      "dirty": false
+    }
+  },
+  "luaMissingFallback": {
+    "collected": false,
+    "buildResult": "",
+    "buildExitCode": -1,
+    "jqResult": "",
+    "jqExitCode": -1,
+    "gitDiffCheckResult": "",
+    "gitDiffCheckExitCode": -1,
+    "blockerNote": ""
+  },
+  "githookAssessment": {
+    "preCommit": {
+      "present": false,
+      "executable": false,
+      "contentSummary": "",
+      "runsMakeCheck": false,
+      "blocksWithoutLua": false
+    },
+    "postCommit": {
+      "present": false,
+      "executable": false,
+      "contentSummary": "",
+      "autoPushConfigured": false
+    }
+  },
+  "pushBlockerDiagnosis": {
+    "requested": false,
+    "blockerType": "none|dirtyWorktree|missingRemote|authFailure|branchProtection|hookFailure",
+    "detail": "",
+    "remoteUrl": "",
+    "currentBranch": ""
+  },
+  "simulatorQuirks": {
+    "platform": "linux|macos",
+    "xvfbStatus": "notChecked|available|absent",
+    "headlessTestBlockedBy": "none|xvfb|simulatorNotInstalled"
+  },
+  "healthSnapshotUpdated": false,
+  "healthSnapshotPath": "",
+  "pitfallsDocumented": false,
+  "pitfallEntries": [],
+  "gameCodeModified": false,
+  "commitsAttempted": false,
+  "pushesAttempted": false,
+  "evidenceBasedOn": "commandOutput|speculation|mixed",
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

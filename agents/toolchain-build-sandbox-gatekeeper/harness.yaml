@@ -1,0 +1,106 @@
+id: toolchain-build-sandbox-gatekeeper
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/toolchain-build-sandbox-gatekeeper
+  model_policy: strong-toolchain-diagnostics-and-evidence-collection
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: makefile-scripts-githooks-workflow-docs-only
+  freshness_triggers:
+    - Makefile changed (new targets, modified dependencies)
+    - scripts/resolve-lua.sh modified
+    - scripts/doctor.sh modified
+    - scripts/spec-review.lua modified
+    - .githooks modified
+    - docs/workflow.md modified
+    - docs/manifest.json build targets changed
+    - project AGENTS.md Pitfalls updated
+    - new make target added
+    - Lua installation state changed
+    - pdc/SDK installation state changed
+    - CI configuration added
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make doctor 2>&1 || true
+    - cd /root/locksmith && make test-all 2>&1 | tail -10 || true
+    - cd /root/locksmith && make build 2>&1 | tail -5 || true
+  classify_missing_lua_as: blocked-gate-not-test-failure
+  known_failure_carveout: "Pre-existing test failures in game code are expected evidence, not blockers for this specialist. The gatekeeper diagnoses and classifies them, does not fix them."
+automation_packs:
+  gate_classification: ./workflow.md#gate-classification
+  lua_missing_fallback: ./workflow.md#lua-missing-fallback-sequence
+  pdc_sdk_diagnostic: ./workflow.md#pdc-sdk-diagnostic
+  githook_health_check: ./workflow.md#githook-health-check
+  full_gate_cycle: ./workflow.md#full-gate-cycle
+  health_snapshot_update: ./workflow.md#health-snapshot-update
+quality_gates:
+  - every make target outcome is classified (passed/failed/blocked/skipped)
+  - blocked vs failed are clearly distinguished — missing tool ≠ test failure
+  - Lua absence classifies test-all/lint/check as blocked, never passed
+  - make doctor runs first as diagnostic baseline
+  - fallback evidence collected when make check is blocked by missing Lua
+  - pdc/SDK diagnosis references actual environment variables and paths
+  - githook assessments reference actual hook file content
+  - no game code is modified during diagnostics
+  - simulator quirks (Xvfb requirement on Linux) are correctly flagged
+  - evidence is based on actual command output, not speculation
+  - health-snapshot.md is updated after each diagnostic cycle
+  - new toolchain failure patterns are documented in AGENTS.md
+  - git status checked before any action to avoid overwriting dirty worktree
+  - no commits or pushes from diagnostic work
+release_blockers:
+  - make_check_blocked_and_no_fallback_evidence
+  - lua_missing_classified_as_passed
+  - pdc_missing_but_not_diagnosed
+  - sdk_dir_misconfigured_and_not_flagged
+  - githook_damaged_or_missing_not_reported
+  - push_blocker_not_diagnosed
+  - health_snapshot_stale_or_not_updated
+  - game_code_modified_by_gatekeeper
+  - evidence_based_on_speculation_not_command_output
+  - commit_or_push_attempted_by_gatekeeper
+  - missing_tool_classified_as_test_failure
+  - dirty_worktree_overwritten
+  - fallback_jq_failed_and_not_reported
+  - make_doctor_skipped
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

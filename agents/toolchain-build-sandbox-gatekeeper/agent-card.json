@@ -1,0 +1,104 @@
+{
+  "name": "Toolchain / Build / Sandbox Gatekeeper",
+  "description": "Owns make test-all, make lint, make build, make check, Lua-missing gate diagnostics, Playdate SDK/pdc verification, githooks, CI/push blockers, and fallback evidence collection for local gates in the Playdate game Locksmith. Diagnoses toolchain failures, collects evidence for blocked gates, and maintains gate health snapshots without modifying game code.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/toolchain-build-sandbox-gatekeeper",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/toolchain-build-sandbox-gatekeeper/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/toolchain-build-sandbox-gatekeeper/entrypoint.md",
+    "sourceMap": "agents/toolchain-build-sandbox-gatekeeper/source-map.md",
+    "workflow": "agents/toolchain-build-sandbox-gatekeeper/workflow.md",
+    "toolPolicy": "agents/toolchain-build-sandbox-gatekeeper/tool-policy.md",
+    "rubric": "agents/toolchain-build-sandbox-gatekeeper/rubric.md",
+    "evalPlan": "agents/toolchain-build-sandbox-gatekeeper/eval-plan.md",
+    "runRecordTemplate": "agents/toolchain-build-sandbox-gatekeeper/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "toolchain-gate-diagnostics",
+      "name": "Toolchain Gate Diagnostics",
+      "description": "Runs make test-all, make lint, make build, make check, and make doctor. Diagnoses toolchain failures, collects evidence for blocked gates, classifies outcomes as passed/failed/blocked/skipped, and updates health snapshot with findings.",
+      "tags": ["toolchain", "make-gates", "diagnostics", "build", "locksmith"],
+      "examples": [
+        "Run make check and report what passed, what failed, and what was blocked.",
+        "Lua is missing — what fallback evidence can I collect?",
+        "make build fails — diagnose the pdc/SDK issue.",
+        "Pre-commit hook is blocking my push — what can I do?",
+        "Run full gate cycle and produce a health report."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "lua-missing-gate",
+      "name": "Lua Missing Gate Fallback",
+      "description": "Diagnoses the Lua-missing gate: when Lua is absent, make test-all/lint/check must fail on check-lua with exit 127, NOT be treated as passed. Collects fallback evidence via make build, jq empty docs/manifest.json, git diff --check, and records a blocker note.",
+      "tags": ["lua-gate", "fallback-evidence", "blocked", "diagnostics", "locksmith"],
+      "examples": [
+        "Lua is not installed — run the fallback evidence collection sequence.",
+        "make check reports exit 127 — is this a real blocker or a config issue?",
+        "Collect evidence for gate health when Lua is unavailable."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "pdc-sdk-diagnostics",
+      "name": "PDC / SDK Diagnostics",
+      "description": "Verifies Playdate pdc compiler and SDK_PATH are available and correctly configured. Runs check-pdc, validates SDK_DIR, and diagnoses build failures caused by missing or misconfigured pdc/SDK.",
+      "tags": ["pdc", "sdk", "playdate", "build", "diagnostics", "locksmith"],
+      "examples": [
+        "pdc not found — diagnose SDK setup and suggest fixes.",
+        "SDK_DIR points to a nonexistent path — what should it be?",
+        "make build fails with a pdc error — classify the root cause."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "githooks-ci-blockers",
+      "name": "Githooks / CI Push Blockers",
+      "description": "Examines pre-commit and post-commit hooks, diagnoses push blockers (hook failure, dirty worktree, missing credentials), and collects evidence for CI/push gate health.",
+      "tags": ["githooks", "ci", "push-blockers", "pre-commit", "post-commit", "locksmith"],
+      "examples": [
+        "Pre-commit hook is blocking — diagnose what check failed.",
+        "Push rejected — is this a hook issue or a credential issue?",
+        "Check githook health: are both hooks installed and functional?",
+        "Post-commit auto-push not working — diagnose."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "gate-health-snapshot",
+      "name": "Gate Health Snapshot",
+      "description": "Runs the full gate diagnostic cycle and produces a structured health snapshot: which gates passed, failed, were blocked (cannot run due to missing tools), or skipped (not relevant). Updates health-snapshot.md with findings.",
+      "tags": ["health-snapshot", "gates", "evidence", "reporting", "locksmith"],
+      "examples": [
+        "Produce a full gate health snapshot for Locksmith.",
+        "Update the agent health-snapshot.md after running diagnostics.",
+        "What's the current state of all make targets?"
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}
