@@ -60,7 +60,7 @@ boot_probe:
     - cd /root/locksmith && make test-all 2>&1 | tail -5
     - cd /root/locksmith && make lint 2>&1 | tail -5
     - cd /root/locksmith && make build 2>&1 | tail -5
-    # NOTE: 87 PASS, 1 known pre-existing FAIL in endless_mode.lua rendering test (outside economy scope)
+    # NOTE: 115 PASS, 0 FAIL — all tests clean as of 2026-07-05
 automation_packs:
   economy_analysis: ./workflow.md#economy-analysis-template
   economy_invariant_check: ./workflow.md#economy-invariant-checklist

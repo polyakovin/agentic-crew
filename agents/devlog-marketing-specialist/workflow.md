@@ -42,6 +42,10 @@ Interpretation:
 8. **Handoff if needed**:
    - In-game terminology/tone → Narrative / Noir Copy Specialist
    - Screenshot needs → Visual Art / Asset Production Specialist
+     **Fallback**: If Visual Art / Asset Production Specialist is not available,
+     document the screenshot need concretely in the report and flag to the user:
+     which screen/feature, what action/state to capture, recommended framing.
+     Do NOT improvise placeholder screenshots or generate AI images.
 9. **Report**: devlog draft + evidence + risks.
 
 ## Devlog Post Template

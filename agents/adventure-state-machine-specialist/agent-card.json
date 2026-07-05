@@ -1,0 +1,76 @@
+{
+  "name": "Adventure State Machine Specialist",
+  "description": "Owns the Adventure mode state machine for the Playdate game Locksmith. Designs, reviews, and implements state transitions, phase lifecycle (enter/update/draw/exit/reset), story flow, transition guards, persistence boundaries, and state machine correctness. Ensures ADVENTURE_STATE enum, adventure_mode.lua, docs/manifest.json, and docs/game.md stay in sync. Prevents implicit state bugs, unreachable states, impossible transitions, duplicate flags, and coupling between Adventure and Speedrun/Endless logic.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/adventure-state-machine-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/adventure-state-machine-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/adventure-state-machine-specialist/entrypoint.md",
+    "sourceMap": "agents/adventure-state-machine-specialist/source-map.md",
+    "workflow": "agents/adventure-state-machine-specialist/workflow.md",
+    "toolPolicy": "agents/adventure-state-machine-specialist/tool-policy.md",
+    "rubric": "agents/adventure-state-machine-specialist/rubric.md",
+    "evalPlan": "agents/adventure-state-machine-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/adventure-state-machine-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "adventure-state-machine-design",
+      "name": "Adventure State Machine Design",
+      "description": "Designs, reviews, and implements state transitions for Adventure mode. Ensures clean flow: story → phase1_curtain → curtain_cleared → phase3_safedial → phase4_clock → win. Manages ADVENTURE_STATE enum, enterState routing, transition guards, and phase lifecycle.",
+      "tags": ["adventure-state-machine", "state-transitions", "phase-lifecycle", "story-flow", "locksmith", "playdate"],
+      "examples": [
+        "Add a new Adventure phase between curtain_cleared and phase3_safedial.",
+        "Review all state transitions for unreachable states or impossible transitions.",
+        "Fix a bug where Adventure mode doesn't clean up phase state on exit.",
+        "Ensure win screen returns false on A to exit to title via main.lua."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "adventure-phase-lifecycle",
+      "name": "Adventure Phase Lifecycle Management",
+      "description": "Manages phase lifecycle: enter/update/draw/exit/reset for ad_curtain, ad_safedial, ad_clock. Ensures proper initialization, cleanup, and state isolation between phases. Prevents implicit state carryover and hidden coupling.",
+      "tags": ["phase-lifecycle", "enter-update-draw-exit", "state-isolation", "locksmith"],
+      "examples": [
+        "Phase state from curtain lock is leaking into curtain_cleared — isolate it.",
+        "Add exit() and reset() methods to all adventure phase objects.",
+        "Review phase lifecycle for correct cleanup on system menu exit."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "adventure-story-flow",
+      "name": "Adventure Story Flow Management",
+      "description": "Manages narrative story flow within Adventure mode: STORY_TRANSITIONS, showStory/advanceStory lifecycle, art-only (1000ms) → text slide timing, A button on text slide to advance. Ensures story beats (arrival → intro → hero → curtain_lock → safe_dial → clock → win) flow correctly.",
+      "tags": ["story-flow", "narrative", "story-beats", "showStory", "advanceStory", "locksmith"],
+      "examples": [
+        "Add a new story beat between clock and win.",
+        "Fix story text slide not appearing after art-only phase.",
+        "Ensure story transitions use correct nextState/nextKey mapping."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

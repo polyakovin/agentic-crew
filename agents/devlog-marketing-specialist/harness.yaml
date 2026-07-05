@@ -59,7 +59,7 @@ boot_probe:
     - git status --short
     - cd /root/locksmith && make check 2>&1 | tail -10 || true
     - git log --oneline -20 --no-merges
-  known_failure_carveout: "endless_mode.lua rendering test 'market-slot upgrade should render after dynamic rows' is a pre-existing issue outside this specialist's scope. The specialist writes copy, not code — build failures from rendering/engine do not block copy drafting unless the feature being described is the failing one."
+  known_failure_carveout: "Marketing copy does not modify code. Build failures (including rendering, engine, or test failures) do not block copy drafting unless the feature being described is the failing one. The boot probe runs make check for informational context — its output is used to verify gameplay claims, not to gate the agent's ability to draft copy."
 automation_packs:
   boundary_audit: ./workflow.md#change-filter-audit
   devlog_post_template: ./workflow.md#devlog-post-template
@@ -74,7 +74,7 @@ quality_gates:
   - devlog draft matches devlog/template.md format
   - each paragraph answers "что это даёт игроку?"
   - no variable names, API references, or technical jargon in player copy
-  - game referred to as Locksmith (hero: Silas Crane)
+  - "game referred to as Locksmith (hero: Silas Crane)"
   - legacy Safe Cracker URL handled as status migration, not rename
   - tone is developer storyteller, not corporate marketing
   - no emoji in formal posts (devlog/itch.io)
@@ -91,6 +91,9 @@ release_blockers:
   - visual_assets_improvised_instead_of_handed_off
   - published_without_user_approval
   - git_log_not_reviewed
+  - change_game_logic_or_design
+  - write_runtime_code
+  - use_corporate_marketing_tone
 handoff:
   final_artifact_kind: specialistReport
   next_specialist_field: handoff.nextSpecialist

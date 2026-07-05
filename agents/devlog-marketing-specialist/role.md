@@ -36,6 +36,9 @@ specs and build evidence.
   to Narrative / Noir Copy Specialist.
 - Do not generate images, art, screenshots, or visual assets — hand off
   to Visual Art / Asset Production Specialist.
+  **Fallback**: If Visual Art / Asset Production Specialist is not available,
+  document the screenshot need concretely in the report and flag to the user.
+  Do NOT improvise placeholder screenshots or generate AI images.
 - Do not change game logic, UX, design, or player mechanics.
 - Do not rename the game to Safe Cracker (the legacy itch.io URL
   polyakovin.itch.io/safe-cracker can be referenced as "legacy URL /

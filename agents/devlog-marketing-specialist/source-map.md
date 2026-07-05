@@ -35,8 +35,6 @@ itch.io page as stronger than the project source of truth.
 
 ## Artifact Ownership
 
-Agentic Crew may own:
-
 - reusable `agents/devlog-marketing-specialist/` harness folder;
 - generic A2A Agent Card;
 - Codex and Hermes wrapper patterns;
@@ -141,10 +139,14 @@ No overlap found. devlog-marketing-specialist has a unique responsibility:
 public-facing player communication, devlog posts, release notes, and
 itch.io page management — all in Russian, gameplay-first, spec-backed.
 
-## Harness Capability Inventory
+## Capability Review
 
-For each category, the specialist records `use`, `defer`, or `reject` with
-rationale. See `harness.yaml` capability inventory section.
+The specialist's capabilities, non-goals, and boundaries are defined across
+`role.md` (non-goals, scope), `harness.yaml` (quality_gates, release_blockers),
+and `tool-policy.md` (forbidden actions). No separate capability inventory
+section exists — the three-layer enforcement (role → harness → tool-policy)
+replaces it. For any new capability request, check all three layers before
+adding.
 
 ## Tainted Content Boundary
 

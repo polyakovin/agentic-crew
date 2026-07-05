@@ -213,7 +213,7 @@ If another specialist must act next, include `handoff.nextSpecialist`.
 
 Handoff destinations:
 - Public launch / devlog / itch.io copy → `devlog-marketing-specialist`
-  (planned, not yet created — if unavailable, flag marketing copy to user directly with note).
+  (created, draft status — hand off marketing/public copy here).
 - Gameplay meaning / difficulty pacing → `gameplay-design-player-experience-specialist`.
 - Pixel layout / rendering of text → `playdate-pixel-ui-renderer-specialist`.
 - Economy numbers / balance → `endless-economy-specialist`.

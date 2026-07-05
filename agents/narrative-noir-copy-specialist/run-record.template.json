@@ -1,0 +1,97 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "narrative-noir-copy-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "Locksmith",
+    "projectPath": "/root/locksmith",
+    "specRefs": [],
+    "codeRefs": []
+  },
+  "requestedChange": {
+    "copyProblem": "",
+    "copyChanges": [],
+    "specsUpdated": [],
+    "codeFilesTouched": []
+  },
+  "copyChanges": [
+    {
+      "file": "",
+      "section": "SHOP_ITEMS|COMPONENT_ITEMS|ACHIEVEMENTS|GUILD_RANKS|LOCK_CATALOG|SAFE_CATALOG|CLOCK_CATALOG|JOB_LORE_EXTRAS|ui.lua|endless_mode.lua",
+      "field": "name|purpose|loreLine|label|screen_string|hud_string",
+      "oldText": "",
+      "newText": "",
+      "rationale": "",
+      "toneJustification": "",
+      "asciiChecked": false,
+      "widthFit": "notChecked"
+    }
+  ],
+  "canonAudit": {
+    "crossFileReferencesChecked": [],
+    "driftDetected": false,
+    "driftDetails": "",
+    "fixesApplied": []
+  },
+  "asciiAudit": {
+    "command": "rg -n \"[^\\x00-\\x7F]\" source/endless_data.lua source/economy_catalogs.lua source/ui.lua source/endless_mode.lua",
+    "violationsFound": false,
+    "violations": []
+  },
+  "buildEvidence": {
+    "testAll": "notRun",
+    "lint": "notRun",
+    "build": "notRun",
+    "check": "notRun"
+  },
+  "toneJustification": "",
+  "lengthFitVerification": "",
+  "silasCraneVoiceCheck": "notChecked",
+  "marketingToneDetected": false,
+  "unicodeIntroduced": false,
+  "canonDriftIntroduced": false,
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "luaSyntax": [],
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

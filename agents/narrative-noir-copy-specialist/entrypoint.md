@@ -67,7 +67,7 @@ Underreach:
 Correct escalation:
 
 - Send marketing copy, devlog posts, itch.io descriptions to Devlog Marketing
-  Specialist (planned, not yet created — flag to user if unavailable).
+  Specialist (created, draft status).
 - Send gameplay meaning/difficulty pacing questions to Gameplay Design
   Specialist.
 - Send pixel layout/font rendering questions to Pixel UI Renderer Specialist.

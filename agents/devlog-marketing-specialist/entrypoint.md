@@ -69,6 +69,10 @@ Correct escalation:
 - Send in-game canon/tone/copy questions to Narrative / Noir Copy Specialist.
 - Send screenshot/art/visual needs to Visual Art / Asset Production
   Specialist.
+  **Fallback**: If Visual Art / Asset Production Specialist is not available,
+  document the screenshot need concretely in the report and flag to the user:
+  which screen/feature, what action/state to capture, recommended framing.
+  Do NOT improvise placeholder screenshots or generate AI images.
 - Send gameplay meaning/UX questions to Gameplay Design Specialist.
 - Block when a claim cannot be verified against builds or specs.
 - Block when devlog template is missing or unreadable.

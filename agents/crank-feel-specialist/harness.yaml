@@ -1,0 +1,97 @@
+id: crank-feel-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/crank-feel-specialist
+  model_policy: strong-input-feel-and-micro-mechanics
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: input-safe-game-renderer-specs-pitfalls-and-affected-source-files-only
+  freshness_triggers:
+    - input spec changed (crank, D-pad)
+    - safe spec changed (physics, pins, tolerance, snap)
+    - game spec changed (difficulty progression, modes)
+    - renderer spec changed (feedback drawing)
+    - project AGENTS.md Pitfalls updated
+    - new game mode or mechanic proposed
+    - crank feel bug reported
+    - MISS feedback unclear
+    - difficulty feels wrong
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make test-all 2>&1 | tail -5
+    - cd /root/locksmith && make build 2>&1 | tail -5
+automation_packs:
+  boundary_audit: ./workflow.md#architecture-boundary-audit
+  parameter_change_template: ./workflow.md#parameter-change-template
+  feedback_timing_sync: ./workflow.md#feedback-timing-sync-checklist
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - UX intent is stated before any code change
+  - spec is read before code is touched
+  - spec is updated before code when behaviour changes
+  - no gfx.* or playdate.* in safe.lua
+  - no game state mutations in renderer.lua
+  - no game logic in input.lua
+  - no safe/renderer/ui refs in input.lua
+  - declarative data modules are free of gfx/playdate/runtime state
+  - parameter changes are documented with old → new and rationale
+  - make check passes or blocked gate is honestly reported
+  - feedback timing is synchronous (sound ↔ visual)
+  - crank wrap-around is considered when tuning crank mapping
+  - smoothing does not add perceptible input lag
+  - snap radius does not exceed tolerance
+  - mechanics remain precision-based, not RNG
+  - new feel pitfalls are documented in AGENTS.md
+release_blockers:
+  - boundary_violation_detected
+  - spec_not_updated_for_behaviour_change
+  - make_check_fails_or_not_run
+  - rng_introduced
+  - input_lag_introduced
+  - feedback_timing_async
+  - crank_wrap_not_handled
+  - missing_ux_intent
+  - missing_parameter_rationale
+  - missing_pitfall_documentation
+  - precision_lost_or_removed
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

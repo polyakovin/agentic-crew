@@ -1,0 +1,101 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "crank-feel-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "Locksmith",
+    "projectPath": "/root/locksmith",
+    "specRefs": [],
+    "codeRefs": []
+  },
+  "requestedChange": {
+    "uxIntent": "",
+    "parameterChanges": [],
+    "specsUpdated": [],
+    "codeFilesTouched": [],
+    "testsAddedOrUpdated": []
+  },
+  "boundaryAudit": {
+    "safe_lua_pure": true,
+    "renderer_lua_pure": true,
+    "input_lua_capture_only": true,
+    "data_lua_declarative": true,
+    "soundfx_lua_audio_only": true,
+    "violations": []
+  },
+  "feelParameterChanges": [
+    {
+      "parameter": "",
+      "category": "crankMapping|deadZone|acceleration|inertia|smoothing|snapToTarget|pinBounce|tolerance|missDirection|dpad|feedbackTiming",
+      "oldValue": "",
+      "newValue": "",
+      "rationale": "",
+      "file": "",
+      "boundary": "safe.lua|input.lua|renderer.lua|soundfx.lua|*_data.lua"
+    }
+  ],
+  "buildEvidence": {
+    "testAll": "notRun",
+    "lint": "notRun",
+    "build": "notRun",
+    "check": "notRun"
+  },
+  "manualVerification": "",
+  "risksAndAlternatives": {
+    "risks": [],
+    "alternatives": []
+  },
+  "feedbackTimingAudit": {
+    "audioTriggerPoint": "",
+    "visualTriggerPoint": "",
+    "frameDelta": 0,
+    "synced": true
+  },
+  "crankWrapTested": false,
+  "inputLagIntroduced": false,
+  "rngIntroduced": false,
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "luaSyntax": [],
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

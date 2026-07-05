@@ -1,0 +1,106 @@
+id: adventure-state-machine-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/adventure-state-machine-specialist
+  model_policy: strong-state-machine-and-transition-design
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: adventure-state-machine-specs-pitfalls-enum-and-affected-source-files-only
+  freshness_triggers:
+    - adventure spec changed (docs/game.md)
+    - manifest updated (docs/manifest.json)
+    - ADVENTURE_STATE enum changed (source/states.lua)
+    - adventure_mode.lua state machine changed
+    - adventure phase modules changed (ad_curtain, ad_safedial, ad_clock)
+    - story flow changed (STORY_TRANSITIONS, showStory, advanceStory)
+    - project AGENTS.md Pitfalls updated
+    - new Adventure phase or state proposed
+    - state transition bug reported
+    - exit behaviour (B/Menu/win) questioned
+    - persistence boundary questioned
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make test-all 2>&1 | tail -5
+    - cd /root/locksmith && make build 2>&1 | tail -5
+automation_packs:
+  transition_audit: ./workflow.md#state-machine-analysis-checklist
+  transition_change_template: ./workflow.md#state-transition-change-template
+  story_flow_audit: ./workflow.md#story-flow-audit-checklist
+  exit_behaviour_verification: ./workflow.md#exit-behaviour-verification
+  boundary_audit: ./workflow.md#architecture-boundary-audit
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - no coupling between Adventure and Speedrun/Endless logic
+  - every ADVENTURE_STATE value handled in enterState() and update()/draw()
+    OR explicitly documented as unreachable/reserved in source-map.md
+  - all story transitions resolved (no orphan nextKey or nextState)
+  - phase lifecycle clean (enter init, exit cleanup, reset restore)
+  - B button does not exit Adventure mode
+  - win screen returns false on A (main.lua handles title transition)
+  - Datastore.markAdventureComplete() only on Clock done && aPressed
+  - no unreachable states or impossible transitions
+  - no duplicate flags or implicit state coupling
+  - spec updated before code when state machine contract changes
+  - declarative data modules free of gfx/playdate/runtime state
+  - make check passes or blocked gate is honestly reported
+  - no new global mutable state without necessity
+  - transition guards present for all phase entries
+  - story art-only timing (1000ms) respected before A button
+  - new state machine pitfalls documented in AGENTS.md
+release_blockers:
+  - boundary_violation_detected
+  - spec_not_updated_for_state_machine_change
+  - make_check_fails_or_not_run
+  - unreachable_state_introduced
+  - impossible_transition_introduced
+  - duplicate_flag_introduced
+  - phase_state_leak_detected
+  - orphan_story_transition
+  - b_button_exits_adventure
+  - win_exit_missing_or_broken
+  - persistence_boundary_violated
+  - coupling_with_speedrun_or_endless
+  - missing_state_machine_issue_statement
+  - missing_transition_guard
+  - missing_pitfall_documentation
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

@@ -1,0 +1,75 @@
+{
+  "name": "Narrative / Noir Copy Specialist",
+  "description": "Owns the tone, voice, item names, loreLine strings, short purpose text, and canon-consistency of Silas Crane and the noir world for the Playdate game Locksmith. Audits all in-game text sources (endless_data.lua, economy_catalogs.lua, ui.lua, endless_mode.lua, docs/lore.md) for dieselpunk 1920s noir voice, ASCII safety, Playdate 400x240 fit, and concise impactful copy.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/narrative-noir-copy-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/narrative-noir-copy-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/narrative-noir-copy-specialist/entrypoint.md",
+    "sourceMap": "agents/narrative-noir-copy-specialist/source-map.md",
+    "workflow": "agents/narrative-noir-copy-specialist/workflow.md",
+    "toolPolicy": "agents/narrative-noir-copy-specialist/tool-policy.md",
+    "rubric": "agents/narrative-noir-copy-specialist/rubric.md",
+    "evalPlan": "agents/narrative-noir-copy-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/narrative-noir-copy-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "noir-tone-audit",
+      "name": "Noir Tone Audit",
+      "description": "Audits all in-game text for dieselpunk 1920s noir voice consistency, Silas Crane character voice, and canon alignment against docs/lore.md. Flags tonal drift, modern slang, and un-noir phrasing across all text sources.",
+      "tags": ["noir-tone", "tone-audit", "canon-consistency", "lore", "locksmith"],
+      "examples": [
+        "The SHOP_ITEMS loreLine strings all sound like generic RPG shop — make them feel like a noir flea market.",
+        "Achievement names and labels need tone audit — some sound like Xbox achievements.",
+        "Audit entire text corpus for canon-consistency: Silas Crane voice, Gaslight Bazaar terminology."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "copy-fit-playdate",
+      "name": "Copy Fit for Playdate",
+      "description": "Reviews and trims all UI/HUD copy for Playdate 400x240 1-bit display constraints. Ensures text is ASCII-only, fits within Fonts.drawTextAligned bounds, and uses opaque background underlays. Flags text overflow, Unicode, and layout-risk strings.",
+      "tags": ["playdate-fit", "ascii", "text-length", "ui-copy", "constrained-display", "locksmith"],
+      "examples": [
+        "COMPONENT_ITEMS purpose strings are too long for the 1-bit screen — trim to two words max.",
+        "HUD feedback string overflows on narrow screens — shorten to fit.",
+        "New adventure story screen copy needs Playdate fit check."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "item-naming-noir",
+      "name": "Item Naming & Catalog Lore",
+      "description": "Designs and reviews item names, loreLine strings, purpose text, achievement names, and catalog entry copy for noir voice, conciseness, and mechanical evocativeness. Each string must earn its pixel budget and sound like it belongs in the Gaslight Bazaar.",
+      "tags": ["item-names", "loreline", "purpose-text", "catalog-lore", "achievement-labels", "locksmith"],
+      "examples": [
+        "New tool items in SHOP_ITEMS need noir names and tight loreLine blurbs.",
+        "LOCK_CATALOG entry loreLine breaks tone — rewrite for noir voice.",
+        "GUILD_RANK names sound modern — make them guild-hierarchy noir."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

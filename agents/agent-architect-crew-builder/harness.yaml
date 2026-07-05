@@ -90,7 +90,7 @@ quality_gates:
   - every required runtime surface exists and references the same agent id
   - Agent Card JSON harness YAML and Hermes manifest YAML parse
   - pack routing points to existing harness paths
-  - Agent Tester review is requested and recorded for created or materially updated specialists
+  - Agent Tester review is dispatched immediately for created or materially updated specialists (via delegate_task)
   - Agent Tester findings recommendations and backlog items are mirrored into the task-specified todo or backlog artifact or blocked with exact entries to add
   - Agent Tester follow-up tasks are handed to agent-tuner with evidence severity affected surfaces remediation intent and verification needed
   - scoped changes are committed and pushed or a commit/push blocker is recorded

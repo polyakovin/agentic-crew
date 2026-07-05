@@ -34,7 +34,10 @@ Interpretation:
 12. Move or reference specialist-owned agent artifacts.
 13. Wire pack routing when discoverability is required.
 14. Validate machine-readable files and whitespace.
-15. Request Agent Tester review for created or materially updated specialists.
+15. Dispatch Agent Tester review immediately via `delegate_task` for created
+    or materially updated specialists. Do not wait for the result — continue
+    with commit/prep work in parallel. The tester's result will arrive as a
+    separate message.
 16. Address the Agent Tester decision: block on critical findings, record
     backlog for non-critical findings, or proceed when the tester reports no
     release blockers.
@@ -287,27 +290,33 @@ Expected Agent Tester output:
 
 Crew Builder must:
 
-- block target-project status updates when Agent Tester reports a critical
-  finding;
-- include Agent Tester findings/backlog in the run record;
-- mirror every Agent Tester finding, recommendation, and improvement-backlog
-  item that requires follow-up into the task-specified TODO or backlog artifact.
-  Prefer Agent Tester's `projectTodoUpdates`; otherwise write the entries
-  directly when authorized or record a write-access blocker with the exact
-  entries to add;
-- route critical repair requests by ownership: existing-agent refinement to
+- **Dispatch Agent Tester immediately** via `delegate_task` with the full
+  handoff payload. Do not skip this step — `delegate_task` runs in the
+  background and its result re-enters the conversation asynchronously, so
+  blocking on it is unnecessary. Simply dispatch and continue other work;
+  the tester's result will arrive as its own message.
+- After Agent Tester's result arrives, block target-project status updates
+  when Agent Tester reports a critical finding.
+- Include Agent Tester findings/backlog in the run record.
+- Mirror every Agent Tester finding, recommendation, and improvement-backlog
+  item that requires follow-up into the task-specified TODO or backlog
+  artifact. Prefer Agent Tester's `projectTodoUpdates`; otherwise write the
+  entries directly when authorized or record a write-access blocker with the
+  exact entries to add.
+- Route critical repair requests by ownership: existing-agent refinement to
   `agent-tuner`; Crew Builder-owned creation, packaging, wrapper, or routing
   defects back to `agent-architect-crew-builder`; and shared protocol or pack
-  governance to `protocol-steward`;
-- route all mirrored existing-agent tuning/refinement tasks to `agent-tuner`
-  with evidence, severity, affected surfaces, remediation intent, TODO artifact
-  refs, and verification needed;
-- block promotion when required TODO/backlog updates or `agent-tuner` handoff
-  packets cannot be recorded;
-- not hide or silently fix Agent Tester findings unless explicitly reassigned;
-- treat missing Agent Tester review as a release blocker unless the tester is
-  unavailable, in which case record a blocker and keep the package below
-  promotion-ready.
+  governance to `protocol-steward`.
+- Route all mirrored existing-agent tuning/refinement tasks to `agent-tuner`
+  with evidence, severity, affected surfaces, remediation intent, TODO
+  artifact refs, and verification needed.
+- Block promotion when required TODO/backlog updates or `agent-tuner` handoff
+  packets cannot be recorded.
+- Not hide or silently fix Agent Tester findings unless explicitly reassigned.
+- **Do not skip Agent Tester review.** Missing Agent Tester review is a
+  release blocker. If `delegate_task` is unavailable or times out, record
+  a blocker with the exact dispatch payload that should be sent manually,
+  and keep the package below `promotion-ready`.
 
 ## Validation Pack
 

@@ -33,8 +33,9 @@ boundaries.
   longer serve the general project.
 - Add or update pack routing so the orchestrator can discover the specialist.
 - Add run-record, rubric, eval, release, and rollback surfaces.
-- Request `agent-tester` review after creating or materially updating a
-  specialist, and include findings/backlog before status promotion.
+- Dispatch `agent-tester` immediately via delegate_task after creating or
+  materially updating a specialist, and include findings/backlog before
+  status promotion.
 - After `agent-tester` returns, write every open finding, recommendation, and
   improvement-backlog item into the task-specified todo or backlog artifact and
   hand execution to `agent-tuner`.

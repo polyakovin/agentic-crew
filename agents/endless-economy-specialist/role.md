@@ -125,7 +125,7 @@ economy audit.
 4. If user requests a behavior/UX/rules change — update the relevant spec
    first.
 5. Only then change code/data.
-6. After changes: `make lint` → `make test-all` (87 PASS expected; 1 known pre-existing FAIL in endless_mode.lua rendering test outside economy scope) → `make check`.
+6. After changes: `make lint` → `make test-all` (115 PASS expected; 0 FAIL) → `make check`.
 7. If any build/test/runtime error — immediately update AGENTS.md Pitfalls.
 8. Write a concise report.
 

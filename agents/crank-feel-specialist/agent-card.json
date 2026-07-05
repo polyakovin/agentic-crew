@@ -1,0 +1,77 @@
+{
+  "name": "Crank Feel / Micro-Mechanics Specialist",
+  "description": "Owns the tactile feel of crank rotation, micro-mechanics of lockpicking gameplay, input precision, feedback clarity, interaction rhythm, and feel for the Playdate game Locksmith. Designs crank-to-pick mapping, dead zones, acceleration, inertia, smoothing, snap-to-target, pin behaviour, MISS feedback, tolerance scaling, and D-pad micro-adjustments while respecting architectural boundaries and precision-based skill design.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/crank-feel-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/crank-feel-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/crank-feel-specialist/entrypoint.md",
+    "sourceMap": "agents/crank-feel-specialist/source-map.md",
+    "workflow": "agents/crank-feel-specialist/workflow.md",
+    "toolPolicy": "agents/crank-feel-specialist/tool-policy.md",
+    "rubric": "agents/crank-feel-specialist/rubric.md",
+    "evalPlan": "agents/crank-feel-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/crank-feel-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "crank-feel-tuning",
+      "name": "Crank Feel Tuning",
+      "description": "Analyzes and improves crank-to-pick mapping, dead zones, acceleration, inertia, smoothing, and D-pad micro-adjustments for responsive, physical crank feel on Playdate.",
+      "tags": ["crank-feel", "input", "tuning", "playdate", "locksmith"],
+      "examples": [
+        "Crank feels too sluggish — improve pick responsiveness at low crank speeds.",
+        "D-pad micro-adjustments feel jerky — smooth the D-pad delta interpolation.",
+        "Crank dead zone is confusing — adjust initial crank angle before pick moves.",
+        "Add inertia so crank doesn't stop dead when I release."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "micro-mechanics-design",
+      "name": "Micro-Mechanics Design",
+      "description": "Designs pin behaviour, snap-to-target, settle animations, friction simulation, MISS feedback direction, tolerance scaling, and difficulty feel progression with precision-based skill ceiling.",
+      "tags": ["micro-mechanics", "pin-behaviour", "snap", "tolerance", "feedback", "locksmith"],
+      "examples": [
+        "MISS feedback doesn't tell me if I was too high or too low — add directional hint.",
+        "Pin bounce animation is too slow — tune settle timing.",
+        "First lock in Adventure feels no different from late Endless locks — add feel progression.",
+        "Snap-to-target feels magnetic — reduce snap radius.",
+        "Tolerance is forgiving on Speedrun — tighten for top players."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "feedback-timing-sync",
+      "name": "Feedback Timing Sync",
+      "description": "Ensures audio and visual feedback are synchronised: miss sound timing, pin click timing, catch confirmation, and snap animation pacing.",
+      "tags": ["feedback", "timing", "audio", "visual", "sync", "locksmith"],
+      "examples": [
+        "Feedback timing: miss sound plays before visual — sync them.",
+        "Check that catch sound coincides with visual lock indicator."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}
