@@ -42,6 +42,10 @@ agents:
     path: ../agents/agent-architect-crew-builder
     harness: ../agents/agent-architect-crew-builder/harness.yaml
     required: false
+  - id: agent-tester
+    path: ../agents/agent-tester
+    harness: ../agents/agent-tester/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -64,4 +68,9 @@ routing:
   codex-wrapper: agent-architect-crew-builder
   hermes-package: agent-architect-crew-builder
   locksmith-agent-creation: agent-architect-crew-builder
+  agent-testing: agent-tester
+  agent-evaluation: agent-tester
+  agent-red-team: agent-tester
+  agent-exploratory-testing: agent-tester
+  agent-knowledge-base-learning: agent-tester
   conflict-resolution: orchestrator
