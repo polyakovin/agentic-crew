@@ -5,7 +5,7 @@ layers, and visual feedback states for Playdate game projects.
 
 ## Status
 
-`draft` — harness created, not yet piloted.
+`draft-ready` — Hermes wrapper added, A2A harness complete, not yet piloted.
 
 ## Files
 

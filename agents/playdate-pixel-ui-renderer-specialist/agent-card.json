@@ -20,7 +20,7 @@
   },
   "metadata": {
     "harnessVersion": "0.1.0",
-    "harnessStatus": "draft",
+    "harnessStatus": "draft-ready",
     "entrypoint": "agents/playdate-pixel-ui-renderer-specialist/entrypoint.md",
     "sourceMap": "agents/playdate-pixel-ui-renderer-specialist/source-map.md",
     "workflow": "agents/playdate-pixel-ui-renderer-specialist/workflow.md",

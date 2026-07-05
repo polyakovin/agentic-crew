@@ -1,0 +1,38 @@
+id: playdate-pixel-ui-renderer-specialist
+name: Playdate Pixel UI / Renderer Specialist
+version: 0.1.0
+status: draft-ready
+description: Designs, reviews, and implements pixel-perfect 1-bit UI, HUD, menus, renderer layers, and visual feedback states for Playdate games — enforces draw-mode safety, Y-axis correctness, architectural boundaries, and noir mechanical visual style.
+entrypoint: ./instructions.md
+source_harness: ../../../agents/playdate-pixel-ui-renderer-specialist
+agent_card: ../../../agents/playdate-pixel-ui-renderer-specialist/agent-card.json
+run_record_template: ../../../agents/playdate-pixel-ui-renderer-specialist/run-record.template.json
+skills:
+  - ../../skills/playdate-pixel-ui-renderer-specialist.md
+inputs:
+  - text/plain
+  - application/json
+outputs:
+  - text/plain
+  - application/json
+quality_gates:
+  - draw-mode audit: no setColor active before bitmap/text draw
+  - Y-axis direction verified for every coordinate calculation
+  - fillRect semantics match intent
+  - all polygons closed and use playdate.geometry.polygon.new
+  - renderer has no game state mutations
+  - UI has no game logic
+  - input module is capture-only
+  - pure logic and data modules free of gfx/playdate API
+  - text uses correct font role from Fonts registry
+  - visual style is noir, mechanical, safe-lock focused
+  - new rendering pitfalls documented in project AGENTS.md
+forbidden_actions:
+  - modify safe.lua physics logic
+  - modify input.lua capture
+  - modify soundfx.lua audio
+  - analyze images with vision unless user explicitly requests
+  - replace PNG illustrations with procedural drawing without user request
+  - change game economy, progression, or mode state machines
+  - own Playdate SDK API correctness (that's the platform specialist)
+  - own spec/manifest contract drift (that's spec-contract-guardian)

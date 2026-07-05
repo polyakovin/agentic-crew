@@ -18,7 +18,7 @@ runtime:
   transport: A2A JSON-RPC
   endpoint_placeholder: https://example.invalid/a2a/playdate-pixel-ui-renderer-specialist
   model_policy: strong-visual-review-with-playdate-pixel-constraints
-  status: draft
+  status: draft-ready
   run_records_required:
     R0: false
     R1: false
