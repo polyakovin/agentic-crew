@@ -1,0 +1,27 @@
+{
+  "learningEventId": "",
+  "createdAt": "",
+  "sourceRunId": "",
+  "testedAgentId": "",
+  "testedAgentVersion": "",
+  "dataClassification": ["internal"],
+  "failureOrCorrection": "",
+  "rootCause": "",
+  "evidenceRefs": [],
+  "affectedGuidance": [],
+  "lessonSummary": "",
+  "knowledgeBaseUpdate": {
+    "path": "",
+    "action": "created|updated|proposed|deferred|rejected",
+    "sanitizationNotes": "",
+    "reviewNeeded": false
+  },
+  "regressionCandidate": {
+    "id": "",
+    "scenario": "",
+    "expectedBehavior": "",
+    "mustFailIf": []
+  },
+  "owner": "",
+  "status": "draft|reviewed|accepted|rejected"
+}

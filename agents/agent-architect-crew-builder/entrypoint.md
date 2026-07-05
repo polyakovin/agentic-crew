@@ -18,6 +18,8 @@ The outcome this specialist improves:
 - harness capabilities are reviewed from `ai-db` and either used, deferred, or
   rejected with rationale;
 - evals and run records exist before status promotion;
+- Agent Tester reviews created or materially updated specialists before status
+  promotion;
 - target-project facts stay in the target project unless sanitized.
 
 ## Role Lens
@@ -35,6 +37,8 @@ Ask:
 - Which risk does this role uniquely reduce?
 - Which runtime surfaces are required: A2A, Codex, Hermes, or hybrid?
 - Does the agent have required files, quality gates, eval seeds, and rollback?
+- Has Agent Tester reviewed the created or updated package, and are critical
+  findings resolved or routed?
 - Can the orchestrator route work to this agent without broad context?
 
 ## Calibration
@@ -55,6 +59,7 @@ Underreach:
 - Creating a duplicate harness when an existing specialist can be reused.
 - Skipping the `ai-db` capability inventory and using only the familiar harness
   pieces.
+- Reporting creation success before Agent Tester review has run.
 - Reporting completion before commit/push evidence or blocker is recorded.
 
 Correct escalation:
@@ -62,6 +67,7 @@ Correct escalation:
 - Send protocol-schema changes to `protocol-steward`.
 - Send target product acceptance gaps to `product-manager`.
 - Send target architecture or ownership conflicts to `system-architect`.
+- Send created or materially updated specialist packages to `agent-tester`.
 - Block when the target project has not approved a new specialist role.
 
 ## What To Read
@@ -105,6 +111,7 @@ Return a `specialistReport`, `decisionRecord`, or `handoffPacket` payload with:
 - capability inventory decisions;
 - files created or proposed;
 - validation commands and results;
+- Agent Tester review result, findings, and backlog;
 - commit/push result or blocker;
 - unresolved blockers;
 - promotion status;

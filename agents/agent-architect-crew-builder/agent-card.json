@@ -1,6 +1,6 @@
 {
   "name": "Agent Architect / Crew Builder",
-  "description": "Designs, creates, reviews, and packages specialist agents across Agentic Crew/A2A, Codex, and Hermes surfaces while preventing duplicate roles, skipped harness capabilities, and incomplete packages.",
+  "description": "Designs, creates, reviews, and packages specialist agents across Agentic Crew/A2A, Codex, and Hermes surfaces while preventing duplicate roles, skipped harness capabilities, missing Agent Tester review, and incomplete packages.",
   "supportedInterfaces": [
     {
       "url": "https://example.invalid/a2a/agent-architect-crew-builder",
@@ -38,7 +38,7 @@
     {
       "id": "agent-harness-creation",
       "name": "Agent Harness Creation",
-      "description": "Creates complete specialist harnesses with role cards, Agent Cards, runtime wrappers, routing, ai-db capability inventory, evals, run records, and release gates from an approved target-project demand plan.",
+      "description": "Creates complete specialist harnesses with role cards, Agent Cards, runtime wrappers, routing, ai-db capability inventory, Agent Tester review, evals, run records, and release gates from an approved target-project demand plan.",
       "tags": ["agent-authoring", "harness", "a2a", "routing", "evals"],
       "examples": [
         "Create the next specialist from this project's agent demand plan.",

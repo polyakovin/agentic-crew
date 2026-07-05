@@ -1,0 +1,64 @@
+{
+  "name": "Agent Tester",
+  "description": "Tests specialist agents as operational workflows using static checks, current best practices, exploratory scenarios, adversarial cases, trace review, improvement backlogs, and knowledge-base learning.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/agent-tester",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/agent-tester/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/agent-tester/entrypoint.md",
+    "sourceMap": "agents/agent-tester/source-map.md",
+    "workflow": "agents/agent-tester/workflow.md",
+    "toolPolicy": "agents/agent-tester/tool-policy.md",
+    "rubric": "agents/agent-tester/rubric.md",
+    "evalPlan": "agents/agent-tester/eval-plan.md",
+    "runRecordTemplate": "agents/agent-tester/run-record.template.json",
+    "knowledgeBase": "agents/agent-tester/knowledge-base",
+    "codexSkill": ".agents/skills/agent-tester/SKILL.md",
+    "hermesSkill": ".hermes/skills/agent-tester.md",
+    "hermesPackage": ".hermes/agents/agent-tester"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "agent-workflow-testing",
+      "name": "Agent Workflow Testing",
+      "description": "Tests a target agent's role contract, harness files, wrappers, tool path, evidence, safety controls, handoffs, eval coverage, and trace behavior.",
+      "tags": ["agent-testing", "evals", "exploratory-testing", "guardrails", "tracing"],
+      "examples": [
+        "Test this new specialist agent before it is promoted to pilot.",
+        "Run exploratory testing on this agent and produce a prioritized improvement backlog."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "agent-learning-backlog",
+      "name": "Agent Learning Backlog",
+      "description": "Turns confirmed agent failures into sanitized knowledge-base lessons, regression candidates, and critical handoff packets for the future agent-fixer.",
+      "tags": ["knowledge-base", "lessons-learned", "regression", "handoff", "agent-fixer"],
+      "examples": [
+        "Convert these agent test findings into lessons and eval candidates.",
+        "Create critical fix handoffs for release-blocking agent defects."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

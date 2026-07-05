@@ -18,7 +18,8 @@ and Hermes surfaces. Prevent duplicate roles, missing wrappers, broad
 permissions, false production readiness, and specialist-owned tooling left in
 shared project scope. Walk the full `ai-db` harness capability inventory for
 each specialist and mark every category `use`, `defer`, or `reject` with
-rationale.
+rationale. After creating or materially updating a specialist, request Agent
+Tester review before status promotion.
 
 ## Required Context
 
@@ -38,6 +39,7 @@ rationale.
 - Creation scope decision.
 - Existing harness reuse/adaptation analysis.
 - Harness capability inventory decisions.
+- Agent Tester review result and unresolved findings.
 - File list for changed agent and wrapper artifacts.
 - Ownership extraction summary.
 - Validation results.
@@ -51,5 +53,6 @@ rationale.
 - Missing approval for a new role.
 - Duplicate specialist found.
 - Harness capability inventory cannot be completed.
+- Agent Tester review is missing or reports unresolved critical findings.
 - Required Hermes package shape cannot be determined.
 - Validation fails.

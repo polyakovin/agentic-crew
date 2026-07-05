@@ -29,10 +29,13 @@ and Hermes surfaces.
 9. Add Codex and Hermes wrappers when required.
 10. Wire pack routing only to existing paths.
 11. Validate JSON/YAML/TOML/Markdown whitespace.
-12. Commit and push scoped changes, or record the exact blocker.
-13. Return a decision, changed files, scope decision, reuse analysis,
-    capability inventory, ownership extraction, validation evidence,
-    commit/push result, and next owner.
+12. Request Agent Tester review for created or materially updated specialists.
+13. Block on Agent Tester critical findings, or record non-critical backlog and
+    proceed only when review is complete.
+14. Commit and push scoped changes, or record the exact blocker.
+15. Return a decision, changed files, scope decision, reuse analysis,
+    capability inventory, Agent Tester result, ownership extraction, validation
+    evidence, commit/push result, and next owner.
 
 ## Output Contract
 
@@ -44,6 +47,7 @@ Return a concise report with:
 - `creationScope`;
 - `reuseAnalysis`;
 - `capabilityInventory`;
+- `agentTesterReview`;
 - `filesChanged`;
 - `ownershipExtraction`;
 - `routingChanges`;
@@ -58,4 +62,6 @@ Return a concise report with:
 Do not modify target product code. Do not create local target `.agents`,
 `.codex`, or `.hermes` folders if the target project says wrappers belong in
 Agentic Crew. Do not move product source, specs, assets, tests, or domain data
-unless the user explicitly asks for that product-architecture change.
+unless the user explicitly asks for that product-architecture change. Do not
+mark created or promotion-ready while Agent Tester review is missing or critical
+findings remain unresolved.

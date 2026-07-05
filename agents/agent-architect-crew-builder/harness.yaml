@@ -68,6 +68,7 @@ automation_packs:
   package_completeness: ./workflow.md#package-completeness-check
   wrapper_alignment: ./workflow.md#wrapper-alignment-check
   validation: ./workflow.md#validation-pack
+  agent_tester_review: ./workflow.md#agent-tester-post-creation-review
   commit_push: ./workflow.md#commit-and-push-gate
 quality_gates:
   - no new specialist without approved target demand or recorded decision
@@ -78,6 +79,7 @@ quality_gates:
   - every required runtime surface exists and references the same agent id
   - Agent Card JSON harness YAML and Hermes manifest YAML parse
   - pack routing points to existing harness paths
+  - Agent Tester review is requested and recorded for created or materially updated specialists
   - scoped changes are committed and pushed or a commit/push blocker is recorded
   - target-project status is updated only after validation succeeds
 release_blockers:
@@ -89,6 +91,8 @@ release_blockers:
   - hermes_required_but_missing_or_invalid
   - invalid_agent_card_or_harness_yaml
   - pack_route_points_to_missing_path
+  - missing_agent_tester_review
+  - agent_tester_critical_findings_unresolved
   - commit_push_missing_or_unrecorded
   - target_project_private_snapshot_leaked
 handoff:

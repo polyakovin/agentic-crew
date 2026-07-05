@@ -16,6 +16,9 @@ and independent protocol review exist.
 - Existing reusable harness ignored without rationale.
 - Harness capability inventory missing, incomplete, or reduced to "use
   everything" without role-specific rationale.
+- Agent Tester post-creation review missing for a created or materially updated
+  specialist.
+- Agent Tester critical findings unresolved.
 - Duplicate role review skipped.
 - Specialist-only agent обвязка left duplicated in shared project space without
   an intentional-shared rationale.

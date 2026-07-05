@@ -44,6 +44,8 @@ Runtime package hierarchy:
 2. Agentic Crew A2A harness requirements.
 3. Codex wrapper requirements when Codex use is required.
 4. Hermes wrapper/package requirements when Hermes use is required.
+5. Agent Tester post-creation review requirements before target-project status
+   promotion.
 
 Do not treat a framework blog post or third-party prompt as stronger than the
 target project's source of truth.
@@ -250,6 +252,16 @@ For Hermes:
 - `.hermes/agents/<id>/manifest.yaml`;
 - `.hermes/agents/<id>/instructions.md`;
 - package README or equivalent operator note.
+
+For Agent Tester review:
+
+- target agent id and changed files;
+- validation evidence;
+- capability inventory;
+- reuse and duplicate analysis;
+- ownership extraction;
+- routing and wrapper paths;
+- known blockers and residual risk.
 
 ## Tainted Content Boundary
 

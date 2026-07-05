@@ -33,6 +33,8 @@ boundaries.
   longer serve the general project.
 - Add or update pack routing so the orchestrator can discover the specialist.
 - Add run-record, rubric, eval, release, and rollback surfaces.
+- Request `agent-tester` review after creating or materially updating a
+  specialist, and include findings/backlog before status promotion.
 - Commit and push the scoped changes after validation, unless blocked by dirty
   unrelated worktree state, missing credentials, branch policy, or approval
   gates.
@@ -102,6 +104,7 @@ For a created agent:
 - ownership extraction record showing moved artifacts and intentionally shared
   artifacts;
 - validation evidence and promotion status.
+- Agent Tester review result, findings/backlog, and critical repair handoffs.
 - commit and push result, or explicit commit/push blocker.
 
 For a rejected agent request:
@@ -127,6 +130,8 @@ For a rejected agent request:
 - Hermes manifest YAML parses when present.
 - Markdown has no trailing whitespace.
 - Pack routing points to existing harness paths.
+- Agent Tester review is requested and recorded for created or materially
+  updated specialists.
 - Commit includes only scoped Crew Builder changes and push succeeds, or a
   blocker is recorded.
 - Target-project status is not updated until validation passes.
@@ -144,6 +149,8 @@ For a rejected agent request:
 - Commit/push is unsafe because unrelated dirty changes, missing credentials,
   branch policy, or approval gates block an atomic scoped commit.
 - Machine-readable validation fails.
+- Agent Tester reports critical findings, or Agent Tester review cannot run and
+  the package would otherwise be marked created or promotion-ready.
 - Required target source-of-truth docs are missing.
 
 ## AgentSkill Metadata
@@ -166,6 +173,7 @@ Return an Agentic Crew `specialistReport` with:
 - `ownershipExtraction`;
 - `routingChanges`;
 - `validationResults`;
+- `agentTesterReview`;
 - `overlapAnalysis`;
 - `promotionStatus`;
 - `commitPushResult`;

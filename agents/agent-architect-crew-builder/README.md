@@ -15,6 +15,7 @@ infrastructure:
 - harness capability inventory based on `../ai-db`, with each capability marked
   `use`, `defer`, or `reject`;
 - routing entries, rubrics, eval plans, release notes, and run-record templates.
+- Agent Tester post-creation review before status promotion.
 
 The Crew Builder is intentionally separate from `.agents/skills/agentic-crew-author`.
 That skill is the authoring workflow. This folder is the deployable specialist
@@ -29,7 +30,7 @@ and handoff evidence.
 - `harness.yaml`: local wiring, gates, runtime placeholders, and wrapper paths.
 - `source-map.md`: source hierarchy and ownership boundaries.
 - `workflow.md`: creation/review workflow, `ai-db` capability inventory, and
-  validation commands.
+  validation commands, plus Agent Tester post-creation review.
 - `tool-policy.md`: permissions, side-effect gates, and forbidden actions.
 - `rubric.md`: self-review and protocol-review checklist.
 - `eval-plan.md`: seed eval families and promotion thresholds.

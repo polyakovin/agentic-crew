@@ -2,7 +2,7 @@ id: agent-architect-crew-builder
 name: Agent Architect / Crew Builder
 version: 0.1.0
 status: draft-ready
-description: Creates and reviews specialist-agent packages across Agentic Crew, Codex, and Hermes surfaces, including ai-db harness capability inventory.
+description: Creates and reviews specialist-agent packages across Agentic Crew, Codex, and Hermes surfaces, including ai-db harness capability inventory and Agent Tester post-creation review.
 entrypoint: ./instructions.md
 source_harness: ../../../agents/agent-architect-crew-builder
 agent_card: ../../../agents/agent-architect-crew-builder/agent-card.json
@@ -24,7 +24,9 @@ quality_gates:
   - Hermes package exists and manifest validates
   - routing points to existing paths
   - validation evidence recorded
+  - Agent Tester review recorded for created or materially updated specialists
 forbidden_actions:
   - modify target application code
   - create target-local runtime folders when target plan forbids them
   - claim production readiness without pilot eval and review evidence
+  - claim created or promotion-ready while Agent Tester critical findings remain open

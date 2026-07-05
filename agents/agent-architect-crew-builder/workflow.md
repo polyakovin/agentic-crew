@@ -33,8 +33,12 @@ Interpretation:
 11. Move or reference specialist-owned agent artifacts.
 12. Wire pack routing when discoverability is required.
 13. Validate machine-readable files and whitespace.
-14. Commit and push scoped changes, or record why commit/push is blocked.
-15. Produce run record, promotion status, and next-owner handoff.
+14. Request Agent Tester review for created or materially updated specialists.
+15. Address the Agent Tester decision: block on critical findings, record
+    backlog for non-critical findings, or proceed when the tester reports no
+    release blockers.
+16. Commit and push scoped changes, or record why commit/push is blocked.
+17. Produce run record, promotion status, and next-owner handoff.
 
 ## Creation Scope Decision
 
@@ -206,6 +210,45 @@ Compare these fields across A2A, Codex, and Hermes surfaces:
 
 If they disagree, the package is still draft and must not update target project
 status.
+
+## Agent Tester Post-Creation Review
+
+After creating or materially updating a specialist package, Crew Builder must
+ask `agent-tester` to review the new agent before marking it created,
+promotion-ready, or target-project complete.
+
+Send Agent Tester:
+
+- tested agent id and creation scope;
+- changed harness, Agent Card, wrapper, pack, rubric, eval, run-record,
+  release/rollback, and knowledge-base paths;
+- validation results;
+- capability inventory;
+- reuse/duplicate analysis;
+- ownership extraction summary;
+- target demand plan and acceptance criteria refs;
+- known blockers, dirty-worktree context, and omitted runtime surfaces.
+
+Expected Agent Tester output:
+
+- `specialistReport`;
+- `reviewFinding` entries;
+- prioritized `improvementBacklog`;
+- critical `handoffPacket` entries to `agent-fixer` when needed;
+- knowledge-base lesson updates or proposals;
+- residual risk and promotion recommendation.
+
+Crew Builder must:
+
+- block target-project status updates when Agent Tester reports a critical
+  finding;
+- include Agent Tester findings/backlog in the run record;
+- route critical repair requests to `agent-fixer` when available, or record
+  `blocked-planned-specialist`;
+- not hide or silently fix Agent Tester findings unless explicitly reassigned;
+- treat missing Agent Tester review as a release blocker unless the tester is
+  unavailable, in which case record a blocker and keep the package below
+  promotion-ready.
 
 ## Validation Pack
 

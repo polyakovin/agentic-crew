@@ -1,0 +1,129 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "agent-tester",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "testedAgent": {
+    "id": "",
+    "name": "",
+    "version": "",
+    "runtimeSurfaces": [],
+    "promotionTarget": "draft|draft-ready|pilot|production|unknown",
+    "sourceRefs": [],
+    "wrappersInScope": []
+  },
+  "routing": {
+    "orchestratorDecision": "",
+    "delegationMode": "live-agent|local-skill|a2a-runtime|fallback",
+    "delegatedAgentId": "",
+    "packRefs": []
+  },
+  "methodologyRefresh": {
+    "required": false,
+    "reason": "",
+    "sources": [
+      {
+        "url": "",
+        "accessedAt": "",
+        "sourceType": "official|primary|research|secondary",
+        "claimSupported": "",
+        "taintedInstructionsDetected": false
+      }
+    ],
+    "methodImplications": []
+  },
+  "testCharter": {
+    "purpose": "",
+    "scope": [],
+    "nonGoals": [],
+    "sourceOfTruthRefs": [],
+    "riskHypotheses": [],
+    "scenarioFamilies": [],
+    "requiredEvidence": [],
+    "stopCriteria": []
+  },
+  "checksRun": {
+    "staticHarnessReview": [],
+    "deterministicValidation": [],
+    "scenarioTesting": [],
+    "exploratoryTesting": [],
+    "adversarialTesting": [],
+    "traceReview": [],
+    "replayRegression": []
+  },
+  "findings": [
+    {
+      "profile": "agentic-crew/a2a-profile/v0.1",
+      "kind": "reviewFinding",
+      "taskId": "",
+      "specialistId": "agent-tester",
+      "severity": "critical|high|medium|low|note",
+      "title": "",
+      "location": "",
+      "evidence": [],
+      "impact": "",
+      "recommendation": "",
+      "confidence": "high|medium|low",
+      "rootCause": "",
+      "owner": "",
+      "regressionCandidate": false
+    }
+  ],
+  "improvementBacklog": [
+    {
+      "id": "",
+      "severity": "critical|high|medium|low|note",
+      "title": "",
+      "targetAgentId": "",
+      "evidence": [],
+      "impact": "",
+      "recommendation": "",
+      "owner": "",
+      "fixType": "prompt|role|harness|wrapper|routing|tool-policy|eval|kb|runtime|protocol",
+      "blocking": false,
+      "confidence": "high|medium|low",
+      "regressionCandidate": false
+    }
+  ],
+  "criticalFixRequests": [
+    {
+      "profile": "agentic-crew/a2a-profile/v0.1",
+      "kind": "handoffPacket",
+      "taskId": "",
+      "specialistId": "agent-tester",
+      "currentState": "",
+      "filesTouched": [],
+      "openQuestions": [],
+      "nextSpecialist": "agent-fixer",
+      "handoffStatus": "ready|blocked-planned-specialist",
+      "recommendedNextSteps": [],
+      "verificationNeeded": []
+    }
+  ],
+  "knowledgeBaseUpdates": [
+    {
+      "path": "",
+      "action": "created|updated|proposed|deferred|rejected",
+      "lessonSummary": "",
+      "sourceRunId": "",
+      "rootCause": "",
+      "evidenceRefs": [],
+      "regressionCandidate": "",
+      "reviewNeeded": false
+    }
+  ],
+  "residualRisk": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "status": "none|ready|blocked"
+  }
+}

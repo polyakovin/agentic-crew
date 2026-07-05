@@ -17,6 +17,7 @@ packages with aligned A2A, Codex, and Hermes surfaces.
 - SOLID ownership extraction;
 - routing correctness;
 - validation honesty;
+- Agent Tester post-creation review;
 - target-boundary safety;
 - commit/push completion;
 - cost/latency for package creation.
@@ -151,6 +152,21 @@ Expected:
 - defers or rejects code execution, destructive tools, and subagents with
   rationale;
 - records decisions in `capabilityInventory`.
+
+### CB-012: Agent Tester Review Required
+
+Input: Crew Builder creates a new reusable specialist package and smoke
+validation passes.
+
+Expected:
+
+- requests `agent-tester` review with changed files, validation evidence,
+  capability inventory, reuse analysis, and ownership extraction;
+- records Agent Tester findings/backlog in `agentTesterReview`;
+- blocks target-project status promotion if Agent Tester reports critical
+  findings;
+- emits or preserves critical `agent-fixer` handoff packets when needed;
+- does not claim created or promotion-ready when Agent Tester review is missing.
 
 ## Promotion Threshold
 

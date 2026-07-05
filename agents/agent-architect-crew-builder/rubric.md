@@ -11,6 +11,8 @@ Use this rubric before handing off a created or reviewed agent.
   used or rejected with rationale.
 - Every harness capability category from `ai-db` is reviewed and marked `use`,
   `defer`, or `reject` with rationale.
+- Agent Tester review was requested after creation/update and its findings,
+  backlog, or critical repair handoffs are recorded.
 - Required A2A, Codex, and Hermes surfaces are present when required.
 - Specialist-only agent data and tooling were moved into the owning package or
   explicitly recorded as intentionally shared.
@@ -29,6 +31,8 @@ Use this rubric before handing off a created or reviewed agent.
 - Scope and reuse analysis are recorded.
 - Capability inventory is recorded, with deferred/rejected capabilities tied to
   risk or maintenance rationale.
+- Agent Tester review is recorded or a concrete tester-unavailable blocker is
+  present.
 - Some eval seeds are lightweight, but cover duplicate roles and missing
   wrappers.
 
@@ -38,6 +42,7 @@ Use this rubric before handing off a created or reviewed agent.
 - Scope is assumed from habit instead of recorded.
 - A new harness is created despite an obvious reusable base.
 - Capability inventory is skipped or reduced to "use everything".
+- Agent Tester review is skipped after creating/updating a specialist.
 - `What To Read` is too broad.
 - Codex or Hermes wrappers are missing when required.
 - Quality gates are subjective or not testable.
@@ -56,6 +61,8 @@ Use this rubric before handing off a created or reviewed agent.
 - Claims validation passed without running machine-readable checks.
 - Commits or pushes unrelated dirty worktree changes.
 - Reports complete while push is blocked without recording the blocker.
+- Reports a created or promotion-ready specialist while Agent Tester critical
+  findings remain open.
 
 ## Challenge Checklist
 
@@ -65,6 +72,7 @@ Use this rubric before handing off a created or reviewed agent.
 - What existing harness can be reused or adapted?
 - Which runtime surfaces are mandatory?
 - Which harness capabilities from `ai-db` are useful, deferred, or rejected?
+- What did Agent Tester find, and which backlog items block promotion?
 - Which agent-facing artifacts should move into the specialist package?
 - Which artifacts are intentionally shared interfaces?
 - What is the smallest `What To Read` list?

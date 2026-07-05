@@ -40,6 +40,11 @@ agent", "spawn a subagent", "воспользуйся агентом", "запу
   tools and prefer the runtime's spawn/delegate tool, such as
   `multi_agent_v1.spawn_agent`, when the user has explicitly authorized
   delegation.
+- If the requested specialist exists only as a skill, harness folder, or role
+  package and the runtime does not expose an exact matching agent type, that is
+  not enough to fall back to local-only execution. Spawn the smallest suitable
+  generic worker/default agent and pass the specialist skill path, harness path,
+  role card, and task brief as operating context.
 - Pass the relevant skill path, harness path, role card, or task brief to the
   spawned agent when the runtime supports structured inputs.
 - Report the spawned agent id/name and its result or status in the final answer.

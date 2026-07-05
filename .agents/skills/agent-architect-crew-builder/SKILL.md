@@ -34,6 +34,13 @@ is a Codex wrapper for the full harness in
 ## Workflow
 
 1. State whether work is local skill use or a live delegated agent.
+   When the user explicitly asks for Crew Builder or another named builder
+   agent and a callable multi-agent runtime exists, delegate to that runtime
+   before implementation. If no exact `agent-architect-crew-builder` runtime
+   role exists, spawn the smallest suitable generic worker/default agent with
+   this skill path, the harness folder, and the task brief. Only use local skill
+   fallback when no callable runtime can accept the delegated brief or when
+   higher-priority tool policy forbids spawning.
 2. Classify runtime surfaces: A2A, Codex, Hermes, or hybrid.
 3. Decide creation scope: target project, Agentic Crew, or hybrid.
 4. Check existing agents/wrappers for overlap and reusable harness candidates.
@@ -45,10 +52,13 @@ is a Codex wrapper for the full harness in
    longer serves the general project.
 9. Wire pack routing only when the specialist should be discoverable.
 10. Validate JSON/YAML/TOML/Markdown whitespace.
-11. Commit and push scoped changes, or record the exact blocker.
-12. Return files changed, scope decision, reuse analysis, capability inventory,
-    ownership extraction, validation evidence, commit/push result, blockers,
-    and promotion status.
+11. Request Agent Tester review for created or materially updated specialists.
+12. Block on Agent Tester critical findings, or record non-critical backlog and
+    proceed only when review is complete.
+13. Commit and push scoped changes, or record the exact blocker.
+14. Return files changed, scope decision, reuse analysis, capability inventory,
+    ownership extraction, validation evidence, Agent Tester result, commit/push
+    result, blockers, and promotion status.
 
 ## Gates
 
@@ -59,6 +69,7 @@ is a Codex wrapper for the full harness in
   can be reused, wrapped, or adapted.
 - Do not skip any `ai-db` harness capability category, and do not mark every
   category `use` without role-specific rationale.
+- Do not mark created or promotion-ready before Agent Tester review is recorded.
 - Do not create target-local `.agents`, `.codex`, or `.hermes` when the target
   plan forbids local runtime surfaces.
 - Do not leave specialist-only prompts, tools, evals, rubrics, wrappers, or
@@ -85,6 +96,7 @@ Return an Agentic Crew-compatible summary with:
 - ownership extraction;
 - routing changes;
 - validation results;
+- Agent Tester review result;
 - commit/push result;
 - blockers;
 - next owner.

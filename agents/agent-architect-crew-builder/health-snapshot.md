@@ -11,6 +11,7 @@ Version: 0.1.0.
 - Hermes skill and agent package.
 - Run-record template.
 - Harness capability inventory policy sourced from `ai-db`.
+- Agent Tester post-creation review gate.
 - SOLID ownership extraction policy.
 - Rubric and eval plan.
 - Release/rollback checklist.

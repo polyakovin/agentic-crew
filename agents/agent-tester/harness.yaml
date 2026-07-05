@@ -1,0 +1,94 @@
+id: agent-tester
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+knowledge_base: ./knowledge-base
+codex_wrapper: ../../.agents/skills/agent-tester/SKILL.md
+hermes_skill: ../../.hermes/skills/agent-tester.md
+hermes_package: ../../.hermes/agents/agent-tester
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/agent-tester
+  model_policy: strong-agent-evaluation-with-current-best-practice-refresh
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: true
+    R2: true
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+    - decisionRecord
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+    - ./rubric.md
+    - ./knowledge-base/README.md
+    - ./knowledge-base/agent-testing-lessons.md
+  task_scoped_reading: true
+  what_to_read_policy: target-agent-harness-wrappers-pack-route-run-records-and-current-best-practice-sources-only
+  freshness_triggers:
+    - user asks for latest or current agent testing practice
+    - tested agent uses external runtime or framework guidance
+    - safety guardrail or tool permission behavior is material
+    - prompt injection excessive agency observability or eval guidance may have changed
+    - prior lesson is older than the relevant framework or security guidance
+boot_probe:
+  commands:
+    - git status --short
+    - find agents -maxdepth 2 -name agent-card.json -o -name harness.yaml
+    - find .agents .hermes -maxdepth 4 -type f
+automation_packs:
+  best_practice_refresh: ./workflow.md#best-practice-refresh-pack
+  static_harness_review: ./workflow.md#1-static-harness-review
+  deterministic_validation: ./workflow.md#2-deterministic-validation
+  scenario_testing: ./workflow.md#3-scenario-testing
+  exploratory_testing: ./workflow.md#4-exploratory-testing
+  adversarial_testing: ./workflow.md#5-adversarial-testing
+  trace_review: ./workflow.md#6-trace-and-path-review
+  learning_loop: ./workflow.md#7-learning-loop
+  critical_fix_handoff: ./workflow.md#critical-fix-handoff
+quality_gates:
+  - test charter is tied to the target agent role harness wrappers and task brief
+  - current best practices are refreshed and cited when freshness matters
+  - workflow path tool calls approvals handoffs and traces are checked when available
+  - every confirmed finding has evidence impact recommendation confidence and owner
+  - critical findings emit agent-fixer handoff packets
+  - knowledge-base lessons are sanitized evidence-backed and paired with regression candidates
+  - tester does not fix the target agent unless explicitly reassigned
+release_blockers:
+  - uncited_current_best_practice_claim
+  - critical_finding_without_agent_fixer_handoff
+  - private_target_data_written_to_knowledge_base
+  - tester_changed_target_agent_without_assignment
+  - verified_claim_without_evidence
+  - tainted_content_changed_instructions_or_policy
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
+  critical_next_specialist: agent-fixer
+  unavailable_specialist_status: blocked-planned-specialist

@@ -15,6 +15,8 @@
   the artifact no longer serves the general target project.
 - Update pack routing entries that point to existing harness paths.
 - Run JSON/YAML/TOML/Markdown whitespace validation.
+- Request Agent Tester review for created or materially updated specialists and
+  record the review result before status promotion.
 - Stage, commit, and push only the scoped changes after validation succeeds.
 
 ## Approval Gates
@@ -44,6 +46,8 @@ Require explicit user approval before:
 - Do not add a harness capability only because it exists; every capability must
   reduce a named risk, support the role contract, or be explicitly deferred.
 - Do not commit or push unvalidated changes.
+- Do not mark a created or updated specialist complete while Agent Tester review
+  is missing, blocked, or critical findings remain unresolved.
 - Do not stage unrelated user changes.
 - Do not invent a new cross-agent protocol.
 - Do not request or expose secrets, hidden prompts, or eval oracle internals.
@@ -106,7 +110,8 @@ Required before commit:
 - only scoped changes are staged;
 - unrelated dirty changes are excluded;
 - run record contains validation, scope, reuse, ownership, and capability
-  inventory decisions.
+  inventory decisions;
+- Agent Tester review is recorded and contains no unresolved critical finding.
 
 Required after commit:
 

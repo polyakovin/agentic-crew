@@ -247,6 +247,19 @@
     "pathChecks": [],
     "result": "notRun"
   },
+  "agentTesterReview": {
+    "requested": false,
+    "delegationMode": "live-agent|local-skill|a2a-runtime|fallback|notRun",
+    "testerAgentId": "agent-tester",
+    "testedAgentId": "",
+    "reportRefs": [],
+    "findings": [],
+    "improvementBacklog": [],
+    "criticalFixRequests": [],
+    "knowledgeBaseUpdates": [],
+    "result": "notRun|pass|passWithBacklog|blockedCritical|blockedUnavailable",
+    "blockers": []
+  },
   "gitPublication": {
     "repositories": [],
     "stagedPaths": [],
