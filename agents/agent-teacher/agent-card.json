@@ -1,0 +1,93 @@
+{
+  "name": "Agent Teacher",
+  "description": "Enriches target agents from prior usage history, recurring failures, missing domain corner cases, and authoritative best practices by preparing durable learning materials and handoffs.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/agent-teacher",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/agent-teacher/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/agent-teacher/entrypoint.md",
+    "sourceMap": "agents/agent-teacher/source-map.md",
+    "workflow": "agents/agent-teacher/workflow.md",
+    "toolPolicy": "agents/agent-teacher/tool-policy.md",
+    "rubric": "agents/agent-teacher/rubric.md",
+    "evalPlan": "agents/agent-teacher/eval-plan.md",
+    "runRecordTemplate": "agents/agent-teacher/run-record.template.json",
+    "codexSkill": ".agents/skills/agent-teacher/SKILL.md",
+    "hermesSkill": ".hermes/skills/agent-teacher.md",
+    "hermesPackage": ".hermes/agents/agent-teacher"
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "agent-learning-enrichment",
+      "name": "Agent Learning Enrichment",
+      "description": "Analyzes a target agent's prior usage history and prepares durable learning materials: skills, corner-case packs, eval seeds, knowledge-base lessons, runbook notes, task-brief additions, and owner handoffs.",
+      "tags": [
+        "agent-teaching",
+        "learning-enrichment",
+        "agent-history",
+        "corner-cases",
+        "knowledge-base"
+      ],
+      "examples": [
+        "Teach this agent from its last month of run records and review findings.",
+        "Prepare corner-case and eval-seed material from recurring failures in this specialist's git history and sessions."
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
+    },
+    {
+      "id": "agent-domain-corner-case-pack",
+      "name": "Agent Domain Corner-Case Pack",
+      "description": "Collects authoritative target-domain practice and prior failures into a reusable corner-case pack with source labels, freshness notes, and target-agent task-brief guidance.",
+      "tags": [
+        "corner-cases",
+        "domain-practice",
+        "eval-seeds",
+        "runbook",
+        "handoff"
+      ],
+      "examples": [
+        "Build a domain corner-case pack for this database migration specialist.",
+        "Convert these official SDK pitfalls and prior misses into future task-brief additions."
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
+    }
+  ]
+}

@@ -41,6 +41,10 @@ agents:
     path: ../agents/agent-tester
     harness: ../agents/agent-tester/harness.yaml
     required: false
+  - id: agent-teacher
+    path: ../agents/agent-teacher
+    harness: ../agents/agent-teacher/harness.yaml
+    required: false
   - id: agent-tuner
     path: ../agents/agent-tuner
     harness: ../agents/agent-tuner/harness.yaml
@@ -66,6 +70,10 @@ routing:
   agent-red-team: agent-tester
   agent-exploratory-testing: agent-tester
   agent-knowledge-base-learning: agent-tester
+  agent-teaching: agent-teacher
+  agent-learning-enrichment: agent-teacher
+  agent-history-learning: agent-teacher
+  agent-corner-case-enrichment: agent-teacher
   agent-tuning: agent-tuner
   agent-refinement: agent-tuner
   agent-overlap-reduction: agent-tuner

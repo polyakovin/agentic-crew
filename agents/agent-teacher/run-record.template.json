@@ -1,0 +1,137 @@
+{
+  "profile": "agentic-crew/a2a-profile/v0.1",
+  "kind": "agentTeacherRunRecord",
+  "schemaVersion": "0.1.0",
+  "taskId": "",
+  "specialistId": "agent-teacher",
+  "status": "draft-ready|pilot|production|blocked",
+  "executionMode": "",
+  "startedAt": "",
+  "completedAt": "",
+  "operator": "",
+  "target": {
+    "taughtAgentId": "",
+    "runtimeSurfaces": [],
+    "learningObjective": "",
+    "riskTier": "",
+    "promotionTarget": ""
+  },
+  "writeBoundary": {
+    "authorizedWritePaths": [],
+    "forbiddenPaths": [],
+    "todoBacklogPath": "",
+    "directLearningMaterialWritesAllowed": false,
+    "preRunGitStatus": "",
+    "postRunGitStatus": "",
+    "changedFiles": []
+  },
+  "contextIntake": {
+    "highestPhaseReached": "",
+    "alwaysRead": [],
+    "targetContractRead": [],
+    "historySourcesRead": [],
+    "domainSourcesRead": [],
+    "excludedContext": [],
+    "broadReadsRejected": []
+  },
+  "historyEvidenceMap": [
+    {
+      "id": "",
+      "pathOrUrl": "",
+      "dateOrVersion": "",
+      "sourceType": "",
+      "trustLabel": "",
+      "evidenceStrength": "",
+      "targetSurface": "",
+      "observedFailureOrLesson": "",
+      "privacyClassification": "",
+      "redactionStatus": ""
+    }
+  ],
+  "failureTaxonomy": [
+    {
+      "label": "",
+      "summary": "",
+      "evidenceIds": [],
+      "frequency": "",
+      "severity": "",
+      "confidence": "",
+      "riskIfOmitted": ""
+    }
+  ],
+  "domainBestPracticeSources": [
+    {
+      "urlOrPath": "",
+      "accessDate": "",
+      "sourceType": "",
+      "supportedClaim": "",
+      "trustBoundary": "",
+      "freshnessTrigger": "",
+      "untrustedInstructionsIgnored": true
+    }
+  ],
+  "learningMaterials": [
+    {
+      "id": "",
+      "type": "",
+      "targetPath": "",
+      "status": "proposed",
+      "summary": "",
+      "evidenceIds": [],
+      "expectedFutureBehavior": "",
+      "verificationNeeded": "",
+      "owner": "",
+      "reviewRequired": true,
+      "redactionNote": ""
+    }
+  ],
+  "evalSeeds": [
+    {
+      "id": "",
+      "sourceFailureId": "",
+      "goal": "",
+      "expectedOutcome": "",
+      "mustInclude": [],
+      "mustNotInclude": [],
+      "metrics": [],
+      "owner": ""
+    }
+  ],
+  "redactionRecord": {
+    "redactedFields": [],
+    "summarizedArtifacts": [],
+    "blockedArtifacts": [],
+    "notes": ""
+  },
+  "validationResults": {
+    "json": [],
+    "yaml": [],
+    "toml": [],
+    "markdownWhitespace": "",
+    "other": []
+  },
+  "handoffPackets": [
+    {
+      "profile": "agentic-crew/a2a-profile/v0.1",
+      "kind": "handoffPacket",
+      "taskId": "",
+      "specialistId": "agent-teacher",
+      "currentState": "",
+      "filesTouched": [],
+      "openQuestions": [],
+      "nextSpecialist": "",
+      "recommendedNextSteps": [],
+      "verificationNeeded": []
+    }
+  ],
+  "agentTesterReview": {
+    "status": "not-requested|passed|passed-with-backlog|critical-findings|blocked",
+    "reviewer": "",
+    "summary": "",
+    "findings": [],
+    "blockers": []
+  },
+  "risks": [],
+  "blockers": [],
+  "promotionStatus": "draft-ready|pilot|production|blocked"
+}
