@@ -94,6 +94,10 @@ agents:
     path: ../agents/release-storefront-packaging-specialist
     harness: ../agents/release-storefront-packaging-specialist/harness.yaml
     required: false
+  - id: screenshot-simulator-regression-qa-reviewer
+    path: ../agents/screenshot-simulator-regression-qa-reviewer
+    harness: ../agents/screenshot-simulator-regression-qa-reviewer/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -204,3 +208,12 @@ routing:
   launcher-assets: release-storefront-packaging-specialist
   prototype-removal: release-storefront-packaging-specialist
   release-blockers: release-storefront-packaging-specialist
+  screenshot-sweep: screenshot-simulator-regression-qa-reviewer
+  contact-sheet-review: screenshot-simulator-regression-qa-reviewer
+  visual-regression: screenshot-simulator-regression-qa-reviewer
+  overlap-check: screenshot-simulator-regression-qa-reviewer
+  safe-area-review: screenshot-simulator-regression-qa-reviewer
+  screenshot-qa: screenshot-simulator-regression-qa-reviewer
+  adventure-flow-visual: screenshot-simulator-regression-qa-reviewer
+  crash-triage: screenshot-simulator-regression-qa-reviewer
+  visual-smoke-evidence: screenshot-simulator-regression-qa-reviewer

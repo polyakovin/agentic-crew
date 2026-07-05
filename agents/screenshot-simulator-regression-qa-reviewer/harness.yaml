@@ -1,0 +1,95 @@
+id: screenshot-simulator-regression-qa-reviewer
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/screenshot-simulator-regression-qa-reviewer
+  model_policy: visual-regression-simulator-qa-playdate-screenshot-audit
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: project-agents-readme-test-scenarios-visual-reference-pack-visual-references-screenshots-and-simulator-sources
+  freshness_triggers:
+    - source/*.lua changed (potential visual impact)
+    - docs/ui.md or docs/renderer.md updated
+    - source/images/ assets added or modified
+    - build/screenshots/ or build/adventure_screenshots/ stale
+    - make build produced new Locksmith.pdx
+    - TODO.md lists screenshot-related items
+    - user requests screenshot sweep or visual regression check
+    - simulator crash reported after code change
+    - git log shows UI/rendering/layout changes
+boot_probe:
+  commands:
+    - git status --short
+    - ls build/screenshots/ build/screenshots_review/ build/adventure_screenshots/ 2>&1
+    - ls build/screenshot_src/main.lua build/adventure_screenshot_src/main.lua 2>&1
+    - cd /root/locksmith && make build 2>&1 | tail -10 || true
+  known_failure_carveout: "Screenshot QA depends on simulator availability. Boot probe runs make build to confirm PDX buildability; missing build artifacts or simulator do not block visual review — the specialist documents the gap and continues with available evidence. Screenshot harness scripts may not exist yet; their absence is a finding, not a crash."
+automation_packs:
+  screenshot_sweep: ./workflow.md#screenshot-sweep
+  contact_sheet_review: ./workflow.md#contact-sheet-review
+  visual_regression: ./workflow.md#visual-regression-check
+  overlap_safe_area: ./workflow.md#overlap-safe-area-check
+  crash_triage: ./workflow.md#crash-triage
+  adventure_flow_review: ./workflow.md#adventure-flow-review
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - QA starts from current specs and known canonical states, not stale screenshots
+  - contact sheets reviewed for text overlap, safe areas, control hints, state goals, and gameplay-object occlusion
+  - visual regression comparison cites specific screenshots and affected spec/source owners
+  - overlap/safe-area checks cover all 20 canonical states (TC-076d)
+  - Adventure flow screenshots cover full story → gameplay → win cadence
+  - simulator post-write crashes classified by checking whether expected PNGs exist
+  - findings cite exact screenshot names and the affected spec/source owner
+  - game consistently referred to as Locksmith (hero Silas Crane, not Safe Cracker)
+  - findings do not duplicate other specialists (layout → pixel-ui-renderer, copy → narrative, mechanics → gameplay-design)
+  - no analysis of images unless user explicitly requests vision review
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - critical_overlap_blocking_gameplay_readability
+  - safe_area_violation_obscuring_primary_game_object
+  - simulator_crash_preventing_screenshot_capture_without_classification
+  - regression_finding_ignored_or_unreported
+  - screenshot_baseline_missing_or_falsified
+  - claim_readiness_without_visual_evidence
+  - change_game_logic_or_design
+  - write_runtime_code
+  - generate_or_modify_screenshots_instead_of_reviewing
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

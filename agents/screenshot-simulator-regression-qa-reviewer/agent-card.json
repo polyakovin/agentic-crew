@@ -1,0 +1,73 @@
+{
+  "name": "Screenshot / Simulator Regression QA Reviewer",
+  "description": "Locksmith-specific QA reviewer for actual captured screens. Owns simulator screenshot sweeps, contact-sheet review, overlap/safe-area regression checks, visual before/after comparisons, Adventure flow screenshots, visual smoke evidence, and simulator crash triage for the Playdate game Locksmith.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/screenshot-simulator-regression-qa-reviewer",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/screenshot-simulator-regression-qa-reviewer/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/screenshot-simulator-regression-qa-reviewer/entrypoint.md",
+    "sourceMap": "agents/screenshot-simulator-regression-qa-reviewer/source-map.md",
+    "workflow": "agents/screenshot-simulator-regression-qa-reviewer/workflow.md",
+    "toolPolicy": "agents/screenshot-simulator-regression-qa-reviewer/tool-policy.md",
+    "rubric": "agents/screenshot-simulator-regression-qa-reviewer/rubric.md",
+    "evalPlan": "agents/screenshot-simulator-regression-qa-reviewer/eval-plan.md",
+    "runRecordTemplate": "agents/screenshot-simulator-regression-qa-reviewer/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "screenshot-sweep",
+      "name": "Screenshot Sweep & Contact Sheet Review",
+      "description": "Captures or reviews simulator screenshots across all canonical game states (title, menus, Adventure phases, Speedrun, Endless tabs), assembles contact sheets, and checks for visual regressions, overlap, safe-area violations, HUD occlusion, and control-hint clipping.",
+      "tags": ["screenshot", "simulator", "contact-sheet", "regression", "visual-qa", "safe-area"],
+      "examples": [
+        "Run a full screenshot sweep across all 20 canonical Locksmith states and check for visual regressions.",
+        "Review the Adventure flow contact sheet: check story screens, gameplay scenes, and win screens for overlap.",
+        "Compare before/after screenshots: did the Endless market UI change introduce any safe-area violations?"
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "visual-regression",
+      "name": "Visual Regression & Before/After Comparison",
+      "description": "Compares current screenshots against baseline captures to identify visual regressions: layout shifts, text overlap, new occlusion, missing elements, dithering artifacts, and contrast readability changes on the 400×240 1-bit Playdate display.",
+      "tags": ["visual-regression", "diff", "overlap", "occlusion", "dithering", "contrast"],
+      "examples": [
+        "Compare current build screenshots against last known good baseline: what changed?",
+        "Check if the new Endless achievement tab introduced any text overlap with bottom controls."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "crash-triage",
+      "name": "Simulator Crash Triage",
+      "description": "Diagnoses simulator crashes after code changes: checks whether expected PNG screenshots exist, inspects screenshot harness output for crash markers, classifies crash as harness bug, game bug, or environment issue, and assigns ownership.",
+      "tags": ["crash", "simulator", "triage", "diagnostics", "png-check"],
+      "examples": [
+        "The simulator crashed during screenshot sweep. Check which screenshots were captured and where it stopped.",
+        "Post-write simulator crash: is it a harness bug or a game bug? Classify and assign."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

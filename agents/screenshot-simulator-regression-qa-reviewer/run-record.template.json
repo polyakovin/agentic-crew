@@ -1,0 +1,134 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "screenshot-simulator-regression-qa-reviewer",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R3",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "locksmith",
+    "repoPath": "/root/locksmith",
+    "buildVersion": "",
+    "triggerType": "sweep|regression|adventure-audit|crash-triage|overlap-check"
+  },
+  "screenshotInventory": {
+    "sweepAttempted": false,
+    "harnessAvailable": false,
+    "harnessPath": "build/screenshot_src/main.lua",
+    "adventureHarnessPath": "build/adventure_screenshot_src/main.lua",
+    "pdxBuildable": false,
+    "canonicalStates": {
+      "total": 20,
+      "captured": 0,
+      "missing": 20,
+      "details": {
+        "title_before_adventure": { "captured": false, "path": "", "notes": "" },
+        "title_after_adventure": { "captured": false, "path": "", "notes": "" },
+        "settings": { "captured": false, "path": "", "notes": "" },
+        "settings_reset_confirm": { "captured": false, "path": "", "notes": "" },
+        "settings_dev_mode_on": { "captured": false, "path": "", "notes": "" },
+        "adventure_arrival_art_only": { "captured": false, "path": "", "notes": "" },
+        "adventure_arrival_text": { "captured": false, "path": "", "notes": "" },
+        "adventure_intro": { "captured": false, "path": "", "notes": "" },
+        "adventure_hero": { "captured": false, "path": "", "notes": "" },
+        "adventure_curtain_lock": { "captured": false, "path": "", "notes": "" },
+        "adventure_phase1_curtain": { "captured": false, "path": "", "notes": "" },
+        "adventure_curtain_cleared": { "captured": false, "path": "", "notes": "" },
+        "adventure_safe_dial": { "captured": false, "path": "", "notes": "" },
+        "adventure_clock": { "captured": false, "path": "", "notes": "" },
+        "adventure_win": { "captured": false, "path": "", "notes": "" },
+        "speedrun_gameplay": { "captured": false, "path": "", "notes": "" },
+        "speedrun_gameover": { "captured": false, "path": "", "notes": "" },
+        "endless_flea_market": { "captured": false, "path": "", "notes": "" },
+        "endless_inventory": { "captured": false, "path": "", "notes": "" },
+        "endless_picking": { "captured": false, "path": "", "notes": "" }
+      }
+    },
+    "contactSheets": {
+      "allStates": { "present": false, "path": "build/screenshots/00_all_states_contact_sheet.png" },
+      "designReview": { "present": false, "path": "build/screenshots_review/00_design_review_contact_sheet.png" },
+      "adventure": { "present": false, "path": "build/adventure_screenshots/00_adventure_contact_sheet.png" }
+    }
+  },
+  "contactSheetReview": {
+    "performed": false,
+    "textOverlapFindings": [],
+    "safeAreaViolations": [],
+    "controlHintIssues": [],
+    "gameplayOcclusionFindings": [],
+    "summary": ""
+  },
+  "visualRegression": {
+    "performed": false,
+    "baselineAvailable": false,
+    "baselineRef": "",
+    "currentRef": "",
+    "statesCompared": [],
+    "regressions": [],
+    "summary": ""
+  },
+  "adventureFlowAudit": {
+    "performed": false,
+    "statesChecked": [],
+    "findings": [],
+    "infoCurtainPresent": false,
+    "summary": ""
+  },
+  "crashTriage": {
+    "crashDetected": false,
+    "lastSuccessfulCapture": "",
+    "crashPoint": "",
+    "classification": "notApplicable",
+    "classificationEvidence": "",
+    "recommendedOwner": "",
+    "harnessOutputExcerpt": ""
+  },
+  "findings": [],
+  "handoffs": {
+    "pixelUiRendererSpecialist": { "requested": false, "items": [] },
+    "narrativeNoirCopySpecialist": { "requested": false, "items": [] },
+    "gameplayDesignSpecialist": { "requested": false, "items": [] },
+    "toolchainGatekeeper": { "requested": false, "items": [] }
+  },
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "visionModelUsed": false,
+  "visionModelUserRequested": false,
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "qaVerdict": "notRun",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}
