@@ -1,0 +1,117 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "performance-bundle-budget-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "Locksmith",
+    "projectPath": "/root/locksmith",
+    "specRefs": [],
+    "codeRefs": []
+  },
+  "performanceAnalysis": {
+    "scope": "",
+    "hotPathInventory": [],
+    "findings": []
+  },
+  "allocationAudit": {
+    "filesAudited": [],
+    "gfx_image_new_in_draw": 0,
+    "table_creation_in_draw": 0,
+    "cos_sin_per_frame": 0,
+    "pcall_in_draw": 0,
+    "violations": []
+  },
+  "cacheStrategyReview": {
+    "poolRebuildTriggers": [],
+    "dirtyFlagCoverage": "notChecked",
+    "perFrameRebuildsFound": false,
+    "findings": []
+  },
+  "pdxBudget": {
+    "totalSize": "",
+    "imageSize": "",
+    "audioSize": "",
+    "codeSize": "",
+    "notes": ""
+  },
+  "assetSizeAudit": {
+    "topImages": [],
+    "audioTracks": [],
+    "budgetViolations": []
+  },
+  "audioCompressionStatus": {
+    "backgroundTracks": {
+      "noir": {"format": "", "size": "", "withinBudget": false},
+      "bazaar": {"format": "", "size": "", "withinBudget": false},
+      "rainRoom": {"format": "", "size": "", "withinBudget": false},
+      "trainyard": {"format": "", "size": "", "withinBudget": false}
+    },
+    "playlistTotal": "",
+    "playlistWithinBudget": false,
+    "sfxFormatCheck": ""
+  },
+  "recommendations": [],
+  "verificationCommands": [],
+  "residualRisks": [],
+  "boundaryAudit": {
+    "endless_data_lua_declarative": true,
+    "music_data_lua_declarative": true,
+    "safe_lua_no_gfx": true,
+    "renderer_gfx_image_new_cached": true,
+    "violations": []
+  },
+  "buildEvidence": {
+    "pdxSize": "notMeasured",
+    "imagesSize": "notMeasured",
+    "soundsSize": "notMeasured",
+    "audioTrackSizes": []
+  },
+  "risksAndAlternatives": {
+    "risks": [],
+    "alternatives": []
+  },
+  "codeMutated": false,
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

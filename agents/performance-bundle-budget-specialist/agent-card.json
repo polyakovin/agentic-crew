@@ -1,0 +1,75 @@
+{
+  "name": "Performance Bundle Budget Specialist",
+  "description": "Owns draw/update allocation risk, market pool caching, generated asset size, audio compression budget, PDX growth monitoring, and Playdate performance comfort for the Locksmith Playdate game. Senior game engineer specializing in embedded/console performance — finds hot paths with file:line evidence, concrete cost measurements, and verifiable recommendations. Does not mutate game code unless explicitly requested.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/performance-bundle-budget-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/performance-bundle-budget-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/performance-bundle-budget-specialist/entrypoint.md",
+    "sourceMap": "agents/performance-bundle-budget-specialist/source-map.md",
+    "workflow": "agents/performance-bundle-budget-specialist/workflow.md",
+    "toolPolicy": "agents/performance-bundle-budget-specialist/tool-policy.md",
+    "rubric": "agents/performance-bundle-budget-specialist/rubric.md",
+    "evalPlan": "agents/performance-bundle-budget-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/performance-bundle-budget-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "allocation-hot-path-analysis",
+      "name": "Allocation Hot Path Analysis",
+      "description": "Audits draw/update paths for per-frame table creation, gfx.image.new in update/draw, cos/sin calls in hot paths, unbounded loops. Produces findings with file:line references, measured cost (table alloc count, trig calls per frame), and verifiable recommendations.",
+      "tags": ["allocation-risk", "draw-perf", "renderer", "locksmith", "playdate"],
+      "examples": [
+        "Audit renderer.lua drawLock for per-frame allocation patterns — table creation, gfx.image.new, cos/sin hot paths.",
+        "Check endless_mode.lua market update for per-frame pool rebuilds without dirty flags.",
+        "Analyze safe.lua lever/lift physics for allocation in update path."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "pdx-size-budget-monitoring",
+      "name": "PDX Size Budget Monitoring",
+      "description": "Monitors compiled Locksmith.pdx size over time. Tracks asset contributions (images, sounds) to total PDX size. Flags unexplained growth. Recommends binary asset optimization (compression format, pixel format, reduced dimensions).",
+      "tags": ["pdx-growth", "bundle-budget", "asset-size", "locksmith", "playdate"],
+      "examples": [
+        "Check current PDX size against documented budget — flag any growth since last audit.",
+        "Analyze source/images/ PNG sizes — which assets dominate PDX footprint?",
+        "Audit audio compression: are all 4 background tracks within ~120KB/track ADPCM budget?"
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "cache-strategy-review",
+      "name": "Cache Strategy Review",
+      "description": "Reviews market pool caching, dirty-flag-driven rebuilds, geometry memoization, and pre-computed tables for draw paths. Verifies that candidate pools rebuild only on rank/tier/money/market dirty triggers, not per frame.",
+      "tags": ["cache-strategy", "dirty-flags", "market-pools", "locksmith", "playdate"],
+      "examples": [
+        "Verify endless_mode.lua candidate pools rebuild only on dirty flags — flag any per-frame rebuild.",
+        "Check renderer.lua for memoizable geometry (arc segments, bezier control points).",
+        "Audit market timer bars and scrollbars for per-frame allocation patterns."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

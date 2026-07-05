@@ -82,13 +82,24 @@ agents:
     path: ../agents/audio-music-feedback-specialist
     harness: ../agents/audio-music-feedback-specialist/harness.yaml
     required: false
+  - id: performance-bundle-budget-specialist
+    path: ../agents/performance-bundle-budget-specialist
+    harness: ../agents/performance-bundle-budget-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
   datastore-save: playdate-platform-sdk
   simulator-device-difference: playdate-platform-sdk
   graphics-draw-mode: playdate-platform-sdk
-  performance: playdate-platform-sdk
+  performance: performance-bundle-budget-specialist
+  bundle-budget: performance-bundle-budget-specialist
+  allocation-risk: performance-bundle-budget-specialist
+  asset-size: performance-bundle-budget-specialist
+  audio-compression: performance-bundle-budget-specialist
+  pdx-growth: performance-bundle-budget-specialist
+  draw-perf: performance-bundle-budget-specialist
+  cache-strategy: performance-bundle-budget-specialist
   requirements: product-manager
   architecture: system-architect
   spec-drift: spec-contract-guardian

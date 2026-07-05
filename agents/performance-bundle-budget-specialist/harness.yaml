@@ -1,0 +1,98 @@
+id: performance-bundle-budget-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/performance-bundle-budget-specialist
+  model_policy: senior-game-engineer-embedded-performance-analysis
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: performance-hot-path-files-asset-directories-and-pdx-build-only
+  freshness_triggers:
+    - renderer.lua draw paths changed
+    - endless_mode.lua market/cache logic changed
+    - soundfx.lua or music_data.lua audio lifecycle changed
+    - source/images/ PNG assets added or changed
+    - source/sounds/ WAV assets added or changed
+    - project AGENTS.md performance pitfalls updated
+    - TODO.md P3 performance pass status changed
+    - PDX size growth exceeds tracked budget
+    - economy-roadmap.md P3 performance pass requirements change
+    - new image asset generation pipeline run
+    - audio compression budget being exceeded
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && du -sh Locksmith.pdx 2>/dev/null || echo "PDX not built"
+    - cd /root/locksmith && du -sh source/images/ source/sounds/ 2>/dev/null
+    - cd /root/locksmith && du -h Locksmith.pdx/sounds/*.pda 2>/dev/null | sort -rh
+    - cd /root/locksmith && ls -laS source/images/*.png 2>/dev/null | head -20
+    # NOTE: PDX total ~1008K, music ~400K ADPCM, source images ~636K, SFX ~79K
+automation_packs:
+  allocation_hot_path_analysis: ./workflow.md#allocation-hot-path-analysis-template
+  pd_size_budget_check: ./workflow.md#pdx-size-budget-checklist
+  asset_size_audit: ./workflow.md#asset-size-audit
+  audio_compression_audit: ./workflow.md#audio-compression-audit
+  cache_strategy_review: ./workflow.md#cache-strategy-review
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - AGENTS.md and manifest.json are read before any analysis
+  - relevant source files are read before any performance recommendation
+  - every finding cites file:line, current pattern, measured cost (tables/calls/bytes)
+  - every recommendation includes verification command
+  - no gfx.image.new or table allocation introduced in draw/update paths
+  - no cos/sin calls added in hot draw loops without caching justification
+  - candidate pools use dirty flags — no per-frame rebuild without trigger
+  - audio compression follows ADPCM for loops, PCM for short SFX budget
+  - asset size changes include PDX budget impact note
+  - recommendations are concrete and verifiable, never vague
+  - performance analysis does not mutate source files unless explicitly requested
+  - residual risk documented for every recommendation
+release_blockers:
+  - boundary_violation_detected
+  - recommendation_made_without_file_line_evidence
+  - recommendation_made_without_verification_command
+  - recommendation_requires_code_mutation_without_user_request
+  - asset_size_change_not_tracked_against_pdx_budget
+  - audio_compression_recommendation_violates_adpcm_pcm_split
+  - stale_analysis_against_changed_source
+  - missing_hot_path_measurement
+  - missing_residual_risk_documentation
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
