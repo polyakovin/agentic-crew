@@ -50,6 +50,28 @@ Required for this reusable package:
   `.hermes/agents/agent-tuner/`;
 - optional pack routing in `packs/software-development-crew.yaml`.
 
+## Context Budget
+
+Agent Tuner should use a harness-first intake ladder instead of broad default
+repository scanning:
+
+- `R0_boot`: task brief, `harness.yaml`, `source-map.md`, `workflow.md`, and
+  `tool-policy.md` for target/mode/scope classification.
+- `R1_contract`: `protocol/interaction-protocol.md` only when report shape is
+  not already supplied; `release-rollback.md` when rollback, blockers, or
+  promotion status are reported.
+- `R2_target`: named target role, Agent Card, harness, wrappers, selected route,
+  prior findings, run records, and source-of-truth constraints.
+- `R3_overlap`: nearest neighboring role cards only when overlap or handoff
+  conflict is part of the task.
+- `R4_enrichment`: `eval-plan.md`, `run-record.template.json`, or named
+  TODO/backlog artifacts only when the run changes eval seeds, durable records,
+  wrapper alignment, or TODO hygiene.
+
+If the task brief already supplies a report shape, validation budget, and exact
+`whatToRead`, those inputs satisfy the corresponding contract evidence unless a
+deliverable needs the canonical source.
+
 ## Artifact Ownership
 
 Agent Tuner owns:
@@ -102,6 +124,8 @@ Interface Segregation:
 - Read only the target agent files, neighboring role cards, selected routes,
   review findings, and source-of-truth constraints needed for the tuning
   decision.
+- Record the highest intake ladder phase reached so later reviewers can see why
+  broader context was not loaded.
 
 Dependency Inversion:
 

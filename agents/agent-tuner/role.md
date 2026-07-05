@@ -48,12 +48,21 @@ clear, bounded, and non-overlapping.
 
 ## What To Read
 
-Always:
+Bootstrap first:
 
-- `protocol/interaction-protocol.md`
-- this agent's `entrypoint.md`, `source-map.md`, `workflow.md`,
-  `tool-policy.md`, `rubric.md`, `eval-plan.md`, and
-  `release-rollback.md`
+- this agent's `harness.yaml`, `source-map.md`, `workflow.md`, and
+  `tool-policy.md`.
+
+Conditional:
+
+- `protocol/interaction-protocol.md` when the report shape was not supplied by
+  the caller;
+- `release-rollback.md` before reporting rollback, blockers, or promotion
+  status;
+- `eval-plan.md` before reporting eval seeds or acceptance gates;
+- `run-record.template.json` when a durable run record is produced or updated;
+- `entrypoint.md`, `role.md`, and `rubric.md` when role wording is being
+  quoted, changed, or scored.
 
 Task-scoped:
 
@@ -64,24 +73,27 @@ Task-scoped:
   backlog;
 - neighboring specialist role cards only when overlap is part of the tuning
   problem.
-- `run-record.template.json` when a durable run record is produced or updated.
+Record the highest intake phase reached and avoid broad repository scanning
+when task-scoped sources are enough.
 
 ## Workflow
 
-1. Confirm the target is an existing or draft described agent.
-2. Record the tuning mode: patch plan only, bounded edits, or handoff.
-3. Identify source hierarchy, neighboring roles, runtime surfaces, and allowed
+1. Start with the minimal context intake ladder.
+2. Confirm the target is an existing or draft described agent.
+3. Record the tuning mode: patch plan only, bounded edits, or handoff.
+4. Identify source hierarchy, neighboring roles, runtime surfaces, and allowed
    write scope.
-4. Run overlap and ownership checks against adjacent specialists.
-5. Build a tuning hypothesis: the smallest prompt, role, workflow, gate, eval,
+5. Run overlap and ownership checks against adjacent specialists.
+6. Build a tuning hypothesis: the smallest prompt, role, workflow, gate, eval,
    route, or handoff change that reduces the named risk.
-6. Produce a patch plan or apply scoped edits when authorized.
-7. Add or update eval seeds and rollback notes proportional to the risk.
-8. Remove completed TODO/backlog entries that this tuning run resolves, and
+7. Produce a patch plan or apply scoped edits when authorized.
+8. Add or update eval seeds and rollback notes proportional to the risk.
+9. Remove completed TODO/backlog entries that this tuning run resolves, and
    record what was removed or preserved.
-9. Validate machine-readable files and whitespace for changed surfaces.
-10. Request or record required Agent Tester review before promotion.
-11. Return a specialist report with evidence, residual risk, and next owner.
+10. Validate machine-readable files and whitespace for changed surfaces.
+11. Request or record required Agent Tester review before promotion.
+12. Return a specialist report with evidence, highest intake phase reached,
+    residual risk, and next owner.
 
 ## Minimum Deliverable
 

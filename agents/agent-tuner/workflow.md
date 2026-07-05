@@ -2,7 +2,8 @@
 
 ## Boot Probe
 
-Run for non-trivial tuning tasks:
+Run only when the task is non-trivial or publication may follow. Skip commands
+that would broaden context beyond the named target surfaces.
 
 ```bash
 git status --short
@@ -18,6 +19,30 @@ Interpretation:
 - Missing wrapper surfaces are tuning findings only if the target runtime claims
   those surfaces.
 
+## Minimal Context Intake Ladder
+
+Use the harness as the execution spine. Do not start by scanning the repository
+or reading every wrapper. Escalate context only when a phase needs it:
+
+1. `R0_boot`: read the task brief plus `harness.yaml`, `source-map.md`,
+   `workflow.md`, and `tool-policy.md`; classify target, tuning mode, write
+   scope, stop conditions, and validation budget.
+2. `R1_contract`: read `protocol/interaction-protocol.md` only when the caller
+   did not supply the report shape; read `release-rollback.md` when reporting
+   rollback, blockers, or promotion status.
+3. `R2_target`: read only named target role cards, Agent Cards, harnesses,
+   wrappers, selected pack routes, prior findings, run records, and
+   source-of-truth constraints.
+4. `R3_overlap`: read neighboring role cards or harness summaries only when
+   overlap, duplicate ownership, or handoff conflict is in scope.
+5. `R4_enrichment`: read `eval-plan.md`, `run-record.template.json`, or named
+   TODO/backlog artifacts only when eval seeds, durable records, wrapper drift,
+   or TODO hygiene are changed.
+
+Record the highest phase reached and any skipped phase in the run record or
+final report. If a deliverable cannot be completed without a skipped source,
+escalate to the next phase rather than guessing.
+
 ## Core Workflow
 
 ### 1. Intake And Mode Check
@@ -31,7 +56,9 @@ Interpretation:
    - `handoff-required`.
 4. Record write scope, forbidden files, expected output, validation budget, and
    promotion status limits.
-5. Read `eval-plan.md` before reporting eval seeds or acceptance gates, read
+5. Select the minimal intake ladder phase needed for the requested deliverable
+   and name any task-supplied files that replace broader default reads.
+6. Read `eval-plan.md` before reporting eval seeds or acceptance gates, read
    `release-rollback.md` before reporting rollback or promotion status, and
    read `run-record.template.json` before producing a durable run record.
 
@@ -122,7 +149,9 @@ Seed families:
 - broken handoff to Builder, Tester, Steward, or Implementation;
 - wrapper drift between Agentic Crew, Codex, and Hermes surfaces;
 - scoped publication that keeps commit/push separate from promotion review;
-- completed TODO entries left behind as stale checked-off work.
+- completed TODO entries left behind as stale checked-off work;
+- broad context intake that reads unrelated agents, wrappers, packs, or repo
+  history before the harness phases require them.
 
 ### 6. Agent Tester Review Gate
 

@@ -160,6 +160,11 @@ Agent Tester review:
   and stale review status.
 - Current review state: Agent Tester re-review passed; original findings are
   resolved.
+- Latest tuning update: `tune-agent-tuner-min-context-harness-2026-07-05`
+  added harness-first minimal context intake. This update has local validation
+  evidence but has not yet received independent Agent Tester review, so the
+  earlier re-review must not be treated as covering the new R0-R4 context
+  behavior.
 
 Validation results:
 
@@ -174,12 +179,17 @@ Validation results:
   extension warning before `yaml ok`.
 - `git diff --check -- agents/agent-tuner .agents/skills/agent-tuner .hermes/skills/agent-tuner.md .hermes/agents/agent-tuner packs/software-development-crew.yaml`
   passed.
+- Minimal-context tuning validation on 2026-07-05 passed for Agent Card JSON,
+  run-record JSON, Agent Tuner harness YAML, Hermes manifest YAML,
+  `packs/software-development-crew.yaml`, and scoped `git diff --check`.
 
 Commit/push: not run. The user explicitly requested no commit or push in this
 worker. The worktree also contains unrelated pre-existing dirty changes in
 `AGENTS.md`, `agent-tester`, and other non-`agent-tuner` files that must remain
 unstaged.
 
-Promotion status: draft-ready for the post-creation gate only. Pilot and
-production remain blocked pending future pilot run records, eval evidence,
-runtime deployment evidence, and the normal release gates.
+Promotion status: draft-ready baseline for the post-creation gate only, with
+new minimal-context behavior pending Agent Tester review before any further
+promotion claim. Pilot and production remain blocked pending future pilot run
+records, eval evidence, runtime deployment evidence, and the normal release
+gates.

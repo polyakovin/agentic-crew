@@ -16,9 +16,11 @@ and safer.
 
 ## Workflow
 
-1. Read `agents/agent-tuner/role.md`, `source-map.md`, `workflow.md`,
-   `tool-policy.md`, `rubric.md`, `eval-plan.md`, and
-   `release-rollback.md`.
+1. Start with the harness intake ladder: task brief plus
+   `agents/agent-tuner/harness.yaml`, `source-map.md`, `workflow.md`, and
+   `tool-policy.md`. Escalate to protocol, role, rubric, eval, rollback,
+   target, or wrapper sources only when the requested deliverable requires that
+   phase.
 2. Confirm the target is an existing or draft described agent.
 3. Classify tuning mode: patch plan, bounded edits, or handoff.
 4. Read task-scoped target agent files, selected routes, neighboring role cards,
@@ -31,8 +33,8 @@ and safer.
    leaving checked-off stale tasks; preserve unresolved and unrelated entries.
 9. Validate changed JSON, YAML, TOML, and Markdown whitespace.
 10. Request Agent Tester review for material tuning changes before promotion.
-11. Return a concise report with evidence, blockers, promotion status, and next
-    owner.
+11. Return a concise report with evidence, highest context phase reached,
+    blockers, promotion status, and next owner.
 
 ## Output Contract
 

@@ -19,17 +19,41 @@ is a Codex wrapper for the reusable Agentic Crew harness in
 - Prompts, role cards, workflows, eval seeds, or wrappers need scoped
   refinement before pilot use.
 
+## Harness-First Context Budget
+
+Start with the Agentic Crew harness, then escalate only as needed:
+
+1. `R0_boot`: task brief plus `agents/agent-tuner/harness.yaml`,
+   `source-map.md`, `workflow.md`, and `tool-policy.md`.
+2. `R1_contract`: `protocol/interaction-protocol.md` when the caller has not
+   supplied the `specialistReport` shape; `release-rollback.md` when reporting
+   rollback, blockers, or promotion status.
+3. `R2_target`: target agent role, Agent Card, harness, wrappers, selected pack
+   route, prior findings, run records, and source-of-truth constraints named by
+   the task.
+4. `R3_overlap`: neighboring role cards only when overlap or handoff conflict
+   is in scope.
+5. `R4_enrichment`: `eval-plan.md`, `run-record.template.json`, or named TODO
+   artifacts only when eval seeds, durable records, or TODO hygiene are changed.
+
+Record the highest phase reached in the report or run record. Do not broaden to
+repo-wide scanning when task-scoped sources are sufficient.
+
 ## Required Reads
 
-1. `agents/agent-tuner/entrypoint.md`
-2. `agents/agent-tuner/role.md`
-3. `agents/agent-tuner/source-map.md`
-4. `agents/agent-tuner/workflow.md`
-5. `agents/agent-tuner/tool-policy.md`
-6. `agents/agent-tuner/rubric.md`
-7. `agents/agent-tuner/eval-plan.md`
-8. `agents/agent-tuner/release-rollback.md`
-9. `protocol/interaction-protocol.md`
+1. `agents/agent-tuner/harness.yaml`
+2. `agents/agent-tuner/source-map.md`
+3. `agents/agent-tuner/workflow.md`
+4. `agents/agent-tuner/tool-policy.md`
+5. `agents/agent-tuner/entrypoint.md` and `role.md` when role wording is being
+   quoted, changed, or scored
+6. `agents/agent-tuner/rubric.md` when scoring quality or comparing alternatives
+7. `agents/agent-tuner/eval-plan.md` before reporting eval seeds or acceptance
+   gates
+8. `agents/agent-tuner/release-rollback.md` before reporting rollback,
+   blockers, or promotion status
+9. `protocol/interaction-protocol.md` when the caller has not supplied the
+   report shape
 10. Target agent role, Agent Card, harness, wrappers, pack route, prior findings,
    run records, and source-of-truth constraints named by the task
 11. `agents/agent-tuner/run-record.template.json` when producing or updating a
@@ -43,6 +67,7 @@ is a Codex wrapper for the reusable Agentic Crew harness in
 4. Read only target agent files, neighboring role cards, selected routes,
    review findings, and source-of-truth constraints needed for the tuning
    decision.
+   Use the harness intake ladder and record the highest phase reached.
 5. Run overlap and SOLID ownership review.
 6. Produce a bounded patch plan or apply scoped edits if authorized.
 7. Add or update eval seeds and rollback notes, or defer with rationale.

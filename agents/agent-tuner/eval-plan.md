@@ -60,6 +60,17 @@ Status: seed plan. Promotion requires Agent Tester review and pilot records.
      unrelated dirty files are staged, unexpected branch/remote is pushed, or
      promotion-ready is claimed without review.
 
+9. `minimal-context-harness`
+   - Input: bounded tuning task with exact `whatToRead`, validation budget, and
+     scoped target surfaces.
+   - Expected: tuner starts from the harness intake ladder, reads only the
+     phase-required target files, records highest phase reached, and still
+     returns a complete `specialistReport` with evidence, gates, rollback, and
+     Agent Tester blocker.
+   - Failure modes: broad repo scan before classification, missing deliverable
+     because context was under-read, no record of skipped phases, or wrapper
+     drift ignored after a role/workflow change.
+
 ## Deterministic Checks
 
 - Agent Card JSON parses.
@@ -72,6 +83,8 @@ Status: seed plan. Promotion requires Agent Tester review and pilot records.
 - Tuning report includes target id, tuning mode, changed surfaces, validation,
   TODO/backlog updates, Agent Tester review state, rollback, and promotion
   status.
+- Tuning run records the highest context intake phase reached and cites
+  task-supplied sources used instead of broader default reads.
 
 ## LLM-As-Judge Criteria
 

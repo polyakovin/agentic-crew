@@ -46,18 +46,61 @@ activation:
     - handoffPacket
 context:
   always_read:
-    - ../../protocol/interaction-protocol.md
-    - ./entrypoint.md
-    - ./role.md
     - ./source-map.md
     - ./workflow.md
     - ./tool-policy.md
-    - ./rubric.md
-    - ./eval-plan.md
-    - ./release-rollback.md
+  read_budget:
+    default_mode: harness-first-minimal
+    intake_ladder:
+      R0_boot:
+        goal: classify target, mode, write scope, and stop conditions
+        required:
+          - task brief or user request
+          - ./harness.yaml
+          - ./source-map.md
+          - ./workflow.md
+          - ./tool-policy.md
+      R1_contract:
+        goal: shape specialistReport and confirm release limits
+        read_when:
+          - final report format is not supplied by caller
+          - promotion, rollback, or blocker status must be reported
+        files:
+          - ../../protocol/interaction-protocol.md
+          - ./release-rollback.md
+      R2_target:
+        goal: tune only named target surfaces
+        read_when:
+          - target files are named by task brief, source map, or pack route
+        files:
+          - target role card
+          - target Agent Card
+          - target harness
+          - target wrappers
+          - selected pack routing entry
+          - prior findings or run records supplied by caller
+      R3_overlap:
+        goal: compare adjacent specialists only when overlap is in scope
+        read_when:
+          - task mentions overlap, duplicate ownership, or handoff conflict
+        files:
+          - nearest neighboring role cards or harness summaries
+      R4_enrichment:
+        goal: update supporting evidence without broad repo scanning
+        read_when:
+          - eval seeds, durable run records, TODO hygiene, or wrapper drift are changed
+        files:
+          - ./eval-plan.md
+          - ./run-record.template.json
+          - TODO or backlog artifact named by task brief
   task_scoped_reading: true
   what_to_read_policy: target-agent-definition-wrappers-pack-route-prior-findings-and-source-of-truth-only
   conditional_read:
+    entrypoint_or_role_quote:
+      - ./entrypoint.md
+      - ./role.md
+    rubric_scoring:
+      - ./rubric.md
     eval_or_acceptance_output:
       - ./eval-plan.md
     rollback_or_promotion_output:

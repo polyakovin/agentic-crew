@@ -32,6 +32,14 @@
     "nonGoals": []
   },
   "sourceMap": {
+    "contextIntake": {
+      "mode": "harness-first-minimal",
+      "highestPhaseReached": "R0_boot|R1_contract|R2_target|R3_overlap|R4_enrichment",
+      "phasesSkipped": [],
+      "taskSuppliedSourcesUsed": [],
+      "broadScanAvoided": true,
+      "rationale": ""
+    },
     "targetFilesRead": [],
     "neighboringAgentsRead": [],
     "reviewFindingsRead": [],
@@ -65,17 +73,17 @@
       "validation": []
     }
   ],
-    "patchPlan": [],
-    "evalSeeds": [],
-    "routingRecommendations": [],
-    "todoUpdates": {
-        "removedCompletedEntries": [],
-        "preservedOpenEntries": [],
-        "newEntries": [],
-        "artifactPaths": [],
-        "evidence": []
-    },
-    "validationResults": [],
+  "patchPlan": [],
+  "evalSeeds": [],
+  "routingRecommendations": [],
+  "todoUpdates": {
+    "removedCompletedEntries": [],
+    "preservedOpenEntries": [],
+    "newEntries": [],
+    "artifactPaths": [],
+    "evidence": []
+  },
+  "validationResults": [],
   "agentTesterReview": {
     "requested": false,
     "runtimeAvailable": false,

@@ -20,15 +20,22 @@ governance.
 
 ## Required Context
 
+Start with the harness intake ladder:
+
+- User task brief.
+- `agents/agent-tuner/harness.yaml`
+- `agents/agent-tuner/source-map.md`
+- `agents/agent-tuner/workflow.md`
+- `agents/agent-tuner/tool-policy.md`
+
+Escalate only when required by the deliverable:
+
 - Target agent role, Agent Card, harness, wrappers, and selected pack route.
-- User task brief and source-of-truth constraints.
+- Source-of-truth constraints named by the task.
 - Neighboring specialist role cards when overlap is suspected.
 - Prior Agent Tester findings or run records when supplied.
 - TODO or backlog artifacts named by the task when tuning work resolves tracked
   tasks.
-- `agents/agent-tuner/role.md`
-- `agents/agent-tuner/workflow.md`
-- `agents/agent-tuner/tool-policy.md`
 - `agents/agent-tuner/eval-plan.md` before reporting eval seeds or acceptance
   gates.
 - `agents/agent-tuner/release-rollback.md` before reporting rollback,
@@ -39,6 +46,7 @@ governance.
 ## Required Output
 
 - Tuned agent id and tuning mode.
+- Highest context intake phase reached.
 - Source-of-truth and overlap analysis.
 - Bounded patch plan or scoped edits.
 - Eval seeds and routing recommendations.
