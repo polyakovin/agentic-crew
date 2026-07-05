@@ -1,0 +1,103 @@
+{
+  "name": "Persistence / Save Migration Specialist",
+  "description": "Owns datastore and save-schema integrity for the Locksmith Playdate game. Handles Speedrun highscores, Adventure completion flags, Settings persistence, Endless save migrations, achievement claim state, legacy aliases (infinite_economy → endless_economy), and corrupted/partial save recovery. Ensures nil-safe migration, bounded writes, schema versioning, and migration risk documentation.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/persistence-save-migration-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/persistence-save-migration-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/persistence-save-migration-specialist/entrypoint.md",
+    "sourceMap": "agents/persistence-save-migration-specialist/source-map.md",
+    "workflow": "agents/persistence-save-migration-specialist/workflow.md",
+    "toolPolicy": "agents/persistence-save-migration-specialist/tool-policy.md",
+    "rubric": "agents/persistence-save-migration-specialist/rubric.md",
+    "evalPlan": "agents/persistence-save-migration-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/persistence-save-migration-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "save-migration-audit",
+      "name": "Save Migration Audit",
+      "description": "Audits save schema changes against shared-economy.md §10 migration rules. Checks nil-safety of all new fields, verifies legacy progress is preserved, and documents migration risks with explicit before/after maps.",
+      "tags": ["save-migration", "schema-audit", "nil-safety", "legacy-preservation", "locksmith"],
+      "examples": [
+        "Audit the new saveData schema — are all fields nil-safe?",
+        "What happens to a legacy Endless save with only 5 fields when loaded with the new code?",
+        "Verify migration contract: which fields migrate, which reset to defaults?",
+        "Check that money is never reset to 0 during migration."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "corrupt-save-recovery",
+      "name": "Corrupt / Partial Save Recovery",
+      "description": "Diagnoses corrupt, partial, or legacy-malformed save data. Verifies that pcall wrappers catch datastore failures, that non-table data falls back to defaults, and that partial saves with missing keys are safely migrated.",
+      "tags": ["corrupt-data", "save-recovery", "partial-save", "pcall", "locksmith"],
+      "examples": [
+        "A player's save is crashing the game on load — diagnose the corrupt data path.",
+        "What happens when playdate.datastore.read returns a string instead of a table?",
+        "Partial save only has money=999 — verify all other fields are migrated to defaults.",
+        "Check pcall coverage on all datastore read/write calls."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "legacy-alias-fallback",
+      "name": "Legacy Alias / Key Fallback Review",
+      "description": "Reviews and maintains legacy save key fallbacks (e.g., infinite_economy → endless_economy). Ensures migration windows are documented, fallback chains are tested, and deprecated keys have a planned removal timeline.",
+      "tags": ["legacy-keys", "fallback", "deprecation", "key-aliases", "locksmith"],
+      "examples": [
+        "Verify that loading a save from the old 'infinite_economy' key still works.",
+        "Propose a deprecation timeline for the 'infinite_economy' legacy key.",
+        "Check that EndlessSave.reset() clears both current and legacy keys."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "bounded-write-audit",
+      "name": "Bounded Write Audit",
+      "description": "Audits persistence write calls to ensure they are bounded to meaningful events (game over, purchase, claim, settings toggle), NOT every frame. Identifies any datastore.write calls in draw/update hot paths.",
+      "tags": ["bounded-writes", "performance", "datastore", "write-frequency", "locksmith"],
+      "examples": [
+        "Are there any datastore writes happening every frame in update()?",
+        "Verify that highscores are saved only at game over, not every score change.",
+        "Check that EndlessSave.save() is not called in draw() or hot update() paths."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "schema-versioning",
+      "name": "Schema Versioning & Compatibility",
+      "description": "Designs, reviews, and enforces save schema versioning. Ensures version markers exist, migration paths are documented, and forward/backward compatibility is assessed for every schema change.",
+      "tags": ["schema-version", "compatibility", "version-marker", "rollback", "locksmith"],
+      "examples": [
+        "Propose a save format version marker for the current Endless save schema.",
+        "What would happen if a player downgrades their game build after a save migration?",
+        "Document the migration path from schema v1 to v2."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

@@ -94,6 +94,10 @@ agents:
     path: ../agents/release-storefront-packaging-specialist
     harness: ../agents/release-storefront-packaging-specialist/harness.yaml
     required: false
+  - id: persistence-save-migration-specialist
+    path: ../agents/persistence-save-migration-specialist
+    harness: ../agents/persistence-save-migration-specialist/harness.yaml
+    required: false
   - id: screenshot-simulator-regression-qa-reviewer
     path: ../agents/screenshot-simulator-regression-qa-reviewer
     harness: ../agents/screenshot-simulator-regression-qa-reviewer/harness.yaml
@@ -215,6 +219,16 @@ routing:
   launcher-assets: release-storefront-packaging-specialist
   prototype-removal: release-storefront-packaging-specialist
   release-blockers: release-storefront-packaging-specialist
+  save-migration: persistence-save-migration-specialist
+  schema-integrity: persistence-save-migration-specialist
+  nil-safety: persistence-save-migration-specialist
+  corrupt-recovery: persistence-save-migration-specialist
+  legacy-fallback: persistence-save-migration-specialist
+  bounded-writes: persistence-save-migration-specialist
+  datastore-schema: persistence-save-migration-specialist
+  endless-save-schema: persistence-save-migration-specialist
+  save-versioning: persistence-save-migration-specialist
+  migration-audit: persistence-save-migration-specialist
   screenshot-sweep: screenshot-simulator-regression-qa-reviewer
   contact-sheet-review: screenshot-simulator-regression-qa-reviewer
   visual-regression: screenshot-simulator-regression-qa-reviewer

@@ -1,0 +1,101 @@
+id: persistence-save-migration-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/persistence-save-migration-specialist
+  model_policy: senior-persistence-engineer-save-migration-and-schema-integrity
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: datastore-save-specs-tests-and-affected-source-files-only
+  freshness_triggers:
+    - datastore.lua schema changed (new fields, key rename)
+    - endless_save.lua defaults or migration logic changed
+    - main.lua persistence lifecycle changed (load/save timing)
+    - shared-economy.md saveData spec updated
+    - economy-roadmap.md save migration requirements changed
+    - timer-highscores.md schema roles changed
+    - manifest.json datastore/endless_save contracts changed
+    - test_datastore.lua or test_endless_save.lua tests added/modified
+    - new save key detected in code without spec update
+    - corrupt/partial save bug reported
+    - legacy save alias added or deprecated
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make test-all 2>&1 | grep -E "datastore|endless_save|PASS|FAIL" | head -20
+    - cd /root/locksmith && make lint 2>&1 | tail -5
+    - cd /root/locksmith && make build 2>&1 | tail -5
+  risky_schema_change_smoke:
+    - cd /root/locksmith && lua scripts/test_datastore.lua 2>&1 | tail -5
+    - cd /root/locksmith && lua scripts/test_endless_save.lua 2>&1 | tail -5
+automation_packs:
+  migration_audit: ./workflow.md#migration-audit-template
+  nil_safe_check: ./workflow.md#nil-safe-migration-checklist
+  schema_version_audit: ./workflow.md#schema-version-audit
+  corrupt_data_diagnosis: ./workflow.md#corrupt-data-diagnosis
+  legacy_fallback_review: ./workflow.md#legacy-fallback-review
+  bounded_write_audit: ./workflow.md#bounded-write-audit
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - AGENTS.md and manifest.json are read before any change
+  - relevant specs (timer-highscores, shared-economy, economy-roadmap) are read before any schema change
+  - all new save fields are nil-safe: defaults applied via table merge, never assumed present
+  - legacy player progress is preserved through migration: money, tier values, stats
+  - corrupt/partial save data triggers fallback to defaults, never crashes
+  - legacy key fallback (infinite_economy → endless_economy) is tested
+  - persistence writes are bounded to meaningful events, never per-frame
+  - new schema keys are documented in shared-economy.md §10 and code comments
+  - datastore and endless_save tests pass (make test-all)
+  - spec is updated before save schema changes
+  - migration risk documented: what migrates, what resets, what is preserved
+  - no game logic or UI rendering in datastore.lua or endless_save.lua
+release_blockers:
+  - boundary_violation_detected
+  - new_save_field_not_nil_safe
+  - legacy_progress_destroyed_by_migration
+  - corrupt_data_crashes_instead_of_fallback
+  - spec_not_updated_for_schema_change
+  - make_check_fails_or_not_run
+  - migration_risk_not_documented
+  - per_frame_write_detected
+  - legacy_key_fallback_removed_without_migration_window
+  - test_datastore_or_test_endless_save_skipped
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

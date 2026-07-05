@@ -1,0 +1,181 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "persistence-save-migration-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal", "save-schema"],
+  "targetProject": {
+    "name": "Locksmith",
+    "projectPath": "/root/locksmith",
+    "specRefs": ["docs/shared-economy.md", "docs/timer-highscores.md", "docs/economy-roadmap.md", "docs/manifest.json"],
+    "codeRefs": ["source/datastore.lua", "source/endless_save.lua", "source/main.lua"],
+    "testRefs": ["scripts/test_datastore.lua", "scripts/test_endless_save.lua"]
+  },
+  "migrationRequest": {
+    "requestType": "migrationAudit|corruptDiagnosis|boundedWriteAudit|legacyFallbackReview|schemaVersionProposal|newFieldAddition|crossModuleContract",
+    "schemaChange": {
+      "requested": false,
+      "fieldsAdded": [],
+      "fieldsModified": [],
+      "fieldsRemoved": []
+    },
+    "corruptDataScenario": {
+      "reproduced": false,
+      "dataType": "nonTable|missingKeys|wrongType|nilValue|partial",
+      "crashPath": ""
+    },
+    "legacyKeyUnderReview": "infinite_economy"
+  },
+  "environmentPreflight": {
+    "makeTestAllRan": false,
+    "makeTestAllOutput": "",
+    "datastoreSuitePassed": false,
+    "endlessSaveSuitePassed": false,
+    "dirtyWorktree": {
+      "detected": false,
+      "files": []
+    }
+  },
+  "migrationAudit": {
+    "schemaVersion": "",
+    "totalFields": -1,
+    "nilSafeFields": -1,
+    "nilUnsafeFields": -1,
+    "fieldsAudited": [
+      {
+        "field": "",
+        "type": "number|boolean|table|string",
+        "inDefaults": false,
+        "inMigrateSaveData": false,
+        "hasTypeGuard": false,
+        "nilSafe": false,
+        "risk": "LOW|MEDIUM|HIGH|CRITICAL",
+        "notes": ""
+      }
+    ],
+    "legacyProgressPreserved": {
+      "money": false,
+      "lifetimeEarnings": false,
+      "cyclesCompleted": false,
+      "tierKeys": false,
+      "stats": false
+    },
+    "corruptDataFallbacks": {
+      "nonTableLoad": false,
+      "partialSave": false,
+      "missingKeys": false,
+      "wrongTypeValues": false
+    },
+    "legacyKeyFallback": {
+      "chainActive": false,
+      "keys": [],
+      "fallbackTested": false,
+      "deprecationTimeline": ""
+    }
+  },
+  "boundedWriteAudit": {
+    "totalCallSites": -1,
+    "eventBound": -1,
+    "lifecycleBound": -1,
+    "hotPathFound": false,
+    "callSites": [
+      {
+        "file": "",
+        "line": -1,
+        "call": "Datastore.save|playdate.datastore.write|EndlessSave.save",
+        "context": "addScore|markAdventureComplete|setMusic|setDevMode|purchase|claim|cycle|reset|modeExit|settingsOpen",
+        "frequency": "event-bound|lifecycle|hot-path",
+        "risk": "LOW|MEDIUM|HIGH|CRITICAL"
+      }
+    ]
+  },
+  "schemaVersioning": {
+    "proposed": false,
+    "saveVersionField": "",
+    "currentVersion": -1,
+    "migrationChain": [],
+    "backwardCompatible": false,
+    "forwardMigrationPath": "",
+    "downgradeRisk": ""
+  },
+  "specUpdates": {
+    "sharedEconomy10Updated": false,
+    "timerHighscoresUpdated": false,
+    "economyRoadmapUpdated": false,
+    "manifestUpdated": false
+  },
+  "codeChanges": {
+    "datastoreLuaModified": false,
+    "endlessSaveLuaModified": false,
+    "mainLuaModified": false,
+    "filesChanged": [],
+    "diffStat": ""
+  },
+  "testEvidence": {
+    "makeTestAllExitCode": -1,
+    "makeTestAllTail": "",
+    "datastoreTestOutput": "",
+    "endlessSaveTestOutput": "",
+    "makeLintExitCode": -1,
+    "makeLintTail": "",
+    "makeBuildExitCode": -1,
+    "makeBuildTail": "",
+    "makeCheckExitCode": -1,
+    "makeCheckTail": ""
+  },
+  "gameLogicInPersistence": {
+    "gfxCallsFound": false,
+    "gfxCallSites": [],
+    "uiRenderingFound": false,
+    "gameStateMutationFound": false,
+    "nonDatastorePlaydateAPIFound": false
+  },
+  "migrationRiskTable": [
+    {
+      "field": "",
+      "migratesFrom": "oldSave|defaults|calculated",
+      "preserved": false,
+      "risk": "LOW|MEDIUM|HIGH|CRITICAL",
+      "rationale": ""
+    }
+  ],
+  "healthSnapshotUpdated": false,
+  "healthSnapshotPath": "",
+  "pitfallsDocumented": false,
+  "pitfallEntries": [],
+  "gameCodeModified": false,
+  "commitsAttempted": false,
+  "pushesAttempted": false,
+  "evidenceBasedOn": "commandOutput|speculation|mixed",
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "untrustedInstructionSummary": "",
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}
