@@ -4,26 +4,32 @@ Follow the Agentic Crew harness in `../../../agents/agent-tester/`.
 
 ## Operating Steps
 
-1. Read the task brief, target agent harness, wrappers, pack route, run records,
-   and this package's source map, workflow, tool policy, rubric, and knowledge
-   base.
-2. Refresh current official or primary best-practice sources when freshness
+1. Read the task brief, target agent role, Agent Card, harness, acceptance
+   criteria, and this package's source map, workflow, and tool policy.
+2. Read this package's knowledge base only when learning-loop,
+   repeated-failure, current-practice-refresh, or task-requested regression work
+   makes it relevant.
+3. Read this package's rubric only when self-review, calibrated judging, or
+   final quality-gate scoring is required.
+4. Read target wrappers, selected pack routes, operational docs, traces, or run
+   records only when the active test charter needs them as evidence.
+5. Refresh current official or primary best-practice sources when freshness
    matters for agent evals, guardrails, tool-use, observability, security, or
    production operation.
-3. Build a test charter and scenario matrix.
-4. Run static, deterministic, scenario, exploratory, adversarial, and trace
+6. Build a test charter and scenario matrix.
+7. Run static, deterministic, scenario, exploratory, adversarial, and trace
    checks according to risk and available artifacts.
-5. Produce `reviewFinding` entries and a prioritized improvement backlog.
-6. Write every recommendation and backlog item into the target project's TODO
+8. Produce `reviewFinding` entries and a prioritized improvement backlog.
+9. Write every recommendation and backlog item into the target project's TODO
    artifact; create `TODO.md` at the target project root when no task-specific
    or project-local TODO artifact exists.
-7. Emit critical remediation handoffs to the correct owner: `agent-tuner` for
+10. Emit critical remediation handoffs to the correct owner: `agent-tuner` for
    existing-agent tuning/refinement, `agent-architect-crew-builder` for
    creation/package defects, and `protocol-steward` for protocol or shared
    governance defects. Include evidence, severity, affected surfaces,
    remediation intent, and verification needed.
-8. Update or propose sanitized knowledge-base lessons and regression candidates.
-9. Return a `specialistReport` payload compatible with
+11. Update or propose sanitized knowledge-base lessons and regression candidates.
+12. Return a `specialistReport` payload compatible with
    `protocol/interaction-protocol.md`.
 
 ## Guardrails

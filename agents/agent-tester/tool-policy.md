@@ -6,6 +6,9 @@
   and task briefs.
 - Read project rules and only the target source-of-truth files needed to define
   the tested agent's expected behavior.
+- Read this package's knowledge base selectively when learning-loop,
+  repeated-failure, current-practice-refresh, or task-requested regression work
+  makes it relevant.
 - Browse current official or primary sources for agent evaluation, security,
   guardrails, tool-use, observability, and production practices when freshness
   matters.
@@ -81,7 +84,8 @@ Default read surface:
   wrappers;
 - selected `packs/*.yaml`;
 - `protocol/interaction-protocol.md`;
-- this package's `knowledge-base/`.
+- this package's `knowledge-base/` only for learning-loop,
+  repeated-failure, current-practice-refresh, or task-requested regression work.
 
 Default write surface:
 

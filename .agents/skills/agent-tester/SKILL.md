@@ -14,7 +14,8 @@ This skill can be used locally, but if the user explicitly asks to use or
 delegate to Agent Tester and a callable multi-agent runtime is available,
 delegate first. If the runtime lacks an exact `agent-tester` type, spawn the
 smallest suitable generic worker/default agent and pass this skill path, the
-target agent path, and the task brief as operating context.
+reusable harness path, the target agent id/path, and the task brief as
+operating context.
 
 State whether the work is local skill use or a live delegated agent run. Do not
 describe reading this file as live agent use.
@@ -33,12 +34,26 @@ reassigns remediation work.
 3. `agents/agent-tester/source-map.md`
 4. `agents/agent-tester/workflow.md`
 5. `agents/agent-tester/tool-policy.md`
-6. `agents/agent-tester/rubric.md`
-7. `agents/agent-tester/knowledge-base/README.md`
-8. `agents/agent-tester/knowledge-base/agent-testing-lessons.md`
-9. `protocol/interaction-protocol.md`
-10. Target agent role, Agent Card, harness, wrappers, pack route, and run
-    artifacts named by the task.
+6. `protocol/interaction-protocol.md`
+7. Target agent role, Agent Card, harness, task brief, and acceptance criteria.
+
+## Conditional Reads
+
+- Read `agents/agent-tester/rubric.md` when self-review, calibrated judging, or
+  final quality-gate scoring is required.
+- Read `agents/agent-tester/eval-plan.md` when producing or checking
+  regression/eval candidates.
+- Read `agents/agent-tester/knowledge-base/README.md` and
+  `agents/agent-tester/knowledge-base/agent-testing-lessons.md` only when the
+  run reuses prior lessons, creates a learning-loop update, or sees a repeated
+  or high-leverage failure mode.
+- Read `agents/agent-tester/knowledge-base/external-best-practices.md` only
+  when current-practice refresh is triggered.
+- Read target wrappers, selected pack routes, operational docs, traces, source
+  files, or run records only when the active test charter needs them as
+  evidence.
+- Do not load the full target repository, every pack, or the full knowledge
+  base as default context.
 
 ## Workflow
 

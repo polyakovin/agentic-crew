@@ -79,19 +79,32 @@ Always:
 - `./source-map.md`
 - `./workflow.md`
 - `./tool-policy.md`
-- `./rubric.md`
-- `./knowledge-base/README.md`
-- `./knowledge-base/agent-testing-lessons.md`
 - `../../protocol/interaction-protocol.md`
+
+Conditionally:
+
+- `./rubric.md` when self-review, calibrated judging, or final quality-gate
+  scoring is required;
+- `./eval-plan.md` when producing or checking regression/eval candidates;
+- `./knowledge-base/README.md` and `./knowledge-base/agent-testing-lessons.md`
+  when the run reuses prior lessons, creates a learning-loop update, or sees a
+  repeated/high-leverage failure mode;
+- `./knowledge-base/external-best-practices.md` when current-practice refresh
+  is triggered by `./source-map.md`;
+- `./run-record.template.json`, trace artifacts, or release notes only when the
+  task brief, promotion target, or test charter needs them.
 
 For each target agent test:
 
-- target agent `role.md`, `agent-card.json`, `harness.yaml`, and operational
-  docs referenced by its harness;
-- relevant Codex or Hermes wrappers when they are in scope;
-- selected pack routing that discovers the target agent;
-- task brief, acceptance criteria, prior run records, eval reports, and incident
-  notes supplied by the orchestrator.
+- target agent `role.md`, `agent-card.json`, and `harness.yaml`;
+- task brief and acceptance criteria.
+
+For target runtime-surface checks:
+
+- relevant Codex or Hermes wrappers only when wrapper alignment is in scope;
+- selected pack routing only when routing/discoverability is in scope;
+- prior run records, eval reports, incident notes, traces, and operational docs
+  only when the task brief or test charter needs them as evidence.
 
 For current-practice refresh:
 
@@ -100,7 +113,8 @@ For current-practice refresh:
   production-operation claims could have changed.
 
 Keep `What To Read` narrow. Do not ingest an entire target repository unless the
-task explicitly requires a broad audit.
+task explicitly requires a broad audit. Start from the reusable harness and
+target contract, then expand only to evidence needed by the active test charter.
 
 ## A2A Handoff Contract
 

@@ -46,11 +46,31 @@ context:
     - ./source-map.md
     - ./workflow.md
     - ./tool-policy.md
-    - ./rubric.md
-    - ./knowledge-base/README.md
-    - ./knowledge-base/agent-testing-lessons.md
   task_scoped_reading: true
-  what_to_read_policy: target-agent-harness-wrappers-pack-route-run-records-and-current-best-practice-sources-only
+  what_to_read_policy: core-harness-target-contract-and-task-brief-first
+  context_economy:
+    progressive_disclosure_required: true
+    whole_target_repo_required_reads_allowed: false
+    knowledge_base_default_read_allowed: false
+    harness_owned_procedure_required: true
+  conditional_read:
+    self_review_or_judge_output:
+      - ./rubric.md
+    eval_or_regression_output:
+      - ./eval-plan.md
+    target_runtime_surface_check:
+      - target Codex or Hermes wrappers in scope
+      - selected pack route that discovers the target agent
+    knowledge_base_learning:
+      - ./knowledge-base/README.md
+      - ./knowledge-base/agent-testing-lessons.md
+    external_best_practice_refresh:
+      - ./knowledge-base/external-best-practices.md
+    run_record_or_trace_review:
+      - ./run-record.template.json
+    release_or_promotion_review:
+      - ./release-rollback.md
+      - ./health-snapshot.md
   freshness_triggers:
     - user asks for latest or current agent testing practice
     - tested agent uses external runtime or framework guidance

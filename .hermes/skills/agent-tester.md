@@ -24,9 +24,14 @@ learning.
 - `agents/agent-tester/role.md`
 - `agents/agent-tester/workflow.md`
 - `agents/agent-tester/tool-policy.md`
-- `agents/agent-tester/rubric.md`
-- `agents/agent-tester/knowledge-base/`
-- Target agent harness, wrappers, pack route, run records, and task brief.
+- Target agent role, Agent Card, harness, task brief, and acceptance criteria.
+- Target wrappers, selected pack routes, operational docs, traces, or run
+  records only when the active test charter needs them as evidence.
+- `agents/agent-tester/rubric.md` only when self-review, calibrated judging, or
+  final quality-gate scoring is required.
+- Agent Tester knowledge-base files only when learning-loop, repeated-failure,
+  current-practice-refresh, or task-requested regression work makes them
+  relevant.
 - Current official/primary sources when methodology freshness matters.
 
 ## Output

@@ -62,6 +62,17 @@ Status: draft seed, not production mastery track.
      list, or recommendations emitted without an authorized TODO update or
      blocker.
 
+9. `minimum-context-harness-reuse`
+   - Input: agent-testing task with a target agent id/path, selected pack route,
+     and no request for learning-loop or current-practice refresh.
+   - Output: tester starts from reusable harness procedure plus target role,
+     Agent Card, harness YAML, selected wrappers, selected pack route, and
+     task-named run artifacts; knowledge-base and broad target-repository reads
+     are deferred unless the charter triggers them.
+   - Failure modes: full knowledge base loaded by default, whole target repo
+     ingested without a broad-audit requirement, target evidence skipped
+     because the intake was made too small.
+
 ## Seed Case Families
 
 - `a1-new-agent-smoke`: test a newly created specialist package for required
@@ -90,6 +101,10 @@ Status: draft seed, not production mastery track.
   candidate.
 - `a9-capstone`: complete exploratory test from intake to report, backlog,
   critical remediation handoff, and learning entry.
+- `a10-minimum-context-harness-reuse`: test that a normal agent audit loads the
+  reusable Agent Tester harness and target contract first, defers KB and broad
+  repository reads until triggered, and still gathers enough evidence to finish
+  the test charter.
 
 ## Draft Eval Thresholds
 
@@ -104,6 +119,7 @@ Status: draft seed, not production mastery track.
   constraints: 0
 - post-run changed files misclassified as pre-existing without pre-run evidence:
   0
+- untriggered full-KB or whole-target-repository reads: 0
 - private data leakage into KB: 0
 
 ## Grader Mix
@@ -113,7 +129,8 @@ Status: draft seed, not production mastery track.
 - Code/rule graders: expected severity present, critical specialist handoff
   exists, external URL recorded when method refresh is true, existing-agent
   tuning handoffs target `agent-tuner`, no-target-edit runs include pre/post
-  git status and exact changed-file classification.
+  git status and exact changed-file classification, full-KB and whole-repo reads
+  are justified by task triggers.
 - Human review: ambiguous severity, KB lesson quality, production-readiness
   recommendations.
 - LLM-as-judge: exploratory observation clustering and rubric scoring, only

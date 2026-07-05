@@ -34,6 +34,22 @@ tester-authored authorized, tester-authored unauthorized, or externally
 changed/unknown. Do not describe a post-run changed file as pre-existing unless
 it appeared in `preRunGitStatus`.
 
+## Minimum Context Intake
+
+Start every run from the reusable harness and the task brief, then expand
+progressively:
+
+- Read this package's core harness files named by `harness.yaml` `always_read`.
+- For the target agent, read its role, Agent Card, harness YAML, task brief, and
+  acceptance criteria first.
+- Read target wrappers, selected pack routes, operational docs, traces, source
+  files, or run records only when the test charter needs them as evidence.
+- Read this package's knowledge base only for learning-loop work, repeated
+  failure modes, current-practice refresh notes, or task-requested regression
+  work.
+- Do not load the entire target repository, every pack, or the full knowledge
+  base as default intake.
+
 ## Core Workflow
 
 1. Record routing and execution mode: local skill use, live delegated agent,
@@ -44,8 +60,9 @@ it appeared in `preRunGitStatus`.
    orchestrator explicitly reassigns remediation work.
 3. Identify tested agent id, runtime surfaces, source of truth, risk tier, and
    promotion target.
-4. Read the target agent's role, Agent Card, harness YAML, wrappers, pack route,
-   run-record template, and only the operational docs required by the test.
+4. Read the target agent's role, Agent Card, harness YAML, task brief,
+   acceptance criteria, and only the runtime surfaces or operational docs
+   required by the test charter.
 5. Refresh current best practices when required by `source-map.md`.
 6. Build a test charter.
 7. Run static and machine-readable checks.

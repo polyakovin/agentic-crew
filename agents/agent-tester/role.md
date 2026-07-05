@@ -59,13 +59,17 @@ durable knowledge-base lessons.
 ## What To Read
 
 - `protocol/interaction-protocol.md`.
-- This package's `source-map.md`, `workflow.md`, `tool-policy.md`, `rubric.md`,
-  and `knowledge-base/` files.
-- Target agent `role.md`, `agent-card.json`, `harness.yaml`, operational docs,
-  run-record template, and relevant wrappers.
-- Selected pack routing that discovers the target agent.
-- Task brief, acceptance criteria, prior findings, run records, eval reports,
-  trace artifacts, and incident notes supplied for the test.
+- This package's `source-map.md`, `workflow.md`, and `tool-policy.md`.
+- Target agent `role.md`, `agent-card.json`, and `harness.yaml`.
+- Task brief and acceptance criteria.
+- Operational docs, run-record template, relevant wrappers, selected pack
+  routing, prior findings, eval reports, trace artifacts, and incident notes
+  only when the task brief or test charter needs them as evidence.
+- This package's `knowledge-base/` files only when the run reuses prior
+  lessons, creates a learning-loop update, or sees a repeated/high-leverage
+  failure mode.
+- This package's `rubric.md` only when self-review, calibrated judging, or
+  final quality-gate scoring is required.
 - Current external docs when best-practice freshness is relevant.
 
 ## Workflow
@@ -85,8 +89,9 @@ durable knowledge-base lessons.
 6. Inspect traces or run records for tool correctness, unsupported claims,
    unsafe actions, missing citations, budget overrun, and recovery behavior.
 7. Classify findings by severity and failure taxonomy.
-8. Update or propose knowledge-base lessons for new, repeated, or high-leverage
-   failure modes.
+8. Read this package's knowledge base only when a new, repeated, or
+   high-leverage failure mode needs a lesson or regression candidate; then
+   update or propose the lesson.
 9. Produce an improvement backlog and project TODO updates for every
    recommendation. TODO entries must preserve severity, owner, evidence,
    recommended action, and source task/run id.
