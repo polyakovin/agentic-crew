@@ -1,0 +1,106 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "release-storefront-packaging-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "locksmith",
+    "repoPath": "/root/locksmith",
+    "releaseType": "patch|minor|major|prototype-removal"
+  },
+  "packagingAudit": {
+    "pdxinfo": {
+      "verified": false,
+      "name": "",
+      "expectedName": "Locksmith",
+      "bundleID": "",
+      "expectedBundleID": "com.polyakovin.locksmith",
+      "version": "",
+      "expectedVersion": "",
+      "author": "",
+      "imagePath": "",
+      "expectedImagePath": "launcher",
+      "issues": []
+    },
+    "launcherAssets": {
+      "cardPng": { "present": false, "sizeOk": false, "expectedSize": "350x155", "notes": "" },
+      "iconPng": { "present": false, "sizeOk": false, "expectedSize": "32x32", "notes": "" },
+      "launchImagePng": { "present": false, "sizeOk": false, "expectedSize": "400x240", "notes": "" },
+      "cardHighlighted": { "framesPresent": false, "animationTxtPresent": false, "frameCount": 0, "issues": [] }
+    },
+    "buildEvidence": {
+      "makeCheckRun": false,
+      "makeCheckResult": "",
+      "buildSuccess": false,
+      "testsPassed": 0,
+      "testsFailed": 0,
+      "lintPassed": false,
+      "knownFailures": []
+    }
+  },
+  "releaseNotes": {
+    "generated": false,
+    "templateUsed": "devlog/template.md",
+    "claims": [],
+    "verifiedClaims": [],
+    "unverifiedClaims": [],
+    "canonIssuesHandedOff": false
+  },
+  "releaseBlockers": [],
+  "prototypeRemoval": {
+    "checklistComplete": false,
+    "nameUpdatedToLocksmith": false,
+    "itchioPageDrafted": false,
+    "legacyUrlAddressed": false,
+    "launcherProductionQuality": false,
+    "allBlockersResolved": false,
+    "userApprovalObtained": false
+  },
+  "handoffs": {
+    "visualArtSpecialist": { "requested": false, "items": [] },
+    "narrativeSpecialist": { "requested": false, "items": [] },
+    "toolchainGatekeeper": { "requested": false, "items": [] }
+  },
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "packagingVerdict": "notReady",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

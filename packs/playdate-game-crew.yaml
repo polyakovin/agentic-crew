@@ -90,6 +90,10 @@ agents:
     path: ../agents/toolchain-build-sandbox-gatekeeper
     harness: ../agents/toolchain-build-sandbox-gatekeeper/harness.yaml
     required: false
+  - id: release-storefront-packaging-specialist
+    path: ../agents/release-storefront-packaging-specialist
+    harness: ../agents/release-storefront-packaging-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -171,8 +175,8 @@ routing:
   devlog: devlog-marketing-specialist
   marketing: devlog-marketing-specialist
   community: devlog-marketing-specialist
-  release-notes: devlog-marketing-specialist
-  itch-io: devlog-marketing-specialist
+  release-notes: release-storefront-packaging-specialist
+  itch-io: release-storefront-packaging-specialist
   social-copy: devlog-marketing-specialist
   change-summary: devlog-marketing-specialist
   audio: audio-music-feedback-specialist
@@ -192,3 +196,11 @@ routing:
   githooks: toolchain-build-sandbox-gatekeeper
   ci-blockers: toolchain-build-sandbox-gatekeeper
   fallback-evidence: toolchain-build-sandbox-gatekeeper
+  release-packaging: release-storefront-packaging-specialist
+  storefront-readiness: release-storefront-packaging-specialist
+  release-build-evidence: release-storefront-packaging-specialist
+  itch-io-release: release-storefront-packaging-specialist
+  pdxinfo-management: release-storefront-packaging-specialist
+  launcher-assets: release-storefront-packaging-specialist
+  prototype-removal: release-storefront-packaging-specialist
+  release-blockers: release-storefront-packaging-specialist

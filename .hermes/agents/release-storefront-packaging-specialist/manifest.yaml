@@ -1,0 +1,45 @@
+id: release-storefront-packaging-specialist
+name: Release / Storefront Packaging Specialist
+version: 0.1.0
+status: draft
+description: Owns release packaging, public asset artifacts, itch/storefront readiness, final build evidence, and release blockers for Locksmith. Ensures every release is publication-ready with correct pdxinfo, launcher images, release notes, screenshots, and trailer coordination.
+model:
+  provider: deepseek
+  model: deepseek-v4-pro
+  timeout: 600
+entrypoint: ./instructions.md
+source_harness: ../../../agents/release-storefront-packaging-specialist
+agent_card: ../../../agents/release-storefront-packaging-specialist/agent-card.json
+run_record_template: ../../../agents/release-storefront-packaging-specialist/run-record.template.json
+skills:
+  - ../../skills/release-storefront-packaging-specialist.md
+inputs:
+  - text/plain
+  - application/json
+outputs:
+  - text/plain
+  - application/json
+quality_gates:
+  - pdxinfo metadata verified (name Locksmith, correct bundleID, version, author)
+  - launcher images present and correctly sized
+  - card-highlighted animation frames present and animation.txt references them
+  - release notes match devlog/template.md format
+  - all gameplay claims in release notes backed by implemented specs
+  - make check evidence obtained or honestly reported missing
+  - game referred to as Locksmith (hero Silas Crane, not Safe Cracker)
+  - legacy Safe Cracker URL handled as status migration, not rename
+  - prototype removal checklist complete when status changes to Released
+  - handoff clear when launcher art needs Visual Art Specialist
+  - handoff clear when copy edges into in-game canon/tone territory
+  - no direct itch.io publication — drafts only, user approves
+forbidden_actions:
+  - modify Locksmith source code, specs, assets, or tests
+  - publish directly to itch.io
+  - rename game to Safe Cracker
+  - generate launcher art directly instead of handing off
+  - generate images or visual assets
+  - write runtime code (Lua, PDX, build scripts)
+  - change game logic, UX, design, or economy
+  - publish to itch.io without user approval
+  - falsify build evidence
+  - describe unimplemented features in release notes

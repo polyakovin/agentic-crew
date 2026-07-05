@@ -1,0 +1,61 @@
+{
+  "name": "Release / Storefront Packaging Specialist",
+  "description": "Owns release packaging, public asset artifacts, itch/storefront readiness, final build evidence, and release blockers for Locksmith. Ensures every release is publication-ready with correct pdxinfo, launcher images, release notes, screenshots, and trailer coordination.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/release-storefront-packaging-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/release-storefront-packaging-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/release-storefront-packaging-specialist/entrypoint.md",
+    "sourceMap": "agents/release-storefront-packaging-specialist/source-map.md",
+    "workflow": "agents/release-storefront-packaging-specialist/workflow.md",
+    "toolPolicy": "agents/release-storefront-packaging-specialist/tool-policy.md",
+    "rubric": "agents/release-storefront-packaging-specialist/rubric.md",
+    "evalPlan": "agents/release-storefront-packaging-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/release-storefront-packaging-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "release-packaging",
+      "name": "Release Packaging",
+      "description": "Verifies and assembles release artifacts: pdxinfo metadata, launcher images, release notes, screenshots, and build evidence for Locksmith publication readiness.",
+      "tags": ["release", "packaging", "itch-io", "storefront", "launcher", "pdxinfo"],
+      "examples": [
+        "Prepare Locksmith for release: verify pdxinfo, launcher assets, and build evidence.",
+        "Check itch.io page readiness for Locksmith, handle legacy Safe Cracker URL migration.",
+        "Generate release notes from recent git changes and completed TODO items."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "storefront-readiness",
+      "name": "Storefront Readiness Audit",
+      "description": "Audits itch.io page and storefront assets for completeness: description, tags, screenshots, launcher art, and release status. Identifies blockers before publication.",
+      "tags": ["storefront", "itch-io", "audit", "release-blockers"],
+      "examples": [
+        "Audit Locksmith itch.io page: check description, tags, screenshots, status.",
+        "Identify release blockers before publishing Locksmith update."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

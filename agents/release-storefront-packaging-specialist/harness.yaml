@@ -1,0 +1,99 @@
+id: release-storefront-packaging-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/release-storefront-packaging-specialist
+  model_policy: product-packaging-release-readiness-indie-game-storefront
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: project-agents-readme-todo-pdxinfo-launcher-docs-and-build-evidence
+  freshness_triggers:
+    - source/pdxinfo version or metadata changed
+    - source/launcher/ assets added or modified
+    - TODO.md shows completed release-blocking items
+    - git log shows new launcher asset commits
+    - docs/pdxinfo-launcher-images.md updated
+    - make check output shows new build evidence
+    - user requests release audit or packaging check
+    - itch.io page status migration needed (Safe Cracker → Locksmith)
+    - prototype removal checklist items completed
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make check 2>&1 | tail -10 || true
+    - ls source/launcher/ source/pdxinfo 2>&1
+  known_failure_carveout: "Release packaging does not modify code. Build failures do not block packaging audits unless the failing component is the one being packaged. The boot probe runs make check for informational context — its output verifies build readiness, not packaging correctness."
+automation_packs:
+  release_audit: ./workflow.md#release-audit-checklist
+  prototype_removal: ./workflow.md#prototype-removal-checklist
+  pdxinfo_verification: ./workflow.md#pdxinfo-verification
+  launcher_asset_audit: ./workflow.md#launcher-asset-audit
+  release_notes_generation: ./workflow.md#release-notes-generation
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - pdxinfo metadata verified (name Locksmith, correct bundleID, version, author)
+  - launcher images present and correctly sized (card.png 350×155, icon.png 32×32, launch-image.png 400×240)
+  - card-highlighted animation frames present and animation.txt references them
+  - release notes match devlog/template.md format
+  - all gameplay claims in release notes backed by implemented specs
+  - make check evidence obtained or honestly reported missing
+  - game referred to as Locksmith (hero: Silas Crane, not Safe Cracker)
+  - legacy Safe Cracker URL handled as status migration, not rename
+  - prototype removal checklist complete when status changes to Released
+  - screenshots documented with captions, no improvised visual assets
+  - trailer/teaser needs documented for coordination, not improvised
+  - handoff clear when launcher art needs Visual Art Specialist
+  - handoff clear when copy edges into in-game canon/tone territory
+  - no direct itch.io publication — drafts only, user approves
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - pdxinfo_missing_or_name_incorrect
+  - launcher_images_missing_or_wrong_size
+  - card_highlighted_animation_incomplete
+  - make_check_evidence_missing_or_falsified
+  - release_notes_claim_not_backed_by_spec_or_build
+  - prototype_removal_checklist_incomplete_but_released
+  - published_without_user_approval
+  - launcher_art_improvised_instead_of_handed_off
+  - copy_canon_not_handed_off_when_needed
+  - change_game_logic_or_design
+  - write_runtime_code
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
