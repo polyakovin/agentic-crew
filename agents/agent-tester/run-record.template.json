@@ -92,17 +92,39 @@
       "regressionCandidate": false
     }
   ],
-  "criticalFixRequests": [
+  "projectTodoUpdates": {
+    "path": "",
+    "status": "updated|created|blocked",
+    "blocker": "",
+    "entries": [
+      {
+        "sourceTaskId": "",
+        "sourceRunId": "",
+        "targetAgentId": "",
+        "severity": "critical|high|medium|low|note",
+        "owner": "",
+        "evidence": [],
+        "recommendedAction": "",
+        "blocking": false,
+        "regressionCandidate": false
+      }
+    ]
+  },
+  "criticalRemediationRequests": [
     {
       "profile": "agentic-crew/a2a-profile/v0.1",
       "kind": "handoffPacket",
       "taskId": "",
       "specialistId": "agent-tester",
+      "severity": "critical",
       "currentState": "",
       "filesTouched": [],
+      "affectedSurfaces": [],
+      "remediationIntent": "",
+      "ownerRationale": "",
       "openQuestions": [],
-      "nextSpecialist": "agent-fixer",
-      "handoffStatus": "ready|blocked-planned-specialist",
+      "nextSpecialist": "agent-tuner|agent-architect-crew-builder|protocol-steward",
+      "handoffStatus": "ready|blocked|needs-review",
       "recommendedNextSteps": [],
       "verificationNeeded": []
     }

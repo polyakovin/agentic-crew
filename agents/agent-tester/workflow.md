@@ -37,11 +37,15 @@ testing.
 8. Inspect traces/tool calls/run records, not only final answers.
 9. Classify findings and residual risk.
 10. Produce an improvement backlog.
-11. Emit critical repair handoff packets to `agent-fixer`; mark blocked when
-    that future specialist is unavailable.
-12. Update or propose knowledge-base lessons and regression candidates.
-13. Return a `specialistReport` with evidence, findings, backlog, KB updates,
-    and next owner.
+11. Mirror every recommendation and backlog item into the target project's TODO
+    artifact.
+12. Emit critical remediation handoff packets to the correct owner:
+    `agent-tuner` for existing-agent tuning/refinement,
+    `agent-architect-crew-builder` for creation or packaging defects, and
+    `protocol-steward` for protocol or shared governance defects.
+13. Update or propose knowledge-base lessons and regression candidates.
+14. Return a `specialistReport` with evidence, findings, backlog, project TODO
+    updates, KB updates, and next owner.
 
 ## Best-Practice Refresh Pack
 
@@ -213,20 +217,55 @@ Each backlog item should include:
 - `confidence`;
 - `regressionCandidate`.
 
-Critical items must also include a `handoffPacket` for `agent-fixer`.
+Critical items must also include a `handoffPacket` or
+`specialistReport.handoff` for the correct remediation owner.
 
-## Critical Fix Handoff
+## Project TODO Updates
 
-Use `agent-fixer` for critical repair requests. Since the fixer is not created
-yet, the tester should:
+Every Agent Tester recommendation must be written into the target project's TODO
+artifact before the final report is returned.
 
-1. Emit a complete `handoffPacket` with current state, files, evidence, expected
-   fix, rollback, and verification needed.
-2. Set `nextSpecialist` to `agent-fixer`.
-3. Set handoff status to `blocked-planned-specialist` when no callable fixer is
-   available.
-4. Avoid applying the fix locally unless explicitly reassigned by the user or
-   orchestrator.
+Use this resolution order:
+
+1. A task-specified todo/backlog path.
+2. An existing project-local TODO/backlog artifact such as `TODO.md`,
+   `BACKLOG.md`, or a tracked planning file named by project instructions.
+3. A new `TODO.md` at the target project root.
+
+Each TODO entry should include:
+
+- source task id or run id;
+- target agent id;
+- severity;
+- owner;
+- evidence reference;
+- recommended action;
+- whether the item is blocking;
+- regression candidate when applicable.
+
+If write access is unavailable, do not silently drop the recommendation. Return
+a `projectTodoUpdates` section with the exact entries that should be written,
+the intended path, and the blocker that prevented the update.
+
+## Critical Remediation Handoff
+
+Use `agent-tuner` when a critical finding requires refinement of an existing
+agent's prompt, role, workflow, gates, eval seeds, wrappers, or routing
+recommendations. Use `agent-architect-crew-builder` for new specialist
+creation, wrapper packaging, or net-new ownership defects. Use
+`protocol-steward` for A2A protocol, shared harness, or pack-governance defects.
+
+For critical issues, the tester should:
+
+1. Emit a complete `handoffPacket` or `specialistReport.handoff` with current
+   state, files, severity, evidence, affected surfaces, remediation intent,
+   rollback notes, and verification needed.
+2. Set `nextSpecialist` according to ownership:
+   `agent-tuner` for existing-agent tuning/refinement,
+   `agent-architect-crew-builder` for creation/package work, or
+   `protocol-steward` for protocol/governance work.
+3. Avoid applying the remediation locally unless explicitly reassigned by the
+   user or orchestrator.
 
 ## Validation Pack
 

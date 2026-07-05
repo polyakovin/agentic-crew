@@ -39,7 +39,7 @@
     {
       "id": "agent-workflow-testing",
       "name": "Agent Workflow Testing",
-      "description": "Tests a target agent's role contract, harness files, wrappers, tool path, evidence, safety controls, handoffs, eval coverage, and trace behavior.",
+      "description": "Tests a target agent's role contract, harness files, wrappers, tool path, evidence, safety controls, handoffs, eval coverage, trace behavior, and project TODO updates for every recommendation.",
       "tags": ["agent-testing", "evals", "exploratory-testing", "guardrails", "tracing"],
       "examples": [
         "Test this new specialist agent before it is promoted to pilot.",
@@ -51,11 +51,11 @@
     {
       "id": "agent-learning-backlog",
       "name": "Agent Learning Backlog",
-      "description": "Turns confirmed agent failures into sanitized knowledge-base lessons, regression candidates, and critical handoff packets for the future agent-fixer.",
-      "tags": ["knowledge-base", "lessons-learned", "regression", "handoff", "agent-fixer"],
+      "description": "Turns confirmed agent failures into sanitized knowledge-base lessons, regression candidates, project TODO entries, and critical handoff packets to Agent Tuner or the correct specialist owner.",
+      "tags": ["knowledge-base", "lessons-learned", "regression", "handoff", "agent-tuner"],
       "examples": [
         "Convert these agent test findings into lessons and eval candidates.",
-        "Create critical fix handoffs for release-blocking agent defects."
+        "Create critical Agent Tuner handoffs for release-blocking existing-agent refinement defects."
       ],
       "inputModes": ["text/plain", "application/json"],
       "outputModes": ["text/plain", "application/json"]

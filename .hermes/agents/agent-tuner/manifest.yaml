@@ -1,0 +1,33 @@
+id: agent-tuner
+name: Agent Tuner
+version: 0.1.0
+status: draft-ready
+description: Refines already described or draft specialist agents by sharpening scope, reducing overlap, improving prompts, workflows, gates, eval seeds, handoffs, and routing recommendations.
+entrypoint: ./instructions.md
+source_harness: ../../../agents/agent-tuner
+agent_card: ../../../agents/agent-tuner/agent-card.json
+run_record_template: ../../../agents/agent-tuner/run-record.template.json
+skills:
+  - ../../skills/agent-tuner.md
+inputs:
+  - text/plain
+  - application/json
+outputs:
+  - text/plain
+  - application/json
+quality_gates:
+  - target is an existing or draft described agent
+  - tuning mode and write scope are explicit
+  - overlap and ownership review completed
+  - bounded patch plan or scoped edits reduce a named failure mode
+  - eval seeds or acceptance gates recorded
+  - completed TODO and backlog entries resolved by tuning are removed rather
+    than checked off
+  - validation evidence recorded
+  - Agent Tester review recorded before promotion
+forbidden_actions:
+  - create or package a new specialist
+  - perform independent behavioral testing or red-team review
+  - change protocol schema or broad pack governance
+  - modify target application code
+  - claim promotion-ready without Agent Tester review

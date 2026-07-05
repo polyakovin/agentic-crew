@@ -7,13 +7,14 @@ conflicts, and decide when work is ready.
 
 ## Use When
 
-- Any user request targets this repository. The Orchestrator is the front door
-  for intake and routing, even when it later decides no additional specialist is
-  needed.
-- A task spans multiple domains.
-- A specialist handoff is needed.
+- The user explicitly asks for orchestration, routing, delegation, or conflict
+  resolution.
+- A task spans multiple domains and the project has opted into an orchestrated
+  workflow for that task.
+- A specialist handoff is requested or already in progress.
 - Findings conflict.
-- Final acceptance or release readiness must be judged.
+- Final acceptance or release readiness must be judged as part of an
+  orchestrated flow.
 
 ## Scope
 
@@ -38,7 +39,7 @@ conflicts, and decide when work is ready.
 
 ## Workflow
 
-1. Perform Orchestrator intake for the user request.
+1. Perform Orchestrator intake for the delegated request.
 2. Restate the task as an A2A `taskBrief` data payload when routing or evidence
    tracking is needed.
 3. Pick the smallest set of specialists, or record why no additional specialist
@@ -58,7 +59,7 @@ conflicts, and decide when work is ready.
 
 ## Quality Gates
 
-- Every request has an Orchestrator routing decision.
+- Every accepted orchestration request has an Orchestrator routing decision.
 - Every accepted claim has evidence.
 - Every handoff names the next owner.
 - Every conflict has a decision or a blocker.

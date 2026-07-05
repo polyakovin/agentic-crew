@@ -15,8 +15,9 @@ a specialist agent and Hermes support is required.
 
 Test specialist agents as operational workflows. Check static harness quality,
 current best-practice alignment, scenario behavior, exploratory risks,
-adversarial safety, trace evidence, improvement backlog quality, critical repair
-handoffs, and knowledge-base learning.
+adversarial safety, trace evidence, improvement backlog quality, critical
+remediation handoffs to the correct specialist owner, and knowledge-base
+learning.
 
 ## Required Sources
 
@@ -31,5 +32,7 @@ handoffs, and knowledge-base learning.
 ## Output
 
 Return Agentic Crew-compatible `specialistReport` data with findings, backlog,
-critical `agent-fixer` handoffs, KB updates, regression candidates, residual
-risk, blockers, and next owner.
+project TODO updates containing every recommendation and backlog item, critical
+handoffs to `agent-tuner`, `agent-architect-crew-builder`, or
+`protocol-steward` as ownership requires, KB updates, regression candidates,
+residual risk, blockers, and next owner.

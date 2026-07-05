@@ -38,12 +38,12 @@ context:
   task_scoped_reading: true
   what_to_read_policy: smallest-specialist-relevant-set
 operational_gates:
-  - every repository request starts with Orchestrator intake
+  - orchestration starts only when explicitly requested or selected by project policy
   - validate selected pack before routing
   - issue narrow taskBrief payloads
   - preserve conflicting evidence before decision
 quality_gates:
-  - every repository request has an Orchestrator routing decision
+  - every accepted orchestration task has an Orchestrator routing decision
   - every accepted specialist claim has evidence
   - every handoff names the next owner
   - every conflict has a decisionRecord or blocker

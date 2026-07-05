@@ -2,13 +2,13 @@ name: software-development-crew
 version: 0.2.0
 description: General software-development crew inspired by software-company multi-agent patterns.
 protocol: ../protocol/interaction-protocol.md
-entrypoint: orchestrator
-routing_policy: orchestrator-first
+entrypoint: direct
+routing_policy: direct-by-default
 agents:
   - id: orchestrator
     path: ../agents/orchestrator
     harness: ../agents/orchestrator/harness.yaml
-    required: true
+    required: false
   - id: product-manager
     path: ../agents/product-manager
     harness: ../agents/product-manager/harness.yaml
@@ -41,6 +41,10 @@ agents:
     path: ../agents/agent-tester
     harness: ../agents/agent-tester/harness.yaml
     required: false
+  - id: agent-tuner
+    path: ../agents/agent-tuner
+    harness: ../agents/agent-tuner/harness.yaml
+    required: false
 routing:
   requirements: product-manager
   architecture: system-architect
@@ -62,4 +66,9 @@ routing:
   agent-red-team: agent-tester
   agent-exploratory-testing: agent-tester
   agent-knowledge-base-learning: agent-tester
+  agent-tuning: agent-tuner
+  agent-refinement: agent-tuner
+  agent-overlap-reduction: agent-tuner
+  agent-prompt-refinement: agent-tuner
+  agent-eval-seed-refinement: agent-tuner
   conflict-resolution: orchestrator

@@ -1,0 +1,63 @@
+{
+  "name": "Agent Tuner",
+  "description": "Refines already described or draft specialist agents by sharpening scope, reducing overlap, improving prompts, workflows, gates, eval seeds, handoffs, and routing recommendations without taking over creation or independent testing.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/agent-tuner",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/agent-tuner/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/agent-tuner/entrypoint.md",
+    "sourceMap": "agents/agent-tuner/source-map.md",
+    "workflow": "agents/agent-tuner/workflow.md",
+    "toolPolicy": "agents/agent-tuner/tool-policy.md",
+    "rubric": "agents/agent-tuner/rubric.md",
+    "evalPlan": "agents/agent-tuner/eval-plan.md",
+    "runRecordTemplate": "agents/agent-tuner/run-record.template.json",
+    "codexSkill": ".agents/skills/agent-tuner/SKILL.md",
+    "hermesSkill": ".hermes/skills/agent-tuner.md",
+    "hermesPackage": ".hermes/agents/agent-tuner"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "agent-definition-tuning",
+      "name": "Agent Definition Tuning",
+      "description": "Tunes an existing or draft specialist's role, prompt, workflow, gates, eval seeds, handoffs, and routing recommendations with bounded patch plans or scoped edits.",
+      "tags": ["agent-tuning", "role-boundaries", "agent-prompt-refinement", "eval-seeds", "routing"],
+      "examples": [
+        "Tune this draft agent so it no longer overlaps Agent Tester.",
+        "Refine the role card, workflow, gates, and eval seeds for this specialist before pilot."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "agent-overlap-reduction",
+      "name": "Agent Overlap Reduction",
+      "description": "Compares neighboring specialists and produces source-backed boundary changes, handoffs, and routing recommendations for an already described agent.",
+      "tags": ["overlap-analysis", "handoff", "routing", "specialist-boundaries"],
+      "examples": [
+        "Separate this tuning specialist from Crew Builder and Agent Tester.",
+        "Find the smallest role-boundary patch for these two overlapping agents."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

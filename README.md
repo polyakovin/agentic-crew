@@ -20,10 +20,11 @@ history, risks, tools, and verification gates.
 
 ## Project Operating Rule
 
-All work in this repository is orchestrator-first. Every user request should
-begin with the Orchestrator rules in `AGENTS.md` and
-`agents/orchestrator/role.md`, then route to the smallest useful specialist set
-or explicitly state that no specialist handoff is needed.
+Work in this repository is direct-by-default. Do not automatically route every
+user request through the Orchestrator; handle requests locally unless the user
+explicitly asks for orchestration, delegation, or a named specialist. When
+delegation is requested, use the smallest useful specialist set and preserve
+evidence with `protocol/interaction-protocol.md`.
 
 ## Layout
 
@@ -88,8 +89,8 @@ examples/
    release/rollback.
 6. Require every specialist to exchange Agentic Crew payloads using
    `protocol/interaction-protocol.md`.
-7. Keep the orchestrator on the strongest model available when tradeoffs,
-   conflict resolution, risk calls, or final acceptance matter.
+7. Use the orchestrator for explicit routing, conflict resolution, risk calls,
+   or final acceptance flows when a project opts into that workflow.
 
 For creating new agents from a target project's demand list, use
 `plans/agent-harness-creation-plan.md`.

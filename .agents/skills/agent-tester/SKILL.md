@@ -1,6 +1,6 @@
 ---
 name: agent-tester
-description: Test specialist agents through current best-practice refresh, static checks, exploratory scenarios, adversarial cases, trace review, improvement backlogs, critical handoffs to a future agent-fixer, and knowledge-base learning. Use when a user asks to test, audit, evaluate, red-team, validate, or improve an agent's behavior rather than create or fix the agent directly.
+description: Test specialist agents through current best-practice refresh, static checks, exploratory scenarios, adversarial cases, trace review, improvement backlogs, critical handoffs to agent-tuner or the correct specialist owner, and knowledge-base learning. Use when a user asks to test, audit, evaluate, red-team, validate, or improve an agent's behavior rather than create, fix, or tune the agent directly.
 ---
 
 # Agent Tester
@@ -48,19 +48,33 @@ describe reading this file as live agent use.
 6. Inspect workflow path evidence: context, retrieved sources, tool calls,
    approvals, handoffs, traces, costs, limits, and final artifact.
 7. Produce findings and a prioritized improvement backlog.
-8. Emit critical `handoffPacket` entries to `agent-fixer`; mark
-   `blocked-planned-specialist` while that future specialist is unavailable.
-9. Update or propose sanitized knowledge-base lessons and regression candidates.
+8. Write every recommendation and backlog item into the target project's TODO
+   artifact. Use a task-specified todo/backlog path first, then an existing
+   project-local `TODO.md`, and create `TODO.md` at the target project root if
+   no TODO artifact exists. If write access is unavailable, return exact
+   `projectTodoUpdates` entries plus the blocker.
+9. Emit critical `handoffPacket` entries to the correct remediation owner:
+   `agent-tuner` for existing-agent tuning/refinement,
+   `agent-architect-crew-builder` for creation/package defects, and
+   `protocol-steward` for protocol or shared-governance defects. Include
+   evidence, severity, affected surfaces, remediation intent, and verification
+   needed.
+10. Update or propose sanitized knowledge-base lessons and regression candidates.
 
 ## Gates
 
 - Every confirmed finding has evidence, impact, recommendation, confidence, and
   owner.
+- Every recommendation and backlog item is mirrored into the target project's
+  TODO artifact, or the report includes a clear blocker with exact entries.
 - External best-practice claims cite source URL and access date.
 - Static harness issues are separated from behavioral workflow issues.
-- Critical findings include `agent-fixer` handoff packets.
+- Critical existing-agent tuning findings include `agent-tuner` handoff packets;
+  creation/package findings route to `agent-architect-crew-builder`, and
+  protocol/governance findings route to `protocol-steward`.
 - Knowledge-base updates are sanitized and project-neutral.
-- The tester does not fix the target agent unless explicitly reassigned.
+- The tester does not fix or tune the target agent unless explicitly
+  reassigned.
 
 ## Output
 
@@ -71,7 +85,9 @@ Return an Agentic Crew-compatible `specialistReport` with:
 - test charter and scenario matrix;
 - `reviewFinding` entries;
 - improvement backlog;
-- critical handoff packets for `agent-fixer`;
+- project TODO updates containing every recommendation and backlog item;
+- critical handoff packets for `agent-tuner`,
+  `agent-architect-crew-builder`, or `protocol-steward` as ownership requires;
 - knowledge-base updates made or proposed;
 - regression candidates;
 - residual risk, blockers, and next owner.

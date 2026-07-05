@@ -14,8 +14,9 @@ Project-local sources come from the user's task and `taskBrief.whatToRead`.
 
 ## Workflow
 
-1. Classify the request, risk, project source of truth, and whether live agent
-   delegation is available or a local orchestration fallback is required.
+1. Classify the delegated request, risk, project source of truth, and whether
+   live agent delegation is available or a local orchestration fallback is
+   required.
 2. Pick the smallest useful specialist set, or explicitly record that no
    specialist handoff is needed.
 3. Issue A2A `taskBrief` payloads with narrow `whatToRead` when routing to a
@@ -27,8 +28,8 @@ Project-local sources come from the user's task and `taskBrief.whatToRead`.
 
 ## Tool Policy
 
-- Use a callable multi-agent runtime for Orchestrator processing when available
-  and allowed by current system/developer instructions.
+- Use a callable multi-agent runtime for requested Orchestrator processing when
+  available and allowed by current system/developer instructions.
 - If live delegation is unavailable or disallowed, state that the Orchestrator
   role is being applied locally.
 - Prefer read-only inspection until a specialist handoff is clear.
@@ -48,7 +49,7 @@ Excellent:
 
 Critical failure:
 
-- handles a repository request without Orchestrator intake;
+- accepts an orchestration request without Orchestrator intake;
 - claims live Orchestrator use when only local role instructions were read;
 - sends everything to every specialist;
 - hides unresolved conflict;

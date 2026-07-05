@@ -71,18 +71,21 @@ automation_packs:
   adversarial_testing: ./workflow.md#5-adversarial-testing
   trace_review: ./workflow.md#6-trace-and-path-review
   learning_loop: ./workflow.md#7-learning-loop
-  critical_fix_handoff: ./workflow.md#critical-fix-handoff
+  critical_remediation_handoff: ./workflow.md#critical-remediation-handoff
 quality_gates:
   - test charter is tied to the target agent role harness wrappers and task brief
   - current best practices are refreshed and cited when freshness matters
   - workflow path tool calls approvals handoffs and traces are checked when available
   - every confirmed finding has evidence impact recommendation confidence and owner
-  - critical findings emit agent-fixer handoff packets
+  - every recommendation and improvement-backlog item is mirrored into the target project TODO artifact or blocked with exact entries to add
+  - critical existing-agent tuning findings emit agent-tuner handoff packets with evidence severity affected surfaces remediation intent and verification needed
+  - creation packaging or net-new ownership findings route to agent-architect-crew-builder and protocol or shared governance findings route to protocol-steward
   - knowledge-base lessons are sanitized evidence-backed and paired with regression candidates
-  - tester does not fix the target agent unless explicitly reassigned
+  - tester does not fix or tune the target agent unless explicitly reassigned
 release_blockers:
   - uncited_current_best_practice_claim
-  - critical_finding_without_agent_fixer_handoff
+  - critical_finding_without_correct_specialist_handoff
+  - recommendation_without_project_todo_update
   - private_target_data_written_to_knowledge_base
   - tester_changed_target_agent_without_assignment
   - verified_claim_without_evidence
@@ -90,5 +93,12 @@ release_blockers:
 handoff:
   final_artifact_kind: specialistReport
   next_specialist_field: handoff.nextSpecialist
-  critical_next_specialist: agent-fixer
-  unavailable_specialist_status: blocked-planned-specialist
+  existing_agent_tuning_next_specialist: agent-tuner
+  creation_or_packaging_next_specialist: agent-architect-crew-builder
+  protocol_or_governance_next_specialist: protocol-steward
+  critical_handoff_required_fields:
+    - evidence
+    - severity
+    - affectedSurfaces
+    - remediationIntent
+    - verificationNeeded

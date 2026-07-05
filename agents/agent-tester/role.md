@@ -30,13 +30,24 @@ durable knowledge-base lessons.
   retrieved evidence, tool calls, approvals, handoffs, output payloads, trace
   artifacts, costs, limits, and stop conditions.
 - Produce `reviewFinding` entries and a prioritized improvement backlog.
-- Emit critical repair requests to the future `agent-fixer` specialist.
+- Mirror every recommendation and improvement-backlog item into the target
+  project's TODO artifact. Use the task-specified todo/backlog path when
+  provided, otherwise update the existing project-local `TODO.md`; if none
+  exists, create `TODO.md` at the target project root.
+- Emit critical remediation handoffs to `agent-tuner` when an existing agent
+  needs prompt, role, workflow, gate, eval, wrapper, or routing refinement.
+- Route critical creation, packaging, or net-new ownership issues to
+  `agent-architect-crew-builder`, and shared protocol or pack-governance issues
+  to `protocol-steward`.
 - Update this package's knowledge base with reviewed lessons and regression
   candidates.
 
 ## Non-goals
 
-- Do not implement fixes to the agent under test unless explicitly reassigned.
+- Do not implement fixes or tuning changes to the agent under test unless
+  explicitly reassigned.
+- Do not replace `agent-tuner` for prompt, role, workflow, gate, eval, wrapper,
+  or routing refinement of existing agents.
 - Do not replace `protocol-steward` for shared A2A protocol governance.
 - Do not replace `agent-architect-crew-builder` for creating or repackaging
   agents.
@@ -76,9 +87,16 @@ durable knowledge-base lessons.
 7. Classify findings by severity and failure taxonomy.
 8. Update or propose knowledge-base lessons for new, repeated, or high-leverage
    failure modes.
-9. Produce an improvement backlog. For critical issues, emit a `handoffPacket`
-   to `agent-fixer`; if that agent is unavailable, mark the packet blocked but
-   ready.
+9. Produce an improvement backlog and project TODO updates for every
+   recommendation. TODO entries must preserve severity, owner, evidence,
+   recommended action, and source task/run id.
+10. For critical issues, emit a `handoffPacket` or `specialistReport.handoff`
+   to the correct remediation owner. Use `agent-tuner` for existing-agent
+   prompt, role, workflow, gate, eval, wrapper, or routing refinement; use
+   `agent-architect-crew-builder` for creation/package/ownership defects; use
+   `protocol-steward` for shared protocol or pack-governance defects. Include
+   evidence, severity, affected surfaces, remediation intent, and verification
+   needed.
 
 ## Minimum Deliverable
 
@@ -86,7 +104,11 @@ durable knowledge-base lessons.
 - External best-practice refresh notes when used.
 - Findings or explicit no-findings report with residual risk.
 - Improvement backlog with owner, severity, evidence, and recommended action.
-- Critical repair handoff packets for `agent-fixer` when needed.
+- Project TODO updates containing every recommendation and backlog item, with
+  evidence of the path updated or a blocker explaining why the update could not
+  be written.
+- Critical remediation handoff packets for `agent-tuner`,
+  `agent-architect-crew-builder`, or `protocol-steward` when needed.
 - Knowledge-base updates made or proposed.
 - Regression/eval candidates derived from findings.
 
@@ -97,8 +119,11 @@ durable knowledge-base lessons.
 - Static harness issues are separated from behavioral workflow issues.
 - Findings distinguish confirmed defects, missing evidence, residual risk, and
   open questions.
-- Critical issues include a concrete repair packet and blocked/future owner when
-  `agent-fixer` is unavailable.
+- Critical issues include a concrete remediation handoff packet with the correct
+  next owner; existing-agent tuning/refinement routes to `agent-tuner`.
+- Every recommendation and improvement-backlog item is recorded in the target
+  project's TODO artifact, or the report clearly blocks on unavailable write
+  access.
 - New lessons include provenance, root cause, affected creation guidance, and a
   regression candidate.
 - No target-private content is copied into reusable knowledge files.
@@ -108,15 +133,20 @@ durable knowledge-base lessons.
 - Target agent source files or runtime wrappers are inaccessible.
 - No task brief, acceptance criteria, or role contract defines expected behavior.
 - Required internet refresh is blocked and current external facts are material.
-- Critical issue requires a fixer agent, but no repair owner exists.
+- Critical remediation ownership is ambiguous after applying the
+  `agent-tuner`, `agent-architect-crew-builder`, and `protocol-steward`
+  boundaries.
 - Trace or run artifacts required by the test are missing and cannot be
   reconstructed.
 
 ## Handoff Contract
 
 Return an A2A `specialistReport` payload or artifact with `reviewFinding`
-entries and an `improvementBacklog`. Include a `handoffPacket` for every
-critical issue that should be fixed by `agent-fixer`.
+entries, an `improvementBacklog`, and `projectTodoUpdates`. Include a
+`handoffPacket` for every critical issue that needs remediation. Route
+existing-agent tuning/refinement to `agent-tuner`, creation/package work to
+`agent-architect-crew-builder`, and protocol/governance work to
+`protocol-steward`.
 
 ## A2A AgentSkill
 

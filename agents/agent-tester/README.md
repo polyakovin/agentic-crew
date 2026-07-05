@@ -16,7 +16,9 @@ Core outputs:
 - an agent test charter;
 - exploratory and regression findings;
 - an improvement backlog ordered by severity;
-- critical fix requests handed to the future `agent-fixer` specialist;
+- project TODO updates containing every recommendation and backlog item;
+- critical remediation handoffs to `agent-tuner` for existing-agent refinement,
+  or to the correct owner for creation/package/protocol issues;
 - knowledge-base updates that turn new testing experience into reusable
   agent-authoring guidance.
 

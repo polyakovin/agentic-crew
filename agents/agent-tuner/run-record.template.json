@@ -1,0 +1,94 @@
+{
+  "artifactType": "agent-tuner-run-record",
+  "schemaVersion": "0.1.0",
+  "protocolNote": "Durable artifact template, not an A2A message-schema payload.",
+  "specialistId": "agent-tuner",
+  "taskId": "",
+  "runId": "",
+  "timestamp": "",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "targetAgent": {
+    "id": "",
+    "runtimeSurfaces": [],
+    "statusBefore": "",
+    "sourceOfTruth": []
+  },
+  "tuningMode": "patch-plan-only|bounded-edits|handoff-required",
+  "routing": {
+    "entrySpecialist": "agent-tuner",
+    "selectedPack": "",
+    "routingKeys": [],
+    "liveDelegation": {
+      "requested": false,
+      "runtimeAvailable": false,
+      "delegateId": "",
+      "result": ""
+    }
+  },
+  "scope": {
+    "writeScope": [],
+    "forbiddenFiles": [],
+    "nonGoals": []
+  },
+  "sourceMap": {
+    "targetFilesRead": [],
+    "neighboringAgentsRead": [],
+    "reviewFindingsRead": [],
+    "projectRulesRead": [],
+    "taintedInputs": []
+  },
+  "overlapAnalysis": [
+    {
+      "candidateAgentId": "",
+      "matchingFields": [],
+      "decision": "separate|reuse|merge|handoff",
+      "rationale": ""
+    }
+  ],
+  "ownershipExtraction": {
+    "specialistOwned": [],
+    "sharedInterfaces": [],
+    "targetOwned": [],
+    "movedArtifacts": [],
+    "deleteAfterMove": []
+  },
+  "tuningChanges": [
+    {
+      "changeId": "",
+      "failureModeReduced": "",
+      "surface": "",
+      "file": "",
+      "summary": "",
+      "evidence": [],
+      "rollback": "",
+      "validation": []
+    }
+  ],
+    "patchPlan": [],
+    "evalSeeds": [],
+    "routingRecommendations": [],
+    "todoUpdates": {
+        "removedCompletedEntries": [],
+        "preservedOpenEntries": [],
+        "newEntries": [],
+        "artifactPaths": [],
+        "evidence": []
+    },
+    "validationResults": [],
+  "agentTesterReview": {
+    "requested": false,
+    "runtimeAvailable": false,
+    "result": "not-requested|blocked-unavailable|passed|passed-with-backlog|critical-findings",
+    "findings": [],
+    "blocker": ""
+  },
+  "promotionStatus": "draft|draft-ready|pilot|production|blocked",
+  "risks": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "recommendedNextSteps": [],
+    "verificationNeeded": []
+  }
+}

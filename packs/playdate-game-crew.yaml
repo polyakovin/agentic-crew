@@ -3,13 +3,13 @@ version: 0.2.0
 description: Playdate-focused game-development crew with SDK/platform specialist.
 protocol: ../protocol/interaction-protocol.md
 extends: software-development-crew
-entrypoint: orchestrator
-routing_policy: orchestrator-first
+entrypoint: direct
+routing_policy: direct-by-default
 agents:
   - id: orchestrator
     path: ../agents/orchestrator
     harness: ../agents/orchestrator/harness.yaml
-    required: true
+    required: false
   - id: product-manager
     path: ../agents/product-manager
     harness: ../agents/product-manager/harness.yaml
