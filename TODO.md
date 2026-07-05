@@ -29,7 +29,7 @@ for repository-local traceability.
   `.hermes/agents/workflow-process-improver/**`,
   `packs/software-development-crew.yaml`, and
   `plans/workflow-process-improver-scope-decision.md`.
-- [ ] [medium][workflow-process-improver][blocked-on-multica-write-contract]
+- [x] [medium][workflow-process-improver][blocked-on-multica-write-contract]
   Define or approve the concrete Multica CLI proposal write destination and
   command contract for this repository, including issue/project destination,
   create/update command shape, dry-run or preview behavior, side-effect approval
@@ -38,7 +38,11 @@ for repository-local traceability.
   review context reports a working host-level read command and project id
   `590c34c6-1c3c-49b3-b662-34ebd8cf34b4`, which is discovery evidence but not
   approval to create or update issues. Multica issue: `POL-3`
-  (`b037b5f9-2176-48b8-bcd6-2e7bef040ee6`).
+  (`b037b5f9-2176-48b8-bcd6-2e7bef040ee6`). Approved contract v1 requires
+  approval state/source, destination id, sanitized command shape, response
+  `id`/`identifier`/`status`/`project_id`, duplicate-check result, retry count,
+  and rollback path in WPI run records. Verification proposal: `POL-5`
+  (`606f18c5-6815-4ce0-948c-235224a88dff`).
 - [ ] [medium][workflow-process-improver][before-pilot] Exercise at least five
   eval-plan scenario seeds and record one sample retrospective run that writes
   proposals to the approved Multica destination or authorized fallback before

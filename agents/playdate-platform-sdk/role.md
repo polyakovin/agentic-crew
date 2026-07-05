@@ -44,11 +44,19 @@ platform audit.
 
 ## Source Hierarchy
 
-1. Project specs and documented project pitfalls.
-2. Playdate SDK documentation or verified local SDK behavior.
-3. Current source code and tests.
-4. Git history for recurring platform failures.
-5. General Lua/embedded-game knowledge.
+Use separate hierarchies for different claim types:
+
+- Playdate API existence, receiver, and signature facts: local installed SDK and
+  CoreLibs first, then official Playdate docs/changelog, then project pitfalls
+  as observed-memory evidence.
+- Project support decisions: current user request, project manifest/contracts,
+  component specs, then current source/tests.
+- Current source, tests, git history, and general Lua/embedded-game knowledge
+  provide usage context, not higher-priority SDK truth.
+
+Do not collapse confidence into truth status. A claim can be high-confidence
+and still `unconfirmed` when local SDK, official docs, or reproducible evidence
+are missing.
 
 ## Workflow
 
@@ -62,10 +70,17 @@ platform audit.
 
 ## Minimum Deliverable
 
-- Platform risk summary.
-- Evidence from spec/source/docs.
+- Platform risk summary with `truthStatusSummary`.
+- Source/evidence map for SDK, official docs, project specs, source, commands,
+  and any tainted inputs used.
+- Verified/refuted/unconfirmed/conflict claims, with confidence kept separate
+  from truth status.
+- Command and gate results, including blocked gates.
+- Missing tools, missing sources, hardware validation needs, and verification
+  limits.
 - Recommended fix or verification gate.
 - New pitfall entry needed: yes/no.
+- Handoff ownership when another specialist owns the next action.
 
 ## Quality Gates
 

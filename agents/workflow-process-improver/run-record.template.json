@@ -39,9 +39,31 @@
     "type": "multica-cli|todo-backlog|blocked",
     "commandOrPath": "",
     "destinationProjectOrBoard": "",
+    "destinationProjectId": "",
+    "destinationIssueId": "",
     "dryRunAvailable": false,
     "approvalState": "",
+    "approvalSource": "",
     "discoveryEvidence": [],
+    "dryRunPreview": {
+      "title": "",
+      "descriptionPreviewOrHash": "",
+      "sanitizedCommandShape": "",
+      "redactionNotes": ""
+    },
+    "duplicateCheck": {
+      "performed": false,
+      "method": "",
+      "result": ""
+    },
+    "retryCount": 0,
+    "rollbackCommandOrPath": "",
+    "multicaResponse": {
+      "id": "",
+      "identifier": "",
+      "status": "",
+      "project_id": ""
+    },
     "resultSummary": "",
     "blocker": ""
   },
@@ -115,6 +137,22 @@
       "owner": "",
       "evidenceIds": [],
       "verificationNeeded": "",
+      "approvalState": "",
+      "approvalSource": "",
+      "destinationProjectId": "",
+      "destinationIssueId": "",
+      "sanitizedCommandShape": "",
+      "dryRunPreview": "",
+      "duplicateCheckResult": "",
+      "retryCount": 0,
+      "multicaResponse": {
+        "id": "",
+        "identifier": "",
+        "status": "",
+        "project_id": ""
+      },
+      "rollbackCommandOrPath": "",
+      "redactionNotes": "",
       "writeResult": ""
     }
   ],

@@ -78,16 +78,25 @@ Generic references to Multica are not enough.
 
 For every Multica write, record:
 
+- approval state and approval source;
 - command family or config path;
-- project/board/issue/queue destination;
+- exact create or update command shape with secrets redacted;
+- project/board/issue/queue destination, including `project_id` or `issue_id`;
 - proposal ids written;
 - dry-run or preview result when available;
-- approval state;
+- duplicate-check result;
+- retry count;
+- Multica JSON response `id`, `identifier`, `status`, and `project_id`;
 - stdout/stderr or API observation summary;
-- retry count.
+- rollback command or restoration path.
 
-Use zero automatic retries for external side effects unless the CLI contract
-states the operation is idempotent and the task approves retry.
+Read-only CLI success is not write approval. If no dry-run flag exists, preview
+the destination, title, status, assignee state, description preview or hash, and
+sanitized command shape without executing. Retry a failed external write at most
+once after fixing command or input syntax. If success is ambiguous after a
+timeout or transport error, search/list the destination by exact title before
+retrying to avoid duplicates. Do not use duplicate-allowing flags unless the
+task explicitly approves them.
 
 ## Redaction Policy
 

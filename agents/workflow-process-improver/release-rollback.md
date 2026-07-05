@@ -35,7 +35,9 @@ Before pilot:
 
 1. At least five eval-plan scenario seeds are exercised.
 2. One sample process retrospective writes proposals to Multica CLI or an
-   authorized TODO/backlog fallback.
+   authorized TODO/backlog fallback and records approval source, destination id,
+   sanitized command shape, response `id`/`identifier`/`status`/`project_id`,
+   duplicate-check result, retry count, and rollback path.
 3. One information-capture gap is turned into a tracked proposal or safe
    template update.
 4. Redaction process is reviewed.

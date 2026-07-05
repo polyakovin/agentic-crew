@@ -86,6 +86,13 @@ If no concrete Multica destination exists, continue only when a fallback
 TODO/backlog path is authorized. Otherwise, return blocked with the exact
 proposal entries that need a destination.
 
+Read-only CLI success is discovery evidence, not approval to create or update
+Multica records. Before any proposal write, the run record must name the
+`approvalState` and `approvalSource`. If the CLI has no dry-run flag, dry-run
+means preview only: record the destination, title, status, assignee state,
+description preview or hash, and sanitized command shape without executing the
+write.
+
 ## 3. Workflow Evidence Inventory
 
 Collect only bounded evidence required for the workflow scope:
@@ -173,6 +180,21 @@ Write order:
 
 Do not leave proposals only in the chat response when a write destination is
 available.
+
+For every Multica proposal write, preserve enough evidence to distinguish
+discovery from approved write authority:
+
+- approval state and approval source;
+- destination `project_id` or `issue_id`;
+- exact create or update command shape with secrets redacted;
+- Multica JSON response `id`, `identifier`, `status`, and `project_id`;
+- duplicate-check result and retry count;
+- rollback command or restoration path.
+
+Retry a failed external write at most once after fixing command or input syntax.
+If success is ambiguous after a timeout or transport error, search the
+destination by exact title before retrying so the run does not create
+duplicates.
 
 ## 7. Authorized Information-Capture Improvements
 

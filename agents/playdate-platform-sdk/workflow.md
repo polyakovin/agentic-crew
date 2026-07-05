@@ -9,6 +9,7 @@ git status --short
 command -v pdc
 pdc --version
 ls -l "$(command -v pdc)"
+python3 -c 'import os,sys; p=sys.argv[1]; print(os.path.realpath(p))' "$(command -v pdc)"
 command -v lua
 command -v lua5.4
 command -v lua5.3
@@ -18,6 +19,8 @@ command -v luajit
 Interpretation:
 
 - `pdc` present: PDX packaging/syntax can be validated.
+- Record both the shell path and resolved path for `pdc`; symlinked installs
+  must derive the SDK root from the resolved binary path.
 - Lua missing: unit/lint/check gates may be blocked before tests/lint run.
 - Manifest SDK differs from `pdc`: SDK drift must be recorded.
 
@@ -49,15 +52,26 @@ Interpretation:
 
 ```bash
 SDK_BIN="$(command -v pdc)"
-SDK_ROOT="$(cd "$(dirname "$SDK_BIN")/.." && pwd)"
-rg -n "startAccelerometer|readAccelerometer|getCrankPosition|getCrankChange|getSystemMenu" "$SDK_ROOT/CoreLibs"
-rg -n "datastore\\.(read|write|delete|writeImage|readImage)" "$SDK_ROOT/CoreLibs"
-rg -n "fillPolygon|fillTriangle|drawTextAligned|getTextSize|setImageDrawMode" "$SDK_ROOT/CoreLibs"
-rg -n "font:(drawTextAligned|getTextWidth)|inputHandlers|setRefreshRate|setMinimumGCTime|setGCScaling" "$SDK_ROOT/CoreLibs"
+SDK_BIN_RESOLVED="$(python3 -c 'import os,sys; print(os.path.realpath(sys.argv[1]))' "$SDK_BIN")"
+SDK_ROOT="$(cd "$(dirname "$SDK_BIN_RESOLVED")/.." && pwd)"
+CORELIBS_DIR="$SDK_ROOT/CoreLibs"
+printf 'pdc=%s\npdc_resolved=%s\nsdk_root=%s\ncorelibs=%s\n' \
+  "$SDK_BIN" "$SDK_BIN_RESOLVED" "$SDK_ROOT" "$CORELIBS_DIR"
+test -d "$CORELIBS_DIR" || {
+  printf 'missing CoreLibs search scope: %s\n' "$CORELIBS_DIR" >&2
+  exit 2
+}
+rg -n "startAccelerometer|readAccelerometer|getCrankPosition|getCrankChange|getSystemMenu" "$CORELIBS_DIR"
+rg -n "datastore\\.(read|write|delete|writeImage|readImage)" "$CORELIBS_DIR"
+rg -n "fillPolygon|fillTriangle|drawTextAligned|getTextSize|setImageDrawMode" "$CORELIBS_DIR"
+rg -n "font:(drawTextAligned|getTextWidth)|inputHandlers|setRefreshRate|setMinimumGCTime|setGCScaling" "$CORELIBS_DIR"
 ```
 
-If variable expansion is impractical, use the concrete SDK path from
-`ls -l "$(command -v pdc)"`.
+Record `pdc`, `pdc_resolved`, `sdk_root`, and `corelibs` in the evidence map.
+If `pdc` cannot be resolved or `CoreLibs` is absent under the resolved SDK root,
+classify local SDK grounding as a `missing-source` blocker with the exact
+CoreLibs search scope. Do not silently downgrade API claims to unconfirmed
+without naming the missing source.
 
 ## Platform Static Audit
 

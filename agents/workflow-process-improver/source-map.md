@@ -52,6 +52,12 @@ and result. For external writes, use dry-run or preview mode when the CLI
 supports it; otherwise request approval before creating or updating project
 management state.
 
+Read-only CLI success only proves discovery. It is not approval to write. A
+write-capable run record must preserve approval state and source, destination
+`project_id` or `issue_id`, sanitized create/update command shape, Multica JSON
+response `id`, `identifier`, `status`, and `project_id`, duplicate-check result,
+retry count, and rollback command or restoration path.
+
 ## Context Economy Contract
 
 Separate context into these buckets:

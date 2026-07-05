@@ -69,8 +69,11 @@ improvement. This is a Codex wrapper for the reusable Agentic Crew harness in
 8. Write every proposal to Multica CLI when a concrete destination exists. If
    Multica is absent, write to an approved project-local TODO/backlog fallback
    or block with exact entries.
-9. Validate changed JSON, YAML, TOML, and Markdown whitespace.
-10. Return an Agentic Crew `specialistReport`.
+9. For Multica writes, record approval state/source, destination id, sanitized
+   command shape, response `id`/`identifier`/`status`/`project_id`, duplicate check,
+   retry count, and rollback path in the run record.
+10. Validate changed JSON, YAML, TOML, and Markdown whitespace.
+11. Return an Agentic Crew `specialistReport`.
 
 ## Gates
 
@@ -82,6 +85,8 @@ improvement. This is a Codex wrapper for the reusable Agentic Crew harness in
 - Every improvement proposal is written to Multica CLI when a concrete
   destination exists, or to an approved fallback TODO/backlog with blocker
   evidence.
+- Read-only Multica discovery is not write approval; side-effecting writes must
+  cite their approval source and rollback path.
 - Private data is summarized or redacted before entering reusable or tracked
   artifacts.
 - No product code, protocol schema, or unrelated specialist package changes are

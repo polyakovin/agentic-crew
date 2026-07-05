@@ -17,6 +17,9 @@ Analyze bounded logs, sessions, run records, TODOs, review findings, handoffs,
 task events, and project workflow evidence. Reconstruct the workflow timeline,
 find bottlenecks and information-capture gaps, improve authorized capture
 surfaces, and write proposals to Multica CLI or an approved fallback artifact.
+For Multica writes, preserve approval source, destination id, sanitized command
+shape, response `id`/`identifier`/`status`/`project_id`, duplicate-check result,
+retry count, and rollback path in the run record.
 
 ## Required Sources
 
@@ -33,4 +36,4 @@ Return Agentic Crew-compatible `specialistReport` data with target project,
 workflow scope, proposal destination, evidence inventory, timeline, process
 findings, information-capture gaps, improvements applied, proposals written,
 Multica result or fallback TODO/backlog updates, validation, handoffs, blockers,
-risks, and promotion status.
+risks, proposal-write approval evidence, rollback path, and promotion status.
