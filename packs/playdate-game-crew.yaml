@@ -70,6 +70,14 @@ agents:
     path: ../agents/endless-economy-specialist
     harness: ../agents/endless-economy-specialist/harness.yaml
     required: false
+  - id: narrative-noir-copy-specialist
+    path: ../agents/narrative-noir-copy-specialist
+    harness: ../agents/narrative-noir-copy-specialist/harness.yaml
+    required: false
+  - id: devlog-marketing-specialist
+    path: ../agents/devlog-marketing-specialist
+    harness: ../agents/devlog-marketing-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -134,3 +142,17 @@ routing:
   save-compatibility: endless-economy-specialist
   economy-invariants: endless-economy-specialist
   endless-economy-audit: endless-economy-specialist
+  narrative-copy: narrative-noir-copy-specialist
+  noir-copy: narrative-noir-copy-specialist
+  lore-consistency: narrative-noir-copy-specialist
+  text-review: narrative-noir-copy-specialist
+  tone-review: narrative-noir-copy-specialist
+  item-names: narrative-noir-copy-specialist
+  canon-check: narrative-noir-copy-specialist
+  devlog: devlog-marketing-specialist
+  marketing: devlog-marketing-specialist
+  community: devlog-marketing-specialist
+  release-notes: devlog-marketing-specialist
+  itch-io: devlog-marketing-specialist
+  social-copy: devlog-marketing-specialist
+  change-summary: devlog-marketing-specialist

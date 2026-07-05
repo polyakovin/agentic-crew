@@ -1,0 +1,96 @@
+id: devlog-marketing-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/devlog-marketing-specialist
+  model_policy: product-storytelling-marketing-russian-concise-indie-game
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: project-agents-readme-todo-devlog-template-game-docs-and-git-log
+  freshness_triggers:
+    - git log shows new gameplay/UX commits
+    - TODO.md updated with completed features
+    - docs/game.md updated with new mode or mechanic
+    - devlog/template.md format changed
+    - README.md marketing stance updated
+    - project AGENTS.md Pitfalls updated
+    - new game mode, mechanic, or UI feature shipped
+    - itch.io page needs refresh after milestone
+    - user requests devlog, release notes, or page update
+    - build evidence shows new passing tests for features
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make check 2>&1 | tail -10 || true
+    - git log --oneline -20 --no-merges
+  known_failure_carveout: "endless_mode.lua rendering test 'market-slot upgrade should render after dynamic rows' is a pre-existing issue outside this specialist's scope. The specialist writes copy, not code — build failures from rendering/engine do not block copy drafting unless the feature being described is the failing one."
+automation_packs:
+  boundary_audit: ./workflow.md#change-filter-audit
+  devlog_post_template: ./workflow.md#devlog-post-template
+  release_notes_template: ./workflow.md#release-notes-template
+  claim_verification_pack: ./workflow.md#claim-verification-pack
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - git log reviewed and filtered to gameplay/UX changes only
+  - 1-3 most interesting changes formulated for the post
+  - all gameplay claims cross-referenced against implemented specs
+  - make check evidence obtained or honestly reported missing
+  - devlog draft matches devlog/template.md format
+  - each paragraph answers "что это даёт игроку?"
+  - no variable names, API references, or technical jargon in player copy
+  - game referred to as Locksmith (hero: Silas Crane)
+  - legacy Safe Cracker URL handled as status migration, not rename
+  - tone is developer storyteller, not corporate marketing
+  - no emoji in formal posts (devlog/itch.io)
+  - handoff clear when copy edges into in-game canon/tone territory
+  - visual asset needs documented, not improvised
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - claim_not_backed_by_spec_or_build
+  - feature_described_but_not_implemented
+  - technical_jargon_in_player_copy
+  - devlog_post_format_mismatch
+  - make_check_evidence_missing_or_falsified
+  - canon_tone_not_handed_off_when_needed
+  - visual_assets_improvised_instead_of_handed_off
+  - published_without_user_approval
+  - git_log_not_reviewed
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

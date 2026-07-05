@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "agentId": "devlog-marketing-specialist",
+    "version": "0.1.0",
+    "kind": "a2a-specialist-harness",
+    "status": "draft",
+    "created": "$ISO_DATE",
+    "runId": "$RUN_ID"
+  },
+  "context": {
+    "taskBrief": "$TASK_BRIEF",
+    "sourceScope": "public-facing copy for Locksmith Playdate game",
+    "gitRange": "$GIT_RANGE"
+  },
+  "findings": [],
+  "devlogDraft": {
+    "title": "",
+    "paragraphs": [],
+    "screenshotReferences": []
+  },
+  "releaseNotes": {
+    "version": "",
+    "changes": [],
+    "technical": []
+  },
+  "itchioPageUpdate": {
+    "description": "",
+    "tags": [],
+    "statusChange": ""
+  },
+  "playerBenefitAnalysis": {
+    "perParagraph": []
+  },
+  "handoff": {
+    "nextSpecialist": null,
+    "context": ""
+  },
+  "buildEvidence": {
+    "makeCheck": "",
+    "gitLog": "",
+    "specReferences": []
+  },
+  "residualRisks": [],
+  "qualityGates": {
+    "claimsBackedBySpec": false,
+    "noTechnicalJargon": false,
+    "gameplayFirst": false,
+    "locksmithNotSafeCracker": false,
+    "makeCheckEvidence": false,
+    "handoffClear": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "Devlog / Community Marketing Specialist",
+  "description": "Owns public-facing copy for the Playdate game Locksmith: devlog posts on itch.io, release/update notes, short social copy, progress screenshot captions, itch.io page positioning and description. Writes in Russian (compressed, gameplay-focused, 1-3 paragraphs per post). Checks all claims against implemented specs — never writes about features that don't exist in the game.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/devlog-marketing-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/devlog-marketing-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/devlog-marketing-specialist/entrypoint.md",
+    "sourceMap": "agents/devlog-marketing-specialist/source-map.md",
+    "workflow": "agents/devlog-marketing-specialist/workflow.md",
+    "toolPolicy": "agents/devlog-marketing-specialist/tool-policy.md",
+    "rubric": "agents/devlog-marketing-specialist/rubric.md",
+    "evalPlan": "agents/devlog-marketing-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/devlog-marketing-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "itchio-devlog-post",
+      "name": "Devlog Post Drafting",
+      "description": "Writes devlog posts for itch.io (1-3 paragraphs, Russian, gameplay-focused). Filters git changes to gameplay/UX only, formulates 1-3 most interesting changes, writes per devlog/template.md. Each paragraph answers 'what does this give the player?'",
+      "tags": ["devlog", "itch-io", "marketing", "locksmith", "russian"],
+      "examples": [
+        "Draft a devlog post about the new adventure mode phases.",
+        "Write a release announcement for Endless mode launch.",
+        "Update the itch.io page description with recent gameplay changes."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "release-notes-drafting",
+      "name": "Release Notes Drafting",
+      "description": "Writes condensed release/update notes: what changed, why it matters to players, what's next. Separates gameplay changes from technical/internal changes. Writes in Russian, compressed, no variable names, no API references.",
+      "tags": ["release-notes", "change-summary", "player-facing", "locksmith", "russian"],
+      "examples": [
+        "Write update notes for v0.3: new lock catalog, adjusted timing.",
+        "Summarise this week's changes for the community update."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "itchio-page-refresh",
+      "name": "itch.io Page Positioning",
+      "description": "Reviews and updates the itch.io game page: description, tags, genre, positioning. Ensures copy reflects current game state, not outdated prototype claims. Manages the migration from 'Safe Cracker / Prototype' to 'Locksmith / Released' messaging.",
+      "tags": ["itch-io", "positioning", "description", "tags", "locksmith"],
+      "examples": [
+        "Refresh the itch.io page: update description, remove Prototype tag.",
+        "Audit itch.io tags and genre against current game features."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}
