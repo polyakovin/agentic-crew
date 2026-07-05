@@ -1,0 +1,47 @@
+id: visual-art-asset-production-specialist
+name: Visual Art / Asset Production Specialist
+version: 0.1.0
+status: draft
+description: Owns visual art direction, asset production, and image-generation pipeline for Locksmith. Produces title/launcher illustrations, story backgrounds, Endless item sheets, AI image-generation prompts, Playdate 1-bit conversions, and preview/contact-sheet QA within the noir/gaslight visual language.
+model:
+  provider: deepseek
+  model: deepseek-v4-pro
+  timeout: 600
+entrypoint: ./instructions.md
+source_harness: ../../../agents/visual-art-asset-production-specialist
+agent_card: ../../../agents/visual-art-asset-production-specialist/agent-card.json
+run_record_template: ../../../agents/visual-art-asset-production-specialist/run-record.template.json
+inputs:
+  - text/plain
+  - application/json
+outputs:
+  - text/plain
+  - application/json
+quality_gates:
+  - image-generation prompts use safe art-focused wording (no lockpicking instruction phrasing)
+  - generated master art saved to drafts/ before conversion
+  - conversion uses repo asset pipeline (scripts/gen_*.py) not procedural fallback
+  - preview/contact sheet reviewed on white background
+  - bounding boxes verified: no neighboring-cell fragments
+  - transparent padding meets contract (min 8px sides, top 12px for items)
+  - cropping verified: no clipped ornaments, letters, or functional elements
+  - dithering preserves detail: no large non-informative black blobs
+  - final palette/alpha: 1-bit for launcher/title, transparent RGBA black ink for items
+  - dimensions verified: 400x240, 350x155, 32x32, 149x149, 138x138
+  - title/launcher art uses composited logo from drafts/locksmith_logo_master.png (no AI-rendered text)
+  - lock background preserves canvas, lock bounds, screws, edge anchors, gameplay-safe zones
+  - functional geometry anchors unchanged
+  - affected manifest/spec entries updated before runtime references new asset
+  - game consistently called Locksmith (hero Silas Crane)
+forbidden_actions:
+  - use unsafe procedural lockpicking wording in image-generation prompts
+  - replace required PNG sheets with procedural fallback art
+  - ask AI to render LOCKSMITH text in title/launcher art
+  - shift functional geometry anchors (dial centers, painting position, clock face)
+  - bake captions, title strips, or prompt badges into story background art
+  - modify source/pdxinfo or launcher metadata directly
+  - write runtime gameplay Lua code
+  - rename game to Safe Cracker
+  - commit generated assets without QA preview and contact-sheet review
+  - overwrite drafts/locksmith_logo_master.png without user approval
+  - use hard threshold-only conversion destroying halftone/linework detail

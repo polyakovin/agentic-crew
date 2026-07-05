@@ -1,0 +1,146 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "visual-art-asset-production-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "locksmith",
+    "repoPath": "/root/locksmith",
+    "assetType": "title|launcher|story|item|pick|lock-edit"
+  },
+  "artProduction": {
+    "prompt": {
+      "promptUsed": "",
+      "promptSource": "docs/visual-reference-pack.md prompt patterns",
+      "safeChecked": false,
+      "noLockpickingPhrasing": false,
+      "noTextRenderingRequested": false,
+      "issues": []
+    },
+    "masterArt": {
+      "savedToDrafts": false,
+      "path": "",
+      "descriptiveFilename": false
+    },
+    "pipeline": {
+      "scriptUsed": "",
+      "parameters": {},
+      "proceduralFallbackUsed": false,
+      "outputPath": "",
+      "issues": []
+    }
+  },
+  "qaReview": {
+    "previewGenerated": false,
+    "previewPath": "",
+    "whiteBackgroundReviewed": false,
+    "silhouettesReadable": false,
+    "boundingBoxes": {
+      "checked": false,
+      "neighborCellLeaks": false,
+      "leakDetails": ""
+    },
+    "transparentPadding": {
+      "checked": false,
+      "meetsContract": false,
+      "minPaddingSides": 0,
+      "minTopPadding": 0,
+      "expectedSides": 8,
+      "expectedTop": 12
+    },
+    "cropping": {
+      "checked": false,
+      "noClippedOrnaments": false,
+      "noClippedFunctionalElements": false,
+      "notes": ""
+    },
+    "dithering": {
+      "checked": false,
+      "method": "",
+      "preservesDetail": false,
+      "largeBlackBlobs": false,
+      "blobDetails": ""
+    },
+    "dimensions": {
+      "verified": false,
+      "actualWidth": 0,
+      "actualHeight": 0,
+      "expectedWidth": 0,
+      "expectedHeight": 0,
+      "match": false
+    },
+    "palette": {
+      "checked": false,
+      "expectedMode": "1-bit|RGBA",
+      "actualMode": "",
+      "match": false
+    }
+  },
+  "titleLauncherSpecific": {
+    "logoComposited": false,
+    "logoSource": "drafts/locksmith_logo_master.png",
+    "logoFullyVisible": false,
+    "noAiRenderedText": false,
+    "propCollisionsChecked": false
+  },
+  "lockBackgroundSpecific": {
+    "canvasPreserved": false,
+    "lockBoundsPreserved": false,
+    "screwsPreserved": false,
+    "edgeAnchorsPreserved": false,
+    "safeZonesPreserved": false,
+    "readsAsExteriorNotCutaway": false
+  },
+  "manifestImpact": {
+    "needsUpdate": false,
+    "updated": false,
+    "entriesAdded": [],
+    "entriesModified": []
+  },
+  "gameNamingChecked": false,
+  "issues": [],
+  "blockers": [],
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "imageDimensions": "",
+    "qaPreview": "",
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "findings": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "visualVerdict": "needsRevision",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

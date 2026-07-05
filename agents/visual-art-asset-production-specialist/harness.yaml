@@ -1,0 +1,107 @@
+id: visual-art-asset-production-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/visual-art-asset-production-specialist
+  model_policy: visual-art-direction-asset-production-playdate-1bit-noir-gaslight
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: visual-reference-pack-visual-references-agents-md-art-section-scripts-gen-source-images-drafts
+  freshness_triggers:
+    - docs/visual-reference-pack.md updated
+    - source/images/ assets added or modified
+    - drafts/ masters added or regenerated
+    - scripts/gen_*.py parameters changed
+    - docs/pdxinfo-launcher-images.md updated
+    - docs/renderer.md pick or lock art spec changed
+    - docs/ui.md title screen art spec changed
+    - docs/manifest.json asset entries changed
+    - user requests new title/launcher/story/item art
+    - user requests image generation or 1-bit conversion
+    - preview/contact sheet shows visual defects
+boot_probe:
+  commands:
+    - git status --short
+    - ls source/images/ source/launcher/ drafts/ 2>&1
+    - python3 -c "from PIL import Image; print('Pillow available')" 2>&1 || echo "Pillow missing — image ops limited"
+  known_failure_carveout: "Visual art does not require make check to pass. Lua unavailability does not block image generation or QA. Boot probe runs for informational context."
+automation_packs:
+  title_launcher_production: ./workflow.md#title-launcher-production
+  adventure_story_production: ./workflow.md#adventure-story-production
+  endless_item_production: ./workflow.md#endless-item-production
+  lock_background_edit: ./workflow.md#lock-background-edit
+  prompt_crafting: ./workflow.md#prompt-crafting
+  one_bit_conversion: ./workflow.md#one-bit-conversion
+  preview_contact_sheet_qa: ./workflow.md#preview-contact-sheet-qa
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - image-generation prompts use safe art-focused wording (no lockpicking instruction phrasing)
+  - generated master art saved to drafts/ before conversion
+  - conversion uses repo asset pipeline (scripts/gen_*.py) not procedural fallback
+  - preview/contact sheet reviewed on white background
+  - bounding boxes verified: no neighboring-cell fragments
+  - transparent padding meets contract (min 8px, top 12px for items)
+  - cropping verified: no clipped ornaments, letters, or functional elements
+  - dithering preserves detail: no large non-informative black blobs
+  - final palette/alpha: 1-bit for launcher/title, transparent RGBA black ink for items
+  - dimensions verified: 400×240 (backgrounds), 350×155 (card), 32×32 (icon), 149×149 (dial), 138×138 (tile)
+  - title/launcher art uses composited logo from drafts/locksmith_logo_master.png (no AI-rendered text)
+  - lock background preserves canvas, lock bounds, screws, edge anchors, gameplay-safe zones
+  - functional geometry anchors unchanged (dial centers, painting position, clock face, pin-tunnel area)
+  - affected manifest/spec entries updated before runtime references new asset
+  - game consistently called Locksmith (hero Silas Crane)
+  - no improvised procedural art replacing required PNG sheets
+release_blockers:
+  - generated_art_uses_unsafe_lockpicking_wording
+  - png_sheet_replaced_with_procedural_fallback
+  - preview_contact_sheet_not_reviewed_on_white_background
+  - bounding_boxes_show_neighbor_cell_leaks
+  - transparent_padding_below_contract
+  - clipping_of_ornaments_or_functional_elements
+  - dithering_produces_large_non_informative_blobs
+  - wrong_dimensions_for_asset_type
+  - ai_rendered_text_in_title_or_launcher_art
+  - geometry_anchors_shifted
+  - manifest_not_updated_before_runtime_reference
+  - game_renamed_to_safe_cracker
+  - generated_asset_committed_without_qa
+  - commit_or_push_result_missing_or_falsified
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

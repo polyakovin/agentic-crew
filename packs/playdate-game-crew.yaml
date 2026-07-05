@@ -102,6 +102,10 @@ agents:
     path: ../agents/screenshot-simulator-regression-qa-reviewer
     harness: ../agents/screenshot-simulator-regression-qa-reviewer/harness.yaml
     required: false
+  - id: visual-art-asset-production-specialist
+    path: ../agents/visual-art-asset-production-specialist
+    harness: ../agents/visual-art-asset-production-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -238,3 +242,18 @@ routing:
   adventure-flow-visual: screenshot-simulator-regression-qa-reviewer
   crash-triage: screenshot-simulator-regression-qa-reviewer
   visual-smoke-evidence: screenshot-simulator-regression-qa-reviewer
+  visual-art: visual-art-asset-production-specialist
+  asset-production: visual-art-asset-production-specialist
+  image-generation: visual-art-asset-production-specialist
+  1-bit-conversion: visual-art-asset-production-specialist
+  title-art: visual-art-asset-production-specialist
+  launcher-art: visual-art-asset-production-specialist
+  story-backgrounds: visual-art-asset-production-specialist
+  item-sheets: visual-art-asset-production-specialist
+  dithering-qa: visual-art-asset-production-specialist
+  prompt-crafting: visual-art-asset-production-specialist
+  contact-sheet-qa: visual-art-asset-production-specialist
+  lock-background-edit: visual-art-asset-production-specialist
+  pick-sprite: visual-art-asset-production-specialist
+  visual-style-consistency: visual-art-asset-production-specialist
+  noir-visual-language: visual-art-asset-production-specialist

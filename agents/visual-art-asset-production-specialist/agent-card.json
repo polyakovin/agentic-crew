@@ -1,0 +1,61 @@
+{
+  "name": "Visual Art / Asset Production Specialist",
+  "description": "Owns visual art direction, asset production, and image-generation pipeline for Locksmith. Responsible for title/launcher illustrations, story backgrounds, Endless item sheets, AI image-generation prompts, Playdate 1-bit conversion, preview/contact-sheet QA, cropping/padding/dither checks, and noir/gaslight visual consistency.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/visual-art-asset-production-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/visual-art-asset-production-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/visual-art-asset-production-specialist/entrypoint.md",
+    "sourceMap": "agents/visual-art-asset-production-specialist/source-map.md",
+    "workflow": "agents/visual-art-asset-production-specialist/workflow.md",
+    "toolPolicy": "agents/visual-art-asset-production-specialist/tool-policy.md",
+    "rubric": "agents/visual-art-asset-production-specialist/rubric.md",
+    "evalPlan": "agents/visual-art-asset-production-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/visual-art-asset-production-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "visual-art-production",
+      "name": "Visual Art Production",
+      "description": "Produces and converts Playdate visual assets: title/launcher art, story backgrounds, Endless item sheets, with 1-bit dithering, preview/contact-sheet QA, and noir/gaslight style consistency for Locksmith.",
+      "tags": ["visual-art", "asset-production", "1-bit-conversion", "title-art", "story-backgrounds", "item-sheets", "dithering", "playdate-assets", "noir-style"],
+      "examples": [
+        "Generate new launcher card art for Locksmith: 350×155, noir/gaslight, composite logo.",
+        "Regenerate Adventure story background for curtain_lock scene in 1-bit noir style.",
+        "Create new Endless item sheet: 6×5 grid of locksmith items, convert to 138×138 tiles."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "image-generation-prompting",
+      "name": "Image-Generation Prompting",
+      "description": "Crafts safe, art-focused AI image-generation prompts for Locksmith visual assets, avoiding procedural lockpicking phrasing. Produces master art for pipeline conversion.",
+      "tags": ["image-gen", "prompt-crafting", "ai-art", "master-art"],
+      "examples": [
+        "Craft a prompt for a Locksmith title background: antique lock atmosphere, gaslit workbench.",
+        "Generate a story background prompt for the Hale mansion safe dial scene."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}
