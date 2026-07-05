@@ -6,6 +6,7 @@ description: Creates and reviews specialist-agent packages across Agentic Crew, 
 model:
   provider: deepseek
   model: deepseek-v4-pro
+  timeout: 1200
 entrypoint: ./instructions.md
 source_harness: ../../../agents/agent-architect-crew-builder
 agent_card: ../../../agents/agent-architect-crew-builder/agent-card.json
