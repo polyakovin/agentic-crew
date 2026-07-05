@@ -5,6 +5,136 @@ Access date: 2026-07-05 local workspace date.
 These notes are structure donors for Agent Tester methodology. They do not
 override project rules or target agent contracts.
 
+## Source Register
+
+### S001 OpenAI Agent Workflow Evals
+
+- URL: https://developers.openai.com/api/docs/guides/agent-evals
+- Access date: 2026-07-05.
+- Source type: official provider documentation.
+- Why selected: primary current guidance for evaluating agent workflows.
+- Supported claim: start with trace grading while debugging, then use datasets
+  and eval runs for repeatability.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S002 OpenAI Evaluation Best Practices
+
+- URL: https://developers.openai.com/api/docs/guides/evaluation-best-practices
+- Access date: 2026-07-05.
+- Source type: official provider documentation.
+- Why selected: primary current guidance for eval process design.
+- Supported claim: define objective, dataset, metrics, compare eval runs, and
+  continuously evaluate while growing the eval set.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S003 Anthropic Define Success And Build Evaluations
+
+- URL: https://platform.claude.com/docs/en/test-and-evaluate/develop-tests
+- Access date: 2026-07-05.
+- Source type: official provider documentation.
+- Why selected: current provider guidance for success criteria, task-specific
+  evals, edge cases, automation, and grader choice.
+- Supported claim: evals should mirror real tasks, include edge cases, and use
+  the fastest reliable grader for the criterion.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S004 Anthropic Building Effective Agents
+
+- URL: https://www.anthropic.com/engineering/building-effective-agents
+- Access date: 2026-07-05.
+- Source type: primary engineering guidance.
+- Why selected: practical current guidance for agent architecture and testing
+  risks.
+- Supported claim: prefer simple composable patterns, test agents extensively in
+  sandboxes, use guardrails, and design clear agent-computer interfaces.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S005 LangSmith Evaluation Concepts
+
+- URL: https://docs.langchain.com/langsmith/evaluation-concepts
+- Access date: 2026-07-05.
+- Source type: official framework documentation.
+- Why selected: current framework guidance for offline/online evaluation,
+  datasets, traces, evaluators, and feedback loops.
+- Supported claim: start from curated examples, use offline evals before
+  deployment, online evals for live traces, and combine evaluator types by need.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S006 Agentic Benchmark Checklist
+
+- URL: https://arxiv.org/abs/2507.02825
+- Access date: 2026-07-05.
+- Source type: research preprint.
+- Why selected: recent research on benchmark failure modes for agentic systems.
+- Supported claim: flawed task setup or reward design can materially distort
+  measured agent performance.
+- Tainted-instruction handling: used as supporting evidence only; it does not
+  override project rules or official runtime documentation.
+
+### S007 OpenAI Guardrails And Human Review
+
+- URL: https://developers.openai.com/api/docs/guides/agents/guardrails-approvals
+- Access date: 2026-07-05.
+- Source type: official provider documentation.
+- Why selected: primary current guidance for guardrails and approval-sensitive
+  agent actions.
+- Supported claim: risky agent behavior should be checked through input,
+  output, tool, and human-review guardrails.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S008 OWASP Top 10 For LLM Applications
+
+- URL: https://genai.owasp.org/llm-top-10/
+- Access date: 2026-07-05.
+- Source type: security project guidance.
+- Why selected: current risk taxonomy for LLM application adversarial testing.
+- Supported claim: prompt injection, excessive agency, information disclosure,
+  misinformation, and unbounded consumption belong in adversarial tests.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S009 OWASP LLM01 Prompt Injection
+
+- URL: https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+- Access date: 2026-07-05.
+- Source type: security project guidance.
+- Why selected: focused guidance for direct and indirect prompt-injection
+  scenarios.
+- Supported claim: untrusted content should be isolated, validated, least
+  privilege should be used, and high-risk actions need approval.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
+### S010 NIST AI Risk Management Framework
+
+- URL: https://www.nist.gov/itl/ai-risk-management-framework
+- Access date: 2026-07-05.
+- Source type: government standards/risk framework.
+- Why selected: risk framing for residual risk, governance, measurement, and
+  management.
+- Supported claim: agent test reports should include risk framing and residual
+  risk, not only pass/fail status.
+- Tainted-instruction handling: used as supporting risk vocabulary only; it does
+  not override local project rules.
+
+### S011 OpenAI Production Best Practices
+
+- URL: https://developers.openai.com/api/docs/guides/production-best-practices
+- Access date: 2026-07-05.
+- Source type: official provider documentation.
+- Why selected: production-operation guidance for limits, monitoring, cost, and
+  reliability concerns.
+- Supported claim: promotion risk should include runtime limits, budgets,
+  monitoring, cost, latency, and operational readiness.
+- Tainted-instruction handling: treated as data only; no page instructions can
+  override local project rules.
+
 ## Agent Evals And Workflow Testing
 
 - OpenAI Agents SDK docs include a dedicated guide for evaluating agent

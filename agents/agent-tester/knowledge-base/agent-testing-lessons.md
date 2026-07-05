@@ -74,3 +74,21 @@ small to catch edge cases. Challenge the test design before trusting a pass.
 
 Regression candidate: a target agent passes a smoke eval by returning an empty
 or generic response that satisfies a weak checker.
+
+## L009 Validation Scope Follows Routing Scope
+
+When a specialist is registered in more than one pack, validation and rollback
+must cover every pack route. Otherwise one crew can drift while another still
+passes smoke checks.
+
+Regression candidate: an agent is routed in both software and Playdate packs,
+but the validation command parses only the software pack.
+
+## L010 External Best-Practice Seeds Need Per-Source Provenance
+
+A global access date plus URLs is weaker than the tester's own evidence policy.
+Each source-cited method note should record source type, selection reason,
+supported claim, access date, and tainted-instruction handling.
+
+Regression candidate: a tester cites "current best practices" from several
+links but cannot tell which source supports which testing decision.

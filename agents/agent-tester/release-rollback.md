@@ -26,6 +26,7 @@ Rollback applies to this specialist package only:
 - `.hermes/skills/agent-tester.md`
 - `.hermes/agents/agent-tester/`
 - routing entries in `packs/software-development-crew.yaml`
+- routing entries in `packs/playdate-game-crew.yaml`
 
 Do not revert unrelated user work or target project source files.
 
@@ -44,7 +45,7 @@ Do not revert unrelated user work or target project source files.
 python3 -m json.tool agents/agent-tester/agent-card.json
 python3 -m json.tool agents/agent-tester/run-record.template.json
 python3 -m json.tool agents/agent-tester/knowledge-base/learning-log.template.json
-ruby -e 'require "yaml"; YAML.load_file("agents/agent-tester/harness.yaml"); YAML.load_file(".hermes/agents/agent-tester/manifest.yaml"); YAML.load_file("packs/software-development-crew.yaml"); puts "yaml ok"'
-rg -n "[[:blank:]]$" agents/agent-tester .agents/skills/agent-tester .hermes/skills/agent-tester.md .hermes/agents/agent-tester packs/software-development-crew.yaml
+ruby -e 'require "yaml"; YAML.load_file("agents/agent-tester/harness.yaml"); YAML.load_file(".hermes/agents/agent-tester/manifest.yaml"); YAML.load_file("packs/software-development-crew.yaml"); YAML.load_file("packs/playdate-game-crew.yaml"); puts "yaml ok"'
+rg -n "[[:blank:]]$" agents/agent-tester .agents/skills/agent-tester .hermes/skills/agent-tester.md .hermes/agents/agent-tester packs/software-development-crew.yaml packs/playdate-game-crew.yaml
 git diff --check
 ```
