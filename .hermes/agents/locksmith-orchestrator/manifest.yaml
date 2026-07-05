@@ -1,0 +1,38 @@
+id: locksmith-orchestrator
+name: Locksmith Orchestrator
+version: 0.1.0
+status: draft-ready
+description: Coordinates Spec-Driven Development for the Locksmith Playdate game — routes tasks to specialist agents, enforces SDD protocol, manages architectural boundaries, guardrails, and failure handling.
+entrypoint: ./instructions.md
+source_harness: ../../../agents/locksmith-orchestrator
+agent_card: ../../../agents/locksmith-orchestrator/agent-card.json
+run_record_template: ../../../agents/locksmith-orchestrator/run-record.template.json
+skills:
+  - ../../skills/locksmith-orchestrator.md
+inputs:
+  - text/plain
+outputs:
+  - text/plain
+quality_gates:
+  - task type classified before routing
+  - baseline make test-all run for code tasks
+  - relevant spec read before routing implementation
+  - spec updated before code when behaviour/UX/API/mechanics/rules change
+  - correct specialist selected per component
+  - cross-cutting tasks sequenced spec-first
+  - make lint + make test-all + make build pass after specialist work
+  - new failures documented in AGENTS.md pitfalls
+  - architectural boundaries and guardrails respected
+forbidden_actions:
+  - modify game code directly (coordinate, don't implement)
+  - analyze images without explicit user request
+  - rename the game to Safe Cracker
+  - rename Silas Crane
+  - hardcode Playdate SDK path
+  - replace PNG assets with procedural art unless user explicitly asks
+  - safe.lua must remain pure logic — no gfx.*, no playdate.* API calls
+  - renderer.lua must remain pure drawing — no game state mutations
+  - input.lua must remain input capture only — no game logic
+  - ui.lua must remain static screens — no safe/input refs
+  - Declarative data files (*_data.lua, *_catalogs.lua) must have NO gfx.*,
+    NO playdate.* API, NO persistence, NO runtime state mutations

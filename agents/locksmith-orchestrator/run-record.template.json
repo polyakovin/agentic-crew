@@ -1,0 +1,67 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "locksmith-orchestrator",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "task": {
+    "userRequest": "",
+    "taskType": "code|spec|asset|coordination|build-fix|test-fix|blocked",
+    "affectedComponents": [],
+    "affectedSpecs": [],
+    "crossCutting": false
+  },
+  "routing": {
+    "specialistsSelected": [],
+    "routingRationale": "",
+    "routingOrder": [],
+    "specUpdatedFirst": false,
+    "specUpdatedPaths": []
+  },
+  "verification": {
+    "baselineTestAll": {"ran": false, "result": "", "failures": []},
+    "postBuildTestAll": {"ran": false, "result": "", "failures": []},
+    "lint": {"ran": false, "result": "", "issues": []},
+    "build": {"ran": false, "result": ""}
+  },
+  "guardrails": {
+    "checked": false,
+    "violations": [],
+    "blocked": false
+  },
+  "failures": {
+    "newPitfalls": [],
+    "documentedInAGENTS": false,
+    "failureAnalysis": ""
+  },
+  "specialistOutputs": [
+    {
+      "specialistId": "",
+      "taskGoal": "",
+      "result": "",
+      "status": "success|failure|blocked|conflict",
+      "findings": [],
+      "outputArtifacts": []
+    }
+  ],
+  "conflicts": {
+    "detected": false,
+    "betweenSpecialists": [],
+    "resolution": "",
+    "escalatedToUser": false
+  },
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview|autoRouted|blocked"
+}

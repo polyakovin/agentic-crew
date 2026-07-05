@@ -50,6 +50,14 @@ agents:
     path: ../agents/playdate-pixel-ui-renderer-specialist
     harness: ../agents/playdate-pixel-ui-renderer-specialist/harness.yaml
     required: false
+  - id: crank-feel-specialist
+    path: ../agents/crank-feel-specialist
+    harness: ../agents/crank-feel-specialist/harness.yaml
+    required: false
+  - id: locksmith-orchestrator
+    path: ../agents/locksmith-orchestrator
+    harness: ../agents/locksmith-orchestrator/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -87,3 +95,7 @@ routing:
   menu-design: playdate-pixel-ui-renderer-specialist
   feedback-states: playdate-pixel-ui-renderer-specialist
   noir-style: playdate-pixel-ui-renderer-specialist
+  crank-feel-micro-mechanics: crank-feel-specialist
+  locksmith-orchestrator: locksmith-orchestrator
+  locksmith-coordination: locksmith-orchestrator
+  sdd-coordination: locksmith-orchestrator

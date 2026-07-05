@@ -1,0 +1,74 @@
+{
+  "name": "Locksmith Orchestrator",
+  "description": "Coordinates Spec-Driven Development for the Locksmith Playdate game. Routes tasks to specialist agents, enforces SDD protocol (spec first, then code, then verify), manages architectural boundaries, guardrails, failure handling, and cross-cutting coordination across all game modes, rendering, input, economy, assets, and docs.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/locksmith-orchestrator",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/locksmith-orchestrator/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/locksmith-orchestrator/entrypoint.md",
+    "sourceMap": "agents/locksmith-orchestrator/source-map.md",
+    "workflow": "agents/locksmith-orchestrator/workflow.md",
+    "toolPolicy": "agents/locksmith-orchestrator/tool-policy.md",
+    "rubric": "agents/locksmith-orchestrator/rubric.md",
+    "evalPlan": "agents/locksmith-orchestrator/eval-plan.md",
+    "runRecordTemplate": "agents/locksmith-orchestrator/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "sdd-coordination",
+      "name": "Spec-Driven Development Coordination",
+      "description": "Enforces the SDD cycle: read spec before code, update spec first for behaviour changes, run verification (lint + test-all + build) after every change, and document any new failure in AGENTS.md pitfalls.",
+      "tags": ["sdd", "spec-driven", "coordination", "locksmith", "playdate"],
+      "examples": [
+        "Route a physics parameter change: safe spec first, then crank-feel-specialist.",
+        "A new Endless item needs data-only addition — route to Economy specialist, no spec update needed.",
+        "Cross-cutting Adventure flow change: sequence spec update → art → code → verify."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "specialist-routing",
+      "name": "Specialist Routing",
+      "description": "Routes user requests to the correct specialist agent by component ownership: safe → crank-feel, renderer → pixel-ui, input → crank-feel, ui → pixel-ui, mode → gameplay engineer, endless balance → economy specialist, story flow → adventure specialist, assets → visual art specialist, marketing → devlog specialist, spec drift → contract guardian, build → toolchain gatekeeper.",
+      "tags": ["routing", "specialist-dispatch", "locksmith"],
+      "examples": [
+        "User asks for new pin feedback animation → route to Pixel UI/Renderer Specialist.",
+        "User reports spec drift in safe.lua → route to Spec/Contract Guardian.",
+        "User asks for Flea Market balance changes → route to Endless Economy Specialist."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "failure-documentation",
+      "name": "Failure Documentation And Pitfall Logging",
+      "description": "Documents every new runtime error, build failure, test failure, or edge case discovered during the SDD cycle in AGENTS.md with cause, correct syntax, and affected component.",
+      "tags": ["failure", "documentation", "pitfalls", "locksmith"],
+      "examples": [
+        "A build fails because pdc cannot find the source directory → document pdc path resolution rules in AGENTS.md.",
+        "A test reveals a Lua edge case with table.insert in Playdate SDK → document in AGENTS.md pitfalls."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

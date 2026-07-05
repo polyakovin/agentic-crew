@@ -1,0 +1,97 @@
+id: locksmith-orchestrator
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/locksmith-orchestrator
+  model_policy: strong-coordination-and-protocol-enforcement
+  status: draft-ready
+  run_records_required:
+    R0: false
+    R1: false
+    R2: true
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: locksmith-agents-manifest-specs-and-source-only
+  context_economy:
+    progressive_disclosure_required: true
+    bounded_source_map_references_required: true
+    whole_repo_required_reads_allowed: false
+    prompt_duplication_of_harness_docs_allowed: false
+    harness_owned_task_completion_required: true
+  freshness_triggers:
+    - locksmith AGENTS.md updated
+    - locksmith manifest.json component map changed
+    - locksmith workflow.md changed
+    - new locksmith specialist created
+    - locksmith routing table changed
+    - architectural boundary rule changed
+boot_probe:
+  commands:
+    - git -C /root/locksmith status --short
+    - cd /root/locksmith && make test-all 2>&1 | tail -5
+    - cd /root/locksmith && make build 2>&1 | tail -5
+automation_packs:
+  task_classification: ./workflow.md#core-workflow
+  routing_heuristic: ./workflow.md#routing-heuristic
+  coordinator_protocol: ./workflow.md#coordinator-protocol-cross-cutting-tasks
+  failure_handling: ./workflow.md#failure-handling-workflow
+  validation_pack: ./workflow.md#quality-gates
+quality_gates:
+  - task type is classified before routing
+  - baseline make test-all is run for code tasks
+  - relevant spec is read before routing implementation
+  - spec is updated before code when behaviour/UX/API/mechanics/rules change
+  - correct specialist is selected per component
+  - cross-cutting tasks are sequenced spec-first
+  - make lint + make test-all + make build pass after specialist work
+  - any new failure is documented in AGENTS.md pitfalls
+  - architectural boundaries are not violated
+  - guardrails (no Safe Cracker rename, no Silas rename, no image analysis
+    without request, no hardcoded SDK path, no procedural art replacement)
+    are respected
+  - conflicting specialist outputs are resolved using manifest contracts
+release_blockers:
+  - task_type_not_classified
+  - spec_not_read_before_routing
+  - behaviour_change_without_spec_update
+  - wrong_specialist_routed
+  - verification_not_run
+  - failure_not_documented
+  - architectural_boundary_violated
+  - guardrail_violated
+  - specialist_conflict_unresolved
+  - cross_cutting_sequencing_wrong
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
