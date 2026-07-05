@@ -1,0 +1,97 @@
+id: narrative-noir-copy-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/narrative-noir-copy-specialist
+  model_policy: strong-copywriting-noir-concise-playdate-constraints
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: lore-and-text-data-files-specs-and-affected-source-files-only
+  freshness_triggers:
+    - lore spec changed (docs/lore.md)
+    - new items/catalog entries added to *_data.lua or *_catalogs.lua
+    - UI spec changed (ui.md font/layout rules)
+    - game spec changed (new mode with screen copy)
+    - project AGENTS.md Pitfalls updated
+    - new game mode or screen proposed
+    - text overflow or font-fit bug reported
+    - tone inconsistency flagged
+    - canon drift detected (same thing named differently in two files)
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make test-all 2>&1 | tail -5 || true
+    - cd /root/locksmith && make build 2>&1 | tail -5
+  known_failure_carveout: "endless_mode.lua rendering test 'market-slot upgrade should render after dynamic rows' is a pre-existing issue outside this specialist's scope. Reported: make test-all → 87 PASS, 1 FAIL. The FAIL does not block copy/text work."
+automation_packs:
+  boundary_audit: ./workflow.md#text-source-audit
+  copy_change_template: ./workflow.md#copy-change-template
+  canon_check_pack: ./workflow.md#canon-consistency-check
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - copy problem is stated before any text change
+  - lore spec is read before text is touched
+  - spec is updated before data when terminology/convention changes
+  - all text is ASCII-only (no Unicode, emoji, smart quotes)
+  - all text fits Playdate 400x240 with Fonts.drawTextAligned and opaque background
+  - tone matches dieselpunk 1920s noir
+  - Silas Crane voice is terse, professional, weary
+  - loreLine strings are one tight sentence — atmospheric, not expository
+  - no marketing copy or public-facing language in in-game strings
+  - canon-consistency across all text sources verified
+  - no game logic or meaning changes disguised as copy changes
+  - no gfx.* or playdate.* in declarative data modules
+  - declarative data free of runtime state
+  - make check passes or blocked gate is honestly reported
+  - new copy pitfalls are documented in AGENTS.md
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - spec_not_updated_for_terminology_change
+  - make_check_fails_or_not_run
+  - unicode_or_emoji_in_text
+  - marketing_copy_in_in_game_strings
+  - canon_inconsistency_detected
+  - missing_tone_justification
+  - missing_length_fit_verification
+  - missing_pitfall_documentation
+  - game_logic_changed_disguised_as_copy
+  - no_ascii_violation
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
