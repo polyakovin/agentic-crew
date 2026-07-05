@@ -1,0 +1,92 @@
+{
+  "name": "Gameplay Design / Player Experience Specialist",
+  "description": "Owns the moment-to-moment game feel, onboarding, feedback clarity, difficulty curve, pacing, progression loops, and Playdate-specific player experience for the game Locksmith. Turns UX/design ideas into concrete acceptance criteria, spec proposals, and test scenarios. Works spec-first within Spec-Driven Development.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/gameplay-design-player-experience-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/gameplay-design-player-experience-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/gameplay-design-player-experience-specialist/entrypoint.md",
+    "sourceMap": "agents/gameplay-design-player-experience-specialist/source-map.md",
+    "workflow": "agents/gameplay-design-player-experience-specialist/workflow.md",
+    "toolPolicy": "agents/gameplay-design-player-experience-specialist/tool-policy.md",
+    "rubric": "agents/gameplay-design-player-experience-specialist/rubric.md",
+    "evalPlan": "agents/gameplay-design-player-experience-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/gameplay-design-player-experience-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "core-loop-design",
+      "name": "Core Loop Design",
+      "description": "Designs and reviews the pin tumbler picking core loop: choose pin → lift pick → attempt catch → process result → repeat. Ensures each cycle feels meaningful, readable, and motivating on Playdate.",
+      "tags": ["core-loop", "gameplay", "playdate", "locksmith"],
+      "examples": [
+        "Pin selection doesn't feel strategic — suggest a player-driven order hint.",
+        "After 6 pins solved, the lock should feel different — add post-open reward moment.",
+        "Lifting the pick for the last pin should feel tense — add visual/audio accent.",
+        "Failed catch on pin #5 resets too much progress — adjust fail state scope."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "onboarding-tutorial-design",
+      "name": "Onboarding / Tutorial Design",
+      "description": "Designs how Locksmith teaches its mechanics without text instructions. Uses visual hints, safe-start positions, guided first pin, progressive revelation, and failure-as-learning.",
+      "tags": ["onboarding", "tutorial", "learnability", "playdate", "locksmith"],
+      "examples": [
+        "New player doesn't know which way to turn the crank — add a subtle animated hint arrow.",
+        "First Adventure lock should be easy enough to solve in under 3 tries.",
+        "MISS on first pin should show direction (too high/too low) — not just X marker.",
+        "Add a safe-start position where locked pin feedback is visible before first attempt."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "difficulty-progression-tune",
+      "name": "Difficulty Progression Tuning",
+      "description": "Tunes difficulty curves across Adventure phases, Speedrun scaling, and Endless tiers. Ensures each mode has a distinct feel: narrative ramp, timer pressure, and economic progression.",
+      "tags": ["difficulty", "progression", "pacing", "playdate", "locksmith"],
+      "examples": [
+        "Two back-to-back locks with the same tolerance feel boring — add variety rule.",
+        "Adventure Phase 3 lock should feel harder than Phase 1 — scale pin count and tolerance.",
+        "Speedrun easy mode should reward speed, not test endurance — adjust timer scaling.",
+        "Endless higher tiers need distinct feel, not just more pins — suggest new constraints."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "feedback-clarity-design",
+      "name": "Feedback Clarity Design",
+      "description": "Designs feedback for catch success, miss direction, progress indication, and error states. Ensures all feedback is readable on 1-bit 400×240 display without audio dependency.",
+      "tags": ["feedback", "clarity", "visual", "audio", "playdate", "locksmith"],
+      "examples": [
+        "Catch animation is too fast — player doesn't register the pin locked.",
+        "MISS doesn't tell if I was too high or too low — add directional hint.",
+        "No feedback when all pins are locked — add lock-open celebration moment.",
+        "After 3 failed attempts on same lock, player needs a progress hint."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

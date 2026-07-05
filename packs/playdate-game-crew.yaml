@@ -58,6 +58,14 @@ agents:
     path: ../agents/locksmith-orchestrator
     harness: ../agents/locksmith-orchestrator/harness.yaml
     required: false
+  - id: gameplay-design-player-experience-specialist
+    path: ../agents/gameplay-design-player-experience-specialist
+    harness: ../agents/gameplay-design-player-experience-specialist/harness.yaml
+    required: false
+  - id: adventure-state-machine-specialist
+    path: ../agents/adventure-state-machine-specialist
+    harness: ../agents/adventure-state-machine-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -99,3 +107,17 @@ routing:
   locksmith-orchestrator: locksmith-orchestrator
   locksmith-coordination: locksmith-orchestrator
   sdd-coordination: locksmith-orchestrator
+  gameplay-design: gameplay-design-player-experience-specialist
+  player-experience: gameplay-design-player-experience-specialist
+  ux-design: gameplay-design-player-experience-specialist
+  difficulty-tuning: gameplay-design-player-experience-specialist
+  core-loop: gameplay-design-player-experience-specialist
+  onboarding: gameplay-design-player-experience-specialist
+  feedback-clarity: gameplay-design-player-experience-specialist
+  mode-pacing: gameplay-design-player-experience-specialist
+  progression-design: gameplay-design-player-experience-specialist
+  adventure-state-machine: adventure-state-machine-specialist
+  adventure-phase-lifecycle: adventure-state-machine-specialist
+  adventure-state-transitions: adventure-state-machine-specialist
+  story-flow: adventure-state-machine-specialist
+  ad-state-machine: adventure-state-machine-specialist

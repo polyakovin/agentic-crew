@@ -1,0 +1,35 @@
+{
+  "runId": "gdpes-YYYYMMDD-NNN",
+  "agent": "gameplay-design-player-experience-specialist",
+  "timestamp": "YYYY-MM-DDTHH:mm:ssZ",
+  "trigger": "user-request | orchestration-handoff | scheduled-review",
+  "task": "Brief description of the player problem or UX request",
+  "context": {
+    "specsRead": ["docs/game.md", "docs/safe.md"],
+    "manifestChecked": true,
+    "sourceFilesRead": []
+  },
+  "proposal": {
+    "playerProblem": "One sentence problem description",
+    "proposedExperience": "What the player should feel",
+    "affectedDocs": ["docs/game.md"],
+    "affectedSystems": [],
+    "acceptanceCriteria": [
+      "Criterion 1",
+      "Criterion 2"
+    ],
+    "testScenarios": [
+      "Scenario 1",
+      "Scenario 2"
+    ],
+    "risks": ["Risk 1"],
+    "tradeoffs": ["Tradeoff 1"]
+  },
+  "handoff": {
+    "nextSpecialist": null,
+    "specUpdateRef": null
+  },
+  "evalScore": 0,
+  "notes": "Blockers, unexpected findings, or lessons for AGENTS.md",
+  "status": "draft | pilot | production | rejected"
+}

@@ -1,0 +1,35 @@
+id: gameplay-design-player-experience-specialist
+name: Gameplay Design / Player Experience Specialist
+version: 0.1.0
+description: Specialist for Locksmith's moment-to-moment game feel, onboarding, feedback, difficulty, progression, and Playdate-specific player experience. Works spec-first.
+harnessPath: agents/gameplay-design-player-experience-specialist/harness.yaml
+entrypoint: agents/gameplay-design-player-experience-specialist/entrypoint.md
+role: agents/gameplay-design-player-experience-specialist/role.md
+agentCard: agents/gameplay-design-player-experience-specialist/agent-card.json
+sourceMap: agents/gameplay-design-player-experience-specialist/source-map.md
+workflow: agents/gameplay-design-player-experience-specialist/workflow.md
+toolPolicy: agents/gameplay-design-player-experience-specialist/tool-policy.md
+rubric: agents/gameplay-design-player-experience-specialist/rubric.md
+evalPlan: agents/gameplay-design-player-experience-specialist/eval-plan.md
+runRecordTemplate: agents/gameplay-design-player-experience-specialist/run-record.template.json
+healthSnapshot: agents/gameplay-design-player-experience-specialist/health-snapshot.md
+routingKeys:
+  - gameplay-design
+  - player-experience
+  - ux-design
+  - difficulty-tuning
+  - core-loop
+  - onboarding
+  - feedback-clarity
+  - mode-pacing
+  - progression-design
+language: ru
+tags:
+  - gameplay-design
+  - player-experience
+  - onboarding
+  - difficulty-tuning
+  - feedback-clarity
+  - progression
+  - playdate
+  - locksmith
