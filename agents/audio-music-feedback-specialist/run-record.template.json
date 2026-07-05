@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "agentId": "audio-music-feedback-specialist",
+    "version": "0.1.0",
+    "kind": "a2a-specialist-harness",
+    "status": "draft",
+    "created": "$ISO_DATE",
+    "runId": "$RUN_ID"
+  },
+  "context": {
+    "taskBrief": "$TASK_BRIEF",
+    "sourceScope": "audio design for Locksmith Playdate game",
+    "audioFiles": "$AUDIO_FILES"
+  },
+  "findings": [],
+  "audioProblem": {
+    "description": "",
+    "measurement": "",
+    "playerImpact": ""
+  },
+  "changeProposal": {
+    "parameters": [],
+    "rationale": "",
+    "playerFeel": ""
+  },
+  "boundaryAudit": {
+    "soundfxAudioOnly": false,
+    "musicDataDeclarativeOnly": false,
+    "violations": []
+  },
+  "volumeMixingVerification": {
+    "sfxVolumeParams": "",
+    "musicVolumeParams": "",
+    "perModeResults": {},
+    "sfxOverMusic": false
+  },
+  "pdxSizeImpact": {
+    "beforeTotalBytes": 0,
+    "afterTotalBytes": 0,
+    "beforePdxSize": 0,
+    "afterPdxSize": 0,
+    "formatChanges": []
+  },
+  "crashSafetyAudit": {
+    "nilChecksPresent": false,
+    "missingFileBehaviour": "",
+    "allPlayersGuarded": false
+  },
+  "specsUpdated": [],
+  "codeFilesTouched": [],
+  "handoff": {
+    "nextSpecialist": null,
+    "context": ""
+  },
+  "buildEvidence": {
+    "makeTestAll": "",
+    "makeLint": "",
+    "makeBuild": "",
+    "makeCheck": ""
+  },
+  "risksAndAlternatives": [],
+  "qualityGates": {
+    "problemSpecificMeasurable": false,
+    "oldToNewParameters": false,
+    "audioOnlyBoundary": false,
+    "crashSafety": false,
+    "sfxOverMusic": false,
+    "pdxSizeDocumented": false,
+    "specBeforeCode": false,
+    "makeCheckEvidence": false,
+    "locksmithNotSafeCracker": false
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "Audio / Music Feedback Specialist",
+  "description": "Audio-owner for the Playdate game Locksmith: short SFX design (tick/catch/miss/win/gameover cues), continuous background music playlist lifecycle, music toggle lifecycle (Settings → main.lua → SoundFX), mode-level audio timing and volume mixing, audio compression impact on PDX size, and crash safety for missing/unsupported audio. Senior audio designer for Playdate embedded audio constraints — writes brief, parametric, and player-feel-driven.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/audio-music-feedback-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/audio-music-feedback-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/audio-music-feedback-specialist/entrypoint.md",
+    "sourceMap": "agents/audio-music-feedback-specialist/source-map.md",
+    "workflow": "agents/audio-music-feedback-specialist/workflow.md",
+    "toolPolicy": "agents/audio-music-feedback-specialist/tool-policy.md",
+    "rubric": "agents/audio-music-feedback-specialist/rubric.md",
+    "evalPlan": "agents/audio-music-feedback-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/audio-music-feedback-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "sfx-design-cues",
+      "name": "SFX Cue Design",
+      "description": "Designs and tunes short interaction sound effects: tick/catch/miss/win/gameover. Adjusts volume, duration, pitch, and asset format (PCM 16-bit mono 22050 Hz). Ensures SFX readability over background music through volume mixing. Creates audio change proposals with old→new parameter rationale.",
+      "tags": ["sfx", "sound-effects", "tick", "catch", "miss", "win", "gameover", "volume-mixing", "audio-lifecycle", "locksmith", "playdate"],
+      "examples": [
+        "The tick sound is too quiet against the noir loop — propose a volume change with rationale.",
+        "Miss feedback needs a sharper transient — suggest duration and pitch changes.",
+        "Audit all SFX volumes against music for gameplay readability."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "music-playlist-lifecycle",
+      "name": "Background Music Playlist Lifecycle",
+      "description": "Owns the continuous background music playlist: shuffled bag loop, track transitions, finish-callback vs update-fallback lifecycle, music toggle via Settings→Datastore→SoundFX, volume mixing. Manages music_data.lua declarative data and ADPCM compression for PDX size.",
+      "tags": ["music", "playlist", "background-music", "audio-lifecycle", "music-toggle", "adpcm-compression", "pdx-size", "locksmith", "playdate"],
+      "examples": [
+        "Audit the music playlist lifecycle — does the shuffled bag avoid immediate repeats?",
+        "Music toggle should silence immediately without affecting SFX — verify and fix if needed.",
+        "New music track needs PDX size impact analysis before adding."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "audio-compression-pdx-size",
+      "name": "Audio Compression & PDX Size Analysis",
+      "description": "Analyses audio asset size impact on the compiled .pdx. Recommends format conversions (PCM→ADPCM, sample rate changes). Ensures music stays under ~120 KB per track and the full playlist around 500 KB. Short SFX stay PCM for crisp transients.",
+      "tags": ["audio-compression", "pdx-size", "adpcm", "pcm", "asset-size", "locksmith", "playdate"],
+      "examples": [
+        "Analyse PDX size impact of adding a new background loop.",
+        "Convert a music track from PCM to ADPCM and verify size reduction.",
+        "Audit all audio assets for compression efficiency."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

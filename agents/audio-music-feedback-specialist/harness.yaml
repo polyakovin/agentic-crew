@@ -1,0 +1,94 @@
+id: audio-music-feedback-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/audio-music-feedback-specialist
+  model_policy: senior-audio-designer-playdate-embedded-parametric-player-feel-driven
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: project-agents-manifest-soundfx-spec-playdate-best-practices-source-soundfx-music-data
+  freshness_triggers:
+    - source/soundfx.lua modified
+    - source/music_data.lua modified
+    - docs/soundfx.md updated
+    - new audio asset added to source/sounds/
+    - PDX size change detected after build
+    - music toggle behaviour changed in main.lua
+    - user reports SFX/music volume imbalance
+    - user reports audio timing issue
+    - make build shows audio-related errors
+    - new game mode needs audio design
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make check 2>&1 | tail -10 || true
+    - ls -la source/sounds/ | head -20
+    - wc -c source/sounds/*.wav 2>/dev/null | tail -5
+  known_failure_carveout: "endless_mode.lua rendering test 'market-slot upgrade should render after dynamic rows' is a pre-existing issue outside this specialist's scope. The specialist tunes audio, not rendering — build failures from rendering/engine do not block audio changes unless the audio module itself is failing."
+automation_packs:
+  boundary_audit: ./workflow.md#audio-only-boundary-audit
+  volume_mixing_verification: ./workflow.md#volume-mixing-verification
+  pdx_size_analysis: ./workflow.md#pdx-size-analysis
+  crash_safety_audit: ./workflow.md#crash-safety-audit
+quality_gates:
+  - audio problem is specific and measurable, not vague
+  - all parameter changes have old→new values with rationale
+  - soundfx.lua boundary respected: no game rules, UI refs, mode imports, persistence reads
+  - music_data.lua boundary respected: no gfx.*, no playdate.*, no persistence, no lifecycle state mutations
+  - crash safety: nil checks present, missing audio never crashes
+  - SFX volume > music volume in all modes
+  - PDX size impact documented if audio assets changed
+  - spec updated before code when API/contract/behaviour changes
+  - make check evidence included or honestly reported missing
+  - game referred to as Locksmith (hero: Silas Crane)
+  - AGENTS.md Pitfalls updated for any discovered audio error
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - soundfx_boundary_violated
+  - music_data_boundary_violated
+  - sfx_quieter_than_music
+  - missing_audio_crashes_game
+  - spec_not_updated_before_code
+  - make_check_evidence_missing_or_falsified
+  - change_proposal_lacks_old_to_new_parameters
+  - boundary_audit_not_passed
+  - crash_safety_audit_failed
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

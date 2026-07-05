@@ -78,6 +78,10 @@ agents:
     path: ../agents/devlog-marketing-specialist
     harness: ../agents/devlog-marketing-specialist/harness.yaml
     required: false
+  - id: audio-music-feedback-specialist
+    path: ../agents/audio-music-feedback-specialist
+    harness: ../agents/audio-music-feedback-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -156,3 +160,10 @@ routing:
   itch-io: devlog-marketing-specialist
   social-copy: devlog-marketing-specialist
   change-summary: devlog-marketing-specialist
+  audio: audio-music-feedback-specialist
+  sound-effects: audio-music-feedback-specialist
+  sfx: audio-music-feedback-specialist
+  music: audio-music-feedback-specialist
+  playlist: audio-music-feedback-specialist
+  volume-mixing: audio-music-feedback-specialist
+  audio-lifecycle: audio-music-feedback-specialist
