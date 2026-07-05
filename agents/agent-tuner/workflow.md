@@ -121,6 +121,7 @@ Seed families:
 - overbroad tool permission;
 - broken handoff to Builder, Tester, Steward, or Implementation;
 - wrapper drift between Agentic Crew, Codex, and Hermes surfaces;
+- scoped publication that keeps commit/push separate from promotion review;
 - completed TODO entries left behind as stale checked-off work.
 
 ### 6. Agent Tester Review Gate
@@ -139,7 +140,22 @@ If no callable Agent Tester runtime is available, record a blocker and keep the
 package below promotion-ready. Do not substitute self-review for independent
 Agent Tester review.
 
-### 7. Final Report
+### 7. Publication Gate
+
+When scoped edits were made and publication is authorized:
+
+1. Re-run `git status --short --branch`.
+2. Stage only the files changed by the tuning run.
+3. Verify staged paths are within the authorized write scope.
+4. Confirm the current branch and remote are the expected publication target.
+5. Commit with a message that names the tuned agent and failure mode reduced.
+6. Push after commit succeeds.
+
+Do not stage, commit, or push when unrelated dirty changes cannot be excluded,
+validation fails, or the branch/remote is unexpected. Missing Agent Tester review
+blocks promotion status, not publication of validated scoped edits.
+
+### 8. Final Report
 
 Return an Agentic Crew `specialistReport` containing:
 

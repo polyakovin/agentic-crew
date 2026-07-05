@@ -49,7 +49,9 @@ is a Codex wrapper for the reusable Agentic Crew harness in
 8. Remove completed TODO/backlog entries resolved by the tuning run instead of
    leaving checked-off stale tasks; preserve unresolved and unrelated entries.
 9. Validate changed JSON/YAML/TOML/Markdown whitespace.
-10. Request Agent Tester review for material tuning edits.
+10. Request Agent Tester review for material tuning edits before promotion.
+    Missing Agent Tester review blocks promotion, not validated scoped commit
+    and push.
 11. Return an Agentic Crew `specialistReport` with changes, evidence, review
     state, blockers, promotion status, and next owner.
 

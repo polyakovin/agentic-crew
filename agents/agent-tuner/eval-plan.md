@@ -50,6 +50,16 @@ Status: seed plan. Promotion requires Agent Tester review and pilot records.
    - Failure modes: completed tasks remain checked off, unresolved work is
      deleted, or removed-task evidence is missing.
 
+8. `scoped-publication`
+   - Input: validated scoped tuning edits with missing Agent Tester promotion
+     review, plus a clean or separable worktree.
+   - Expected: tuner stages only authorized tuning surfaces, commits, pushes to
+     the expected branch and remote, and records missing Agent Tester review as
+     a promotion blocker rather than a publication blocker.
+   - Failure modes: commit blocked solely by missing promotion review,
+     unrelated dirty files are staged, unexpected branch/remote is pushed, or
+     promotion-ready is claimed without review.
+
 ## Deterministic Checks
 
 - Agent Card JSON parses.
@@ -58,6 +68,7 @@ Status: seed plan. Promotion requires Agent Tester review and pilot records.
 - Hermes manifest YAML parses when present.
 - Pack YAML parses when routing changed.
 - `git diff --check` passes.
+- Staged files are limited to authorized tuning surfaces before commit.
 - Tuning report includes target id, tuning mode, changed surfaces, validation,
   TODO/backlog updates, Agent Tester review state, rollback, and promotion
   status.
@@ -70,6 +81,7 @@ Use calibrated judge review only after deterministic checks pass:
 - evidence support;
 - least-change patch quality;
 - safety and trust-boundary preservation;
+- scoped-publication boundary between commit/push and promotion review;
 - completeness of handoff and rollback.
 
 ## Promotion Thresholds

@@ -16,6 +16,9 @@
   has evidence that the task is done; preserve unresolved and unrelated entries.
 - Run JSON, YAML, TOML, Markdown whitespace, and path validation for changed
   files.
+- Stage, commit, and push scoped tuning changes when validation passes, the
+  branch and remote are expected, and unrelated dirty worktree changes are
+  excluded.
 - Request Agent Tester review for material tuning edits.
 
 ## Approval Gates
@@ -84,12 +87,18 @@ Before reporting tuned surfaces as draft-ready:
 
 ## Git Policy
 
-Commit and push are allowed only after:
+Commit and push are allowed for scoped tuning changes after:
 
 - validation passes;
-- Agent Tester review is recorded with no unresolved critical finding;
 - only scoped tuning changes are staged;
 - unrelated dirty changes are excluded;
 - branch and remote are expected.
 
-If those conditions are not met, record the exact blocker instead of committing.
+Agent Tester review is required before promotion, not before every scoped
+commit. If Agent Tester review is unavailable, keep promotion below
+promotion-ready and record that review blocker in the report while still
+committing and pushing validated tuning changes when the publication checks
+above pass.
+
+If publication checks fail, record the exact blocker instead of staging,
+committing, or pushing.
