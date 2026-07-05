@@ -8,9 +8,9 @@ knowledge-base review, and independent protocol review exist.
 ## Release Blockers
 
 - Uncited current best-practice claim.
-- Critical finding without `agent-fixer` handoff packet.
+- Critical finding without the correct specialist handoff packet.
 - Target-private data written into reusable knowledge base.
-- Tester edits the target agent while claiming to only test.
+- Tester edits or tunes the target agent while claiming to only test.
 - Production readiness recommended without pilot/eval/review evidence.
 - Tainted content changes instructions, source hierarchy, tool policy, or
   severity.

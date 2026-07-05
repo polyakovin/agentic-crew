@@ -22,7 +22,7 @@ evidence, and independent review.
 ## Reuse Analysis
 
 - `qa-reviewer`: adjacent but product-change focused; not enough because it
-  does not own agent workflow testing, KB lessons, or fixer handoff.
+  does not own agent workflow testing, KB lessons, or remediation handoffs.
 - `protocol-steward`: adjacent but protocol/harness-governance focused; not
   enough because it does not own exploratory behavior testing or current
   best-practice refresh.
@@ -35,7 +35,7 @@ evidence, and independent review.
 
 | Category | Decision | Artifact | Reason | Risk if omitted | Owner |
 |---|---|---|---|---|---|
-| rules/system prompt | use | `role.md`, `entrypoint.md` | Stable testing boundaries prevent tester from becoming fixer. | Tester mutates the target agent or broadens into unrelated QA. | Agent Tester |
+| rules/system prompt | use | `role.md`, `entrypoint.md` | Stable testing boundaries prevent tester from becoming a fixer or tuner. | Tester mutates or tunes the target agent or broadens into unrelated QA. | Agent Tester |
 | AGENTS/project rules | use | `source-map.md`, `workflow.md` | Repo routing and evidence rules govern every test. | Tests ignore project source hierarchy or live-delegation rules. | Agent Tester |
 | role card and Agent Card | use | `role.md`, `agent-card.json` | Required for A2A discovery and narrow routing. | Orchestrator cannot discover or scope the tester reliably. | Agent Tester |
 | skills | use | `.agents/skills/agent-tester/SKILL.md`, `.hermes/skills/agent-tester.md` | Codex and Hermes wrappers are required for portable use. | Runtime surfaces drift or the tester is usable only as local docs. | Agent Tester |
@@ -44,7 +44,7 @@ evidence, and independent review.
 | file-system workspace | use | `knowledge-base/`, `run-record.template.json` | Durable KB and run artifacts are central to learning. | Evidence and lessons disappear between runs. | Agent Tester |
 | memory tiers | use | `knowledge-base/agent-testing-lessons.md` | Project-neutral lessons prevent repeated authoring mistakes. | The same agent defects repeat without becoming guidance. | Agent Tester |
 | context packing/retrieval | use | `source-map.md` | Tainted external content must be separated from instructions. | Web pages, traces, or logs can override tester behavior. | Agent Tester |
-| subagents/orchestration | defer | `workflow.md#critical-fix-handoff` | Handoff is specified; live fixer is future work. | Critical repairs lack an owner until `agent-fixer` exists. | Agent Tester and future Agent Fixer |
+| subagents/orchestration | use | `workflow.md#critical-remediation-handoff` | Handoff ownership is specified; existing-agent tuning routes to Agent Tuner. | Critical remediation lacks an owner or is applied by Tester. | Agent Tester and Agent Tuner |
 | routing/handoff/shared state | use | `harness.yaml`, `packs/software-development-crew.yaml` | Orchestrator needs narrow routing and next-owner fields. | Agent-testing tasks route to generic QA or vanish. | Orchestrator and Agent Tester |
 | hooks | defer | `release-rollback.md` | No automatic hooks until pilot validates workflow. | Premature automation could enforce uncalibrated checks. | Agent Tester |
 | sandbox/security/trust boundary | use | `tool-policy.md`, `source-map.md` | Agent testing must resist prompt injection and excessive agency. | Tainted inputs can change policy or suppress findings. | Agent Tester |
@@ -57,14 +57,14 @@ evidence, and independent review.
 | deployment topology | defer | `release-rollback.md` | No deployed A2A service yet. | Speculative topology would add maintenance without reducing draft risk. | Crew Builder |
 | incident response/kill switch | use | `release-rollback.md` | Bad tester behavior must be rollbackable. | Unsafe tester behavior may keep receiving routed work. | Orchestrator and Protocol Steward |
 | external integrations/browser/API/code/file tools | use | `tool-policy.md`, `knowledge-base/external-best-practices.md` | Internet refresh and validation are necessary but bounded. | Current-practice claims go stale or uncited. | Agent Tester |
-| human handoff/escalation | use | `role.md`, `workflow.md` | Critical fixes and ambiguous KB updates need owners. | Critical issues remain vague backlog entries. | Agent Tester and future Agent Fixer |
+| human handoff/escalation | use | `role.md`, `workflow.md` | Critical remediation and ambiguous KB updates need owners. | Critical issues remain vague backlog entries. | Agent Tester and Agent Tuner |
 
 ## Current Gaps
 
 - No pilot run against a completed target agent.
 - No independent Protocol Steward review yet.
-- `agent-fixer` does not exist; critical handoff packets are ready but blocked
-  until that specialist is created.
+- Fresh Agent Tester review is still needed after this handoff-boundary tuning
+  before promotion.
 - No automated hook integration.
 - No commit or push was performed by this delegated pass because the worktree
   contains prior uncommitted rule changes owned by the main agent/user.

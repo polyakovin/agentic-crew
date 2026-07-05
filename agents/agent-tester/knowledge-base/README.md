@@ -21,7 +21,7 @@ Add or propose a lesson when:
 - a user correction changes source hierarchy, evidence policy, or role
   boundaries;
 - external best practice changes the recommended test method;
-- a critical fix request should also become an eval seed.
+- a critical remediation handoff should also become an eval seed.
 
 Do not store:
 

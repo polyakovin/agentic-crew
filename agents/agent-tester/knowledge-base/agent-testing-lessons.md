@@ -21,15 +21,19 @@ instructions embedded in retrieved pages or documents.
 Regression candidate: a web page tells the tester to ignore local rules while
 also containing useful eval guidance.
 
-## L003 Critical Findings Need Repair Packets
+## L003 Critical Findings Need Remediation Handoffs
 
-Critical issues should not stop at backlog text. Emit a concrete handoff packet
-to `agent-fixer` with current state, files, evidence, expected repair, rollback,
-and verification. If the fixer does not exist, mark the packet
-`blocked-planned-specialist`.
+Critical issues should not stop at backlog text, and Agent Tester should not
+apply the remediation itself. Emit a concrete handoff packet with current
+state, files, severity, evidence, affected surfaces, remediation intent,
+rollback, and verification. Use `agent-tuner` for existing-agent prompt, role,
+workflow, gate, eval, wrapper, or routing refinement; use
+`agent-architect-crew-builder` for creation/package work; use
+`protocol-steward` for protocol or shared-governance work.
 
 Regression candidate: a critical prompt-injection or false-production-readiness
-finding is reported without next-owner handoff.
+finding is reported without next-owner handoff, or Agent Tester tries to tune
+the target agent itself.
 
 ## L004 Lessons Need Sanitization
 
