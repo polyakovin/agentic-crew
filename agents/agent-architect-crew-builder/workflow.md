@@ -34,23 +34,27 @@ Interpretation:
 12. Move or reference specialist-owned agent artifacts.
 13. Wire pack routing when discoverability is required.
 14. Validate machine-readable files and whitespace.
-15. Dispatch Agent Tester review immediately via `delegate_task` for created
+15. **COMMIT AND PUSH agentic-crew changes — do this NOW, before dispatch.**
+16. **COMMIT AND PUSH target-project wrapper changes — do this NOW, before dispatch.**
+    If blocked (dirty unrelated worktree, missing credentials), record the exact
+    blocker and stop. Do not skip silently.
+17. Dispatch Agent Tester review immediately via `delegate_task` for created
     or materially updated specialists. Do not wait for the result — continue
-    with commit/prep work in parallel. The tester's result will arrive as a
+    with prep work in parallel. The tester's result will arrive as a
     separate message.
-16. Address the Agent Tester decision: block on critical findings, record
+18. Address the Agent Tester decision: block on critical findings, record
     backlog for non-critical findings, or proceed when the tester reports no
     release blockers.
-17. After Agent Tester returns, mirror every open finding, recommendation, and
+19. After Agent Tester returns, mirror every open finding, recommendation, and
     improvement-backlog item into the task-specified TODO or backlog artifact.
     If no path is provided, use the existing project-local `TODO.md` or create
     one at the target project root when writes are allowed; otherwise record
     the exact entries that could not be written.
-18. Hand the mirrored follow-up tasks to `agent-tuner` as `handoffPacket`
+20. Hand the mirrored follow-up tasks to `agent-tuner` as `handoffPacket`
     entries with evidence, severity, affected surfaces, TODO artifact refs,
     remediation intent, and verification needed.
-19. Commit and push scoped changes, or record why commit/push is blocked.
-20. Produce run record, promotion status, and next-owner handoff.
+21. If Agent Tester requires fixes, apply them, then commit and push again.
+22. Produce run record, promotion status, and next-owner handoff.
 
 ## Creation Scope Decision
 

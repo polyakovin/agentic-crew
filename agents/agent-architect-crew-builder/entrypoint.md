@@ -69,6 +69,7 @@ Correct escalation:
 - Send target architecture or ownership conflicts to `system-architect`.
 - Send created or materially updated specialist packages to `agent-tester`.
 - Block when the target project has not approved a new specialist role.
+- **COMMIT AND PUSH before completing any task — missing push is a non-negotiable quality gate.**
 
 ## What To Read
 

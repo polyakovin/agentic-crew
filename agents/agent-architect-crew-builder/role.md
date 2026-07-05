@@ -89,12 +89,17 @@ From the target project:
 9. Add Agent Card skills and `harness.yaml` payload wiring.
 10. Add pack routing entries when the agent should be discoverable.
 11. Validate JSON/YAML/TOML/Markdown whitespace and required path references.
-12. Request Agent Tester review for created or materially updated specialists.
-13. After Agent Tester returns, mirror follow-up tasks into the task-specified
+12. **COMMIT AND PUSH agentic-crew changes before proceeding.**
+13. **COMMIT AND PUSH target-project wrapper changes before proceeding.**
+    If blocked (dirty unrelated worktree, missing credentials), record the exact
+    blocker — do not skip silently.
+14. Request Agent Tester review for created or materially updated specialists.
+15. After Agent Tester returns, mirror follow-up tasks into the task-specified
     todo or backlog artifact and send `agent-tuner` handoff packets for
     execution.
-14. Commit and push scoped changes, or record why commit/push is blocked.
-15. Emit a run record or validation summary with promotion status.
+16. If Agent Tester findings require fixes, apply them, then commit and push
+    again.
+17. Emit a run record or validation summary with promotion status.
 
 ## Minimum Deliverable
 
