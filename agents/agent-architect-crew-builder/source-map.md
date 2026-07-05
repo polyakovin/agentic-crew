@@ -50,6 +50,50 @@ Runtime package hierarchy:
 Do not treat a framework blog post or third-party prompt as stronger than the
 target project's source of truth.
 
+## Context Economy Contract
+
+Crew Builder must design every created or materially updated specialist so the
+agent can finish the task through its harness without loading a whole repository
+or embedding long source material in prompts.
+
+For each agent, separate context into these buckets:
+
+- `stableContext`: mission, source hierarchy, non-goals, gates, and handoff
+  rules owned by the harness. Keep this short and project-neutral.
+- `taskBrief.whatToRead`: the minimum target-project evidence needed for the
+  current task. Each entry needs a path, section/glob when possible, reason,
+  trust label, and freshness trigger.
+- `progressiveReads`: conditional sources unlocked by workflow observations,
+  such as a selected pack, closest existing role, touched spec, failing test, or
+  runtime wrapper pattern.
+- `excludedContext`: whole-repo reads, full copied docs, stale logs, private
+  snapshots, and harness text already available by reference.
+
+Source-map references must be bounded. Prefer `path#section`, line ranges,
+specific globs, or named generated artifacts over broad roots such as `docs/`,
+`src/`, or the repository root. If a broad search is needed, make it a workflow
+discovery step using a manifest or `rg` query, not a required read, and record
+why the narrower reference cannot be known up front.
+
+Harness-owned task completion means acceptance criteria, tool permissions,
+eval seeds, rollback notes, run-record fields, and output payload requirements
+live in the specialist package. Prompts and runtime wrappers should point to
+those harness files instead of duplicating their contents. Duplicating harness
+sections into role prompts, Codex wrappers, Hermes instructions, or target-local
+prompts is allowed only for a short summary needed by that runtime, with the
+canonical harness path named beside it.
+
+Block creation or mark the package below `draft-ready` when:
+
+- required reads include an entire target repository, broad source tree, or
+  broad docs tree without approval, reason, and budget;
+- the source map cannot explain why each required target-project source is
+  needed for role boundary, source hierarchy, gates, handoff, or validation;
+- prompts or wrappers copy long harness/source content instead of referencing
+  canonical harness paths;
+- task completion depends on prompt-only instructions that are not represented
+  in the harness, rubric, eval plan, run record, or release gate.
+
 ## Artifact Ownership
 
 Agentic Crew may own:

@@ -15,6 +15,27 @@ No open tasks. The critical self-test remediation entry was removed after the
 bounded Agent Tuner pass on 2026-07-05 added write-boundary, no-target-edit,
 changed-file reporting, and Agent Tuner handoff gates to Agent Tester.
 
+## Agent Architect / Crew Builder Test TODO (2026-07-05)
+
+Source task: agent-architect-crew-builder-test-2026-07-05
+Target agent id: agent-architect-crew-builder
+
+ACB-001, ACB-002, and ACB-003 were resolved in the delegated Agent Tuner pass
+on 2026-07-05. Promotion remains blocked until Agent Tester re-review confirms
+the tuned surfaces.
+
+- [ ] [medium][agent-tester][blocking-for-promotion] Re-review the tuned Crew
+  Builder surfaces for ACB-001, ACB-002, and ACB-003 before any promotion;
+  changed surfaces: `agents/agent-architect-crew-builder/workflow.md`,
+  `agents/agent-architect-crew-builder/eval-plan.md`,
+  `.agents/skills/agent-architect-crew-builder/SKILL.md`,
+  `.hermes/agents/agent-architect-crew-builder/instructions.md`, and
+  `.hermes/skills/agent-architect-crew-builder.md`.
+- [ ] [medium][protocol-steward] ACB-004: Clarify pack `extends` merge
+  semantics or explicitly add `agent-tuner` tuning routes to
+  `playdate-game-crew`; evidence: `packs/playdate-game-crew.yaml:5` and
+  `packs/software-development-crew.yaml:69`.
+
 ## Spec / Contract Guardian Agent Tester TODO (2026-07-05)
 
 Source task: test-spec-contract-guardian-2026-07-05

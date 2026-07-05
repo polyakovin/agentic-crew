@@ -12,6 +12,7 @@ Version: 0.1.0.
 - Run-record template.
 - Harness capability inventory policy sourced from `ai-db`.
 - Agent Tester post-creation review gate.
+- Agent Tester follow-up TODO tracking and `agent-tuner` execution handoff.
 - SOLID ownership extraction policy.
 - Rubric and eval plan.
 - Release/rollback checklist.

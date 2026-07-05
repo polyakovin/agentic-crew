@@ -15,31 +15,52 @@ and Hermes surfaces.
 
 1. Read the target project's approved agent demand plan.
 2. Read `agents/agent-architect-crew-builder/role.md`,
-   `workflow.md`, `tool-policy.md`, and `rubric.md`.
-3. Decide creation scope: target project, Agentic Crew, or hybrid.
-4. Check existing agents and wrappers for overlap and reusable harness
+   `source-map.md`, `workflow.md`, `tool-policy.md`, and `rubric.md`.
+3. Read `protocol/interaction-protocol.md` and
+   `plans/agent-harness-creation-plan.md`.
+4. Decide creation scope: target project, Agentic Crew, or hybrid.
+5. Check existing agents and wrappers for overlap and reusable harness
    candidates.
-5. Run the full Harness Capability Inventory from `../ai-db`; mark every
+6. Run the full Harness Capability Inventory from `../ai-db`; mark every
    capability category `use`, `defer`, or `reject` with rationale.
-6. Run SOLID ownership extraction audit for shared agent data/tooling.
-7. If creating an agent, produce or adapt the chosen harness in the selected
+7. Run SOLID ownership extraction audit for shared agent data/tooling.
+8. If creating an agent, produce or adapt the chosen harness in the selected
    scope.
-8. Move specialist-owned agent обвязка into the owning package when it no
+9. Move specialist-owned agent обвязка into the owning package when it no
    longer serves the general project.
-9. Add Codex and Hermes wrappers when required.
-10. Wire pack routing only to existing paths.
-11. Validate JSON/YAML/TOML/Markdown whitespace.
-12. Request Agent Tester review for created or materially updated specialists.
-13. Block on Agent Tester critical findings, or record non-critical backlog and
+10. Add Codex and Hermes wrappers when required.
+11. Wire pack routing only to existing paths.
+12. Validate JSON/YAML/TOML/Markdown whitespace.
+13. Request Agent Tester review for created or materially updated specialists.
+14. Block on Agent Tester critical findings, or record non-critical backlog and
     proceed only when review is complete.
-14. Commit and push scoped changes, or record the exact blocker.
-15. Return a decision, changed files, scope decision, reuse analysis,
-    capability inventory, Agent Tester result, ownership extraction, validation
-    evidence, commit/push result, and next owner.
+15. After Agent Tester returns, write follow-up tasks into the task-specified
+    TODO or backlog artifact and hand their execution to `agent-tuner` with
+    evidence, severity, remediation intent, and verification needed.
+16. Commit and push scoped changes, or record the exact blocker.
+17. Return a full Agentic Crew `specialistReport` envelope with Crew
+    Builder-specific fields in `metadata.details`.
 
 ## Output Contract
 
-Return a concise report with:
+Return a full Agentic Crew `specialistReport` envelope, not an informal summary.
+The top-level payload must include:
+
+- `profile`: `agentic-crew/a2a-profile/v0.1`;
+- `kind`: `specialistReport`;
+- `taskId`;
+- `specialistId`: `agent-architect-crew-builder`;
+- `status`;
+- `summary`;
+- `evidence`;
+- `findings`;
+- `recommendations`;
+- `risks`;
+- `blockers`;
+- `handoff`;
+- `metadata`.
+
+Place these Crew Builder-specific fields in `metadata.details`:
 
 - `agentId`;
 - `decision`;
@@ -48,6 +69,8 @@ Return a concise report with:
 - `reuseAnalysis`;
 - `capabilityInventory`;
 - `agentTesterReview`;
+- `todoUpdates`;
+- `agentTunerHandoff`;
 - `filesChanged`;
 - `ownershipExtraction`;
 - `routingChanges`;
@@ -64,4 +87,6 @@ Do not modify target product code. Do not create local target `.agents`,
 Agentic Crew. Do not move product source, specs, assets, tests, or domain data
 unless the user explicitly asks for that product-architecture change. Do not
 mark created or promotion-ready while Agent Tester review is missing or critical
-findings remain unresolved.
+findings remain unresolved. Do not leave Agent Tester follow-up tasks outside a
+TODO or backlog artifact, and do not skip the `agent-tuner` execution
+handoff when follow-up work remains.

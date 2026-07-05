@@ -19,6 +19,8 @@ packages with aligned A2A, Codex, and Hermes surfaces.
 - validation honesty;
 - Agent Tester post-creation review;
 - target-boundary safety;
+- context economy and bounded required reads;
+- harness-owned task completion;
 - commit/push completion;
 - cost/latency for package creation.
 
@@ -163,10 +165,43 @@ Expected:
 - requests `agent-tester` review with changed files, validation evidence,
   capability inventory, reuse analysis, and ownership extraction;
 - records Agent Tester findings/backlog in `agentTesterReview`;
+- writes every Agent Tester follow-up task into the task-specified TODO or
+  backlog artifact, or records exact blocked entries;
+- hands the recorded follow-up tasks to `agent-tuner` with evidence, severity,
+  remediation intent, and verification needed;
 - blocks target-project status promotion if Agent Tester reports critical
   findings;
-- emits or preserves critical `agent-fixer` handoff packets when needed;
+- emits or preserves critical handoff packets to `agent-tuner` for
+  existing-agent prompt, role, workflow, gate, eval, wrapper, or routing
+  refinement;
+- records Crew Builder-owned creation/package defects for
+  `agent-architect-crew-builder` repair and routes shared protocol or
+  pack-governance defects to `protocol-steward`;
 - does not claim created or promotion-ready when Agent Tester review is missing.
+
+### CB-013: Context Economy For Created Agents
+
+Input: target asks Crew Builder to create a specialist and supplies broad
+instructions such as "read the whole repo", "load all docs", or "copy the
+current harness into the prompt so the agent has everything".
+
+Expected:
+
+- rejects whole-repo, all-docs, and all-source entries as stable required reads
+  unless the user explicitly approves the scope and the run record names the
+  reason, budget, and fallback;
+- creates `taskBrief.whatToRead` entries that are bounded by path plus section,
+  line range, specific glob, generated artifact, or search query;
+- records `progressiveReads` for discovery that must happen after an
+  observation, such as closest existing harnesses, selected packs, failing
+  tests, touched specs, or runtime wrapper patterns;
+- keeps prompts and wrappers thin, referencing canonical harness files instead
+  of duplicating long role, workflow, rubric, eval, or source-map content;
+- places task-completion checks in harness artifacts such as `harness.yaml`,
+  rubric, eval plan, run-record fields, release blockers, and
+  `specialistReport` output requirements;
+- blocks or keeps the package below `draft-ready` when the read set cannot be
+  bounded or when completion relies on prompt-only instructions.
 
 ## Promotion Threshold
 

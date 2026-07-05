@@ -55,10 +55,14 @@ is a Codex wrapper for the full harness in
 11. Request Agent Tester review for created or materially updated specialists.
 12. Block on Agent Tester critical findings, or record non-critical backlog and
     proceed only when review is complete.
-13. Commit and push scoped changes, or record the exact blocker.
-14. Return files changed, scope decision, reuse analysis, capability inventory,
-    ownership extraction, validation evidence, Agent Tester result, commit/push
-    result, blockers, and promotion status.
+13. After Agent Tester returns, mirror follow-up tasks into the task-specified
+    TODO or backlog artifact and hand their execution to `agent-tuner` with
+    evidence, severity, remediation intent, and verification needed.
+14. Commit and push scoped changes, or record the exact blocker.
+15. Return a full Agentic Crew `specialistReport` envelope with files changed,
+    scope decision, reuse analysis, capability inventory, ownership extraction,
+    validation evidence, Agent Tester result, commit/push result, blockers, and
+    promotion status in `metadata.details`, not a loose summary.
 
 ## Gates
 
@@ -78,6 +82,9 @@ is a Codex wrapper for the full harness in
   user explicitly asks for that product-architecture change.
 - Do not mark production-ready without pilot records, eval evidence, and
   independent review.
+- Do not leave Agent Tester follow-up tasks outside the task-specified TODO or
+  backlog artifact, and do not skip the `agent-tuner` execution
+  handoff when follow-up work remains.
 - Do not commit or push unrelated dirty worktree changes.
 - Do not report completion if push is blocked.
 - Hermes support is complete only when both skill and package files exist and
@@ -85,7 +92,24 @@ is a Codex wrapper for the full harness in
 
 ## Output
 
-Return an Agentic Crew-compatible summary with:
+Return a full Agentic Crew `specialistReport` envelope, not an informal summary.
+The top-level payload must include:
+
+- `profile`: `agentic-crew/a2a-profile/v0.1`;
+- `kind`: `specialistReport`;
+- `taskId`;
+- `specialistId`: `agent-architect-crew-builder`;
+- `status`;
+- `summary`;
+- `evidence`;
+- `findings`;
+- `recommendations`;
+- `risks`;
+- `blockers`;
+- `handoff`;
+- `metadata`.
+
+Place Crew Builder-specific fields in `metadata.details`, including:
 
 - created or rejected agent id;
 - runtime surfaces;
@@ -97,6 +121,8 @@ Return an Agentic Crew-compatible summary with:
 - routing changes;
 - validation results;
 - Agent Tester review result;
+- TODO/backlog updates for Agent Tester follow-up tasks;
+- Agent Tuner execution handoff;
 - commit/push result;
-- blockers;
+- promotion status;
 - next owner.

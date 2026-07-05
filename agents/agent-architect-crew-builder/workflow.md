@@ -26,19 +26,28 @@ Interpretation:
 4. Decide creation scope: target project, Agentic Crew, or hybrid.
 5. Run duplicate role review and harness reuse analysis.
 6. Run Harness Capability Inventory from `../ai-db`.
-7. Run SOLID ownership extraction audit.
-8. Decide create/update/reuse/wrap/reject.
-9. Draft role boundary and source hierarchy.
-10. Create or adapt required harness and wrapper files.
-11. Move or reference specialist-owned agent artifacts.
-12. Wire pack routing when discoverability is required.
-13. Validate machine-readable files and whitespace.
-14. Request Agent Tester review for created or materially updated specialists.
-15. Address the Agent Tester decision: block on critical findings, record
+7. Run the Context Economy Design Check.
+8. Run SOLID ownership extraction audit.
+9. Decide create/update/reuse/wrap/reject.
+10. Draft role boundary and source hierarchy.
+11. Create or adapt required harness and wrapper files.
+12. Move or reference specialist-owned agent artifacts.
+13. Wire pack routing when discoverability is required.
+14. Validate machine-readable files and whitespace.
+15. Request Agent Tester review for created or materially updated specialists.
+16. Address the Agent Tester decision: block on critical findings, record
     backlog for non-critical findings, or proceed when the tester reports no
     release blockers.
-16. Commit and push scoped changes, or record why commit/push is blocked.
-17. Produce run record, promotion status, and next-owner handoff.
+17. After Agent Tester returns, mirror every open finding, recommendation, and
+    improvement-backlog item into the task-specified TODO or backlog artifact.
+    If no path is provided, use the existing project-local `TODO.md` or create
+    one at the target project root when writes are allowed; otherwise record
+    the exact entries that could not be written.
+18. Hand the mirrored follow-up tasks to `agent-tuner` as `handoffPacket`
+    entries with evidence, severity, affected surfaces, TODO artifact refs,
+    remediation intent, and verification needed.
+19. Commit and push scoped changes, or record why commit/push is blocked.
+20. Produce run record, promotion status, and next-owner handoff.
 
 ## Creation Scope Decision
 
@@ -142,6 +151,39 @@ For every new or updated specialist, review these categories and record
 Each `use` decision must point to an artifact or field. Each `defer` or
 `reject` decision must name why the capability would not reduce risk now.
 
+## Context Economy Design Check
+
+Run this check before writing or adapting role prompts, source maps, wrappers,
+or run-record templates.
+
+1. Build the smallest evidence set that can define the agent's role boundary,
+   source hierarchy, quality gates, handoff, and validation commands.
+2. Split context into `stableContext`, `taskBrief.whatToRead`,
+   `progressiveReads`, and `excludedContext` using `source-map.md#context-economy-contract`.
+3. Bound every target-project source reference by path plus section, line range,
+   specific glob, generated artifact, or search query. Reject required reads
+   such as "the repo", "all docs", "all source", or broad private snapshots
+   unless the user explicitly approves the scope and the run record names the
+   reason, budget, and fallback.
+4. Convert broad exploration into progressive workflow steps. Start with the
+   demand plan, project rules, selected pack, closest existing harness, and
+   named source-of-truth docs; only expand to additional files after an
+   observation shows why they are needed.
+5. Keep runtime wrappers thin. They may summarize the mission and trigger, but
+   must point to the canonical harness files instead of copying long role,
+   workflow, rubric, eval, or source-map content.
+6. Put task-completion checks in harness-owned artifacts: quality gates,
+   `harness.yaml`, rubric, eval seeds, run-record fields, release blockers, and
+   the final `specialistReport` contract.
+7. Record the context decision in the run record or final report, including
+   required reads kept, broad reads rejected or deferred, progressive reads, and
+   any prompt/wrapper duplication intentionally allowed.
+
+Block or keep the package below `draft-ready` when the read set cannot be
+bounded, when prompt-only completion checks are not mirrored into harness
+artifacts, or when a wrapper duplicates harness content without a canonical path
+reference.
+
 ## SOLID Ownership Extraction Audit
 
 Before and after creating a specialist, identify whether target-project agent
@@ -234,7 +276,12 @@ Expected Agent Tester output:
 - `specialistReport`;
 - `reviewFinding` entries;
 - prioritized `improvementBacklog`;
-- critical `handoffPacket` entries to `agent-fixer` when needed;
+- project TODO/backlog updates or exact blocked entries;
+- critical `handoffPacket` entries to the owning remediation specialist:
+  `agent-tuner` for existing-agent prompt, role, workflow, gate, eval, wrapper,
+  or routing refinement; `agent-architect-crew-builder` for creation/package
+  defects it owns; and `protocol-steward` for shared protocol or pack-governance
+  defects;
 - knowledge-base lesson updates or proposals;
 - residual risk and promotion recommendation.
 
@@ -243,8 +290,20 @@ Crew Builder must:
 - block target-project status updates when Agent Tester reports a critical
   finding;
 - include Agent Tester findings/backlog in the run record;
-- route critical repair requests to `agent-fixer` when available, or record
-  `blocked-planned-specialist`;
+- mirror every Agent Tester finding, recommendation, and improvement-backlog
+  item that requires follow-up into the task-specified TODO or backlog artifact.
+  Prefer Agent Tester's `projectTodoUpdates`; otherwise write the entries
+  directly when authorized or record a write-access blocker with the exact
+  entries to add;
+- route critical repair requests by ownership: existing-agent refinement to
+  `agent-tuner`; Crew Builder-owned creation, packaging, wrapper, or routing
+  defects back to `agent-architect-crew-builder`; and shared protocol or pack
+  governance to `protocol-steward`;
+- route all mirrored existing-agent tuning/refinement tasks to `agent-tuner`
+  with evidence, severity, affected surfaces, remediation intent, TODO artifact
+  refs, and verification needed;
+- block promotion when required TODO/backlog updates or `agent-tuner` handoff
+  packets cannot be recorded;
 - not hide or silently fix Agent Tester findings unless explicitly reassigned;
 - treat missing Agent Tester review as a release blocker unless the tester is
   unavailable, in which case record a blocker and keep the package below

@@ -260,6 +260,25 @@
     "result": "notRun|pass|passWithBacklog|blockedCritical|blockedUnavailable",
     "blockers": []
   },
+  "agentTesterFollowUp": {
+    "todoArtifactPolicy": "task-specified todo/backlog|existing TODO.md|new TODO.md|blocked",
+    "todoArtifactPaths": [],
+    "tasksRecorded": [
+      {
+        "source": "reviewFinding|recommendation|improvementBacklog",
+        "sourceRef": "",
+        "severity": "critical|high|medium|low|note",
+        "owner": "agent-tuner",
+        "summary": "",
+        "evidence": [],
+        "verificationNeeded": [],
+        "status": "recorded|blocked"
+      }
+    ],
+    "agentTunerHandoffPackets": [],
+    "delegationResult": "notRun|requested|blockedUnavailable|blockedWriteAccess|complete",
+    "blockers": []
+  },
   "gitPublication": {
     "repositories": [],
     "stagedPaths": [],

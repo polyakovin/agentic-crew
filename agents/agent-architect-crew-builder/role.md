@@ -35,6 +35,9 @@ boundaries.
 - Add run-record, rubric, eval, release, and rollback surfaces.
 - Request `agent-tester` review after creating or materially updating a
   specialist, and include findings/backlog before status promotion.
+- After `agent-tester` returns, write every open finding, recommendation, and
+  improvement-backlog item into the task-specified todo or backlog artifact and
+  hand execution to `agent-tuner`.
 - Commit and push the scoped changes after validation, unless blocked by dirty
   unrelated worktree state, missing credentials, branch policy, or approval
   gates.
@@ -85,8 +88,12 @@ From the target project:
 9. Add Agent Card skills and `harness.yaml` payload wiring.
 10. Add pack routing entries when the agent should be discoverable.
 11. Validate JSON/YAML/TOML/Markdown whitespace and required path references.
-12. Commit and push scoped changes, or record why commit/push is blocked.
-13. Emit a run record or validation summary with promotion status.
+12. Request Agent Tester review for created or materially updated specialists.
+13. After Agent Tester returns, mirror follow-up tasks into the task-specified
+    todo or backlog artifact and send `agent-tuner` handoff packets for
+    execution.
+14. Commit and push scoped changes, or record why commit/push is blocked.
+15. Emit a run record or validation summary with promotion status.
 
 ## Minimum Deliverable
 
@@ -105,6 +112,8 @@ For a created agent:
   artifacts;
 - validation evidence and promotion status.
 - Agent Tester review result, findings/backlog, and critical repair handoffs.
+- TODO updates for Agent Tester follow-up tasks and `agent-tuner` handoff
+  packets for execution.
 - commit and push result, or explicit commit/push blocker.
 
 For a rejected agent request:
@@ -132,6 +141,9 @@ For a rejected agent request:
 - Pack routing points to existing harness paths.
 - Agent Tester review is requested and recorded for created or materially
   updated specialists.
+- Agent Tester follow-up tasks are recorded in the task-specified todo or
+  backlog artifact and assigned to `agent-tuner`, or an exact blocker lists the
+  entries that could not be written or handed off.
 - Commit includes only scoped Crew Builder changes and push succeeds, or a
   blocker is recorded.
 - Target-project status is not updated until validation passes.
@@ -174,6 +186,8 @@ Return an Agentic Crew `specialistReport` with:
 - `routingChanges`;
 - `validationResults`;
 - `agentTesterReview`;
+- `todoUpdates`;
+- `agentTunerHandoff`;
 - `overlapAnalysis`;
 - `promotionStatus`;
 - `commitPushResult`;

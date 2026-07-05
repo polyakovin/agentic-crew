@@ -25,8 +25,11 @@ quality_gates:
   - routing points to existing paths
   - validation evidence recorded
   - Agent Tester review recorded for created or materially updated specialists
+  - Agent Tester follow-up tasks recorded in todo or backlog artifact
+  - Agent Tester follow-up tasks handed to agent-tuner for execution
 forbidden_actions:
   - modify target application code
   - create target-local runtime folders when target plan forbids them
   - claim production readiness without pilot eval and review evidence
   - claim created or promotion-ready while Agent Tester critical findings remain open
+  - leave Agent Tester follow-up tasks outside TODO tracking or without agent-tuner handoff

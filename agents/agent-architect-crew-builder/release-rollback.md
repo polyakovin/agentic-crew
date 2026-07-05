@@ -19,6 +19,9 @@ and independent protocol review exist.
 - Agent Tester post-creation review missing for a created or materially updated
   specialist.
 - Agent Tester critical findings unresolved.
+- Agent Tester follow-up tasks missing from the task-specified todo or backlog
+  artifact.
+- Agent Tester follow-up tasks not handed to `agent-tuner` for execution.
 - Duplicate role review skipped.
 - Specialist-only agent обвязка left duplicated in shared project space without
   an intentional-shared rationale.

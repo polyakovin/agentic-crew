@@ -50,6 +50,12 @@ context:
     - ./tool-policy.md
   task_scoped_reading: true
   what_to_read_policy: target-demand-plan-existing-agent-folders-selected-pack-and-required-runtime-wrapper-patterns
+  context_economy:
+    progressive_disclosure_required: true
+    bounded_source_map_references_required: true
+    whole_repo_required_reads_allowed: false
+    prompt_duplication_of_harness_docs_allowed: false
+    harness_owned_task_completion_required: true
   freshness_triggers:
     - target project changed its agent demand plan
     - requested runtime includes Hermes or Codex wrapper changes
@@ -65,27 +71,38 @@ automation_packs:
   duplicate_role_review: ./workflow.md#duplicate-role-and-harness-reuse-review
   harness_reuse_review: ./workflow.md#duplicate-role-and-harness-reuse-review
   capability_inventory: ./workflow.md#harness-capability-inventory
+  context_economy_design: ./workflow.md#context-economy-design-check
   package_completeness: ./workflow.md#package-completeness-check
   wrapper_alignment: ./workflow.md#wrapper-alignment-check
   validation: ./workflow.md#validation-pack
   agent_tester_review: ./workflow.md#agent-tester-post-creation-review
+  agent_tester_follow_up_todo_and_tuning: ./workflow.md#agent-tester-post-creation-review
   commit_push: ./workflow.md#commit-and-push-gate
 quality_gates:
   - no new specialist without approved target demand or recorded decision
   - creation scope is recorded before writing files
   - compatible existing harness is reused adapted or wrapped before creating a new package
   - every harness capability category is marked use defer or reject with rationale
+  - required reads are bounded to the minimum source set needed for the task
+  - broad source discovery is progressive workflow activity not stable prompt context
+  - task completion checks live in harness artifacts rather than prompt-only instructions
   - no duplicate role with same trigger input and output
   - every required runtime surface exists and references the same agent id
   - Agent Card JSON harness YAML and Hermes manifest YAML parse
   - pack routing points to existing harness paths
   - Agent Tester review is requested and recorded for created or materially updated specialists
+  - Agent Tester findings recommendations and backlog items are mirrored into the task-specified todo or backlog artifact or blocked with exact entries to add
+  - Agent Tester follow-up tasks are handed to agent-tuner with evidence severity affected surfaces remediation intent and verification needed
   - scoped changes are committed and pushed or a commit/push blocker is recorded
   - target-project status is updated only after validation succeeds
 release_blockers:
   - missing_creation_scope_decision
   - reusable_harness_ignored_without_rationale
   - missing_capability_inventory_decision
+  - missing_context_economy_design
+  - whole_repo_or_unbounded_required_reads
+  - duplicated_harness_content_in_prompt_or_wrapper
+  - prompt_only_task_completion_checks
   - duplicate_role_unresolved
   - missing_required_runtime_wrapper
   - hermes_required_but_missing_or_invalid
@@ -93,8 +110,18 @@ release_blockers:
   - pack_route_points_to_missing_path
   - missing_agent_tester_review
   - agent_tester_critical_findings_unresolved
+  - agent_tester_follow_up_missing_todo_update
+  - agent_tester_follow_up_missing_agent_tuner_handoff
   - commit_push_missing_or_unrecorded
   - target_project_private_snapshot_leaked
 handoff:
   final_artifact_kind: specialistReport
   next_specialist_field: handoff.nextSpecialist
+  agent_tester_follow_up_next_specialist: agent-tuner
+  agent_tester_follow_up_required_fields:
+    - todoArtifactPath
+    - sourceFinding
+    - severity
+    - affectedSurfaces
+    - remediationIntent
+    - verificationNeeded

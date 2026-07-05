@@ -16,6 +16,7 @@ infrastructure:
   `use`, `defer`, or `reject`;
 - routing entries, rubrics, eval plans, release notes, and run-record templates.
 - Agent Tester post-creation review before status promotion.
+- TODO tracking and `agent-tuner` handoff for Agent Tester follow-up tasks.
 
 The Crew Builder is intentionally separate from `.agents/skills/agentic-crew-author`.
 That skill is the authoring workflow. This folder is the deployable specialist
