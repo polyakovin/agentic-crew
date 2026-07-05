@@ -1,0 +1,89 @@
+{
+  "runId": "",
+  "timestamp": "",
+  "agentId": "devlog-community-marketing-specialist",
+  "agentVersion": "0.1.0",
+  "promptVersion": "0.1.0",
+  "harnessVersion": "0.1.0",
+  "model": "",
+  "caseId": "",
+  "riskTier": "R2",
+  "inputRefs": [],
+  "dataClassification": ["internal"],
+  "targetProject": {
+    "name": "locksmith",
+    "repoPath": "/root/locksmith",
+    "copyType": "devlog-post|social-copy|screenshot-captions|itchio-update|trailer-messaging"
+  },
+  "copyOutput": {
+    "draft": "",
+    "format": "",
+    "templateUsed": "devlog/template.md",
+    "language": "russian|english",
+    "platform": "itch-io|twitter|bluesky|other"
+  },
+  "claimVerification": {
+    "claims": [],
+    "verifiedClaims": [],
+    "unverifiedClaims": [],
+    "evidenceSources": []
+  },
+  "toneAudit": {
+    "noirGaslightConsistency": "",
+    "indieDeveloperVoice": false,
+    "corporateToneDetected": false,
+    "issues": []
+  },
+  "namingAudit": {
+    "gameNameCorrect": false,
+    "heroNameCorrect": false,
+    "safeCrackerReferences": [],
+    "legacyUrlHandled": false
+  },
+  "screenshots": {
+    "needed": false,
+    "coordinatedWithVisualArt": false,
+    "captionsWritten": false,
+    "captions": []
+  },
+  "handoffs": {
+    "visualArtSpecialist": { "requested": false, "items": [] },
+    "narrativeSpecialist": { "requested": false, "items": [] },
+    "storefrontPackager": { "requested": false, "items": [] }
+  },
+  "filesChanged": [],
+  "validation": {
+    "json": [],
+    "yaml": [],
+    "markdownWhitespace": "",
+    "result": "notRun"
+  },
+  "gitPublication": {
+    "repositories": [],
+    "stagedPaths": [],
+    "commitSha": "",
+    "commitMessage": "",
+    "branch": "",
+    "remote": "",
+    "pushResult": "notRun",
+    "blockers": []
+  },
+  "toolsRequested": [],
+  "toolsExecuted": [],
+  "toolsDenied": [],
+  "approvals": [],
+  "taintedInputRefs": [],
+  "untrustedInstructionDetected": false,
+  "findings": [],
+  "blockers": [],
+  "handoff": {
+    "nextSpecialist": "",
+    "reason": "",
+    "payloadKind": "specialistReport"
+  },
+  "decision": "needsHumanReview",
+  "publicationReadiness": "draft",
+  "rollbackPlan": "",
+  "learningEventIds": [],
+  "incidentFlag": false
+}

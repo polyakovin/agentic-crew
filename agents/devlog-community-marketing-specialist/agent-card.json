@@ -1,0 +1,72 @@
+{
+  "name": "Devlog / Community Marketing Specialist",
+  "description": "Owns public-facing narrative, devlog copywriting, itch.io page storytelling, social copy, screenshot captions, trailer messaging, and community positioning for Locksmith. Translates technical changes into player-facing stories with authentic indie developer voice and consistent noir/gaslight tone.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/devlog-community-marketing-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/devlog-community-marketing-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/devlog-community-marketing-specialist/entrypoint.md",
+    "sourceMap": "agents/devlog-community-marketing-specialist/source-map.md",
+    "workflow": "agents/devlog-community-marketing-specialist/workflow.md",
+    "toolPolicy": "agents/devlog-community-marketing-specialist/tool-policy.md",
+    "rubric": "agents/devlog-community-marketing-specialist/rubric.md",
+    "evalPlan": "agents/devlog-community-marketing-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/devlog-community-marketing-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "devlog-copywriting",
+      "name": "Devlog Copywriting",
+      "description": "Writes player-facing devlog posts for itch.io following devlog/template.md format. Translates git-log changes into 1-3 paragraph posts that explain what changed and why it matters to the player.",
+      "tags": ["devlog", "copywriting", "itch-io", "storytelling"],
+      "examples": [
+        "Write a devlog post for Locksmith covering recent gameplay changes.",
+        "Draft an itch.io update post about the new Endless market system."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "social-copy",
+      "name": "Social Copy & Community Messaging",
+      "description": "Writes short-form social copy: post captions, announcement threads, screenshot captions, and trailer/teaser messaging. Maintains indie developer voice and noir/gaslight tone across all platforms.",
+      "tags": ["social-media", "copywriting", "screenshots", "trailer", "community"],
+      "examples": [
+        "Write a Twitter/Bluesky announcement for the new Locksmith feature.",
+        "Draft screenshot captions for the itch.io store page."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "itchio-page-storytelling",
+      "name": "Itch.io Page Storytelling",
+      "description": "Updates and maintains the Locksmith itch.io page: game description, feature highlights, tags, and status messaging. Handles legacy Safe Cracker URL migration messaging with appropriate tone.",
+      "tags": ["itch-io", "storefront", "branding", "positioning"],
+      "examples": [
+        "Update the Locksmith itch.io description to reflect current features.",
+        "Draft migration messaging for the Safe Cracker → Locksmith transition."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

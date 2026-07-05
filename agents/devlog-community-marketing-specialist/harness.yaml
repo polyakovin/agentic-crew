@@ -1,0 +1,91 @@
+id: devlog-community-marketing-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/devlog-community-marketing-specialist
+  model_policy: product-marketing-copywriting-indie-game-community
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: project-agents-readme-todo-game-lore-template-and-visual-reference
+  freshness_triggers:
+    - git log shows new gameplay/UX changes
+    - TODO.md shows completed items worth devlogging
+    - user requests devlog post or social copy
+    - itch.io page needs description update
+    - new screenshots or trailer available for captioning
+    - legacy Safe Cracker URL needs migration messaging
+    - release notes need player-facing prose
+    - game lore or character info updated in docs/lore.md
+boot_probe:
+  commands:
+    - git log --since="24 hours ago" --oneline
+    - git status --short
+    - ls devlog/template.md docs/game.md docs/lore.md 2>&1
+  known_failure_carveout: "Devlog writing does not modify code. Missing build artifacts or dirty worktrees do not block copywriting. The boot probe checks for recent changes and required templates — its output informs devlog content, not copy correctness."
+automation_packs:
+  devlog_post: ./workflow.md#devlog-post-creation
+  social_copy: ./workflow.md#social-copy-creation
+  screenshot_captions: ./workflow.md#screenshot-captioning
+  itch_page_update: ./workflow.md#itchio-page-update
+  trailer_messaging: ./workflow.md#trailer-messaging
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - copy uses game name Locksmith and hero Silas Crane
+  - devlog post follows devlog/template.md format (title, hashtags, 1-3 paragraphs, screenshot, CTA)
+  - every gameplay claim backed by implemented spec or build evidence
+  - copy has clear player-facing benefit, not a changelog dump
+  - tone matches noir/gaslight indie developer voice, not corporate marketing
+  - screenshot captions explain what the player sees
+  - trailer messaging matches game tone and lore
+  - legacy Safe Cracker URL handled as migration, not rename
+  - in-game canon references handed off to Narrative / Noir Copy Specialist
+  - visual asset needs handed off to Visual Art / Asset Production Specialist
+  - no direct itch.io publication — drafts only, user approves
+release_blockers:
+  - game_renamed_to_safe_cracker
+  - claims_made_about_unimplemented_features
+  - corporate_marketing_tone_detected
+  - copy_published_without_user_approval
+  - canon_issues_not_handed_off_to_narrative_specialist
+  - screenshots_improvised_instead_of_coordinated
+  - devlog_template_format_violated
+  - hero_named_incorrectly
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

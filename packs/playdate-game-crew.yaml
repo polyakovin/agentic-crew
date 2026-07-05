@@ -74,9 +74,9 @@ agents:
     path: ../agents/narrative-noir-copy-specialist
     harness: ../agents/narrative-noir-copy-specialist/harness.yaml
     required: false
-  - id: devlog-marketing-specialist
-    path: ../agents/devlog-marketing-specialist
-    harness: ../agents/devlog-marketing-specialist/harness.yaml
+  - id: devlog-community-marketing-specialist
+    path: ../agents/devlog-community-marketing-specialist
+    harness: ../agents/devlog-community-marketing-specialist/harness.yaml
     required: false
   - id: audio-music-feedback-specialist
     path: ../agents/audio-music-feedback-specialist
@@ -176,13 +176,20 @@ routing:
   tone-review: narrative-noir-copy-specialist
   item-names: narrative-noir-copy-specialist
   canon-check: narrative-noir-copy-specialist
-  devlog: devlog-marketing-specialist
-  marketing: devlog-marketing-specialist
-  community: devlog-marketing-specialist
+  devlog: devlog-community-marketing-specialist
+  marketing: devlog-community-marketing-specialist
+  community: devlog-community-marketing-specialist
   release-notes: release-storefront-packaging-specialist
   itch-io: release-storefront-packaging-specialist
-  social-copy: devlog-marketing-specialist
-  change-summary: devlog-marketing-specialist
+  social-copy: devlog-community-marketing-specialist
+  change-summary: devlog-community-marketing-specialist
+  devlog-post: devlog-community-marketing-specialist
+  itchio-description: devlog-community-marketing-specialist
+  screenshot-captions: devlog-community-marketing-specialist
+  trailer-messaging: devlog-community-marketing-specialist
+  update-notes: devlog-community-marketing-specialist
+  game-positioning: devlog-community-marketing-specialist
+  game-naming: devlog-community-marketing-specialist
   audio: audio-music-feedback-specialist
   sound-effects: audio-music-feedback-specialist
   sfx: audio-music-feedback-specialist
