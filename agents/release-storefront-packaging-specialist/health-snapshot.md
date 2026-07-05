@@ -27,9 +27,9 @@ Version: 0.1.0.
 
 ## Next Health Checks
 
-- [ ] Create all Hermes and Codex wrappers.
-- [ ] Update pack routing.
-- [ ] Run validation.
+- [x] Create all Hermes and Codex wrappers (done 2026-07-05).
+- [x] Update pack routing (done 2026-07-05).
+- [x] Run validation (JSON/YAML/whitespace — all pass, 2026-07-05).
 - [ ] Run seed evals from `eval-plan.md`.
 - [ ] Execute one real Locksmith release audit.
 - [ ] Exercise prototype removal checklist.
