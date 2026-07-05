@@ -1,0 +1,88 @@
+id: playdate-pixel-ui-renderer-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/playdate-pixel-ui-renderer-specialist
+  model_policy: strong-visual-review-with-playdate-pixel-constraints
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: renderer-ui-specs-pitfalls-and-affected-draw-files-only
+  freshness_triggers:
+    - renderer or UI spec changed
+    - new visual feature or screen proposed
+    - visual bug reported with screenshot/description
+    - draw-mode or Y-axis pitfall discovered
+    - project AGENTS.md Pitfalls updated
+boot_probe:
+  commands:
+    - git status --short
+    - command -v pdc
+    - pdc --version 2>/dev/null || echo "pdc not found"
+  classify_missing_pdc_as: blocked-build-gate
+automation_packs:
+  draw_mode_audit: ./workflow.md#draw-mode-audit
+  boundary_check: ./workflow.md#boundary-check
+  pixel_qa: ./workflow.md#pixel-qa
+  build_verify: ./workflow.md#build-verify
+  style_audit: ./workflow.md#style-audit
+quality_gates:
+  - no draw call leaves setColor active before bitmap/text draw
+  - all polygons are closed and use playdate.geometry.polygon.new
+  - Y-axis direction verified for every coordinate calculation
+  - fillRect semantics match intent
+  - renderer has no game state mutations
+  - ui has no game logic
+  - input module is capture-only
+  - pure logic and data modules are free of gfx/playdate API
+  - text uses correct font role from Fonts registry
+  - visual style is noir mechanical safe-lock focused
+  - new rendering pitfalls are documented in project AGENTS.md
+release_blockers:
+  - draw_mode_corruption_not_fixed
+  - polygon_api_violation
+  - y_axis_sign_error
+  - fillRect_semantic_error
+  - renderer_boundary_violation
+  - ui_boundary_violation
+  - pure_logic_contains_gfx
+  - missing_pitfall_documentation
+  - build_or_check_gate_blocked_unreported
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist

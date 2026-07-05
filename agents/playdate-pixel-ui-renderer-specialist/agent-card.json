@@ -1,0 +1,49 @@
+{
+  "name": "Playdate Pixel UI / Renderer Specialist",
+  "description": "Designs, reviews, and implements pixel-perfect 1-bit UI, HUD, menus, renderer layers, and visual feedback states for Playdate games. Enforces renderer/ui/input/safe/data boundaries, draw-mode safety, Y-axis correctness, and noir mechanical visual style.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/playdate-pixel-ui-renderer-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/playdate-pixel-ui-renderer-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/playdate-pixel-ui-renderer-specialist/entrypoint.md",
+    "sourceMap": "agents/playdate-pixel-ui-renderer-specialist/source-map.md",
+    "workflow": "agents/playdate-pixel-ui-renderer-specialist/workflow.md",
+    "toolPolicy": "agents/playdate-pixel-ui-renderer-specialist/tool-policy.md",
+    "rubric": "agents/playdate-pixel-ui-renderer-specialist/rubric.md",
+    "evalPlan": "agents/playdate-pixel-ui-renderer-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/playdate-pixel-ui-renderer-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "pixel-ui-renderer-review",
+      "name": "Pixel UI / Renderer Review",
+      "description": "Reviews Playdate draw calls for pixel precision, draw-mode safety, Y-axis correctness, polygon API, fillRect semantics, architectural boundaries, 1-bit readability, and noir mechanical visual style. Produces visual risk summary, boundary check, and pitfall documentation.",
+      "tags": ["playdate", "renderer", "ui", "pixel-perfect", "1-bit", "noir", "hud", "menus"],
+      "examples": [
+        "Audit renderer.lua draw calls for draw-mode safety and fillRect correctness.",
+        "Review a new HUD element for 400x240 readability and Y-axis sign errors.",
+        "Check whether a UI screen change respects component boundaries."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

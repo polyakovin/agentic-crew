@@ -46,6 +46,10 @@ agents:
     path: ../agents/agent-tester
     harness: ../agents/agent-tester/harness.yaml
     required: false
+  - id: playdate-pixel-ui-renderer-specialist
+    path: ../agents/playdate-pixel-ui-renderer-specialist
+    harness: ../agents/playdate-pixel-ui-renderer-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -74,3 +78,12 @@ routing:
   agent-exploratory-testing: agent-tester
   agent-knowledge-base-learning: agent-tester
   conflict-resolution: orchestrator
+  pixel-ui-renderer: playdate-pixel-ui-renderer-specialist
+  renderer-audit: playdate-pixel-ui-renderer-specialist
+  ui-review: playdate-pixel-ui-renderer-specialist
+  visual-qa: playdate-pixel-ui-renderer-specialist
+  draw-mode-safety: playdate-pixel-ui-renderer-specialist
+  hud-design: playdate-pixel-ui-renderer-specialist
+  menu-design: playdate-pixel-ui-renderer-specialist
+  feedback-states: playdate-pixel-ui-renderer-specialist
+  noir-style: playdate-pixel-ui-renderer-specialist
