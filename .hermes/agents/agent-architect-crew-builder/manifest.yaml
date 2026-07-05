@@ -3,6 +3,9 @@ name: Agent Architect / Crew Builder
 version: 0.1.0
 status: draft-ready
 description: Creates and reviews specialist-agent packages across Agentic Crew, Codex, and Hermes surfaces, including ai-db harness capability inventory and Agent Tester post-creation review.
+model:
+  provider: deepseek
+  model: deepseek-v4-pro
 entrypoint: ./instructions.md
 source_harness: ../../../agents/agent-architect-crew-builder
 agent_card: ../../../agents/agent-architect-crew-builder/agent-card.json
