@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Post-commit hook: автоматический push после коммита.
+set -euo pipefail
+
+REMOTE="origin"
+BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')"
+if [ -z "$BRANCH" ] || [ "$BRANCH" = "HEAD" ]; then
+    exit 0
+fi
+
+if ! git remote get-url "$REMOTE" >/dev/null 2>&1; then
+    exit 0
+fi
+
+if git push "$REMOTE" "$BRANCH" 2>&1; then
+    echo "  ✅ Auto-pushed to $REMOTE/$BRANCH"
+else
+    echo "  ⚠️  Auto-push failed — you may need to push manually"
+fi

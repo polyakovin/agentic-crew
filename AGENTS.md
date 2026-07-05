@@ -25,3 +25,18 @@ task genuinely needs their focused ownership:
   checks, improvement backlogs, and knowledge-base learning for agents.
 
 When a request is simple and low risk, keep the work local.
+
+## ⚠️ Must Push Rule
+
+**Any agent that creates or modifies files in this repository (harness files, wrappers, pack routing, docs) MUST commit and push before completing its task.** 
+
+Rules:
+1. Push happens **immediately after validation, before dispatching any follow-up work** (Agent Tester review, handoff, etc.).
+2. Both repos must be pushed when changes span them:
+   - `agentic-crew` — harness files, routing, pack changes
+   - target project (`locksmith`) — Codex/Hermes wrappers
+3. If push is blocked (dirty unrelated worktree, missing credentials, branch policy):
+   - Record the exact blocker with file list and error
+   - Set task status to **blocked**
+   - Do not mark task as complete
+4. **No agent session ends without a push or a recorded blocker.** "Forgot to push" is a critical failure.
