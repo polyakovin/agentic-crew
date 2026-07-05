@@ -1,0 +1,159 @@
+{
+  "profile": "agentic-crew/a2a-profile/v0.1",
+  "kind": "workflowProcessImproverRunRecord",
+  "schemaVersion": "0.1.0",
+  "taskId": "",
+  "specialistId": "workflow-process-improver",
+  "status": "draft|draft-ready|pilot|production|blocked",
+  "executionMode": "",
+  "startedAt": "",
+  "completedAt": "",
+  "operator": "",
+  "target": {
+    "targetProject": "",
+    "workflowScope": "",
+    "timeWindow": "",
+    "riskTier": "",
+    "promotionTarget": ""
+  },
+  "writeBoundary": {
+    "authorizedWritePaths": [],
+    "forbiddenPaths": [],
+    "externalSideEffectsAllowed": false,
+    "proposalDestination": "",
+    "todoBacklogPath": "",
+    "preRunGitStatus": "",
+    "postRunGitStatus": "",
+    "changedFiles": []
+  },
+  "contextIntake": {
+    "highestPhaseReached": "",
+    "alwaysRead": [],
+    "proposalDestinationSourcesRead": [],
+    "workflowEvidenceSourcesRead": [],
+    "captureSurfacesRead": [],
+    "excludedContext": [],
+    "broadReadsRejected": []
+  },
+  "proposalDestination": {
+    "type": "multica-cli|todo-backlog|blocked",
+    "commandOrPath": "",
+    "destinationProjectOrBoard": "",
+    "dryRunAvailable": false,
+    "approvalState": "",
+    "discoveryEvidence": [],
+    "resultSummary": "",
+    "blocker": ""
+  },
+  "evidenceInventory": [
+    {
+      "id": "",
+      "pathOrUrlOrCommand": "",
+      "dateOrVersion": "",
+      "sourceType": "",
+      "trustLabel": "",
+      "privacyClassification": "",
+      "redactionStatus": "",
+      "supportedClaim": "",
+      "confidence": ""
+    }
+  ],
+  "workflowTimeline": [
+    {
+      "eventId": "",
+      "timestampOrOrder": "",
+      "stage": "",
+      "owner": "",
+      "summary": "",
+      "evidenceIds": [],
+      "factOrInference": "fact",
+      "confidence": ""
+    }
+  ],
+  "processFindings": [
+    {
+      "id": "",
+      "severity": "",
+      "title": "",
+      "workflowStep": "",
+      "evidenceIds": [],
+      "impact": "",
+      "recommendation": "",
+      "owner": "",
+      "confidence": ""
+    }
+  ],
+  "informationCaptureGaps": [
+    {
+      "id": "",
+      "missingFieldOrEvent": "",
+      "affectedArtifact": "",
+      "evidenceIds": [],
+      "riskIfOmitted": "",
+      "recommendedChange": "",
+      "owner": "",
+      "verificationNeeded": ""
+    }
+  ],
+  "improvementsApplied": [
+    {
+      "id": "",
+      "path": "",
+      "summary": "",
+      "evidenceIds": [],
+      "rollback": "",
+      "validation": ""
+    }
+  ],
+  "proposalsWritten": [
+    {
+      "id": "",
+      "destinationType": "",
+      "destinationRef": "",
+      "summary": "",
+      "severity": "",
+      "owner": "",
+      "evidenceIds": [],
+      "verificationNeeded": "",
+      "writeResult": ""
+    }
+  ],
+  "validationResults": {
+    "json": [],
+    "yaml": [],
+    "toml": [],
+    "markdownWhitespace": "",
+    "gitDiffCheck": "",
+    "other": []
+  },
+  "handoffPackets": [
+    {
+      "profile": "agentic-crew/a2a-profile/v0.1",
+      "kind": "handoffPacket",
+      "taskId": "",
+      "specialistId": "workflow-process-improver",
+      "currentState": "",
+      "filesTouched": [],
+      "openQuestions": [],
+      "nextSpecialist": "",
+      "recommendedNextSteps": [],
+      "verificationNeeded": []
+    }
+  ],
+  "agentTesterReview": {
+    "status": "not-requested|requested|passed|passed-with-backlog|critical-findings|blocked",
+    "reviewer": "",
+    "summary": "",
+    "findings": [],
+    "blockers": []
+  },
+  "redactionRecord": {
+    "redactedFields": [],
+    "summarizedArtifacts": [],
+    "blockedArtifacts": [],
+    "notes": ""
+  },
+  "risks": [],
+  "blockers": [],
+  "promotionStatus": "draft|draft-ready|pilot|production|blocked"
+}

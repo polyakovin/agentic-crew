@@ -6,6 +6,48 @@ Target agent id: agent-tuner
 No open tasks. Completed review tasks were removed after their fixes and Agent
 Tester re-review passed on 2026-07-05.
 
+## Workflow Process Improver TODO (2026-07-05)
+
+Source task: workflow-process-improver-agent-2026-07-05
+Target agent id: workflow-process-improver
+
+Repository-local Multica CLI discovery found no config or backlog artifact in
+this repository. Host-level discovery found `/opt/homebrew/bin/multica`,
+confirmed `multica issue create --help`, and identified project
+`590c34c6-1c3c-49b3-b662-34ebd8cf34b4` (`Locksmith`). Follow-up proposals are
+now tracked in Multica as `POL-3` and `POL-4`; this TODO section mirrors them
+for repository-local traceability.
+
+- [x] [medium][agent-tester][blocking-for-promotion] Review the new Workflow
+  Process Improver package before any promotion beyond `draft`. Agent Tester
+  review `workflow-process-improver-agent-2026-07-05-agent-tester-review`
+  completed with no unresolved critical findings; promotion recommendation is
+  `draft-ready` only, not pilot or production. Reviewed surfaces:
+  `agents/workflow-process-improver/**`,
+  `.agents/skills/workflow-process-improver/SKILL.md`,
+  `.hermes/skills/workflow-process-improver.md`,
+  `.hermes/agents/workflow-process-improver/**`,
+  `packs/software-development-crew.yaml`, and
+  `plans/workflow-process-improver-scope-decision.md`.
+- [ ] [medium][workflow-process-improver][blocked-on-multica-write-contract]
+  Define or approve the concrete Multica CLI proposal write destination and
+  command contract for this repository, including issue/project destination,
+  create/update command shape, dry-run or preview behavior, side-effect approval
+  requirements, retry policy, and rollback expectations. Evidence:
+  repository-local search found no Multica config or command contract; parent
+  review context reports a working host-level read command and project id
+  `590c34c6-1c3c-49b3-b662-34ebd8cf34b4`, which is discovery evidence but not
+  approval to create or update issues. Multica issue: `POL-3`
+  (`b037b5f9-2176-48b8-bcd6-2e7bef040ee6`).
+- [ ] [medium][workflow-process-improver][before-pilot] Exercise at least five
+  eval-plan scenario seeds and record one sample retrospective run that writes
+  proposals to the approved Multica destination or authorized fallback before
+  any pilot promotion. Evidence: `agents/workflow-process-improver/eval-plan.md`
+  promotion requirements and `agents/workflow-process-improver/release-rollback.md`
+  pilot checklist require scenario coverage, proposal destination evidence, and
+  a tracked information-capture improvement. Multica issue: `POL-4`
+  (`249c6d06-db14-46c5-b79b-11c41c1c8a85`).
+
 ## Agent Tester Self-Test TODO (2026-07-05)
 
 Source task: self-test-agent-tester-2026-07-05

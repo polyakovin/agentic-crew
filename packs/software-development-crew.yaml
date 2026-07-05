@@ -49,6 +49,10 @@ agents:
     path: ../agents/agent-tuner
     harness: ../agents/agent-tuner/harness.yaml
     required: false
+  - id: workflow-process-improver
+    path: ../agents/workflow-process-improver
+    harness: ../agents/workflow-process-improver/harness.yaml
+    required: false
 routing:
   requirements: product-manager
   architecture: system-architect
@@ -79,4 +83,9 @@ routing:
   agent-overlap-reduction: agent-tuner
   agent-prompt-refinement: agent-tuner
   agent-eval-seed-refinement: agent-tuner
+  workflow-process-improvement: workflow-process-improver
+  process-retrospective: workflow-process-improver
+  workflow-observability: workflow-process-improver
+  information-capture-improvement: workflow-process-improver
+  multica-proposal-handoff: workflow-process-improver
   conflict-resolution: orchestrator

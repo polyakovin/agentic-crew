@@ -1,0 +1,94 @@
+{
+  "name": "Workflow Process Improver",
+  "description": "Audits how project workflows actually happened from bounded logs, sessions, run records, handoffs, TODOs, and task evidence, then writes process-improvement proposals to Multica CLI or an approved fallback handoff artifact.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/workflow-process-improver",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/workflow-process-improver/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft-ready",
+    "entrypoint": "agents/workflow-process-improver/entrypoint.md",
+    "sourceMap": "agents/workflow-process-improver/source-map.md",
+    "workflow": "agents/workflow-process-improver/workflow.md",
+    "toolPolicy": "agents/workflow-process-improver/tool-policy.md",
+    "rubric": "agents/workflow-process-improver/rubric.md",
+    "evalPlan": "agents/workflow-process-improver/eval-plan.md",
+    "runRecordTemplate": "agents/workflow-process-improver/run-record.template.json",
+    "codexSkill": ".agents/skills/workflow-process-improver/SKILL.md",
+    "hermesSkill": ".hermes/skills/workflow-process-improver.md",
+    "hermesPackage": ".hermes/agents/workflow-process-improver"
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "workflow-process-audit",
+      "name": "Workflow Process Audit",
+      "description": "Reconstructs project workflow timelines from logs, sessions, run records, handoffs, TODOs, review findings, task events, and git/process evidence, then produces evidence-backed process improvements.",
+      "tags": [
+        "workflow-improvement",
+        "process-retrospective",
+        "logs",
+        "sessions",
+        "handoffs",
+        "observability"
+      ],
+      "examples": [
+        "Analyze the last project workflow from sessions and TODOs, then put improvement proposals into Multica CLI.",
+        "Find where this task lost context or ownership and propose workflow changes with evidence."
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
+    },
+    {
+      "id": "workflow-information-capture-improvement",
+      "name": "Workflow Information Capture Improvement",
+      "description": "Identifies missing logs, run-record fields, handoff fields, status updates, and task evidence needed for future workflow retrospectives, then applies authorized template or TODO/backlog improvements.",
+      "tags": [
+        "workflow-observability",
+        "information-capture",
+        "run-records",
+        "multica",
+        "todo-backlog"
+      ],
+      "examples": [
+        "Improve how this project captures blockers and handoffs for future workflow analysis.",
+        "Create tracked proposals for missing task lifecycle and session evidence."
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
+    }
+  ]
+}
