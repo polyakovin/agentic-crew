@@ -1,0 +1,76 @@
+{
+  "name": "Endless Economy Specialist",
+  "description": "Owns the design, review, and balancing of the Endless mode economy for the Locksmith Playdate game. Analyzes item catalogs, pricing, crafting recipes, drop tables, progression curves, player loops, grind intensity, soft locks, and exploits. Designs economy tables, proposes balance changes through spec-first workflow, verifies economy invariants, and maintains save compatibility. Works strictly through declarative data files (endless_data.lua, economy_catalogs.lua) and spec documents, never mixing runtime logic with balance tables.",
+  "supportedInterfaces": [
+    {
+      "url": "https://example.invalid/a2a/endless-economy-specialist",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "polyakovin",
+    "url": "https://github.com/polyakovin/agentic-crew"
+  },
+  "version": "0.1.0",
+  "documentationUrl": "https://github.com/polyakovin/agentic-crew/blob/main/agents/endless-economy-specialist/role.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "metadata": {
+    "harnessVersion": "0.1.0",
+    "harnessStatus": "draft",
+    "entrypoint": "agents/endless-economy-specialist/entrypoint.md",
+    "sourceMap": "agents/endless-economy-specialist/source-map.md",
+    "workflow": "agents/endless-economy-specialist/workflow.md",
+    "toolPolicy": "agents/endless-economy-specialist/tool-policy.md",
+    "rubric": "agents/endless-economy-specialist/rubric.md",
+    "evalPlan": "agents/endless-economy-specialist/eval-plan.md",
+    "runRecordTemplate": "agents/endless-economy-specialist/run-record.template.json"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "endless-economy-analysis",
+      "name": "Endless Economy Analysis",
+      "description": "Analyzes the Endless mode economy: item catalogs, prices, recipes, drops, scarcity, progression pacing, upgrade curves, player loops, grind intensity, soft locks, and exploits. Produces findings sorted by severity with file/line references.",
+      "tags": ["endless-economy", "economy-analysis", "balance", "locksmith", "playdate"],
+      "examples": [
+        "Analyze the current Endless economy — are there any soft locks or infinite profit loops?",
+        "Review pricing across all lock/clock/safe catalogs — is progression fair?",
+        "Check if any CRAFT_RECIPES have impossible ingredient requirements.",
+        "Audit economy invariants: no items without sources, no impossible recipes, no infinite profit."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "economy-balance-patch",
+      "name": "Economy Balance Patch",
+      "description": "Proposes and implements balance changes to Endless economy: pricing adjustments, drop rate tuning, recipe cost rebalancing, progression curve smoothing. Works spec-first — updates docs before touching data files.",
+      "tags": ["economy-balance", "pricing", "drops", "recipes", "progression", "locksmith"],
+      "examples": [
+        "Tier-3 safes are too profitable compared to Tier-4 locks — suggest price adjustments.",
+        "Component drops are too scarce at early ranks — increase drop rate for Rank 1-3 pools.",
+        "Crafting recipe #7 costs too much for its benefit — rebalance."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "economy-invariant-verification",
+      "name": "Economy Invariant Verification",
+      "description": "Verifies economy invariants: no impossible recipes, no items without sources (if needed for progression), no infinite profit without limits, starting economy doesn't block the player, late-game doesn't collapse into one optimal path, prices/rewards follow understandable curves.",
+      "tags": ["economy-invariants", "verification", "balance", "locksmith"],
+      "examples": [
+        "Verify all economy invariants pass for the current data tables.",
+        "Check that every component needed for Rank 1 recipes has a drop source.",
+        "Audit save compatibility after economy data changes."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

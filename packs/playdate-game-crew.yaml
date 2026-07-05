@@ -66,6 +66,10 @@ agents:
     path: ../agents/adventure-state-machine-specialist
     harness: ../agents/adventure-state-machine-specialist/harness.yaml
     required: false
+  - id: endless-economy-specialist
+    path: ../agents/endless-economy-specialist
+    harness: ../agents/endless-economy-specialist/harness.yaml
+    required: false
 routing:
   playdate-sdk-api: playdate-platform-sdk
   crank-buttons-accelerometer: playdate-platform-sdk
@@ -121,3 +125,12 @@ routing:
   adventure-state-transitions: adventure-state-machine-specialist
   story-flow: adventure-state-machine-specialist
   ad-state-machine: adventure-state-machine-specialist
+  endless-economy: endless-economy-specialist
+  economy-balance: endless-economy-specialist
+  item-pricing: endless-economy-specialist
+  drop-tables: endless-economy-specialist
+  crafting-recipes: endless-economy-specialist
+  progression-economy: endless-economy-specialist
+  save-compatibility: endless-economy-specialist
+  economy-invariants: endless-economy-specialist
+  endless-economy-audit: endless-economy-specialist

@@ -1,0 +1,97 @@
+id: endless-economy-specialist
+kind: a2a-specialist-harness
+version: 0.1.0
+protocol: ../../protocol/interaction-protocol.md
+payload_schema: ../../protocol/message-schema.json
+entrypoint: ./entrypoint.md
+role_card: ./role.md
+agent_card: ./agent-card.json
+source_map: ./source-map.md
+workflow: ./workflow.md
+tool_policy: ./tool-policy.md
+rubric: ./rubric.md
+eval_plan: ./eval-plan.md
+run_record_template: ./run-record.template.json
+release_rollback: ./release-rollback.md
+health_snapshot: ./health-snapshot.md
+runtime:
+  transport: A2A JSON-RPC
+  endpoint_placeholder: https://example.invalid/a2a/endless-economy-specialist
+  model_policy: strong-economy-analysis-and-balance
+  status: draft
+  run_records_required:
+    R0: false
+    R1: false
+    R2: conditional
+    R3: true
+    R4: true
+activation:
+  accepts_payloads:
+    - taskBrief
+    - handoffPacket
+  emits_payloads:
+    - specialistReport
+    - reviewFinding
+    - handoffPacket
+context:
+  always_read:
+    - ../../protocol/interaction-protocol.md
+    - ./entrypoint.md
+    - ./role.md
+    - ./source-map.md
+    - ./workflow.md
+    - ./tool-policy.md
+  task_scoped_reading: true
+  what_to_read_policy: economy-specs-catalogs-data-save-and-affected-source-files-only
+  freshness_triggers:
+    - economy spec changed (lock/clock/safe/shared economy)
+    - economy roadmap updated
+    - endless_data.lua tables changed
+    - economy_catalogs.lua catalogs changed
+    - endless_save.lua persistence changed
+    - project AGENTS.md Pitfalls updated
+    - new economy item or catalog proposed
+    - economy balance bug reported
+    - save compatibility concern raised
+    - gameplay-design delegates economy-heavy question
+boot_probe:
+  commands:
+    - git status --short
+    - cd /root/locksmith && make test-all 2>&1 | tail -5
+    - cd /root/locksmith && make lint 2>&1 | tail -5
+    - cd /root/locksmith && make build 2>&1 | tail -5
+    # NOTE: 87 PASS, 1 known pre-existing FAIL in endless_mode.lua rendering test (outside economy scope)
+automation_packs:
+  economy_analysis: ./workflow.md#economy-analysis-template
+  economy_invariant_check: ./workflow.md#economy-invariant-checklist
+  balance_patch_template: ./workflow.md#balance-patch-template
+  save_compatibility_audit: ./workflow.md#save-compatibility-audit
+  validation_pack: ./workflow.md#validation-pack
+quality_gates:
+  - AGENTS.md and manifest.json are read before any change
+  - relevant economy specs are read before any data change
+  - spec is updated before code/data when behaviour changes
+  - no gfx.* or playdate.* in endless_data.lua or economy_catalogs.lua
+  - no persistence or runtime state mutations in data modules
+  - no game logic in endless_save.lua
+  - no balance data moved from data files to runtime modules
+  - economy invariants verified before and after change
+  - save compatibility assessed (no silent breaks)
+  - make check passes or blocked gate is honestly reported
+  - prices and drops are predictably fair (no RNG as balance crutch)
+  - new economy pitfalls are documented in AGENTS.md
+release_blockers:
+  - boundary_violation_detected
+  - spec_not_updated_for_behaviour_change
+  - make_check_fails_or_not_run
+  - economy_invariant_broken
+  - save_compatibility_broken_without_migration
+  - rng_introduced_as_balance_crutch
+  - data_moved_to_runtime_module
+  - missing_spec_update
+  - missing_invariant_verification
+  - missing_save_assessment
+  - missing_pitfall_documentation
+handoff:
+  final_artifact_kind: specialistReport
+  next_specialist_field: handoff.nextSpecialist
