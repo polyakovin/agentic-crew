@@ -36,6 +36,7 @@ not own:
 - `agents/playdate-platform-sdk/tool-policy.md`
 - `agents/playdate-platform-sdk/rubric.md`
 - `agents/playdate-platform-sdk/entrypoint.md`
+- `agents/playdate-platform-sdk/source-grounding-lessons.md`
 - `.hermes/skills/playdate-platform-sdk.md`
 
 Read only task-relevant source files beyond this list.
@@ -48,7 +49,8 @@ Read only task-relevant source files beyond this list.
    - target-agent files listed in issue/task scope,
    - recent git history for `agents/playdate-platform-sdk/`,
    - `.hermes/skills/playdate-platform-sdk.md` and `.agents/skills` directory,
-   - `TODO.md` and prior Tester review references if present.
+   - `TODO.md`, source-grounding lessons, and prior Tester review references if
+     present.
 3. Classify every factual claim with `truthStatusSummary` semantics:
    `confirmed`, `unconfirmed`, `conflict`, `refuted`, `notApplicable`.
 4. Record confidence separately from truth status.
@@ -59,6 +61,17 @@ Read only task-relevant source files beyond this list.
    updates via the proper owner path (outside this skill unless explicitly asked).
 8. Produce a `specialistReport`-compatible output and include `handoff.nextSpecialist`
    when work passes out of scope.
+
+## Durable Learning Notes
+
+- Apply `agents/playdate-platform-sdk/source-grounding-lessons.md` before making
+  SDK/API, simulator/device, current-version, performance, input, graphics, or
+  datastore claims.
+- Treat dated lesson facts as reusable corner-case guidance, not permanent
+  current truth. Re-run local SDK probes and browse official Playdate docs when
+  latest/current behavior matters.
+- When a task reveals a new reusable platform pitfall, add a project-memory
+  update or handoff rather than burying it only in the final response.
 
 ## Source Hierarchy
 
