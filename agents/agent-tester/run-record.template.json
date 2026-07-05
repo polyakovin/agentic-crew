@@ -25,6 +25,17 @@
     "delegatedAgentId": "",
     "packRefs": []
   },
+  "writeBoundary": {
+    "mode": "read-only|no-target-edit|todo-only|bounded-edits|unspecified",
+    "authorizedWriteScope": [],
+    "forbiddenWriteScope": [],
+    "preRunGitStatus": [],
+    "postRunGitStatus": [],
+    "changedFilesAuthoredByTester": [],
+    "changedFilesAttributedExternalOrPreexisting": [],
+    "unauthorizedChanges": [],
+    "classificationNotes": ""
+  },
   "methodologyRefresh": {
     "required": false,
     "reason": "",

@@ -19,6 +19,13 @@ target agent path, and the task brief as operating context.
 State whether the work is local skill use or a live delegated agent run. Do not
 describe reading this file as live agent use.
 
+When delegating to a generic worker, include the task write boundary explicitly.
+For read-only, no-target-edit, or TODO-only runs, instruct the worker to record
+pre-run and post-run `git status --short`, report exact changed files, write
+only authorized TODO/backlog paths when permitted, and never modify target-agent
+or adjacent specialist packages unless the user or orchestrator explicitly
+reassigns remediation work.
+
 ## Required Reads
 
 1. `agents/agent-tester/entrypoint.md`
@@ -37,29 +44,35 @@ describe reading this file as live agent use.
 
 1. Identify tested agent id, runtime surfaces, source of truth, risk tier, and
    available traces or run artifacts.
-2. Decide whether current external best-practice refresh is required. If yes,
+2. Record the task write boundary, including authorized write paths, forbidden
+   target-agent and adjacent-specialist paths, and pre-run `git status --short`.
+3. Decide whether current external best-practice refresh is required. If yes,
    use official or primary sources and record URL, access date, and supported
    claim.
-3. Build a test charter with scenarios, risk hypotheses, metrics, allowed
+4. Build a test charter with scenarios, risk hypotheses, metrics, allowed
    actions, and stop criteria.
-4. Run static and machine-readable checks for harness files, Agent Card JSON,
+5. Run static and machine-readable checks for harness files, Agent Card JSON,
    harness YAML, wrappers, pack routing, and output payloads.
-5. Run scenario, exploratory, adversarial, and replay checks as available.
-6. Inspect workflow path evidence: context, retrieved sources, tool calls,
+6. Run scenario, exploratory, adversarial, and replay checks as available.
+7. Inspect workflow path evidence: context, retrieved sources, tool calls,
    approvals, handoffs, traces, costs, limits, and final artifact.
-7. Produce findings and a prioritized improvement backlog.
-8. Write every recommendation and backlog item into the target project's TODO
+8. Produce findings and a prioritized improvement backlog.
+9. Write every recommendation and backlog item into the target project's TODO
    artifact. Use a task-specified todo/backlog path first, then an existing
    project-local `TODO.md`, and create `TODO.md` at the target project root if
    no TODO artifact exists. If write access is unavailable, return exact
    `projectTodoUpdates` entries plus the blocker.
-9. Emit critical `handoffPacket` entries to the correct remediation owner:
+10. Emit critical `handoffPacket` entries to the correct remediation owner:
    `agent-tuner` for existing-agent tuning/refinement,
    `agent-architect-crew-builder` for creation/package defects, and
    `protocol-steward` for protocol or shared-governance defects. Include
    evidence, severity, affected surfaces, remediation intent, and verification
    needed.
-10. Update or propose sanitized knowledge-base lessons and regression candidates.
+11. Re-run `git status --short`, report exact changed files with their
+    write-boundary classification, and block the run if tester-authored changes
+    touched target-agent or adjacent specialist packages without explicit
+    reassignment.
+12. Update or propose sanitized knowledge-base lessons and regression candidates.
 
 ## Gates
 
@@ -72,6 +85,12 @@ describe reading this file as live agent use.
 - Critical existing-agent tuning findings include `agent-tuner` handoff packets;
   creation/package findings route to `agent-architect-crew-builder`, and
   protocol/governance findings route to `protocol-steward`.
+- Read-only, no-target-edit, and TODO-only runs include pre-run and post-run git
+  status evidence, exact changed-file classification, and no unauthorized
+  target-agent or adjacent specialist edits.
+- Critical existing-agent prompt, role, workflow, gate, eval, wrapper, or
+  routing findings are handed to `agent-tuner`; Agent Tester does not self-fix
+  them unless explicitly reassigned.
 - Knowledge-base updates are sanitized and project-neutral.
 - The tester does not fix or tune the target agent unless explicitly
   reassigned.
@@ -88,6 +107,8 @@ Return an Agentic Crew-compatible `specialistReport` with:
 - project TODO updates containing every recommendation and backlog item;
 - critical handoff packets for `agent-tuner`,
   `agent-architect-crew-builder`, or `protocol-steward` as ownership requires;
+- write-boundary evidence, including pre/post git status and exact changed-file
+  classification;
 - knowledge-base updates made or proposed;
 - regression candidates;
 - residual risk, blockers, and next owner.

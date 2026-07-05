@@ -22,30 +22,52 @@ python3 -m json.tool agents/<target-agent-id>/agent-card.json
 Dirty worktrees require care. Do not overwrite target-agent changes while
 testing.
 
+Record the exact initial `git status --short` output as the run's
+`preRunGitStatus`. When the task brief says `read-only`, `no-target-edit`, or
+permits only TODO/backlog writes, derive a write-boundary ledger before running
+scenarios: authorized write paths, forbidden target-agent paths, forbidden
+adjacent specialist paths, and any already-dirty paths.
+
+Before final output, run `git status --short` again and compare it with
+`preRunGitStatus`. Classify every changed path as pre-existing,
+tester-authored authorized, tester-authored unauthorized, or externally
+changed/unknown. Do not describe a post-run changed file as pre-existing unless
+it appeared in `preRunGitStatus`.
+
 ## Core Workflow
 
 1. Record routing and execution mode: local skill use, live delegated agent,
    A2A runtime run, or local fallback.
-2. Identify tested agent id, runtime surfaces, source of truth, risk tier, and
+2. Record the task write policy and write-boundary ledger. For read-only,
+   no-target-edit, or TODO-only briefs, the target agent package and adjacent
+   specialist packages are forbidden write surfaces unless the user or
+   orchestrator explicitly reassigns remediation work.
+3. Identify tested agent id, runtime surfaces, source of truth, risk tier, and
    promotion target.
-3. Read the target agent's role, Agent Card, harness YAML, wrappers, pack route,
+4. Read the target agent's role, Agent Card, harness YAML, wrappers, pack route,
    run-record template, and only the operational docs required by the test.
-4. Refresh current best practices when required by `source-map.md`.
-5. Build a test charter.
-6. Run static and machine-readable checks.
-7. Run scenario, exploratory, adversarial, and replay checks as available.
-8. Inspect traces/tool calls/run records, not only final answers.
-9. Classify findings and residual risk.
-10. Produce an improvement backlog.
-11. Mirror every recommendation and backlog item into the target project's TODO
+5. Refresh current best practices when required by `source-map.md`.
+6. Build a test charter.
+7. Run static and machine-readable checks.
+8. Run scenario, exploratory, adversarial, and replay checks as available.
+9. Inspect traces/tool calls/run records, not only final answers.
+10. Classify findings and residual risk.
+11. Produce an improvement backlog.
+12. Mirror every recommendation and backlog item into the target project's TODO
     artifact.
-12. Emit critical remediation handoff packets to the correct owner:
+13. Emit critical remediation handoff packets to the correct owner:
     `agent-tuner` for existing-agent tuning/refinement,
     `agent-architect-crew-builder` for creation or packaging defects, and
     `protocol-steward` for protocol or shared governance defects.
-13. Update or propose knowledge-base lessons and regression candidates.
-14. Return a `specialistReport` with evidence, findings, backlog, project TODO
-    updates, KB updates, and next owner.
+14. Re-run `git status --short`, record `postRunGitStatus`, and report exact
+    changed files with the write-boundary classification. In read-only,
+    no-target-edit, or TODO-only runs, any tester-authored target-agent or
+    adjacent specialist package edit is a critical test-run failure and must be
+    reported as such instead of being hidden, self-fixed, or attributed to
+    pre-existing work without evidence.
+15. Update or propose knowledge-base lessons and regression candidates.
+16. Return a `specialistReport` with evidence, findings, backlog, project TODO
+    updates, write-boundary ledger, KB updates, and next owner.
 
 ## Best-Practice Refresh Pack
 
@@ -247,6 +269,12 @@ If write access is unavailable, do not silently drop the recommendation. Return
 a `projectTodoUpdates` section with the exact entries that should be written,
 the intended path, and the blocker that prevented the update.
 
+For read-only or no-target-edit runs, TODO/backlog writes are allowed only when
+the task brief, project rules, or user explicitly permits them. If the brief
+allows only TODO/backlog writes, no other repository path may be edited by the
+tester. If the brief allows no writes at all, return proposed TODO entries and a
+write-access blocker.
+
 ## Critical Remediation Handoff
 
 Use `agent-tuner` when a critical finding requires refinement of an existing
@@ -266,6 +294,12 @@ For critical issues, the tester should:
    `protocol-steward` for protocol/governance work.
 3. Avoid applying the remediation locally unless explicitly reassigned by the
    user or orchestrator.
+
+Critical findings against an existing agent's prompt, role, workflow, gates,
+eval seeds, wrappers, or routing are handoff-only while acting as Agent Tester.
+The tester may write the required TODO/backlog item when authorized, but must
+not edit the target agent, adjacent specialists, or the tester package itself to
+make the finding pass.
 
 ## Validation Pack
 
