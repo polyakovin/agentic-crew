@@ -43,6 +43,78 @@
       ],
       "inputModes": ["text/plain", "application/json"],
       "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "source-grounded-api-truth-review",
+      "name": "Source-Grounded API Truth Review",
+      "description": "Confirms or rejects Playdate API existence, receiver, signature, and SDK-version claims with local SDK/CoreLibs or official Playdate docs evidence, keeping confidence separate from truth status.",
+      "tags": ["playdate", "sdk", "api", "truth-status", "source-grounding"],
+      "examples": [
+        "Verify whether this Playdate graphics API exists in the local SDK.",
+        "Check a claimed datastore signature against CoreLibs or official docs."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "simulator-device-proof-separation",
+      "name": "Simulator/Device Proof Separation",
+      "description": "Classifies simulator, build, screenshot, and hardware evidence separately so simulator-only results are not used as proof for device performance, screen, audio, crank, accelerometer, or battery behavior.",
+      "tags": ["playdate", "simulator", "device", "hardware-validation", "evidence"],
+      "examples": [
+        "Review whether a simulator screenshot proves device readability.",
+        "Classify a build plus simulator run when a hardware performance claim is requested."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "graphics-draw-mode-boundary-review",
+      "name": "Graphics Draw-Mode Boundary Review",
+      "description": "Reviews Playdate draw-mode and graphics API boundaries, including image/font draw-mode restoration, primitive-shape scope, hot asset loads, and handoff needs for visual composition ownership.",
+      "tags": ["playdate", "graphics", "draw-mode", "fonts", "images"],
+      "examples": [
+        "Check whether setImageDrawMode affects this renderer's text and image calls.",
+        "Separate SDK draw-mode truth from UI readability review."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "input-peripheral-lifecycle-review",
+      "name": "Input/Peripheral Lifecycle Review",
+      "description": "Reviews crank, button, System Menu, accelerometer, and peripheral assumptions for lifecycle correctness, project support, wraparound behavior, and simulator-vs-device limits.",
+      "tags": ["playdate", "input", "crank", "accelerometer", "system-menu"],
+      "examples": [
+        "Check crank absolute-position handling for wraparound risk.",
+        "Review accelerometer start/read/stop assumptions and project support."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "datastore-save-shape-review",
+      "name": "Datastore Save-Shape Review",
+      "description": "Reviews Playdate datastore usage for API grounding plus clean, legacy, partial, corrupt, reset, and lifecycle save-shape coverage before claiming save compatibility.",
+      "tags": ["playdate", "datastore", "persistence", "save-migration", "lifecycle"],
+      "examples": [
+        "Review whether this datastore write handles corrupt or legacy saves.",
+        "Check save-on-sleep and terminate behavior for a Playdate save change."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "performance-gate-classification",
+      "name": "Performance Gate Classification",
+      "description": "Classifies Playdate FPS, refresh-rate, GC, redraw, allocation, asset-loading, Lua-runtime, build, simulator, and hardware gates without treating blocked gates as pass/fail evidence.",
+      "tags": ["playdate", "performance", "fps", "gc", "gates"],
+      "examples": [
+        "Decide whether make build, missing Lua, and simulator output are enough for a performance claim.",
+        "Review per-frame allocations and redraw scope for device validation needs."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
     }
   ]
 }

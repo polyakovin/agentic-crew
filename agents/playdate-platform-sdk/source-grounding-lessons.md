@@ -115,6 +115,20 @@ but project safety still depends on clean, legacy, partial, corrupt, and reset
 save shapes plus `pcall`/error handling where appropriate. Do not treat API
 existence as proof of save compatibility.
 
+## Durable Skill Map
+
+These reusable lessons should stay visible across A2A, Codex, and Hermes
+surfaces:
+
+| skill id | primary evidence | durable behavior |
+|---|---|---|
+| `source-grounded-api-truth-review` | L1, L2 | Confirm API and SDK-version facts only with local SDK/CoreLibs or official docs evidence; keep confidence separate from truth status. |
+| `simulator-device-proof-separation` | L3, L6, L7 | Treat simulator/build/screenshot evidence as separate from device proof, especially for performance, appearance, audio, crank, accelerometer, battery, and device-only behavior. |
+| `graphics-draw-mode-boundary-review` | L4, L7 | Review draw-mode API truth and image/font draw-state restoration while routing visual composition/readability ownership to renderer or UI specialists. |
+| `input-peripheral-lifecycle-review` | L3, L5 | Check crank wraparound, Menu ownership, accelerometer lifecycle, peripheral support, and project support before endorsing input behavior. |
+| `datastore-save-shape-review` | L6, L8 | Pair datastore API grounding with clean, legacy, partial, corrupt, reset, sleep, and terminate save-shape coverage. |
+| `performance-gate-classification` | L3, L6, L7 | Classify FPS, refresh rate, GC, redraw, allocation, build, Lua, simulator, and hardware gates without converting blocked gates into pass/fail evidence. |
+
 ## Eval And Replay Candidates
 
 | id | trigger | required behavior |

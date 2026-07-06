@@ -6,6 +6,9 @@ Status: draft-ready, not production-certified.
 ## Present
 
 - A2A Agent Card.
+- Source-grounded durable AgentSkill entries for API truth, simulator/device
+  proof separation, draw-mode boundaries, input/peripheral lifecycle, datastore
+  save shapes, and performance/gate classification.
 - A2A payload contract through the shared protocol.
 - Entrypoint.
 - Role instructions.
@@ -25,6 +28,8 @@ Status: draft-ready, not production-certified.
 - Validator/schema integration.
 - Human operating-model review.
 - Hardware validation case for crank/screen/audio/performance.
+- Agent Tester review of the durable skills added from
+  `source-grounding-lessons.md`.
 
 ## Known Drift To Monitor
 

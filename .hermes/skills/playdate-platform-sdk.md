@@ -47,6 +47,24 @@ Read only task-relevant source/spec/test files after those package files.
   hardware as blocked gates or verification limits, not as passing/failing
   tests.
 
+## Durable Capability Routes
+
+- `source-grounded-api-truth-review`: verify API existence, receiver, signature,
+  and SDK-version claims with local SDK/CoreLibs or official docs evidence.
+- `simulator-device-proof-separation`: separate build/simulator/screenshot
+  results from hardware proof for performance, display, audio, crank,
+  accelerometer, battery, and device-only behavior.
+- `graphics-draw-mode-boundary-review`: review draw-mode API boundaries,
+  image/font draw-mode restoration, primitive-scope limits, hot graphics asset
+  creation, and renderer/UI handoff needs.
+- `input-peripheral-lifecycle-review`: review crank wraparound, Menu ownership,
+  accelerometer lifecycle, peripheral support, and project-spec support.
+- `datastore-save-shape-review`: review datastore API use together with clean,
+  legacy, partial, corrupt, reset, sleep, and terminate save-shape coverage.
+- `performance-gate-classification`: classify FPS, refresh-rate, GC, redraw,
+  hot allocation/asset-loading, Lua runtime, build, simulator, and hardware
+  gates without turning blocked gates into pass/fail evidence.
+
 ## Output
 
 Return a `specialistReport`-compatible summary with:

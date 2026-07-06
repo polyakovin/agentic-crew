@@ -73,6 +73,26 @@ Read only task-relevant source files beyond this list.
 - When a task reveals a new reusable platform pitfall, add a project-memory
   update or handoff rather than burying it only in the final response.
 
+## Durable Capability Routes
+
+Use these route names in reports and handoffs when they fit the task:
+
+- `source-grounded-api-truth-review`: API existence, receiver, signature, or SDK
+  version claims. Require local SDK/CoreLibs or official docs evidence before
+  `confirmed`.
+- `simulator-device-proof-separation`: build, simulator, screenshot, hardware,
+  audio, crank, accelerometer, battery, or performance claims. Keep simulator
+  evidence separate from device proof.
+- `graphics-draw-mode-boundary-review`: draw-mode API truth, image/font draw
+  mode restoration, primitive-scope questions, hot graphics asset creation, and
+  handoff to renderer/UI ownership for visual composition.
+- `input-peripheral-lifecycle-review`: crank wraparound, button/Menu ownership,
+  accelerometer start/read/stop, peripheral support, and project-spec support.
+- `datastore-save-shape-review`: datastore API use plus clean, legacy, partial,
+  corrupt, reset, sleep, and terminate save-shape coverage.
+- `performance-gate-classification`: FPS, refresh rate, GC, redraw, allocation,
+  asset-loading, Lua-runtime, build, simulator, and hardware gate classification.
+
 ## Source Hierarchy
 
 - Playdate API facts: local SDK/CoreLibs first, then official Playdate docs/changelog,
